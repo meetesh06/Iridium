@@ -1,0 +1,978 @@
+function Cipher(input, w) {
+  var Nb = 4;
+  let js3$3 = w.length;
+  let js3$4 = Nb;
+  let js3$2 = js3$3 / js3$4;
+  let js3$5 = 1;
+  let js3$1 = js3$2 - js3$5;
+  var Nr = js3$1;
+  let js3$7 = [];
+  let js3$8 = [];
+  let js3$9 = [];
+  let js3$10 = [];
+  let js3$6 = [js3$7, js3$8, js3$9, js3$10];
+  var state = js3$6;
+  for (var i = 0; i < 4 * Nb; i++) {
+    let js3$11 = input[i];
+    let js3$14 = i;
+    let js3$15 = 4;
+    let js3$13 = js3$14 % js3$15;
+    let js3$12 = state[js3$13];
+    let js3$16 = Math.floor(i / 4);
+    let AssnRes$17 = js3$12[js3$16] = js3$11;
+    ;
+  }
+  let js3$19 = state;
+  let js3$20 = w;
+  let js3$21 = 0;
+  let js3$22 = Nb;
+  let js3$18 = AddRoundKey(js3$19, js3$20, js3$21, js3$22);
+  let AssnRes$23 = state = js3$18;
+  for (var round = 1; round < Nr; round++) {
+    {
+      let js3$25 = state;
+      let js3$26 = Nb;
+      let js3$24 = SubBytes(js3$25, js3$26);
+      let AssnRes$27 = state = js3$24;
+      let js3$29 = state;
+      let js3$30 = Nb;
+      let js3$28 = ShiftRows(js3$29, js3$30);
+      let AssnRes$31 = state = js3$28;
+      let js3$33 = state;
+      let js3$34 = Nb;
+      let js3$32 = MixColumns(js3$33, js3$34);
+      let AssnRes$35 = state = js3$32;
+      let js3$37 = state;
+      let js3$38 = w;
+      let js3$39 = round;
+      let js3$40 = Nb;
+      let js3$36 = AddRoundKey(js3$37, js3$38, js3$39, js3$40);
+      let AssnRes$41 = state = js3$36;
+    }
+  }
+  let js3$43 = state;
+  let js3$44 = Nb;
+  let js3$42 = SubBytes(js3$43, js3$44);
+  let AssnRes$45 = state = js3$42;
+  let js3$47 = state;
+  let js3$48 = Nb;
+  let js3$46 = ShiftRows(js3$47, js3$48);
+  let AssnRes$49 = state = js3$46;
+  let js3$51 = state;
+  let js3$52 = w;
+  let js3$53 = Nr;
+  let js3$54 = Nb;
+  let js3$50 = AddRoundKey(js3$51, js3$52, js3$53, js3$54);
+  let AssnRes$55 = state = js3$50;
+  let js3$57 = Array;
+  let js3$59 = 4;
+  let js3$60 = Nb;
+  let js3$58 = js3$59 * js3$60;
+  let js3$56 = new js3$57(js3$58);
+  var output = js3$56;
+  for (var i = 0; i < 4 * Nb; i++) {
+    let js3$64 = i;
+    let js3$65 = 4;
+    let js3$63 = js3$64 % js3$65;
+    let js3$62 = state[js3$63];
+    let js3$66 = Math.floor(i / 4);
+    let js3$61 = js3$62[js3$66];
+    let AssnRes$67 = output[i] = js3$61;
+    ;
+  }
+  let returnStmt$68 = output;
+  return returnStmt$68;
+}
+function SubBytes(s, Nb) {
+  for (var r = 0; r < 4; r++) {
+    {
+      for (var c = 0; c < Nb; c++) {
+        let js3$71 = s[r];
+        let js3$70 = js3$71[c];
+        let js3$69 = Sbox[js3$70];
+        let js3$72 = s[r];
+        let AssnRes$73 = js3$72[c] = js3$69;
+        ;
+      }
+    }
+  }
+  let returnStmt$74 = s;
+  return returnStmt$74;
+}
+function ShiftRows(s, Nb) {
+  let js3$76 = Array;
+  let js3$77 = 4;
+  let js3$75 = new js3$76(js3$77);
+  var t = js3$75;
+  for (var r = 1; r < 4; r++) {
+    {
+      for (var c = 0; c < 4; c++) {
+        let js3$79 = s[r];
+        let js3$82 = c;
+        let js3$83 = r;
+        let js3$81 = js3$82 + js3$83;
+        let js3$84 = Nb;
+        let js3$80 = js3$81 % js3$84;
+        let js3$78 = js3$79[js3$80];
+        let AssnRes$85 = t[c] = js3$78;
+        ;
+      }
+      for (var c = 0; c < 4; c++) {
+        let js3$86 = t[c];
+        let js3$87 = s[r];
+        let AssnRes$88 = js3$87[c] = js3$86;
+        ;
+      }
+    }
+  }
+  let returnStmt$89 = s;
+  return returnStmt$89;
+}
+function MixColumns(s, Nb) {
+  for (var c = 0; c < 4; c++) {
+    {
+      let js3$91 = Array;
+      let js3$92 = 4;
+      let js3$90 = new js3$91(js3$92);
+      var a = js3$90;
+      let js3$94 = Array;
+      let js3$95 = 4;
+      let js3$93 = new js3$94(js3$95);
+      var b = js3$93;
+      for (var i = 0; i < 4; i++) {
+        {
+          let js3$97 = s[i];
+          let js3$96 = js3$97[c];
+          let AssnRes$98 = a[i] = js3$96;
+          let js3$102 = s[i];
+          let js3$101 = js3$102[c];
+          let js3$103 = 0x80;
+          let js3$100 = js3$101 & js3$103;
+          let js3$99 = js3$100 ? s[i][c] << 1 ^ 0x011b : s[i][c] << 1;
+          let AssnRes$104 = b[i] = js3$99;
+        }
+      }
+      let js3$110 = 0;
+      let js3$109 = b[js3$110];
+      let js3$112 = 1;
+      let js3$111 = a[js3$112];
+      let js3$108 = js3$109 ^ js3$111;
+      let js3$114 = 1;
+      let js3$113 = b[js3$114];
+      let js3$107 = js3$108 ^ js3$113;
+      let js3$116 = 2;
+      let js3$115 = a[js3$116];
+      let js3$106 = js3$107 ^ js3$115;
+      let js3$118 = 3;
+      let js3$117 = a[js3$118];
+      let js3$105 = js3$106 ^ js3$117;
+      let js3$120 = 0;
+      let js3$119 = s[js3$120];
+      let AssnRes$121 = js3$119[c] = js3$105;
+      let js3$127 = 0;
+      let js3$126 = a[js3$127];
+      let js3$129 = 1;
+      let js3$128 = b[js3$129];
+      let js3$125 = js3$126 ^ js3$128;
+      let js3$131 = 2;
+      let js3$130 = a[js3$131];
+      let js3$124 = js3$125 ^ js3$130;
+      let js3$133 = 2;
+      let js3$132 = b[js3$133];
+      let js3$123 = js3$124 ^ js3$132;
+      let js3$135 = 3;
+      let js3$134 = a[js3$135];
+      let js3$122 = js3$123 ^ js3$134;
+      let js3$137 = 1;
+      let js3$136 = s[js3$137];
+      let AssnRes$138 = js3$136[c] = js3$122;
+      let js3$144 = 0;
+      let js3$143 = a[js3$144];
+      let js3$146 = 1;
+      let js3$145 = a[js3$146];
+      let js3$142 = js3$143 ^ js3$145;
+      let js3$148 = 2;
+      let js3$147 = b[js3$148];
+      let js3$141 = js3$142 ^ js3$147;
+      let js3$150 = 3;
+      let js3$149 = a[js3$150];
+      let js3$140 = js3$141 ^ js3$149;
+      let js3$152 = 3;
+      let js3$151 = b[js3$152];
+      let js3$139 = js3$140 ^ js3$151;
+      let js3$154 = 2;
+      let js3$153 = s[js3$154];
+      let AssnRes$155 = js3$153[c] = js3$139;
+      let js3$161 = 0;
+      let js3$160 = a[js3$161];
+      let js3$163 = 0;
+      let js3$162 = b[js3$163];
+      let js3$159 = js3$160 ^ js3$162;
+      let js3$165 = 1;
+      let js3$164 = a[js3$165];
+      let js3$158 = js3$159 ^ js3$164;
+      let js3$167 = 2;
+      let js3$166 = a[js3$167];
+      let js3$157 = js3$158 ^ js3$166;
+      let js3$169 = 3;
+      let js3$168 = b[js3$169];
+      let js3$156 = js3$157 ^ js3$168;
+      let js3$171 = 3;
+      let js3$170 = s[js3$171];
+      let AssnRes$172 = js3$170[c] = js3$156;
+    }
+  }
+  let returnStmt$173 = s;
+  return returnStmt$173;
+}
+function AddRoundKey(state, w, rnd, Nb) {
+  for (var r = 0; r < 4; r++) {
+    {
+      for (var c = 0; c < Nb; c++) {
+        let js3$176 = state[r];
+        let js3$175 = js3$176[c];
+        let js3$181 = rnd;
+        let js3$182 = 4;
+        let js3$180 = js3$181 * js3$182;
+        let js3$183 = c;
+        let js3$179 = js3$180 + js3$183;
+        let js3$178 = w[js3$179];
+        let js3$177 = js3$178[r];
+        let js3$174 = js3$175 ^ js3$177;
+        let js3$184 = state[r];
+        let AssnRes$185 = js3$184[c] = js3$174;
+        ;
+      }
+    }
+  }
+  let returnStmt$186 = state;
+  return returnStmt$186;
+}
+function KeyExpansion(key) {
+  var Nb = 4;
+  let js3$188 = key.length;
+  let js3$189 = 4;
+  let js3$187 = js3$188 / js3$189;
+  var Nk = js3$187;
+  let js3$191 = Nk;
+  let js3$192 = 6;
+  let js3$190 = js3$191 + js3$192;
+  var Nr = js3$190;
+  let js3$194 = Array;
+  let js3$196 = Nb;
+  let js3$198 = Nr;
+  let js3$199 = 1;
+  let js3$197 = js3$198 + js3$199;
+  let js3$195 = js3$196 * js3$197;
+  let js3$193 = new js3$194(js3$195);
+  var w = js3$193;
+  let js3$201 = Array;
+  let js3$202 = 4;
+  let js3$200 = new js3$201(js3$202);
+  var temp = js3$200;
+  for (var i = 0; i < Nk; i++) {
+    {
+      let js3$206 = 4;
+      let js3$207 = i;
+      let js3$205 = js3$206 * js3$207;
+      let js3$204 = key[js3$205];
+      let js3$211 = 4;
+      let js3$212 = i;
+      let js3$210 = js3$211 * js3$212;
+      let js3$213 = 1;
+      let js3$209 = js3$210 + js3$213;
+      let js3$208 = key[js3$209];
+      let js3$217 = 4;
+      let js3$218 = i;
+      let js3$216 = js3$217 * js3$218;
+      let js3$219 = 2;
+      let js3$215 = js3$216 + js3$219;
+      let js3$214 = key[js3$215];
+      let js3$223 = 4;
+      let js3$224 = i;
+      let js3$222 = js3$223 * js3$224;
+      let js3$225 = 3;
+      let js3$221 = js3$222 + js3$225;
+      let js3$220 = key[js3$221];
+      let js3$203 = [js3$204, js3$208, js3$214, js3$220];
+      var r = js3$203;
+      let AssnRes$226 = w[i] = r;
+    }
+  }
+  for (var i = Nk; i < Nb * (Nr + 1); i++) {
+    {
+      let js3$228 = Array;
+      let js3$229 = 4;
+      let js3$227 = new js3$228(js3$229);
+      let AssnRes$230 = w[i] = js3$227;
+      for (var t = 0; t < 4; t++) {
+        let js3$234 = i;
+        let js3$235 = 1;
+        let js3$233 = js3$234 - js3$235;
+        let js3$232 = w[js3$233];
+        let js3$231 = js3$232[t];
+        let AssnRes$236 = temp[t] = js3$231;
+        ;
+      }
+      let ifTest$239 = i;
+      let ifTest$240 = Nk;
+      let ifTest$238 = ifTest$239 % ifTest$240;
+      let ifTest$241 = 0;
+      let ifTest$237 = ifTest$238 == ifTest$241;
+      if (ifTest$237) {
+        let ifTrue$244 = temp;
+        let ifTrue$243 = RotWord(ifTrue$244);
+        let ifTrue$242 = SubWord(ifTrue$243);
+        let AssnRes$245 = temp = ifTrue$242;
+        for (var t = 0; t < 4; t++) {
+          let ifTrue$247 = temp[t];
+          let ifTrue$251 = i;
+          let ifTrue$252 = Nk;
+          let ifTrue$250 = ifTrue$251 / ifTrue$252;
+          let ifTrue$249 = Rcon[ifTrue$250];
+          let ifTrue$248 = ifTrue$249[t];
+          let ifTrue$246 = ifTrue$247 ^ ifTrue$248;
+          let AssnRes$253 = temp[t] = ifTrue$246;
+          ;
+        }
+      } else {
+        let ifTest$256 = Nk;
+        let ifTest$257 = 6;
+        let ifTest$255 = ifTest$256 > ifTest$257;
+        let ifTest$258 = ifTest$255 ? i % Nk == 4 : ifTest$255;
+        let ifTest$254 = ifTest$258;
+        if (ifTest$254) {
+          let ifTrue$260 = temp;
+          let ifTrue$259 = SubWord(ifTrue$260);
+          let AssnRes$261 = temp = ifTrue$259;
+        }
+      }
+      for (var t = 0; t < 4; t++) {
+        let js3$266 = i;
+        let js3$267 = Nk;
+        let js3$265 = js3$266 - js3$267;
+        let js3$264 = w[js3$265];
+        let js3$263 = js3$264[t];
+        let js3$268 = temp[t];
+        let js3$262 = js3$263 ^ js3$268;
+        let js3$269 = w[i];
+        let AssnRes$270 = js3$269[t] = js3$262;
+        ;
+      }
+    }
+  }
+  let returnStmt$271 = w;
+  return returnStmt$271;
+}
+function SubWord(w) {
+  for (var i = 0; i < 4; i++) {
+    let js3$273 = w[i];
+    let js3$272 = Sbox[js3$273];
+    let AssnRes$274 = w[i] = js3$272;
+    ;
+  }
+  let returnStmt$275 = w;
+  return returnStmt$275;
+}
+function RotWord(w) {
+  let js3$277 = 0;
+  let js3$276 = w[js3$277];
+  let js3$278 = 4;
+  let AssnRes$279 = w[js3$278] = js3$276;
+  for (var i = 0; i < 4; i++) {
+    let js3$282 = i;
+    let js3$283 = 1;
+    let js3$281 = js3$282 + js3$283;
+    let js3$280 = w[js3$281];
+    let AssnRes$284 = w[i] = js3$280;
+    ;
+  }
+  let returnStmt$285 = w;
+  return returnStmt$285;
+}
+let js3$286 = [0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01, 0x67, 0x2b, 0xfe, 0xd7, 0xab, 0x76, 0xca, 0x82, 0xc9, 0x7d, 0xfa, 0x59, 0x47, 0xf0, 0xad, 0xd4, 0xa2, 0xaf, 0x9c, 0xa4, 0x72, 0xc0, 0xb7, 0xfd, 0x93, 0x26, 0x36, 0x3f, 0xf7, 0xcc, 0x34, 0xa5, 0xe5, 0xf1, 0x71, 0xd8, 0x31, 0x15, 0x04, 0xc7, 0x23, 0xc3, 0x18, 0x96, 0x05, 0x9a, 0x07, 0x12, 0x80, 0xe2, 0xeb, 0x27, 0xb2, 0x75, 0x09, 0x83, 0x2c, 0x1a, 0x1b, 0x6e, 0x5a, 0xa0, 0x52, 0x3b, 0xd6, 0xb3, 0x29, 0xe3, 0x2f, 0x84, 0x53, 0xd1, 0x00, 0xed, 0x20, 0xfc, 0xb1, 0x5b, 0x6a, 0xcb, 0xbe, 0x39, 0x4a, 0x4c, 0x58, 0xcf, 0xd0, 0xef, 0xaa, 0xfb, 0x43, 0x4d, 0x33, 0x85, 0x45, 0xf9, 0x02, 0x7f, 0x50, 0x3c, 0x9f, 0xa8, 0x51, 0xa3, 0x40, 0x8f, 0x92, 0x9d, 0x38, 0xf5, 0xbc, 0xb6, 0xda, 0x21, 0x10, 0xff, 0xf3, 0xd2, 0xcd, 0x0c, 0x13, 0xec, 0x5f, 0x97, 0x44, 0x17, 0xc4, 0xa7, 0x7e, 0x3d, 0x64, 0x5d, 0x19, 0x73, 0x60, 0x81, 0x4f, 0xdc, 0x22, 0x2a, 0x90, 0x88, 0x46, 0xee, 0xb8, 0x14, 0xde, 0x5e, 0x0b, 0xdb, 0xe0, 0x32, 0x3a, 0x0a, 0x49, 0x06, 0x24, 0x5c, 0xc2, 0xd3, 0xac, 0x62, 0x91, 0x95, 0xe4, 0x79, 0xe7, 0xc8, 0x37, 0x6d, 0x8d, 0xd5, 0x4e, 0xa9, 0x6c, 0x56, 0xf4, 0xea, 0x65, 0x7a, 0xae, 0x08, 0xba, 0x78, 0x25, 0x2e, 0x1c, 0xa6, 0xb4, 0xc6, 0xe8, 0xdd, 0x74, 0x1f, 0x4b, 0xbd, 0x8b, 0x8a, 0x70, 0x3e, 0xb5, 0x66, 0x48, 0x03, 0xf6, 0x0e, 0x61, 0x35, 0x57, 0xb9, 0x86, 0xc1, 0x1d, 0x9e, 0xe1, 0xf8, 0x98, 0x11, 0x69, 0xd9, 0x8e, 0x94, 0x9b, 0x1e, 0x87, 0xe9, 0xce, 0x55, 0x28, 0xdf, 0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f, 0xb0, 0x54, 0xbb, 0x16];
+var Sbox = js3$286;
+let js3$288 = [0x00, 0x00, 0x00, 0x00];
+let js3$289 = [0x01, 0x00, 0x00, 0x00];
+let js3$290 = [0x02, 0x00, 0x00, 0x00];
+let js3$291 = [0x04, 0x00, 0x00, 0x00];
+let js3$292 = [0x08, 0x00, 0x00, 0x00];
+let js3$293 = [0x10, 0x00, 0x00, 0x00];
+let js3$294 = [0x20, 0x00, 0x00, 0x00];
+let js3$295 = [0x40, 0x00, 0x00, 0x00];
+let js3$296 = [0x80, 0x00, 0x00, 0x00];
+let js3$297 = [0x1b, 0x00, 0x00, 0x00];
+let js3$298 = [0x36, 0x00, 0x00, 0x00];
+let js3$287 = [js3$288, js3$289, js3$290, js3$291, js3$292, js3$293, js3$294, js3$295, js3$296, js3$297, js3$298];
+var Rcon = js3$287;
+function AESEncryptCtr(plaintext, password, nBits) {
+  let ifTest$303 = nBits;
+  let ifTest$304 = 128;
+  let ifTest$302 = ifTest$303 == ifTest$304;
+  let ifTest$305 = ifTest$302 ? ifTest$302 : nBits == 192;
+  let ifTest$301 = ifTest$305;
+  let ifTest$306 = ifTest$301 ? ifTest$301 : nBits == 256;
+  let ifTest$300 = ifTest$306;
+  let ifTest$299 = !ifTest$300;
+  if (ifTest$299) {
+    let returnStmt$307 = '';
+    return returnStmt$307;
+  }
+  let js3$309 = nBits;
+  let js3$310 = 8;
+  let js3$308 = js3$309 / js3$310;
+  var nBytes = js3$308;
+  let js3$312 = Array;
+  let js3$313 = nBytes;
+  let js3$311 = new js3$312(js3$313);
+  var pwBytes = js3$311;
+  for (var i = 0; i < nBytes; i++) {
+    let js3$315 = password.charCodeAt(i);
+    let js3$316 = 0xff;
+    let js3$314 = js3$315 & js3$316;
+    let AssnRes$317 = pwBytes[i] = js3$314;
+    ;
+  }
+  let js3$319 = pwBytes;
+  let js3$321 = pwBytes;
+  let js3$320 = KeyExpansion(js3$321);
+  let js3$318 = Cipher(js3$319, js3$320);
+  var key = js3$318;
+  let js3$322 = key.concat(key.slice(0, nBytes - 16));
+  let AssnRes$323 = key = js3$322;
+  var blockSize = 16;
+  let js3$325 = Array;
+  let js3$326 = blockSize;
+  let js3$324 = new js3$325(js3$326);
+  var counterBlock = js3$324;
+  let js3$329 = Date;
+  let js3$328 = new js3$329();
+  let js3$327 = js3$328.getTime();
+  var nonce = js3$327;
+  for (var i = 0; i < 4; i++) {
+    let js3$332 = nonce;
+    let js3$334 = i;
+    let js3$335 = 8;
+    let js3$333 = js3$334 * js3$335;
+    let js3$331 = js3$332 >>> js3$333;
+    let js3$336 = 0xff;
+    let js3$330 = js3$331 & js3$336;
+    let AssnRes$337 = counterBlock[i] = js3$330;
+    ;
+  }
+  for (var i = 0; i < 4; i++) {
+    let js3$341 = nonce;
+    let js3$342 = 0x100000000;
+    let js3$340 = js3$341 / js3$342;
+    let js3$344 = i;
+    let js3$345 = 8;
+    let js3$343 = js3$344 * js3$345;
+    let js3$339 = js3$340 >>> js3$343;
+    let js3$346 = 0xff;
+    let js3$338 = js3$339 & js3$346;
+    let js3$348 = i;
+    let js3$349 = 4;
+    let js3$347 = js3$348 + js3$349;
+    let AssnRes$350 = counterBlock[js3$347] = js3$338;
+    ;
+  }
+  let js3$352 = key;
+  let js3$351 = KeyExpansion(js3$352);
+  var keySchedule = js3$351;
+  let js3$353 = Math.ceil(plaintext.length / blockSize);
+  var blockCount = js3$353;
+  let js3$355 = Array;
+  let js3$356 = blockCount;
+  let js3$354 = new js3$355(js3$356);
+  var ciphertext = js3$354;
+  for (var b = 0; b < blockCount; b++) {
+    {
+      for (var c = 0; c < 4; c++) {
+        let js3$359 = b;
+        let js3$361 = c;
+        let js3$362 = 8;
+        let js3$360 = js3$361 * js3$362;
+        let js3$358 = js3$359 >>> js3$360;
+        let js3$363 = 0xff;
+        let js3$357 = js3$358 & js3$363;
+        let js3$365 = 15;
+        let js3$366 = c;
+        let js3$364 = js3$365 - js3$366;
+        let AssnRes$367 = counterBlock[js3$364] = js3$357;
+        ;
+      }
+      for (var c = 0; c < 4; c++) {
+        let js3$370 = b;
+        let js3$371 = 0x100000000;
+        let js3$369 = js3$370 / js3$371;
+        let js3$373 = c;
+        let js3$374 = 8;
+        let js3$372 = js3$373 * js3$374;
+        let js3$368 = js3$369 >>> js3$372;
+        let js3$377 = 15;
+        let js3$378 = c;
+        let js3$376 = js3$377 - js3$378;
+        let js3$379 = 4;
+        let js3$375 = js3$376 - js3$379;
+        let AssnRes$380 = counterBlock[js3$375] = js3$368;
+        ;
+      }
+      let js3$382 = counterBlock;
+      let js3$383 = keySchedule;
+      let js3$381 = Cipher(js3$382, js3$383);
+      var cipherCntr = js3$381;
+      let js3$386 = b;
+      let js3$388 = blockCount;
+      let js3$389 = 1;
+      let js3$387 = js3$388 - js3$389;
+      let js3$385 = js3$386 < js3$387;
+      let js3$384 = js3$385 ? blockSize : (plaintext.length - 1) % blockSize + 1;
+      var blockLength = js3$384;
+      var ct = '';
+      for (var i = 0; i < blockLength; i++) {
+        {
+          let js3$390 = plaintext.charCodeAt(b * blockSize + i);
+          var plaintextByte = js3$390;
+          let js3$392 = plaintextByte;
+          let js3$393 = cipherCntr[i];
+          let js3$391 = js3$392 ^ js3$393;
+          var cipherByte = js3$391;
+          let js3$395 = ct;
+          let js3$396 = String.fromCharCode(cipherByte);
+          let js3$394 = js3$395 + js3$396;
+          let AssnRes$397 = ct = js3$394;
+        }
+      }
+      let js3$399 = ct;
+      let js3$398 = escCtrlChars(js3$399);
+      let AssnRes$400 = ciphertext[b] = js3$398;
+    }
+  }
+  var ctrTxt = '';
+  for (var i = 0; i < 8; i++) {
+    let js3$402 = ctrTxt;
+    let js3$403 = String.fromCharCode(counterBlock[i]);
+    let js3$401 = js3$402 + js3$403;
+    let AssnRes$404 = ctrTxt = js3$401;
+    ;
+  }
+  let js3$406 = ctrTxt;
+  let js3$405 = escCtrlChars(js3$406);
+  let AssnRes$407 = ctrTxt = js3$405;
+  let returnStmt$410 = ctrTxt;
+  let returnStmt$411 = '-';
+  let returnStmt$409 = returnStmt$410 + returnStmt$411;
+  let returnStmt$412 = ciphertext.join('-');
+  let returnStmt$408 = returnStmt$409 + returnStmt$412;
+  return returnStmt$408;
+}
+function AESDecryptCtr(ciphertext, password, nBits) {
+  let ifTest$417 = nBits;
+  let ifTest$418 = 128;
+  let ifTest$416 = ifTest$417 == ifTest$418;
+  let ifTest$419 = ifTest$416 ? ifTest$416 : nBits == 192;
+  let ifTest$415 = ifTest$419;
+  let ifTest$420 = ifTest$415 ? ifTest$415 : nBits == 256;
+  let ifTest$414 = ifTest$420;
+  let ifTest$413 = !ifTest$414;
+  if (ifTest$413) {
+    let returnStmt$421 = '';
+    return returnStmt$421;
+  }
+  let js3$423 = nBits;
+  let js3$424 = 8;
+  let js3$422 = js3$423 / js3$424;
+  var nBytes = js3$422;
+  let js3$426 = Array;
+  let js3$427 = nBytes;
+  let js3$425 = new js3$426(js3$427);
+  var pwBytes = js3$425;
+  for (var i = 0; i < nBytes; i++) {
+    let js3$429 = password.charCodeAt(i);
+    let js3$430 = 0xff;
+    let js3$428 = js3$429 & js3$430;
+    let AssnRes$431 = pwBytes[i] = js3$428;
+    ;
+  }
+  let js3$433 = pwBytes;
+  let js3$432 = KeyExpansion(js3$433);
+  var pwKeySchedule = js3$432;
+  let js3$435 = pwBytes;
+  let js3$436 = pwKeySchedule;
+  let js3$434 = Cipher(js3$435, js3$436);
+  var key = js3$434;
+  let js3$437 = key.concat(key.slice(0, nBytes - 16));
+  let AssnRes$438 = key = js3$437;
+  let js3$440 = key;
+  let js3$439 = KeyExpansion(js3$440);
+  var keySchedule = js3$439;
+  let js3$441 = ciphertext.split('-');
+  let AssnRes$442 = ciphertext = js3$441;
+  var blockSize = 16;
+  let js3$444 = Array;
+  let js3$445 = blockSize;
+  let js3$443 = new js3$444(js3$445);
+  var counterBlock = js3$443;
+  let js3$448 = 0;
+  let js3$447 = ciphertext[js3$448];
+  let js3$446 = unescCtrlChars(js3$447);
+  var ctrTxt = js3$446;
+  for (var i = 0; i < 8; i++) {
+    let js3$449 = ctrTxt.charCodeAt(i);
+    let AssnRes$450 = counterBlock[i] = js3$449;
+    ;
+  }
+  let js3$452 = Array;
+  let js3$454 = ciphertext.length;
+  let js3$455 = 1;
+  let js3$453 = js3$454 - js3$455;
+  let js3$451 = new js3$452(js3$453);
+  var plaintext = js3$451;
+  for (var b = 1; b < ciphertext.length; b++) {
+    {
+      for (var c = 0; c < 4; c++) {
+        let js3$459 = b;
+        let js3$460 = 1;
+        let js3$458 = js3$459 - js3$460;
+        let js3$462 = c;
+        let js3$463 = 8;
+        let js3$461 = js3$462 * js3$463;
+        let js3$457 = js3$458 >>> js3$461;
+        let js3$464 = 0xff;
+        let js3$456 = js3$457 & js3$464;
+        let js3$466 = 15;
+        let js3$467 = c;
+        let js3$465 = js3$466 - js3$467;
+        let AssnRes$468 = counterBlock[js3$465] = js3$456;
+        ;
+      }
+      for (var c = 0; c < 4; c++) {
+        let js3$473 = b;
+        let js3$474 = 0x100000000;
+        let js3$472 = js3$473 / js3$474;
+        let js3$475 = 1;
+        let js3$471 = js3$472 - js3$475;
+        let js3$477 = c;
+        let js3$478 = 8;
+        let js3$476 = js3$477 * js3$478;
+        let js3$470 = js3$471 >>> js3$476;
+        let js3$479 = 0xff;
+        let js3$469 = js3$470 & js3$479;
+        let js3$482 = 15;
+        let js3$483 = c;
+        let js3$481 = js3$482 - js3$483;
+        let js3$484 = 4;
+        let js3$480 = js3$481 - js3$484;
+        let AssnRes$485 = counterBlock[js3$480] = js3$469;
+        ;
+      }
+      let js3$487 = counterBlock;
+      let js3$488 = keySchedule;
+      let js3$486 = Cipher(js3$487, js3$488);
+      var cipherCntr = js3$486;
+      let js3$490 = ciphertext[b];
+      let js3$489 = unescCtrlChars(js3$490);
+      let AssnRes$491 = ciphertext[b] = js3$489;
+      var pt = '';
+      for (var i = 0; i < ciphertext[b].length; i++) {
+        {
+          let js3$493 = ciphertext[b];
+          let js3$492 = js3$493.charCodeAt(i);
+          var ciphertextByte = js3$492;
+          let js3$495 = ciphertextByte;
+          let js3$496 = cipherCntr[i];
+          let js3$494 = js3$495 ^ js3$496;
+          var plaintextByte = js3$494;
+          let js3$498 = pt;
+          let js3$499 = String.fromCharCode(plaintextByte);
+          let js3$497 = js3$498 + js3$499;
+          let AssnRes$500 = pt = js3$497;
+        }
+      }
+      let js3$502 = b;
+      let js3$503 = 1;
+      let js3$501 = js3$502 - js3$503;
+      let AssnRes$504 = plaintext[js3$501] = pt;
+    }
+  }
+  let returnStmt$505 = plaintext.join('');
+  return returnStmt$505;
+}
+function escCtrlChars(str) {
+  let returnStmt$506 = str.replace(/[\0\t\n\v\f\r\xa0'"!-]/g, function (c) {
+    return '!' + c.charCodeAt(0) + '!';
+  });
+  return returnStmt$506;
+}
+function unescCtrlChars(str) {
+  let returnStmt$507 = str.replace(/!\d\d?\d?!/g, function (c) {
+    return String.fromCharCode(c.slice(1, -1));
+  });
+  return returnStmt$507;
+}
+var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+function encodeBase64(str) {
+  var o1;
+  var o2;
+  var o3;
+  var h1;
+  var h2;
+  var h3;
+  var h4;
+  var bits;
+  var i = 0;
+  var enc = '';
+  let js3$509 = str;
+  let js3$508 = encodeUTF8(js3$509);
+  let AssnRes$510 = str = js3$508;
+  do {
+    {
+      let js3$511 = str.charCodeAt(i++);
+      let AssnRes$512 = o1 = js3$511;
+      let js3$513 = str.charCodeAt(i++);
+      let AssnRes$514 = o2 = js3$513;
+      let js3$515 = str.charCodeAt(i++);
+      let AssnRes$516 = o3 = js3$515;
+      let js3$520 = o1;
+      let js3$521 = 16;
+      let js3$519 = js3$520 << js3$521;
+      let js3$523 = o2;
+      let js3$524 = 8;
+      let js3$522 = js3$523 << js3$524;
+      let js3$518 = js3$519 | js3$522;
+      let js3$525 = o3;
+      let js3$517 = js3$518 | js3$525;
+      let AssnRes$526 = bits = js3$517;
+      let js3$529 = bits;
+      let js3$530 = 18;
+      let js3$528 = js3$529 >> js3$530;
+      let js3$531 = 0x3f;
+      let js3$527 = js3$528 & js3$531;
+      let AssnRes$532 = h1 = js3$527;
+      let js3$535 = bits;
+      let js3$536 = 12;
+      let js3$534 = js3$535 >> js3$536;
+      let js3$537 = 0x3f;
+      let js3$533 = js3$534 & js3$537;
+      let AssnRes$538 = h2 = js3$533;
+      let js3$541 = bits;
+      let js3$542 = 6;
+      let js3$540 = js3$541 >> js3$542;
+      let js3$543 = 0x3f;
+      let js3$539 = js3$540 & js3$543;
+      let AssnRes$544 = h3 = js3$539;
+      let js3$546 = bits;
+      let js3$547 = 0x3f;
+      let js3$545 = js3$546 & js3$547;
+      let AssnRes$548 = h4 = js3$545;
+      let ifTest$550 = o3;
+      let ifTest$549 = isNaN(ifTest$550);
+      if (ifTest$549) {
+        let AssnRes$551 = h4 = 64;
+        ;
+      }
+      let ifTest$553 = o2;
+      let ifTest$552 = isNaN(ifTest$553);
+      if (ifTest$552) {
+        let AssnRes$554 = h3 = 64;
+        ;
+      }
+      let js3$556 = enc;
+      let js3$560 = b64.charAt(h1);
+      let js3$561 = b64.charAt(h2);
+      let js3$559 = js3$560 + js3$561;
+      let js3$562 = b64.charAt(h3);
+      let js3$558 = js3$559 + js3$562;
+      let js3$563 = b64.charAt(h4);
+      let js3$557 = js3$558 + js3$563;
+      let js3$555 = js3$556 + js3$557;
+      let AssnRes$564 = enc = js3$555;
+    }
+  } while (i < str.length);
+  let returnStmt$565 = enc;
+  return returnStmt$565;
+}
+function decodeBase64(str) {
+  var o1;
+  var o2;
+  var o3;
+  var h1;
+  var h2;
+  var h3;
+  var h4;
+  var bits;
+  var i = 0;
+  var enc = '';
+  do {
+    {
+      let js3$566 = b64.indexOf(str.charAt(i++));
+      let AssnRes$567 = h1 = js3$566;
+      let js3$568 = b64.indexOf(str.charAt(i++));
+      let AssnRes$569 = h2 = js3$568;
+      let js3$570 = b64.indexOf(str.charAt(i++));
+      let AssnRes$571 = h3 = js3$570;
+      let js3$572 = b64.indexOf(str.charAt(i++));
+      let AssnRes$573 = h4 = js3$572;
+      let js3$578 = h1;
+      let js3$579 = 18;
+      let js3$577 = js3$578 << js3$579;
+      let js3$581 = h2;
+      let js3$582 = 12;
+      let js3$580 = js3$581 << js3$582;
+      let js3$576 = js3$577 | js3$580;
+      let js3$584 = h3;
+      let js3$585 = 6;
+      let js3$583 = js3$584 << js3$585;
+      let js3$575 = js3$576 | js3$583;
+      let js3$586 = h4;
+      let js3$574 = js3$575 | js3$586;
+      let AssnRes$587 = bits = js3$574;
+      let js3$590 = bits;
+      let js3$591 = 16;
+      let js3$589 = js3$590 >> js3$591;
+      let js3$592 = 0xff;
+      let js3$588 = js3$589 & js3$592;
+      let AssnRes$593 = o1 = js3$588;
+      let js3$596 = bits;
+      let js3$597 = 8;
+      let js3$595 = js3$596 >> js3$597;
+      let js3$598 = 0xff;
+      let js3$594 = js3$595 & js3$598;
+      let AssnRes$599 = o2 = js3$594;
+      let js3$601 = bits;
+      let js3$602 = 0xff;
+      let js3$600 = js3$601 & js3$602;
+      let AssnRes$603 = o3 = js3$600;
+      let ifTest$605 = h3;
+      let ifTest$606 = 64;
+      let ifTest$604 = ifTest$605 == ifTest$606;
+      if (ifTest$604) {
+        let ifTrue$608 = enc;
+        let ifTrue$609 = String.fromCharCode(o1);
+        let ifTrue$607 = ifTrue$608 + ifTrue$609;
+        let AssnRes$610 = enc = ifTrue$607;
+        ;
+      } else {
+        let ifTest$612 = h4;
+        let ifTest$613 = 64;
+        let ifTest$611 = ifTest$612 == ifTest$613;
+        if (ifTest$611) {
+          let ifTrue$615 = enc;
+          let ifTrue$616 = String.fromCharCode(o1, o2);
+          let ifTrue$614 = ifTrue$615 + ifTrue$616;
+          let AssnRes$617 = enc = ifTrue$614;
+          ;
+        } else {
+          let ifFalse$619 = enc;
+          let ifFalse$620 = String.fromCharCode(o1, o2, o3);
+          let ifFalse$618 = ifFalse$619 + ifFalse$620;
+          let AssnRes$621 = enc = ifFalse$618;
+          ;
+        }
+      }
+    }
+  } while (i < str.length);
+  let returnStmt$623 = enc;
+  let returnStmt$622 = decodeUTF8(returnStmt$623);
+  return returnStmt$622;
+}
+function encodeUTF8(str) {
+  let js3$624 = str.replace(/[\u0080-\u07ff]/g, function (c) {
+    var cc = c.charCodeAt(0);
+    return String.fromCharCode(0xc0 | cc >> 6, 0x80 | cc & 0x3f);
+  });
+  let AssnRes$625 = str = js3$624;
+  let js3$626 = str.replace(/[\u0800-\uffff]/g, function (c) {
+    var cc = c.charCodeAt(0);
+    return String.fromCharCode(0xe0 | cc >> 12, 0x80 | cc >> 6 & 0x3F, 0x80 | cc & 0x3f);
+  });
+  let AssnRes$627 = str = js3$626;
+  let returnStmt$628 = str;
+  return returnStmt$628;
+}
+function decodeUTF8(str) {
+  let js3$629 = str.replace(/[\u00c0-\u00df][\u0080-\u00bf]/g, function (c) {
+    var cc = (c.charCodeAt(0) & 0x1f) << 6 | c.charCodeAt(1) & 0x3f;
+    return String.fromCharCode(cc);
+  });
+  let AssnRes$630 = str = js3$629;
+  let js3$631 = str.replace(/[\u00e0-\u00ef][\u0080-\u00bf][\u0080-\u00bf]/g, function (c) {
+    var cc = (c.charCodeAt(0) & 0x0f) << 12 | c.charCodeAt(1) & 0x3f << 6 | c.charCodeAt(2) & 0x3f;
+    return String.fromCharCode(cc);
+  });
+  let AssnRes$632 = str = js3$631;
+  let returnStmt$633 = str;
+  return returnStmt$633;
+}
+function byteArrayToHexStr(b) {
+  var s = '';
+  for (var i = 0; i < b.length; i++) {
+    let js3$635 = s;
+    let js3$638 = b[i];
+    let js3$637 = js3$638.toString(16);
+    let js3$639 = ' ';
+    let js3$636 = js3$637 + js3$639;
+    let js3$634 = js3$635 + js3$636;
+    let AssnRes$640 = s = js3$634;
+    ;
+  }
+  let returnStmt$641 = s;
+  return returnStmt$641;
+}
+var plainText = "ROMEO: But, soft! what light through yonder window breaks?\n\
+It is the east, and Juliet is the sun.\n\
+Arise, fair sun, and kill the envious moon,\n\
+Who is already sick and pale with grief,\n\
+That thou her maid art far more fair than she:\n\
+Be not her maid, since she is envious;\n\
+Her vestal livery is but sick and green\n\
+And none but fools do wear it; cast it off.\n\
+It is my lady, O, it is my love!\n\
+O, that she knew she were!\n\
+She speaks yet she says nothing: what of that?\n\
+Her eye discourses; I will answer it.\n\
+I am too bold, 'tis not to me she speaks:\n\
+Two of the fairest stars in all the heaven,\n\
+Having some business, do entreat her eyes\n\
+To twinkle in their spheres till they return.\n\
+What if her eyes were there, they in her head?\n\
+The brightness of her cheek would shame those stars,\n\
+As daylight doth a lamp; her eyes in heaven\n\
+Would through the airy region stream so bright\n\
+That birds would sing and think it were not night.\n\
+See, how she leans her cheek upon her hand!\n\
+O, that I were a glove upon that hand,\n\
+That I might touch that cheek!\n\
+JULIET: Ay me!\n\
+ROMEO: She speaks:\n\
+O, speak again, bright angel! for thou art\n\
+As glorious to this night, being o'er my head\n\
+As is a winged messenger of heaven\n\
+Unto the white-upturned wondering eyes\n\
+Of mortals that fall back to gaze on him\n\
+When he bestrides the lazy-pacing clouds\n\
+And sails upon the bosom of the air.";
+var password = "O Romeo, Romeo! wherefore art thou Romeo?";
+let js3$643 = plainText;
+let js3$644 = password;
+let js3$645 = 256;
+let js3$642 = AESEncryptCtr(js3$643, js3$644, js3$645);
+var cipherText = js3$642;
+let js3$647 = cipherText;
+let js3$648 = password;
+let js3$649 = 256;
+let js3$646 = AESDecryptCtr(js3$647, js3$648, js3$649);
+var decryptedText = js3$646;
+let ifTest$651 = decryptedText;
+let ifTest$652 = plainText;
+let ifTest$650 = ifTest$651 != ifTest$652;
+if (ifTest$650) {
+  let ifTrue$656 = "ERROR: bad result: expected ";
+  let ifTrue$657 = plainText;
+  let ifTrue$655 = ifTrue$656 + ifTrue$657;
+  let ifTrue$658 = " but got ";
+  let ifTrue$654 = ifTrue$655 + ifTrue$658;
+  let ifTrue$659 = decryptedText;
+  let ifTrue$653 = ifTrue$654 + ifTrue$659;
+  throw ifTrue$653;
+}

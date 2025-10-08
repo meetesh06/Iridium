@@ -1,0 +1,204 @@
+var last = 42;
+var A = 3877;
+var C = 29573;
+var M = 139968;
+function rand(max) {
+  let js3$4 = last;
+  let js3$5 = A;
+  let js3$3 = js3$4 * js3$5;
+  let js3$6 = C;
+  let js3$2 = js3$3 + js3$6;
+  let js3$7 = M;
+  let js3$1 = js3$2 % js3$7;
+  let AssnRes$8 = last = js3$1;
+  let returnStmt$11 = max;
+  let returnStmt$12 = last;
+  let returnStmt$10 = returnStmt$11 * returnStmt$12;
+  let returnStmt$13 = M;
+  let returnStmt$9 = returnStmt$10 / returnStmt$13;
+  return returnStmt$9;
+}
+let js3$20 = "GGCCGGGCGCGGTGGCTCACGCCTGTAATCCCAGCACTTTGG";
+let js3$21 = "GAGGCCGAGGCGGGCGGATCACCTGAGGTCAGGAGTTCGAGA";
+let js3$19 = js3$20 + js3$21;
+let js3$22 = "CCAGCCTGGCCAACATGGTGAAACCCCGTCTCTACTAAAAAT";
+let js3$18 = js3$19 + js3$22;
+let js3$23 = "ACAAAAATTAGCCGGGCGTGGTGGCGCGCGCCTGTAATCCCA";
+let js3$17 = js3$18 + js3$23;
+let js3$24 = "GCTACTCGGGAGGCTGAGGCAGGAGAATCGCTTGAACCCGGG";
+let js3$16 = js3$17 + js3$24;
+let js3$25 = "AGGCGGAGGTTGCAGTGAGCCGAGATCGCGCCACTGCACTCC";
+let js3$15 = js3$16 + js3$25;
+let js3$26 = "AGCCTGGGCGACAGAGCGAGACTCCGTCTCAAAAA";
+let js3$14 = js3$15 + js3$26;
+var ALU = js3$14;
+let js3$27 = {
+  a: 0.27,
+  c: 0.12,
+  g: 0.12,
+  t: 0.27,
+  B: 0.02,
+  D: 0.02,
+  H: 0.02,
+  K: 0.02,
+  M: 0.02,
+  N: 0.02,
+  R: 0.02,
+  S: 0.02,
+  V: 0.02,
+  W: 0.02,
+  Y: 0.02
+};
+var IUB = js3$27;
+let js3$28 = {
+  a: 0.3029549426680,
+  c: 0.1979883004921,
+  g: 0.1975473066391,
+  t: 0.3015094502008
+};
+var HomoSap = js3$28;
+function makeCumulative(table) {
+  var last = null;
+  let js3$29 = table;
+  for (var c in js3$29) {
+    let ifTest$30 = last;
+    if (ifTest$30) {
+      let ifTrue$32 = table[c];
+      let ifTrue$33 = table[last];
+      let ifTrue$31 = ifTrue$32 + ifTrue$33;
+      let AssnRes$34 = table[c] = ifTrue$31;
+      ;
+    }
+    let AssnRes$35 = last = c;
+  }
+}
+function fastaRepeat(n, seq) {
+  var seqi = 0;
+  var lenOut = 60;
+  while (n > 0) {
+    let ifTest$37 = n;
+    let ifTest$38 = lenOut;
+    let ifTest$36 = ifTest$37 < ifTest$38;
+    if (ifTest$36) {
+      let AssnRes$39 = lenOut = n;
+      ;
+    }
+    let ifTest$42 = seqi;
+    let ifTest$43 = lenOut;
+    let ifTest$41 = ifTest$42 + ifTest$43;
+    let ifTest$44 = seq.length;
+    let ifTest$40 = ifTest$41 < ifTest$44;
+    if (ifTest$40) {
+      let ifTrue$46 = ret;
+      let ifTrue$48 = seq.substring(seqi, seqi + lenOut);
+      let ifTrue$47 = ifTrue$48.length;
+      let ifTrue$45 = ifTrue$46 + ifTrue$47;
+      let AssnRes$49 = ret = ifTrue$45;
+      let ifTrue$51 = seqi;
+      let ifTrue$52 = lenOut;
+      let ifTrue$50 = ifTrue$51 + ifTrue$52;
+      let AssnRes$53 = seqi = ifTrue$50;
+    } else {
+      let ifFalse$54 = seq.substring(seqi);
+      var s = ifFalse$54;
+      let ifFalse$56 = lenOut;
+      let ifFalse$57 = s.length;
+      let ifFalse$55 = ifFalse$56 - ifFalse$57;
+      let AssnRes$58 = seqi = ifFalse$55;
+      let ifFalse$60 = ret;
+      let ifFalse$63 = s;
+      let ifFalse$64 = seq.substring(0, seqi);
+      let ifFalse$62 = ifFalse$63 + ifFalse$64;
+      let ifFalse$61 = ifFalse$62.length;
+      let ifFalse$59 = ifFalse$60 + ifFalse$61;
+      let AssnRes$65 = ret = ifFalse$59;
+    }
+    let js3$67 = n;
+    let js3$68 = lenOut;
+    let js3$66 = js3$67 - js3$68;
+    let AssnRes$69 = n = js3$66;
+  }
+}
+function fastaRandom(n, table) {
+  let js3$71 = Array;
+  let js3$72 = 60;
+  let js3$70 = new js3$71(js3$72);
+  var line = js3$70;
+  let js3$74 = table;
+  let js3$73 = makeCumulative(js3$74);
+  while (n > 0) {
+    let ifTest$76 = n;
+    let ifTest$77 = line.length;
+    let ifTest$75 = ifTest$76 < ifTest$77;
+    if (ifTest$75) {
+      let ifTrue$79 = Array;
+      let ifTrue$80 = n;
+      let ifTrue$78 = new ifTrue$79(ifTrue$80);
+      let AssnRes$81 = line = ifTrue$78;
+      ;
+    }
+    for (var i = 0; i < line.length; i++) {
+      {
+        let js3$83 = 1;
+        let js3$82 = rand(js3$83);
+        var r = js3$82;
+        let js3$84 = table;
+        for (var c in js3$84) {
+          let ifTest$86 = r;
+          let ifTest$87 = table[c];
+          let ifTest$85 = ifTest$86 < ifTest$87;
+          if (ifTest$85) {
+            let AssnRes$88 = line[i] = c;
+            break;
+          }
+        }
+      }
+    }
+    let js3$90 = ret;
+    let js3$92 = line.join('');
+    let js3$91 = js3$92.length;
+    let js3$89 = js3$90 + js3$91;
+    let AssnRes$93 = ret = js3$89;
+    let js3$95 = n;
+    let js3$96 = line.length;
+    let js3$94 = js3$95 - js3$96;
+    let AssnRes$97 = n = js3$94;
+  }
+}
+var ret = 0;
+var count = 7;
+let js3$101 = 2;
+let js3$102 = count;
+let js3$100 = js3$101 * js3$102;
+let js3$103 = 100000;
+let js3$99 = js3$100 * js3$103;
+let js3$104 = ALU;
+let js3$98 = fastaRepeat(js3$99, js3$104);
+let js3$108 = 3;
+let js3$109 = count;
+let js3$107 = js3$108 * js3$109;
+let js3$110 = 1000;
+let js3$106 = js3$107 * js3$110;
+let js3$111 = IUB;
+let js3$105 = fastaRandom(js3$106, js3$111);
+let js3$115 = 5;
+let js3$116 = count;
+let js3$114 = js3$115 * js3$116;
+let js3$117 = 1000;
+let js3$113 = js3$114 * js3$117;
+let js3$118 = HomoSap;
+let js3$112 = fastaRandom(js3$113, js3$118);
+var expected = 1456000;
+let ifTest$120 = ret;
+let ifTest$121 = expected;
+let ifTest$119 = ifTest$120 != ifTest$121;
+if (ifTest$119) {
+  let ifTrue$125 = "ERROR: bad result: expected ";
+  let ifTrue$126 = expected;
+  let ifTrue$124 = ifTrue$125 + ifTrue$126;
+  let ifTrue$127 = " but got ";
+  let ifTrue$123 = ifTrue$124 + ifTrue$127;
+  let ifTrue$128 = ret;
+  let ifTrue$122 = ifTrue$123 + ifTrue$128;
+  throw ifTrue$122;
+}

@@ -1,0 +1,89 @@
+function pad(number, width) {
+  let js3$1 = number.toString();
+  var s = js3$1;
+  let js3$3 = width;
+  let js3$4 = s.length;
+  let js3$2 = js3$3 - js3$4;
+  var prefixWidth = js3$2;
+  let ifTest$6 = prefixWidth;
+  let ifTest$7 = 0;
+  let ifTest$5 = ifTest$6 > ifTest$7;
+  if (ifTest$5) {
+    for (var i = 1; i <= prefixWidth; i++) {
+      let ifTrue$9 = " ";
+      let ifTrue$10 = s;
+      let ifTrue$8 = ifTrue$9 + ifTrue$10;
+      let AssnRes$11 = s = ifTrue$8;
+      ;
+    }
+  }
+  let returnStmt$12 = s;
+  return returnStmt$12;
+}
+function nsieve(m, isPrime) {
+  var i;
+  var k;
+  var count;
+  for (i = 2; i <= m; i++) {
+    {
+      let AssnRes$13 = isPrime[i] = true;
+    }
+  }
+  let AssnRes$14 = count = 0;
+  for (i = 2; i <= m; i++) {
+    {
+      let ifTest$15 = isPrime[i];
+      if (ifTest$15) {
+        for (k = i + i; k <= m; k += i) {
+          let AssnRes$16 = isPrime[k] = false;
+          ;
+        }
+        let ifTrue$17 = count++;
+      }
+    }
+  }
+  let returnStmt$18 = count;
+  return returnStmt$18;
+}
+function sieve() {
+  var sum = 0;
+  for (var i = 1; i <= 3; i++) {
+    {
+      let js3$21 = 1;
+      let js3$22 = i;
+      let js3$20 = js3$21 << js3$22;
+      let js3$23 = 10000;
+      let js3$19 = js3$20 * js3$23;
+      var m = js3$19;
+      let js3$26 = m;
+      let js3$27 = 1;
+      let js3$25 = js3$26 + js3$27;
+      let js3$24 = Array(js3$25);
+      var flags = js3$24;
+      let js3$29 = sum;
+      let js3$31 = m;
+      let js3$32 = flags;
+      let js3$30 = nsieve(js3$31, js3$32);
+      let js3$28 = js3$29 + js3$30;
+      let AssnRes$33 = sum = js3$28;
+    }
+  }
+  let returnStmt$34 = sum;
+  return returnStmt$34;
+}
+let js3$35 = sieve();
+var result = js3$35;
+var expected = 14302;
+let ifTest$37 = result;
+let ifTest$38 = expected;
+let ifTest$36 = ifTest$37 != ifTest$38;
+if (ifTest$36) {
+  let ifTrue$42 = "ERROR: bad result: expected ";
+  let ifTrue$43 = expected;
+  let ifTrue$41 = ifTrue$42 + ifTrue$43;
+  let ifTrue$44 = " but got ";
+  let ifTrue$40 = ifTrue$41 + ifTrue$44;
+  let ifTrue$45 = result;
+  let ifTrue$39 = ifTrue$40 + ifTrue$45;
+  throw ifTrue$39;
+}

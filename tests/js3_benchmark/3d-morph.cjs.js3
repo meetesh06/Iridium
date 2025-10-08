@@ -1,0 +1,100 @@
+var loops = 15;
+var nx = 120;
+var nz = 120;
+function morph(a, f) {
+  let js3$3 = Math.PI;
+  let js3$4 = 8;
+  let js3$2 = js3$3 * js3$4;
+  let js3$5 = nx;
+  let js3$1 = js3$2 / js3$5;
+  var PI2nx = js3$1;
+  let js3$6 = Math.sin;
+  var sin = js3$6;
+  let js3$9 = 50;
+  let js3$13 = f;
+  let js3$14 = Math.PI;
+  let js3$12 = js3$13 * js3$14;
+  let js3$15 = 2;
+  let js3$11 = js3$12 * js3$15;
+  let js3$10 = sin(js3$11);
+  let js3$8 = js3$9 * js3$10;
+  let js3$7 = -js3$8;
+  var f30 = js3$7;
+  for (var i = 0; i < nz; ++i) {
+    {
+      for (var j = 0; j < nx; ++j) {
+        {
+          let js3$20 = j;
+          let js3$21 = 1;
+          let js3$19 = js3$20 - js3$21;
+          let js3$22 = PI2nx;
+          let js3$18 = js3$19 * js3$22;
+          let js3$17 = sin(js3$18);
+          let js3$23 = -f30;
+          let js3$16 = js3$17 * js3$23;
+          let js3$26 = 3;
+          let js3$29 = i;
+          let js3$30 = nx;
+          let js3$28 = js3$29 * js3$30;
+          let js3$31 = j;
+          let js3$27 = js3$28 + js3$31;
+          let js3$25 = js3$26 * js3$27;
+          let js3$32 = 1;
+          let js3$24 = js3$25 + js3$32;
+          let AssnRes$33 = a[js3$24] = js3$16;
+        }
+      }
+    }
+  }
+}
+let js3$34 = Array();
+var a = js3$34;
+for (var i = 0; i < nx * nz * 3; ++i) {
+  let AssnRes$35 = a[i] = 0;
+  ;
+}
+for (var i = 0; i < loops; ++i) {
+  {
+    let js3$37 = a;
+    let js3$39 = i;
+    let js3$40 = loops;
+    let js3$38 = js3$39 / js3$40;
+    let js3$36 = morph(js3$37, js3$38);
+  }
+}
+var testOutput = 0;
+for (var i = 0; i < nx; i++) {
+  let js3$42 = testOutput;
+  let js3$46 = 3;
+  let js3$49 = i;
+  let js3$50 = nx;
+  let js3$48 = js3$49 * js3$50;
+  let js3$51 = i;
+  let js3$47 = js3$48 + js3$51;
+  let js3$45 = js3$46 * js3$47;
+  let js3$52 = 1;
+  let js3$44 = js3$45 + js3$52;
+  let js3$43 = a[js3$44];
+  let js3$41 = js3$42 + js3$43;
+  let AssnRes$53 = testOutput = js3$41;
+  ;
+}
+let AssnRes$54 = a = null;
+var expected = 6;
+let ifTest$58 = "";
+let ifTest$59 = testOutput;
+let ifTest$57 = ifTest$58 + ifTest$59;
+let ifTest$60 = 0;
+let ifTest$56 = ifTest$57[ifTest$60];
+let ifTest$61 = expected;
+let ifTest$55 = ifTest$56 != ifTest$61;
+if (ifTest$55) {
+  let ifTrue$65 = "Error: bad test output: expected leading digit to be ";
+  let ifTrue$66 = expected;
+  let ifTrue$64 = ifTrue$65 + ifTrue$66;
+  let ifTrue$67 = " but got ";
+  let ifTrue$63 = ifTrue$64 + ifTrue$67;
+  let ifTrue$68 = testOutput;
+  let ifTrue$62 = ifTrue$63 + ifTrue$68;
+  throw ifTrue$62;
+}

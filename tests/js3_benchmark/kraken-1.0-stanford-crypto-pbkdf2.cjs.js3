@@ -1,0 +1,3500 @@
+"use strict";
+
+let js3$2 = {};
+let js3$3 = {};
+let js3$4 = {};
+let js3$5 = {};
+let js3$6 = {};
+let noname$13 = [function (a) {
+  let AssnRes$11 = this.toString = function () {
+    let returnStmt$9 = "CORRUPT: ";
+    let returnStmt$10 = this.message;
+    let returnStmt$8 = returnStmt$9 + returnStmt$10;
+    return returnStmt$8;
+  };
+  let AssnRes$12 = this.message = a;
+}][0];
+let noname$19 = [function (a) {
+  let AssnRes$17 = this.toString = function () {
+    let returnStmt$15 = "INVALID: ";
+    let returnStmt$16 = this.message;
+    let returnStmt$14 = returnStmt$15 + returnStmt$16;
+    return returnStmt$14;
+  };
+  let AssnRes$18 = this.message = a;
+}][0];
+let noname$25 = [function (a) {
+  let AssnRes$23 = this.toString = function () {
+    let returnStmt$21 = "BUG: ";
+    let returnStmt$22 = this.message;
+    let returnStmt$20 = returnStmt$21 + returnStmt$22;
+    return returnStmt$20;
+  };
+  let AssnRes$24 = this.message = a;
+}][0];
+let js3$7 = {
+  corrupt: noname$13,
+  invalid: noname$19,
+  bug: noname$25
+};
+let js3$1 = {
+  cipher: js3$2,
+  hash: js3$3,
+  mode: js3$4,
+  misc: js3$5,
+  codec: js3$6,
+  exception: js3$7
+};
+var sjcl = js3$1;
+let js3$151 = sjcl.cipher;
+let AssnRes$152 = js3$151.aes = function (a) {
+  let js3$30 = this.h;
+  let js3$31 = 0;
+  let js3$29 = js3$30[js3$31];
+  let js3$32 = 0;
+  let js3$28 = js3$29[js3$32];
+  let js3$33 = 0;
+  let js3$27 = js3$28[js3$33];
+  let js3$34 = js3$27 ? js3$27 : this.w();
+  let js3$26 = js3$34;
+  var b;
+  var c;
+  var d;
+  var e;
+  let js3$37 = this.h;
+  let js3$38 = 0;
+  let js3$36 = js3$37[js3$38];
+  let js3$39 = 4;
+  let js3$35 = js3$36[js3$39];
+  var f = js3$35;
+  let js3$41 = this.h;
+  let js3$42 = 1;
+  let js3$40 = js3$41[js3$42];
+  var g = js3$40;
+  let js3$43 = a.length;
+  let AssnRes$44 = b = js3$43;
+  var h = 1;
+  let ifTest$48 = b;
+  let ifTest$49 = 4;
+  let ifTest$47 = ifTest$48 !== ifTest$49;
+  let ifTest$50 = ifTest$47 ? b !== 6 : ifTest$47;
+  let ifTest$46 = ifTest$50;
+  let ifTest$51 = ifTest$46 ? b !== 8 : ifTest$46;
+  let ifTest$45 = ifTest$51;
+  if (ifTest$45) {
+    let ifTrue$54 = sjcl.exception;
+    let ifTrue$53 = ifTrue$54.invalid;
+    let ifTrue$55 = "invalid aes key size";
+    let ifTrue$52 = new ifTrue$53(ifTrue$55);
+    throw ifTrue$52;
+  }
+  let js3$57 = a.slice(0);
+  let AssnRes$58 = d = js3$57;
+  let js3$59 = [];
+  let AssnRes$60 = e = js3$59;
+  let js3$56 = [AssnRes$58, AssnRes$60];
+  let AssnRes$61 = this.a = js3$56;
+  for (a = b; a < 4 * b + 28; a++) {
+    {
+      let js3$64 = a;
+      let js3$65 = 1;
+      let js3$63 = js3$64 - js3$65;
+      let js3$62 = d[js3$63];
+      let AssnRes$66 = c = js3$62;
+      let ifTest$70 = a;
+      let ifTest$71 = b;
+      let ifTest$69 = ifTest$70 % ifTest$71;
+      let ifTest$72 = 0;
+      let ifTest$68 = ifTest$69 === ifTest$72;
+      let ifTest$73 = ifTest$68 ? ifTest$68 : (b === 8 && a % b === 4);
+      let ifTest$67 = ifTest$73;
+      if (ifTest$67) {
+        let ifTrue$80 = c;
+        let ifTrue$81 = 24;
+        let ifTrue$79 = ifTrue$80 >>> ifTrue$81;
+        let ifTrue$78 = f[ifTrue$79];
+        let ifTrue$82 = 24;
+        let ifTrue$77 = ifTrue$78 << ifTrue$82;
+        let ifTrue$87 = c;
+        let ifTrue$88 = 16;
+        let ifTrue$86 = ifTrue$87 >> ifTrue$88;
+        let ifTrue$89 = 255;
+        let ifTrue$85 = ifTrue$86 & ifTrue$89;
+        let ifTrue$84 = f[ifTrue$85];
+        let ifTrue$90 = 16;
+        let ifTrue$83 = ifTrue$84 << ifTrue$90;
+        let ifTrue$76 = ifTrue$77 ^ ifTrue$83;
+        let ifTrue$95 = c;
+        let ifTrue$96 = 8;
+        let ifTrue$94 = ifTrue$95 >> ifTrue$96;
+        let ifTrue$97 = 255;
+        let ifTrue$93 = ifTrue$94 & ifTrue$97;
+        let ifTrue$92 = f[ifTrue$93];
+        let ifTrue$98 = 8;
+        let ifTrue$91 = ifTrue$92 << ifTrue$98;
+        let ifTrue$75 = ifTrue$76 ^ ifTrue$91;
+        let ifTrue$101 = c;
+        let ifTrue$102 = 255;
+        let ifTrue$100 = ifTrue$101 & ifTrue$102;
+        let ifTrue$99 = f[ifTrue$100];
+        let ifTrue$74 = ifTrue$75 ^ ifTrue$99;
+        let AssnRes$103 = c = ifTrue$74;
+        let ifTest$106 = a;
+        let ifTest$107 = b;
+        let ifTest$105 = ifTest$106 % ifTest$107;
+        let ifTest$108 = 0;
+        let ifTest$104 = ifTest$105 === ifTest$108;
+        if (ifTest$104) {
+          let ifTrue$112 = c;
+          let ifTrue$113 = 8;
+          let ifTrue$111 = ifTrue$112 << ifTrue$113;
+          let ifTrue$115 = c;
+          let ifTrue$116 = 24;
+          let ifTrue$114 = ifTrue$115 >>> ifTrue$116;
+          let ifTrue$110 = ifTrue$111 ^ ifTrue$114;
+          let ifTrue$118 = h;
+          let ifTrue$119 = 24;
+          let ifTrue$117 = ifTrue$118 << ifTrue$119;
+          let ifTrue$109 = ifTrue$110 ^ ifTrue$117;
+          let AssnRes$120 = c = ifTrue$109;
+          let ifTrue$123 = h;
+          let ifTrue$124 = 1;
+          let ifTrue$122 = ifTrue$123 << ifTrue$124;
+          let ifTrue$127 = h;
+          let ifTrue$128 = 7;
+          let ifTrue$126 = ifTrue$127 >> ifTrue$128;
+          let ifTrue$129 = 283;
+          let ifTrue$125 = ifTrue$126 * ifTrue$129;
+          let ifTrue$121 = ifTrue$122 ^ ifTrue$125;
+          let AssnRes$130 = h = ifTrue$121;
+        }
+      }
+      let js3$134 = a;
+      let js3$135 = b;
+      let js3$133 = js3$134 - js3$135;
+      let js3$132 = d[js3$133];
+      let js3$136 = c;
+      let js3$131 = js3$132 ^ js3$136;
+      let AssnRes$137 = d[a] = js3$131;
+    }
+  }
+  for (b = 0; a; b++, a--) {
+    {
+      let js3$141 = b;
+      let js3$142 = 3;
+      let js3$140 = js3$141 & js3$142;
+      let js3$139 = js3$140 ? a : a - 4;
+      let js3$138 = d[js3$139];
+      let AssnRes$143 = c = js3$138;
+      let js3$147 = a;
+      let js3$148 = 4;
+      let js3$146 = js3$147 <= js3$148;
+      let js3$149 = js3$146 ? js3$146 : b < 4;
+      let js3$145 = js3$149;
+      let js3$144 = js3$145 ? c : g[0][f[c >>> 24]] ^ g[1][f[c >> 16 & 255]] ^ g[2][f[c >> 8 & 255]] ^ g[3][f[c & 255]];
+      let AssnRes$150 = e[b] = js3$144;
+    }
+  }
+};
+let noname$155 = [function (a) {
+  let returnStmt$154 = this.H(a, 0);
+  return returnStmt$154;
+}][0];
+let noname$157 = [function (a) {
+  let returnStmt$156 = this.H(a, 1);
+  return returnStmt$156;
+}][0];
+let js3$160 = [];
+let js3$161 = [];
+let js3$162 = [];
+let js3$163 = [];
+let js3$164 = [];
+let js3$159 = [js3$160, js3$161, js3$162, js3$163, js3$164];
+let js3$166 = [];
+let js3$167 = [];
+let js3$168 = [];
+let js3$169 = [];
+let js3$170 = [];
+let js3$165 = [js3$166, js3$167, js3$168, js3$169, js3$170];
+let js3$158 = [js3$159, js3$165];
+let noname$282 = [function () {
+  let js3$172 = this.h;
+  let js3$173 = 0;
+  let js3$171 = js3$172[js3$173];
+  var a = js3$171;
+  let js3$175 = this.h;
+  let js3$176 = 1;
+  let js3$174 = js3$175[js3$176];
+  var b = js3$174;
+  let js3$178 = 4;
+  let js3$177 = a[js3$178];
+  var c = js3$177;
+  let js3$180 = 4;
+  let js3$179 = b[js3$180];
+  var d = js3$179;
+  var e;
+  var f;
+  var g;
+  let js3$181 = [];
+  var h = js3$181;
+  let js3$182 = [];
+  var i = js3$182;
+  var k;
+  var j;
+  var l;
+  var m;
+  for (e = 0; e < 0x100; e++) {
+    let js3$186 = e;
+    let js3$187 = 1;
+    let js3$185 = js3$186 << js3$187;
+    let js3$190 = e;
+    let js3$191 = 7;
+    let js3$189 = js3$190 >> js3$191;
+    let js3$192 = 283;
+    let js3$188 = js3$189 * js3$192;
+    let js3$184 = js3$185 ^ js3$188;
+    let AssnRes$193 = h[e] = js3$184;
+    let js3$194 = e;
+    let js3$183 = AssnRes$193 ^ js3$194;
+    let AssnRes$195 = i[js3$183] = e;
+    ;
+  }
+  for (f = g = 0; !c[f]; f ^= k || 1, g = i[g] || 1) {
+    {
+      let js3$200 = g;
+      let js3$202 = g;
+      let js3$203 = 1;
+      let js3$201 = js3$202 << js3$203;
+      let js3$199 = js3$200 ^ js3$201;
+      let js3$205 = g;
+      let js3$206 = 2;
+      let js3$204 = js3$205 << js3$206;
+      let js3$198 = js3$199 ^ js3$204;
+      let js3$208 = g;
+      let js3$209 = 3;
+      let js3$207 = js3$208 << js3$209;
+      let js3$197 = js3$198 ^ js3$207;
+      let js3$211 = g;
+      let js3$212 = 4;
+      let js3$210 = js3$211 << js3$212;
+      let js3$196 = js3$197 ^ js3$210;
+      let AssnRes$213 = l = js3$196;
+      let js3$217 = l;
+      let js3$218 = 8;
+      let js3$216 = js3$217 >> js3$218;
+      let js3$220 = l;
+      let js3$221 = 255;
+      let js3$219 = js3$220 & js3$221;
+      let js3$215 = js3$216 ^ js3$219;
+      let js3$222 = 99;
+      let js3$214 = js3$215 ^ js3$222;
+      let AssnRes$223 = l = js3$214;
+      let AssnRes$224 = c[f] = l;
+      let AssnRes$225 = d[l] = f;
+      let js3$228 = h[f];
+      let AssnRes$229 = k = js3$228;
+      let js3$227 = h[AssnRes$229];
+      let AssnRes$230 = e = js3$227;
+      let js3$226 = h[AssnRes$230];
+      let AssnRes$231 = j = js3$226;
+      let js3$236 = j;
+      let js3$237 = 0x1010101;
+      let js3$235 = js3$236 * js3$237;
+      let js3$239 = e;
+      let js3$240 = 0x10001;
+      let js3$238 = js3$239 * js3$240;
+      let js3$234 = js3$235 ^ js3$238;
+      let js3$242 = k;
+      let js3$243 = 0x101;
+      let js3$241 = js3$242 * js3$243;
+      let js3$233 = js3$234 ^ js3$241;
+      let js3$245 = f;
+      let js3$246 = 0x1010100;
+      let js3$244 = js3$245 * js3$246;
+      let js3$232 = js3$233 ^ js3$244;
+      let AssnRes$247 = m = js3$232;
+      let js3$250 = h[l];
+      let js3$251 = 0x101;
+      let js3$249 = js3$250 * js3$251;
+      let js3$253 = l;
+      let js3$254 = 0x1010100;
+      let js3$252 = js3$253 * js3$254;
+      let js3$248 = js3$249 ^ js3$252;
+      let AssnRes$255 = j = js3$248;
+      for (e = 0; e < 4; e++) {
+        {
+          let js3$258 = j;
+          let js3$259 = 24;
+          let js3$257 = js3$258 << js3$259;
+          let js3$261 = j;
+          let js3$262 = 8;
+          let js3$260 = js3$261 >>> js3$262;
+          let js3$256 = js3$257 ^ js3$260;
+          let AssnRes$263 = j = js3$256;
+          let js3$264 = a[e];
+          let AssnRes$265 = js3$264[f] = AssnRes$263;
+          let js3$268 = m;
+          let js3$269 = 24;
+          let js3$267 = js3$268 << js3$269;
+          let js3$271 = m;
+          let js3$272 = 8;
+          let js3$270 = js3$271 >>> js3$272;
+          let js3$266 = js3$267 ^ js3$270;
+          let AssnRes$273 = m = js3$266;
+          let js3$274 = b[e];
+          let AssnRes$275 = js3$274[l] = AssnRes$273;
+        }
+      }
+    }
+  }
+  for (e = 0; e < 5; e++) {
+    {
+      let js3$277 = a[e];
+      let js3$276 = js3$277.slice(0);
+      let AssnRes$278 = a[e] = js3$276;
+      let js3$280 = b[e];
+      let js3$279 = js3$280.slice(0);
+      let AssnRes$281 = b[e] = js3$279;
+    }
+  }
+}][0];
+let noname$495 = [function (a, b) {
+  let ifTest$284 = a.length;
+  let ifTest$285 = 4;
+  let ifTest$283 = ifTest$284 !== ifTest$285;
+  if (ifTest$283) {
+    let ifTrue$288 = sjcl.exception;
+    let ifTrue$287 = ifTrue$288.invalid;
+    let ifTrue$289 = "invalid aes block size";
+    let ifTrue$286 = new ifTrue$287(ifTrue$289);
+    throw ifTrue$286;
+  }
+  let js3$291 = this.a;
+  let js3$290 = js3$291[b];
+  var c = js3$290;
+  let js3$294 = 0;
+  let js3$293 = a[js3$294];
+  let js3$296 = 0;
+  let js3$295 = c[js3$296];
+  let js3$292 = js3$293 ^ js3$295;
+  var d = js3$292;
+  let js3$300 = b;
+  let js3$299 = js3$300 ? 3 : 1;
+  let js3$298 = a[js3$299];
+  let js3$302 = 1;
+  let js3$301 = c[js3$302];
+  let js3$297 = js3$298 ^ js3$301;
+  var e = js3$297;
+  let js3$305 = 2;
+  let js3$304 = a[js3$305];
+  let js3$307 = 2;
+  let js3$306 = c[js3$307];
+  let js3$303 = js3$304 ^ js3$306;
+  var f = js3$303;
+  let js3$311 = b;
+  let js3$310 = js3$311 ? 1 : 3;
+  let js3$309 = a[js3$310];
+  let js3$313 = 3;
+  let js3$312 = c[js3$313];
+  let js3$308 = js3$309 ^ js3$312;
+  let AssnRes$314 = a = js3$308;
+  var g;
+  var h;
+  var i;
+  let js3$317 = c.length;
+  let js3$318 = 4;
+  let js3$316 = js3$317 / js3$318;
+  let js3$319 = 2;
+  let js3$315 = js3$316 - js3$319;
+  var k = js3$315;
+  var j;
+  var l = 4;
+  let js3$320 = [0, 0, 0, 0];
+  var m = js3$320;
+  let js3$322 = this.h;
+  let js3$321 = js3$322[b];
+  let AssnRes$323 = g = js3$321;
+  let js3$325 = 0;
+  let js3$324 = g[js3$325];
+  var n = js3$324;
+  let js3$327 = 1;
+  let js3$326 = g[js3$327];
+  var o = js3$326;
+  let js3$329 = 2;
+  let js3$328 = g[js3$329];
+  var p = js3$328;
+  let js3$331 = 3;
+  let js3$330 = g[js3$331];
+  var q = js3$330;
+  let js3$333 = 4;
+  let js3$332 = g[js3$333];
+  var r = js3$332;
+  for (j = 0; j < k; j++) {
+    {
+      let js3$340 = d;
+      let js3$341 = 24;
+      let js3$339 = js3$340 >>> js3$341;
+      let js3$338 = n[js3$339];
+      let js3$345 = e;
+      let js3$346 = 16;
+      let js3$344 = js3$345 >> js3$346;
+      let js3$347 = 255;
+      let js3$343 = js3$344 & js3$347;
+      let js3$342 = o[js3$343];
+      let js3$337 = js3$338 ^ js3$342;
+      let js3$351 = f;
+      let js3$352 = 8;
+      let js3$350 = js3$351 >> js3$352;
+      let js3$353 = 255;
+      let js3$349 = js3$350 & js3$353;
+      let js3$348 = p[js3$349];
+      let js3$336 = js3$337 ^ js3$348;
+      let js3$356 = a;
+      let js3$357 = 255;
+      let js3$355 = js3$356 & js3$357;
+      let js3$354 = q[js3$355];
+      let js3$335 = js3$336 ^ js3$354;
+      let js3$358 = c[l];
+      let js3$334 = js3$335 ^ js3$358;
+      let AssnRes$359 = g = js3$334;
+      let js3$366 = e;
+      let js3$367 = 24;
+      let js3$365 = js3$366 >>> js3$367;
+      let js3$364 = n[js3$365];
+      let js3$371 = f;
+      let js3$372 = 16;
+      let js3$370 = js3$371 >> js3$372;
+      let js3$373 = 255;
+      let js3$369 = js3$370 & js3$373;
+      let js3$368 = o[js3$369];
+      let js3$363 = js3$364 ^ js3$368;
+      let js3$377 = a;
+      let js3$378 = 8;
+      let js3$376 = js3$377 >> js3$378;
+      let js3$379 = 255;
+      let js3$375 = js3$376 & js3$379;
+      let js3$374 = p[js3$375];
+      let js3$362 = js3$363 ^ js3$374;
+      let js3$382 = d;
+      let js3$383 = 255;
+      let js3$381 = js3$382 & js3$383;
+      let js3$380 = q[js3$381];
+      let js3$361 = js3$362 ^ js3$380;
+      let js3$386 = l;
+      let js3$387 = 1;
+      let js3$385 = js3$386 + js3$387;
+      let js3$384 = c[js3$385];
+      let js3$360 = js3$361 ^ js3$384;
+      let AssnRes$388 = h = js3$360;
+      let js3$395 = f;
+      let js3$396 = 24;
+      let js3$394 = js3$395 >>> js3$396;
+      let js3$393 = n[js3$394];
+      let js3$400 = a;
+      let js3$401 = 16;
+      let js3$399 = js3$400 >> js3$401;
+      let js3$402 = 255;
+      let js3$398 = js3$399 & js3$402;
+      let js3$397 = o[js3$398];
+      let js3$392 = js3$393 ^ js3$397;
+      let js3$406 = d;
+      let js3$407 = 8;
+      let js3$405 = js3$406 >> js3$407;
+      let js3$408 = 255;
+      let js3$404 = js3$405 & js3$408;
+      let js3$403 = p[js3$404];
+      let js3$391 = js3$392 ^ js3$403;
+      let js3$411 = e;
+      let js3$412 = 255;
+      let js3$410 = js3$411 & js3$412;
+      let js3$409 = q[js3$410];
+      let js3$390 = js3$391 ^ js3$409;
+      let js3$415 = l;
+      let js3$416 = 2;
+      let js3$414 = js3$415 + js3$416;
+      let js3$413 = c[js3$414];
+      let js3$389 = js3$390 ^ js3$413;
+      let AssnRes$417 = i = js3$389;
+      let js3$424 = a;
+      let js3$425 = 24;
+      let js3$423 = js3$424 >>> js3$425;
+      let js3$422 = n[js3$423];
+      let js3$429 = d;
+      let js3$430 = 16;
+      let js3$428 = js3$429 >> js3$430;
+      let js3$431 = 255;
+      let js3$427 = js3$428 & js3$431;
+      let js3$426 = o[js3$427];
+      let js3$421 = js3$422 ^ js3$426;
+      let js3$435 = e;
+      let js3$436 = 8;
+      let js3$434 = js3$435 >> js3$436;
+      let js3$437 = 255;
+      let js3$433 = js3$434 & js3$437;
+      let js3$432 = p[js3$433];
+      let js3$420 = js3$421 ^ js3$432;
+      let js3$440 = f;
+      let js3$441 = 255;
+      let js3$439 = js3$440 & js3$441;
+      let js3$438 = q[js3$439];
+      let js3$419 = js3$420 ^ js3$438;
+      let js3$444 = l;
+      let js3$445 = 3;
+      let js3$443 = js3$444 + js3$445;
+      let js3$442 = c[js3$443];
+      let js3$418 = js3$419 ^ js3$442;
+      let AssnRes$446 = a = js3$418;
+      let js3$448 = l;
+      let js3$449 = 4;
+      let js3$447 = js3$448 + js3$449;
+      let AssnRes$450 = l = js3$447;
+      let AssnRes$451 = d = g;
+      let AssnRes$452 = e = h;
+      let AssnRes$453 = f = i;
+    }
+  }
+  for (j = 0; j < 4; j++) {
+    {
+      let js3$461 = d;
+      let js3$462 = 24;
+      let js3$460 = js3$461 >>> js3$462;
+      let js3$459 = r[js3$460];
+      let js3$463 = 24;
+      let js3$458 = js3$459 << js3$463;
+      let js3$468 = e;
+      let js3$469 = 16;
+      let js3$467 = js3$468 >> js3$469;
+      let js3$470 = 255;
+      let js3$466 = js3$467 & js3$470;
+      let js3$465 = r[js3$466];
+      let js3$471 = 16;
+      let js3$464 = js3$465 << js3$471;
+      let js3$457 = js3$458 ^ js3$464;
+      let js3$476 = f;
+      let js3$477 = 8;
+      let js3$475 = js3$476 >> js3$477;
+      let js3$478 = 255;
+      let js3$474 = js3$475 & js3$478;
+      let js3$473 = r[js3$474];
+      let js3$479 = 8;
+      let js3$472 = js3$473 << js3$479;
+      let js3$456 = js3$457 ^ js3$472;
+      let js3$482 = a;
+      let js3$483 = 255;
+      let js3$481 = js3$482 & js3$483;
+      let js3$480 = r[js3$481];
+      let js3$455 = js3$456 ^ js3$480;
+      let js3$485 = l++;
+      let js3$484 = c[js3$485];
+      let js3$454 = js3$455 ^ js3$484;
+      let js3$487 = b;
+      let js3$486 = js3$487 ? 3 & -j : j;
+      let AssnRes$488 = m[js3$486] = js3$454;
+      let AssnRes$489 = g = d;
+      let AssnRes$490 = d = e;
+      let AssnRes$491 = e = f;
+      let AssnRes$492 = f = a;
+      let AssnRes$493 = a = g;
+    }
+  }
+  let returnStmt$494 = m;
+  return returnStmt$494;
+}][0];
+let js3$153 = {
+  encrypt: noname$155,
+  decrypt: noname$157,
+  h: js3$158,
+  w: noname$282,
+  H: noname$495
+};
+let js3$497 = sjcl.cipher;
+let js3$496 = js3$497.aes;
+let AssnRes$498 = js3$496.prototype = js3$153;
+let noname$508 = [function (a, b, c) {
+  let js3$502 = sjcl.bitArray;
+  let js3$501 = js3$502.P(a.slice(b / 32), 32 - (b & 31));
+  let js3$500 = js3$501.slice(1);
+  let AssnRes$503 = a = js3$500;
+  let returnStmt$506 = c;
+  let returnStmt$507 = undefined;
+  let returnStmt$505 = returnStmt$506 === returnStmt$507;
+  let returnStmt$504 = returnStmt$505 ? a : sjcl.bitArray.clamp(a, c - b);
+  return returnStmt$504;
+}][0];
+let noname$525 = [function (a, b) {
+  let ifTest$511 = a.length;
+  let ifTest$512 = 0;
+  let ifTest$510 = ifTest$511 === ifTest$512;
+  let ifTest$513 = ifTest$510 ? ifTest$510 : b.length === 0;
+  let ifTest$509 = ifTest$513;
+  if (ifTest$509) {
+    let returnStmt$514 = a.concat(b);
+    return returnStmt$514;
+  }
+  let js3$517 = a.length;
+  let js3$518 = 1;
+  let js3$516 = js3$517 - js3$518;
+  let js3$515 = a[js3$516];
+  var c = js3$515;
+  let js3$520 = sjcl.bitArray;
+  let js3$519 = js3$520.getPartial(c);
+  var d = js3$519;
+  let returnStmt$523 = d;
+  let returnStmt$524 = 32;
+  let returnStmt$522 = returnStmt$523 === returnStmt$524;
+  let returnStmt$521 = returnStmt$522 ? a.concat(b) : sjcl.bitArray.P(b, d, c | 0, a.slice(0, a.length - 1));
+  return returnStmt$521;
+}][0];
+let noname$539 = [function (a) {
+  let js3$526 = a.length;
+  var b = js3$526;
+  let ifTest$528 = b;
+  let ifTest$529 = 0;
+  let ifTest$527 = ifTest$528 === ifTest$529;
+  if (ifTest$527) {
+    let returnStmt$530 = 0;
+    return returnStmt$530;
+  }
+  let returnStmt$534 = b;
+  let returnStmt$535 = 1;
+  let returnStmt$533 = returnStmt$534 - returnStmt$535;
+  let returnStmt$536 = 32;
+  let returnStmt$532 = returnStmt$533 * returnStmt$536;
+  let returnStmt$538 = sjcl.bitArray;
+  let returnStmt$537 = returnStmt$538.getPartial(a[b - 1]);
+  let returnStmt$531 = returnStmt$532 + returnStmt$537;
+  return returnStmt$531;
+}][0];
+let noname$565 = [function (a, b) {
+  let ifTest$542 = a.length;
+  let ifTest$543 = 32;
+  let ifTest$541 = ifTest$542 * ifTest$543;
+  let ifTest$544 = b;
+  let ifTest$540 = ifTest$541 < ifTest$544;
+  if (ifTest$540) {
+    let returnStmt$545 = a;
+    return returnStmt$545;
+  }
+  let js3$546 = a.slice(0, Math.ceil(b / 32));
+  let AssnRes$547 = a = js3$546;
+  let js3$548 = a.length;
+  var c = js3$548;
+  let js3$550 = b;
+  let js3$551 = 31;
+  let js3$549 = js3$550 & js3$551;
+  let AssnRes$552 = b = js3$549;
+  let ifTest$555 = c;
+  let ifTest$556 = 0;
+  let ifTest$554 = ifTest$555 > ifTest$556;
+  let ifTest$557 = ifTest$554 ? b : ifTest$554;
+  let ifTest$553 = ifTest$557;
+  if (ifTest$553) {
+    let ifTrue$559 = sjcl.bitArray;
+    let ifTrue$558 = ifTrue$559.partial(b, a[c - 1] & 2147483648 >> b - 1, 1);
+    let ifTrue$561 = c;
+    let ifTrue$562 = 1;
+    let ifTrue$560 = ifTrue$561 - ifTrue$562;
+    let AssnRes$563 = a[ifTrue$560] = ifTrue$558;
+    ;
+  }
+  let returnStmt$564 = a;
+  return returnStmt$564;
+}][0];
+let noname$576 = [function (a, b, c) {
+  let ifTest$567 = a;
+  let ifTest$568 = 32;
+  let ifTest$566 = ifTest$567 === ifTest$568;
+  if (ifTest$566) {
+    let returnStmt$569 = b;
+    return returnStmt$569;
+  }
+  let returnStmt$572 = c;
+  let returnStmt$571 = returnStmt$572 ? b | 0 : b << 32 - a;
+  let returnStmt$574 = a;
+  let returnStmt$575 = 0x10000000000;
+  let returnStmt$573 = returnStmt$574 * returnStmt$575;
+  let returnStmt$570 = returnStmt$571 + returnStmt$573;
+  return returnStmt$570;
+}][0];
+let noname$580 = [function (a) {
+  let returnStmt$578 = Math.round(a / 0x10000000000);
+  let returnStmt$579 = returnStmt$578 ? returnStmt$578 : 32;
+  let returnStmt$577 = returnStmt$579;
+  return returnStmt$577;
+}][0];
+let noname$596 = [function (a, b) {
+  let ifTest$583 = sjcl.bitArray;
+  let ifTest$582 = ifTest$583.bitLength(a);
+  let ifTest$585 = sjcl.bitArray;
+  let ifTest$584 = ifTest$585.bitLength(b);
+  let ifTest$581 = ifTest$582 !== ifTest$584;
+  if (ifTest$581) {
+    let returnStmt$586 = false;
+    return returnStmt$586;
+  }
+  var c = 0;
+  var d;
+  for (d = 0; d < a.length; d++) {
+    let js3$588 = c;
+    let js3$590 = a[d];
+    let js3$591 = b[d];
+    let js3$589 = js3$590 ^ js3$591;
+    let js3$587 = js3$588 | js3$589;
+    let AssnRes$592 = c = js3$587;
+    ;
+  }
+  let returnStmt$594 = c;
+  let returnStmt$595 = 0;
+  let returnStmt$593 = returnStmt$594 === returnStmt$595;
+  return returnStmt$593;
+}][0];
+let noname$624 = [function (a, b, c, d) {
+  var e;
+  let AssnRes$597 = e = 0;
+  let ifTest$599 = d;
+  let ifTest$600 = undefined;
+  let ifTest$598 = ifTest$599 === ifTest$600;
+  if (ifTest$598) {
+    let ifTrue$601 = [];
+    let AssnRes$602 = d = ifTrue$601;
+    ;
+  }
+  for (; b >= 32; b -= 32) {
+    {
+      let js3$603 = d.push(c);
+      let AssnRes$604 = c = 0;
+    }
+  }
+  let ifTest$606 = b;
+  let ifTest$607 = 0;
+  let ifTest$605 = ifTest$606 === ifTest$607;
+  if (ifTest$605) {
+    let returnStmt$608 = d.concat(a);
+    return returnStmt$608;
+  }
+  for (e = 0; e < a.length; e++) {
+    {
+      let js3$609 = d.push(c | a[e] >>> b);
+      let js3$611 = a[e];
+      let js3$613 = 32;
+      let js3$614 = b;
+      let js3$612 = js3$613 - js3$614;
+      let js3$610 = js3$611 << js3$612;
+      let AssnRes$615 = c = js3$610;
+    }
+  }
+  let js3$617 = a.length;
+  let js3$616 = js3$617 ? a[a.length - 1] : 0;
+  let AssnRes$618 = e = js3$616;
+  let js3$620 = sjcl.bitArray;
+  let js3$619 = js3$620.getPartial(e);
+  let AssnRes$621 = a = js3$619;
+  let js3$622 = d.push(sjcl.bitArray.partial(b + a & 31, b + a > 32 ? c : d.pop(), 1));
+  let returnStmt$623 = d;
+  return returnStmt$623;
+}][0];
+let noname$646 = [function (a, b) {
+  let returnStmt$628 = 0;
+  let returnStmt$627 = a[returnStmt$628];
+  let returnStmt$630 = 0;
+  let returnStmt$629 = b[returnStmt$630];
+  let returnStmt$626 = returnStmt$627 ^ returnStmt$629;
+  let returnStmt$633 = 1;
+  let returnStmt$632 = a[returnStmt$633];
+  let returnStmt$635 = 1;
+  let returnStmt$634 = b[returnStmt$635];
+  let returnStmt$631 = returnStmt$632 ^ returnStmt$634;
+  let returnStmt$638 = 2;
+  let returnStmt$637 = a[returnStmt$638];
+  let returnStmt$640 = 2;
+  let returnStmt$639 = b[returnStmt$640];
+  let returnStmt$636 = returnStmt$637 ^ returnStmt$639;
+  let returnStmt$643 = 3;
+  let returnStmt$642 = a[returnStmt$643];
+  let returnStmt$645 = 3;
+  let returnStmt$644 = b[returnStmt$645];
+  let returnStmt$641 = returnStmt$642 ^ returnStmt$644;
+  let returnStmt$625 = [returnStmt$626, returnStmt$631, returnStmt$636, returnStmt$641];
+  return returnStmt$625;
+}][0];
+let js3$499 = {
+  bitSlice: noname$508,
+  concat: noname$525,
+  bitLength: noname$539,
+  clamp: noname$565,
+  partial: noname$576,
+  getPartial: noname$580,
+  equal: noname$596,
+  P: noname$624,
+  k: noname$646
+};
+let AssnRes$647 = sjcl.bitArray = js3$499;
+let noname$672 = [function (a) {
+  var b = "";
+  let js3$650 = sjcl.bitArray;
+  let js3$649 = js3$650.bitLength(a);
+  var c = js3$649;
+  var d;
+  var e;
+  for (d = 0; d < c / 8; d++) {
+    {
+      let ifTest$653 = d;
+      let ifTest$654 = 3;
+      let ifTest$652 = ifTest$653 & ifTest$654;
+      let ifTest$655 = 0;
+      let ifTest$651 = ifTest$652 === ifTest$655;
+      if (ifTest$651) {
+        let ifTrue$658 = d;
+        let ifTrue$659 = 4;
+        let ifTrue$657 = ifTrue$658 / ifTrue$659;
+        let ifTrue$656 = a[ifTrue$657];
+        let AssnRes$660 = e = ifTrue$656;
+        ;
+      }
+      let js3$662 = b;
+      let js3$663 = String.fromCharCode(e >>> 24);
+      let js3$661 = js3$662 + js3$663;
+      let AssnRes$664 = b = js3$661;
+      let js3$666 = e;
+      let js3$667 = 8;
+      let js3$665 = js3$666 << js3$667;
+      let AssnRes$668 = e = js3$665;
+    }
+  }
+  let returnStmt$671 = b;
+  let returnStmt$670 = escape(returnStmt$671);
+  let returnStmt$669 = decodeURIComponent(returnStmt$670);
+  return returnStmt$669;
+}][0];
+let noname$697 = [function (a) {
+  let js3$675 = a;
+  let js3$674 = encodeURIComponent(js3$675);
+  let js3$673 = unescape(js3$674);
+  let AssnRes$676 = a = js3$673;
+  let js3$677 = [];
+  var b = js3$677;
+  var c;
+  var d = 0;
+  for (c = 0; c < a.length; c++) {
+    {
+      let js3$680 = d;
+      let js3$681 = 8;
+      let js3$679 = js3$680 << js3$681;
+      let js3$682 = a.charCodeAt(c);
+      let js3$678 = js3$679 | js3$682;
+      let AssnRes$683 = d = js3$678;
+      let ifTest$686 = c;
+      let ifTest$687 = 3;
+      let ifTest$685 = ifTest$686 & ifTest$687;
+      let ifTest$688 = 3;
+      let ifTest$684 = ifTest$685 === ifTest$688;
+      if (ifTest$684) {
+        let ifTrue$689 = b.push(d);
+        let AssnRes$690 = d = 0;
+      }
+    }
+  }
+  let js3$693 = c;
+  let js3$694 = 3;
+  let js3$692 = js3$693 & js3$694;
+  let js3$695 = js3$692 ? b.push(sjcl.bitArray.partial(8 * (c & 3), d)) : js3$692;
+  let js3$691 = js3$695;
+  let returnStmt$696 = b;
+  return returnStmt$696;
+}][0];
+let js3$648 = {
+  fromBits: noname$672,
+  toBits: noname$697
+};
+let js3$698 = sjcl.codec;
+let AssnRes$699 = js3$698.utf8String = js3$648;
+let noname$712 = [function (a) {
+  var b = "";
+  var c;
+  for (c = 0; c < a.length; c++) {
+    let js3$702 = b;
+    let js3$707 = a[c];
+    let js3$708 = 0;
+    let js3$706 = js3$707 | js3$708;
+    let js3$709 = 0xf00000000000;
+    let js3$705 = js3$706 + js3$709;
+    let js3$704 = js3$705.toString(16);
+    let js3$703 = js3$704.substr(4);
+    let js3$701 = js3$702 + js3$703;
+    let AssnRes$710 = b = js3$701;
+    ;
+  }
+  let returnStmt$711 = b.substr(0, sjcl.bitArray.bitLength(a) / 4);
+  return returnStmt$711;
+}][0];
+let noname$725 = [function (a) {
+  var b;
+  let js3$713 = [];
+  var c = js3$713;
+  var d;
+  let js3$714 = a.replace(/\s|0x/g, "");
+  let AssnRes$715 = a = js3$714;
+  let js3$716 = a.length;
+  let AssnRes$717 = d = js3$716;
+  let js3$719 = a;
+  let js3$720 = "00000000";
+  let js3$718 = js3$719 + js3$720;
+  let AssnRes$721 = a = js3$718;
+  for (b = 0; b < a.length; b += 8) {
+    let js3$722 = c.push(parseInt(a.substr(b, 8), 16) ^ 0);
+    ;
+  }
+  let returnStmt$724 = sjcl.bitArray;
+  let returnStmt$723 = returnStmt$724.clamp(c, d * 4);
+  return returnStmt$723;
+}][0];
+let js3$700 = {
+  fromBits: noname$712,
+  toBits: noname$725
+};
+let js3$726 = sjcl.codec;
+let AssnRes$727 = js3$726.hex = js3$700;
+let noname$765 = [function (a, b) {
+  var c = "";
+  var d;
+  var e = 0;
+  let js3$731 = sjcl.codec;
+  let js3$730 = js3$731.base64;
+  let js3$729 = js3$730.D;
+  var f = js3$729;
+  var g = 0;
+  let js3$733 = sjcl.bitArray;
+  let js3$732 = js3$733.bitLength(a);
+  var h = js3$732;
+  for (d = 0; c.length * 6 < h;) {
+    {
+      let js3$735 = c;
+      let js3$736 = f.charAt((g ^ a[d] >>> e) >>> 26);
+      let js3$734 = js3$735 + js3$736;
+      let AssnRes$737 = c = js3$734;
+      let ifTest$739 = e;
+      let ifTest$740 = 6;
+      let ifTest$738 = ifTest$739 < ifTest$740;
+      if (ifTest$738) {
+        let ifTrue$742 = a[d];
+        let ifTrue$744 = 6;
+        let ifTrue$745 = e;
+        let ifTrue$743 = ifTrue$744 - ifTrue$745;
+        let ifTrue$741 = ifTrue$742 << ifTrue$743;
+        let AssnRes$746 = g = ifTrue$741;
+        let ifTrue$748 = e;
+        let ifTrue$749 = 26;
+        let ifTrue$747 = ifTrue$748 + ifTrue$749;
+        let AssnRes$750 = e = ifTrue$747;
+        let ifTrue$751 = d++;
+      } else {
+        let ifFalse$753 = g;
+        let ifFalse$754 = 6;
+        let ifFalse$752 = ifFalse$753 << ifFalse$754;
+        let AssnRes$755 = g = ifFalse$752;
+        let ifFalse$757 = e;
+        let ifFalse$758 = 6;
+        let ifFalse$756 = ifFalse$757 - ifFalse$758;
+        let AssnRes$759 = e = ifFalse$756;
+      }
+    }
+  }
+  for (; c.length & 3 && !b;) {
+    let js3$761 = c;
+    let js3$762 = "=";
+    let js3$760 = js3$761 + js3$762;
+    let AssnRes$763 = c = js3$760;
+    ;
+  }
+  let returnStmt$764 = c;
+  return returnStmt$764;
+}][0];
+let noname$813 = [function (a) {
+  let js3$766 = a.replace(/\s|=/g, "");
+  let AssnRes$767 = a = js3$766;
+  let js3$768 = [];
+  var b = js3$768;
+  var c;
+  var d = 0;
+  let js3$771 = sjcl.codec;
+  let js3$770 = js3$771.base64;
+  let js3$769 = js3$770.D;
+  var e = js3$769;
+  var f = 0;
+  var g;
+  for (c = 0; c < a.length; c++) {
+    {
+      let js3$772 = e.indexOf(a.charAt(c));
+      let AssnRes$773 = g = js3$772;
+      let ifTest$775 = g;
+      let ifTest$776 = 0;
+      let ifTest$774 = ifTest$775 < ifTest$776;
+      if (ifTest$774) {
+        let ifTrue$779 = sjcl.exception;
+        let ifTrue$778 = ifTrue$779.invalid;
+        let ifTrue$780 = "this isn't base64!";
+        let ifTrue$777 = new ifTrue$778(ifTrue$780);
+        throw ifTrue$777;
+      }
+      let ifTest$782 = d;
+      let ifTest$783 = 26;
+      let ifTest$781 = ifTest$782 > ifTest$783;
+      if (ifTest$781) {
+        let ifTrue$785 = d;
+        let ifTrue$786 = 26;
+        let ifTrue$784 = ifTrue$785 - ifTrue$786;
+        let AssnRes$787 = d = ifTrue$784;
+        let ifTrue$788 = b.push(f ^ g >>> d);
+        let ifTrue$790 = g;
+        let ifTrue$792 = 32;
+        let ifTrue$793 = d;
+        let ifTrue$791 = ifTrue$792 - ifTrue$793;
+        let ifTrue$789 = ifTrue$790 << ifTrue$791;
+        let AssnRes$794 = f = ifTrue$789;
+      } else {
+        let ifFalse$796 = d;
+        let ifFalse$797 = 6;
+        let ifFalse$795 = ifFalse$796 + ifFalse$797;
+        let AssnRes$798 = d = ifFalse$795;
+        let ifFalse$800 = f;
+        let ifFalse$802 = g;
+        let ifFalse$804 = 32;
+        let ifFalse$805 = d;
+        let ifFalse$803 = ifFalse$804 - ifFalse$805;
+        let ifFalse$801 = ifFalse$802 << ifFalse$803;
+        let ifFalse$799 = ifFalse$800 ^ ifFalse$801;
+        let AssnRes$806 = f = ifFalse$799;
+      }
+    }
+  }
+  let js3$809 = d;
+  let js3$810 = 56;
+  let js3$808 = js3$809 & js3$810;
+  let js3$811 = js3$808 ? b.push(sjcl.bitArray.partial(d & 56, f, 1)) : js3$808;
+  let js3$807 = js3$811;
+  let returnStmt$812 = b;
+  return returnStmt$812;
+}][0];
+let js3$728 = {
+  D: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
+  fromBits: noname$765,
+  toBits: noname$813
+};
+let js3$814 = sjcl.codec;
+let AssnRes$815 = js3$814.base64 = js3$728;
+let js3$831 = sjcl.hash;
+let AssnRes$832 = js3$831.sha256 = function (a) {
+  let js3$818 = this.a;
+  let js3$819 = 0;
+  let js3$817 = js3$818[js3$819];
+  let js3$820 = js3$817 ? js3$817 : this.w();
+  let js3$816 = js3$820;
+  let ifTest$821 = a;
+  if (ifTest$821) {
+    let ifTrue$823 = a.n;
+    let ifTrue$822 = ifTrue$823.slice(0);
+    let AssnRes$824 = this.n = ifTrue$822;
+    let ifTrue$826 = a.i;
+    let ifTrue$825 = ifTrue$826.slice(0);
+    let AssnRes$827 = this.i = ifTrue$825;
+    let ifTrue$828 = a.e;
+    let AssnRes$829 = this.e = ifTrue$828;
+  } else {
+    let ifFalse$830 = this.reset();
+    ;
+  }
+};
+let js3$839 = sjcl.hash;
+let js3$838 = js3$839.sha256;
+let AssnRes$840 = js3$838.hash = function (a) {
+  let returnStmt$837 = sjcl.hash;
+  let returnStmt$836 = returnStmt$837.sha256;
+  let returnStmt$835 = new returnStmt$836();
+  let returnStmt$834 = returnStmt$835.update(a);
+  let returnStmt$833 = returnStmt$834.finalize();
+  return returnStmt$833;
+};
+let noname$849 = [function () {
+  let js3$843 = this.N;
+  let js3$842 = js3$843.slice(0);
+  let AssnRes$844 = this.n = js3$842;
+  let js3$845 = [];
+  let AssnRes$846 = this.i = js3$845;
+  let AssnRes$847 = this.e = 0;
+  let returnStmt$848 = this;
+  return returnStmt$848;
+}][0];
+let noname$870 = [function (a) {
+  let ifTest$851 = typeof a;
+  let ifTest$852 = "string";
+  let ifTest$850 = ifTest$851 === ifTest$852;
+  if (ifTest$850) {
+    let ifTrue$855 = sjcl.codec;
+    let ifTrue$854 = ifTrue$855.utf8String;
+    let ifTrue$853 = ifTrue$854.toBits(a);
+    let AssnRes$856 = a = ifTrue$853;
+    ;
+  }
+  var b;
+  let js3$858 = sjcl.bitArray;
+  let js3$857 = js3$858.concat(this.i, a);
+  let AssnRes$859 = this.i = js3$857;
+  var c = AssnRes$859;
+  let js3$860 = this.e;
+  let AssnRes$861 = b = js3$860;
+  let js3$863 = b;
+  let js3$865 = sjcl.bitArray;
+  let js3$864 = js3$865.bitLength(a);
+  let js3$862 = js3$863 + js3$864;
+  let AssnRes$866 = this.e = js3$862;
+  let AssnRes$867 = a = AssnRes$866;
+  for (b = 512 + b & -512; b <= a; b += 512) {
+    let js3$868 = this.C(c.splice(0, 16));
+    ;
+  }
+  let returnStmt$869 = this;
+  return returnStmt$869;
+}][0];
+let noname$881 = [function () {
+  var a;
+  let js3$871 = this.i;
+  var b = js3$871;
+  let js3$872 = this.n;
+  var c = js3$872;
+  let js3$874 = sjcl.bitArray;
+  let js3$873 = js3$874.concat(b, [sjcl.bitArray.partial(1, 1)]);
+  let AssnRes$875 = b = js3$873;
+  for (a = b.length + 2; a & 15; a++) {
+    let js3$876 = b.push(0);
+    ;
+  }
+  let js3$877 = b.push(Math.floor(this.e / 4294967296));
+  for (b.push(this.e | 0); b.length;) {
+    let js3$878 = this.C(b.splice(0, 16));
+    ;
+  }
+  let js3$879 = this.reset();
+  let returnStmt$880 = c;
+  return returnStmt$880;
+}][0];
+let js3$882 = [];
+let js3$883 = [];
+let noname$908 = [function () {
+  function a(e) {
+    let returnStmt$887 = e;
+    let returnStmt$888 = Math.floor(e);
+    let returnStmt$886 = returnStmt$887 - returnStmt$888;
+    let returnStmt$889 = 0x100000000;
+    let returnStmt$885 = returnStmt$886 * returnStmt$889;
+    let returnStmt$890 = 0;
+    let returnStmt$884 = returnStmt$885 | returnStmt$890;
+    return returnStmt$884;
+  }
+  var b = 0;
+  var c = 2;
+  var d;
+  a: for (; b < 64; c++) {
+    {
+      for (d = 2; d * d <= c; d++) {
+        let ifTest$893 = c;
+        let ifTest$894 = d;
+        let ifTest$892 = ifTest$893 % ifTest$894;
+        let ifTest$895 = 0;
+        let ifTest$891 = ifTest$892 === ifTest$895;
+        if (ifTest$891) {
+          continue a;
+        }
+      }
+      let ifTest$897 = b;
+      let ifTest$898 = 8;
+      let ifTest$896 = ifTest$897 < ifTest$898;
+      if (ifTest$896) {
+        let ifTrue$900 = Math.pow(c, 0.5);
+        let ifTrue$899 = a(ifTrue$900);
+        let ifTrue$901 = this.N;
+        let AssnRes$902 = ifTrue$901[b] = ifTrue$899;
+        ;
+      }
+      let js3$904 = Math.pow(c, 1 / 3);
+      let js3$903 = a(js3$904);
+      let js3$905 = this.a;
+      let AssnRes$906 = js3$905[b] = js3$903;
+      let js3$907 = b++;
+    }
+  }
+}][0];
+let noname$1157 = [function (a) {
+  var b;
+  var c;
+  let js3$909 = a.slice(0);
+  var d = js3$909;
+  let js3$910 = this.n;
+  var e = js3$910;
+  let js3$911 = this.a;
+  var f = js3$911;
+  let js3$913 = 0;
+  let js3$912 = e[js3$913];
+  var g = js3$912;
+  let js3$915 = 1;
+  let js3$914 = e[js3$915];
+  var h = js3$914;
+  let js3$917 = 2;
+  let js3$916 = e[js3$917];
+  var i = js3$916;
+  let js3$919 = 3;
+  let js3$918 = e[js3$919];
+  var k = js3$918;
+  let js3$921 = 4;
+  let js3$920 = e[js3$921];
+  var j = js3$920;
+  let js3$923 = 5;
+  let js3$922 = e[js3$923];
+  var l = js3$922;
+  let js3$925 = 6;
+  let js3$924 = e[js3$925];
+  var m = js3$924;
+  let js3$927 = 7;
+  let js3$926 = e[js3$927];
+  var n = js3$926;
+  for (a = 0; a < 64; a++) {
+    {
+      let ifTest$929 = a;
+      let ifTest$930 = 16;
+      let ifTest$928 = ifTest$929 < ifTest$930;
+      if (ifTest$928) {
+        let ifTrue$931 = d[a];
+        let AssnRes$932 = b = ifTrue$931;
+        ;
+      } else {
+        let ifFalse$936 = a;
+        let ifFalse$937 = 1;
+        let ifFalse$935 = ifFalse$936 + ifFalse$937;
+        let ifFalse$938 = 15;
+        let ifFalse$934 = ifFalse$935 & ifFalse$938;
+        let ifFalse$933 = d[ifFalse$934];
+        let AssnRes$939 = b = ifFalse$933;
+        let ifFalse$943 = a;
+        let ifFalse$944 = 14;
+        let ifFalse$942 = ifFalse$943 + ifFalse$944;
+        let ifFalse$945 = 15;
+        let ifFalse$941 = ifFalse$942 & ifFalse$945;
+        let ifFalse$940 = d[ifFalse$941];
+        let AssnRes$946 = c = ifFalse$940;
+        let ifFalse$956 = b;
+        let ifFalse$957 = 7;
+        let ifFalse$955 = ifFalse$956 >>> ifFalse$957;
+        let ifFalse$959 = b;
+        let ifFalse$960 = 18;
+        let ifFalse$958 = ifFalse$959 >>> ifFalse$960;
+        let ifFalse$954 = ifFalse$955 ^ ifFalse$958;
+        let ifFalse$962 = b;
+        let ifFalse$963 = 3;
+        let ifFalse$961 = ifFalse$962 >>> ifFalse$963;
+        let ifFalse$953 = ifFalse$954 ^ ifFalse$961;
+        let ifFalse$965 = b;
+        let ifFalse$966 = 25;
+        let ifFalse$964 = ifFalse$965 << ifFalse$966;
+        let ifFalse$952 = ifFalse$953 ^ ifFalse$964;
+        let ifFalse$968 = b;
+        let ifFalse$969 = 14;
+        let ifFalse$967 = ifFalse$968 << ifFalse$969;
+        let ifFalse$951 = ifFalse$952 ^ ifFalse$967;
+        let ifFalse$975 = c;
+        let ifFalse$976 = 17;
+        let ifFalse$974 = ifFalse$975 >>> ifFalse$976;
+        let ifFalse$978 = c;
+        let ifFalse$979 = 19;
+        let ifFalse$977 = ifFalse$978 >>> ifFalse$979;
+        let ifFalse$973 = ifFalse$974 ^ ifFalse$977;
+        let ifFalse$981 = c;
+        let ifFalse$982 = 10;
+        let ifFalse$980 = ifFalse$981 >>> ifFalse$982;
+        let ifFalse$972 = ifFalse$973 ^ ifFalse$980;
+        let ifFalse$984 = c;
+        let ifFalse$985 = 15;
+        let ifFalse$983 = ifFalse$984 << ifFalse$985;
+        let ifFalse$971 = ifFalse$972 ^ ifFalse$983;
+        let ifFalse$987 = c;
+        let ifFalse$988 = 13;
+        let ifFalse$986 = ifFalse$987 << ifFalse$988;
+        let ifFalse$970 = ifFalse$971 ^ ifFalse$986;
+        let ifFalse$950 = ifFalse$951 + ifFalse$970;
+        let ifFalse$991 = a;
+        let ifFalse$992 = 15;
+        let ifFalse$990 = ifFalse$991 & ifFalse$992;
+        let ifFalse$989 = d[ifFalse$990];
+        let ifFalse$949 = ifFalse$950 + ifFalse$989;
+        let ifFalse$996 = a;
+        let ifFalse$997 = 9;
+        let ifFalse$995 = ifFalse$996 + ifFalse$997;
+        let ifFalse$998 = 15;
+        let ifFalse$994 = ifFalse$995 & ifFalse$998;
+        let ifFalse$993 = d[ifFalse$994];
+        let ifFalse$948 = ifFalse$949 + ifFalse$993;
+        let ifFalse$999 = 0;
+        let ifFalse$947 = ifFalse$948 | ifFalse$999;
+        let ifFalse$1001 = a;
+        let ifFalse$1002 = 15;
+        let ifFalse$1000 = ifFalse$1001 & ifFalse$1002;
+        let AssnRes$1003 = d[ifFalse$1000] = ifFalse$947;
+        let AssnRes$1004 = b = AssnRes$1003;
+      }
+      let js3$1009 = b;
+      let js3$1010 = n;
+      let js3$1008 = js3$1009 + js3$1010;
+      let js3$1017 = j;
+      let js3$1018 = 6;
+      let js3$1016 = js3$1017 >>> js3$1018;
+      let js3$1020 = j;
+      let js3$1021 = 11;
+      let js3$1019 = js3$1020 >>> js3$1021;
+      let js3$1015 = js3$1016 ^ js3$1019;
+      let js3$1023 = j;
+      let js3$1024 = 25;
+      let js3$1022 = js3$1023 >>> js3$1024;
+      let js3$1014 = js3$1015 ^ js3$1022;
+      let js3$1026 = j;
+      let js3$1027 = 26;
+      let js3$1025 = js3$1026 << js3$1027;
+      let js3$1013 = js3$1014 ^ js3$1025;
+      let js3$1029 = j;
+      let js3$1030 = 21;
+      let js3$1028 = js3$1029 << js3$1030;
+      let js3$1012 = js3$1013 ^ js3$1028;
+      let js3$1032 = j;
+      let js3$1033 = 7;
+      let js3$1031 = js3$1032 << js3$1033;
+      let js3$1011 = js3$1012 ^ js3$1031;
+      let js3$1007 = js3$1008 + js3$1011;
+      let js3$1035 = m;
+      let js3$1037 = j;
+      let js3$1039 = l;
+      let js3$1040 = m;
+      let js3$1038 = js3$1039 ^ js3$1040;
+      let js3$1036 = js3$1037 & js3$1038;
+      let js3$1034 = js3$1035 ^ js3$1036;
+      let js3$1006 = js3$1007 + js3$1034;
+      let js3$1041 = f[a];
+      let js3$1005 = js3$1006 + js3$1041;
+      let AssnRes$1042 = b = js3$1005;
+      let AssnRes$1043 = n = m;
+      let AssnRes$1044 = m = l;
+      let AssnRes$1045 = l = j;
+      let js3$1048 = k;
+      let js3$1049 = b;
+      let js3$1047 = js3$1048 + js3$1049;
+      let js3$1050 = 0;
+      let js3$1046 = js3$1047 | js3$1050;
+      let AssnRes$1051 = j = js3$1046;
+      let AssnRes$1052 = k = i;
+      let AssnRes$1053 = i = h;
+      let AssnRes$1054 = h = g;
+      let js3$1058 = b;
+      let js3$1061 = h;
+      let js3$1062 = i;
+      let js3$1060 = js3$1061 & js3$1062;
+      let js3$1064 = k;
+      let js3$1066 = h;
+      let js3$1067 = i;
+      let js3$1065 = js3$1066 ^ js3$1067;
+      let js3$1063 = js3$1064 & js3$1065;
+      let js3$1059 = js3$1060 ^ js3$1063;
+      let js3$1057 = js3$1058 + js3$1059;
+      let js3$1074 = h;
+      let js3$1075 = 2;
+      let js3$1073 = js3$1074 >>> js3$1075;
+      let js3$1077 = h;
+      let js3$1078 = 13;
+      let js3$1076 = js3$1077 >>> js3$1078;
+      let js3$1072 = js3$1073 ^ js3$1076;
+      let js3$1080 = h;
+      let js3$1081 = 22;
+      let js3$1079 = js3$1080 >>> js3$1081;
+      let js3$1071 = js3$1072 ^ js3$1079;
+      let js3$1083 = h;
+      let js3$1084 = 30;
+      let js3$1082 = js3$1083 << js3$1084;
+      let js3$1070 = js3$1071 ^ js3$1082;
+      let js3$1086 = h;
+      let js3$1087 = 19;
+      let js3$1085 = js3$1086 << js3$1087;
+      let js3$1069 = js3$1070 ^ js3$1085;
+      let js3$1089 = h;
+      let js3$1090 = 10;
+      let js3$1088 = js3$1089 << js3$1090;
+      let js3$1068 = js3$1069 ^ js3$1088;
+      let js3$1056 = js3$1057 + js3$1068;
+      let js3$1091 = 0;
+      let js3$1055 = js3$1056 | js3$1091;
+      let AssnRes$1092 = g = js3$1055;
+    }
+  }
+  let js3$1096 = 0;
+  let js3$1095 = e[js3$1096];
+  let js3$1097 = g;
+  let js3$1094 = js3$1095 + js3$1097;
+  let js3$1098 = 0;
+  let js3$1093 = js3$1094 | js3$1098;
+  let js3$1099 = 0;
+  let AssnRes$1100 = e[js3$1099] = js3$1093;
+  let js3$1104 = 1;
+  let js3$1103 = e[js3$1104];
+  let js3$1105 = h;
+  let js3$1102 = js3$1103 + js3$1105;
+  let js3$1106 = 0;
+  let js3$1101 = js3$1102 | js3$1106;
+  let js3$1107 = 1;
+  let AssnRes$1108 = e[js3$1107] = js3$1101;
+  let js3$1112 = 2;
+  let js3$1111 = e[js3$1112];
+  let js3$1113 = i;
+  let js3$1110 = js3$1111 + js3$1113;
+  let js3$1114 = 0;
+  let js3$1109 = js3$1110 | js3$1114;
+  let js3$1115 = 2;
+  let AssnRes$1116 = e[js3$1115] = js3$1109;
+  let js3$1120 = 3;
+  let js3$1119 = e[js3$1120];
+  let js3$1121 = k;
+  let js3$1118 = js3$1119 + js3$1121;
+  let js3$1122 = 0;
+  let js3$1117 = js3$1118 | js3$1122;
+  let js3$1123 = 3;
+  let AssnRes$1124 = e[js3$1123] = js3$1117;
+  let js3$1128 = 4;
+  let js3$1127 = e[js3$1128];
+  let js3$1129 = j;
+  let js3$1126 = js3$1127 + js3$1129;
+  let js3$1130 = 0;
+  let js3$1125 = js3$1126 | js3$1130;
+  let js3$1131 = 4;
+  let AssnRes$1132 = e[js3$1131] = js3$1125;
+  let js3$1136 = 5;
+  let js3$1135 = e[js3$1136];
+  let js3$1137 = l;
+  let js3$1134 = js3$1135 + js3$1137;
+  let js3$1138 = 0;
+  let js3$1133 = js3$1134 | js3$1138;
+  let js3$1139 = 5;
+  let AssnRes$1140 = e[js3$1139] = js3$1133;
+  let js3$1144 = 6;
+  let js3$1143 = e[js3$1144];
+  let js3$1145 = m;
+  let js3$1142 = js3$1143 + js3$1145;
+  let js3$1146 = 0;
+  let js3$1141 = js3$1142 | js3$1146;
+  let js3$1147 = 6;
+  let AssnRes$1148 = e[js3$1147] = js3$1141;
+  let js3$1152 = 7;
+  let js3$1151 = e[js3$1152];
+  let js3$1153 = n;
+  let js3$1150 = js3$1151 + js3$1153;
+  let js3$1154 = 0;
+  let js3$1149 = js3$1150 | js3$1154;
+  let js3$1155 = 7;
+  let AssnRes$1156 = e[js3$1155] = js3$1149;
+}][0];
+let js3$841 = {
+  blockSize: 512,
+  reset: noname$849,
+  update: noname$870,
+  finalize: noname$881,
+  N: js3$882,
+  a: js3$883,
+  w: noname$908,
+  C: noname$1157
+};
+let js3$1159 = sjcl.hash;
+let js3$1158 = js3$1159.sha256;
+let AssnRes$1160 = js3$1158.prototype = js3$841;
+let noname$1205 = [function (a, b, c, d, e) {
+  var f;
+  let js3$1162 = b.slice(0);
+  var g = js3$1162;
+  let js3$1163 = sjcl.bitArray;
+  var h = js3$1163;
+  let js3$1165 = h.bitLength(c);
+  let js3$1166 = 8;
+  let js3$1164 = js3$1165 / js3$1166;
+  var i = js3$1164;
+  let js3$1168 = h.bitLength(g);
+  let js3$1169 = 8;
+  let js3$1167 = js3$1168 / js3$1169;
+  var k = js3$1167;
+  let js3$1171 = e;
+  let js3$1172 = js3$1171 ? js3$1171 : 64;
+  let js3$1170 = js3$1172;
+  let AssnRes$1173 = e = js3$1170;
+  let js3$1175 = d;
+  let js3$1176 = js3$1175 ? js3$1175 : [];
+  let js3$1174 = js3$1176;
+  let AssnRes$1177 = d = js3$1174;
+  let ifTest$1179 = i;
+  let ifTest$1180 = 7;
+  let ifTest$1178 = ifTest$1179 < ifTest$1180;
+  if (ifTest$1178) {
+    let ifTrue$1183 = sjcl.exception;
+    let ifTrue$1182 = ifTrue$1183.invalid;
+    let ifTrue$1184 = "ccm: iv must be at least 7 bytes";
+    let ifTrue$1181 = new ifTrue$1182(ifTrue$1184);
+    throw ifTrue$1181;
+  }
+  for (f = 2; f < 4 && k >>> 8 * f; f++) {
+    ;
+  }
+  let ifTest$1186 = f;
+  let ifTest$1188 = 15;
+  let ifTest$1189 = i;
+  let ifTest$1187 = ifTest$1188 - ifTest$1189;
+  let ifTest$1185 = ifTest$1186 < ifTest$1187;
+  if (ifTest$1185) {
+    let ifTrue$1191 = 15;
+    let ifTrue$1192 = i;
+    let ifTrue$1190 = ifTrue$1191 - ifTrue$1192;
+    let AssnRes$1193 = f = ifTrue$1190;
+    ;
+  }
+  let js3$1194 = h.clamp(c, 8 * (15 - f));
+  let AssnRes$1195 = c = js3$1194;
+  let js3$1198 = sjcl.mode;
+  let js3$1197 = js3$1198.ccm;
+  let js3$1196 = js3$1197.G(a, b, c, d, e, f);
+  let AssnRes$1199 = b = js3$1196;
+  let js3$1202 = sjcl.mode;
+  let js3$1201 = js3$1202.ccm;
+  let js3$1200 = js3$1201.I(a, g, c, b, e, f);
+  let AssnRes$1203 = g = js3$1200;
+  let returnStmt$1204 = h.concat(g.data, g.tag);
+  return returnStmt$1204;
+}][0];
+let noname$1260 = [function (a, b, c, d, e) {
+  let js3$1207 = e;
+  let js3$1208 = js3$1207 ? js3$1207 : 64;
+  let js3$1206 = js3$1208;
+  let AssnRes$1209 = e = js3$1206;
+  let js3$1211 = d;
+  let js3$1212 = js3$1211 ? js3$1211 : [];
+  let js3$1210 = js3$1212;
+  let AssnRes$1213 = d = js3$1210;
+  let js3$1214 = sjcl.bitArray;
+  var f = js3$1214;
+  let js3$1216 = f.bitLength(c);
+  let js3$1217 = 8;
+  let js3$1215 = js3$1216 / js3$1217;
+  var g = js3$1215;
+  let js3$1218 = f.bitLength(b);
+  var h = js3$1218;
+  let js3$1219 = f.clamp(b, h - e);
+  var i = js3$1219;
+  let js3$1220 = f.bitSlice(b, h - e);
+  var k = js3$1220;
+  let js3$1223 = h;
+  let js3$1224 = e;
+  let js3$1222 = js3$1223 - js3$1224;
+  let js3$1225 = 8;
+  let js3$1221 = js3$1222 / js3$1225;
+  let AssnRes$1226 = h = js3$1221;
+  let ifTest$1228 = g;
+  let ifTest$1229 = 7;
+  let ifTest$1227 = ifTest$1228 < ifTest$1229;
+  if (ifTest$1227) {
+    let ifTrue$1232 = sjcl.exception;
+    let ifTrue$1231 = ifTrue$1232.invalid;
+    let ifTrue$1233 = "ccm: iv must be at least 7 bytes";
+    let ifTrue$1230 = new ifTrue$1231(ifTrue$1233);
+    throw ifTrue$1230;
+  }
+  for (b = 2; b < 4 && h >>> 8 * b; b++) {
+    ;
+  }
+  let ifTest$1235 = b;
+  let ifTest$1237 = 15;
+  let ifTest$1238 = g;
+  let ifTest$1236 = ifTest$1237 - ifTest$1238;
+  let ifTest$1234 = ifTest$1235 < ifTest$1236;
+  if (ifTest$1234) {
+    let ifTrue$1240 = 15;
+    let ifTrue$1241 = g;
+    let ifTrue$1239 = ifTrue$1240 - ifTrue$1241;
+    let AssnRes$1242 = b = ifTrue$1239;
+    ;
+  }
+  let js3$1243 = f.clamp(c, 8 * (15 - b));
+  let AssnRes$1244 = c = js3$1243;
+  let js3$1247 = sjcl.mode;
+  let js3$1246 = js3$1247.ccm;
+  let js3$1245 = js3$1246.I(a, i, c, k, e, b);
+  let AssnRes$1248 = i = js3$1245;
+  let js3$1251 = sjcl.mode;
+  let js3$1250 = js3$1251.ccm;
+  let js3$1249 = js3$1250.G(a, i.data, c, d, e, b);
+  let AssnRes$1252 = a = js3$1249;
+  let ifTest$1254 = f.equal(i.tag, a);
+  let ifTest$1253 = !ifTest$1254;
+  if (ifTest$1253) {
+    let ifTrue$1257 = sjcl.exception;
+    let ifTrue$1256 = ifTrue$1257.corrupt;
+    let ifTrue$1258 = "ccm: tag doesn't match";
+    let ifTrue$1255 = new ifTrue$1256(ifTrue$1258);
+    throw ifTrue$1255;
+  }
+  let returnStmt$1259 = i.data;
+  return returnStmt$1259;
+}][0];
+let noname$1326 = [function (a, b, c, d, e, f) {
+  let js3$1261 = [];
+  var g = js3$1261;
+  let js3$1262 = sjcl.bitArray;
+  var h = js3$1262;
+  let js3$1263 = h.k;
+  var i = js3$1263;
+  let js3$1265 = e;
+  let js3$1266 = 8;
+  let js3$1264 = js3$1265 / js3$1266;
+  let AssnRes$1267 = e = js3$1264;
+  let ifTest$1271 = e;
+  let ifTest$1272 = 2;
+  let ifTest$1270 = ifTest$1271 % ifTest$1272;
+  let ifTest$1273 = ifTest$1270 ? ifTest$1270 : e < 4;
+  let ifTest$1269 = ifTest$1273;
+  let ifTest$1274 = ifTest$1269 ? ifTest$1269 : e > 16;
+  let ifTest$1268 = ifTest$1274;
+  if (ifTest$1268) {
+    let ifTrue$1277 = sjcl.exception;
+    let ifTrue$1276 = ifTrue$1277.invalid;
+    let ifTrue$1278 = "ccm: invalid tag length";
+    let ifTrue$1275 = new ifTrue$1276(ifTrue$1278);
+    throw ifTrue$1275;
+  }
+  let ifTest$1281 = d.length;
+  let ifTest$1282 = 0xffffffff;
+  let ifTest$1280 = ifTest$1281 > ifTest$1282;
+  let ifTest$1283 = ifTest$1280 ? ifTest$1280 : b.length > 0xffffffff;
+  let ifTest$1279 = ifTest$1283;
+  if (ifTest$1279) {
+    let ifTrue$1286 = sjcl.exception;
+    let ifTrue$1285 = ifTrue$1286.bug;
+    let ifTrue$1287 = "ccm: can't deal with 4GiB or more data";
+    let ifTrue$1284 = new ifTrue$1285(ifTrue$1287);
+    throw ifTrue$1284;
+  }
+  let js3$1289 = h.partial(8, (d.length ? 64 : 0) | e - 2 << 2 | f - 1);
+  let js3$1288 = [js3$1289];
+  let AssnRes$1290 = f = js3$1288;
+  let js3$1291 = h.concat(f, c);
+  let AssnRes$1292 = f = js3$1291;
+  let js3$1295 = 3;
+  let js3$1294 = f[js3$1295];
+  let js3$1297 = h.bitLength(b);
+  let js3$1298 = 8;
+  let js3$1296 = js3$1297 / js3$1298;
+  let js3$1293 = js3$1294 | js3$1296;
+  let js3$1299 = 3;
+  let AssnRes$1300 = f[js3$1299] = js3$1293;
+  let js3$1301 = a.encrypt(f);
+  let AssnRes$1302 = f = js3$1301;
+  let ifTest$1303 = d.length;
+  if (ifTest$1303) {
+    let ifTrue$1305 = h.bitLength(d);
+    let ifTrue$1306 = 8;
+    let ifTrue$1304 = ifTrue$1305 / ifTrue$1306;
+    let AssnRes$1307 = c = ifTrue$1304;
+    let ifTest$1309 = c;
+    let ifTest$1310 = 65279;
+    let ifTest$1308 = ifTest$1309 <= ifTest$1310;
+    if (ifTest$1308) {
+      let ifTrue$1312 = h.partial(16, c);
+      let ifTrue$1311 = [ifTrue$1312];
+      let AssnRes$1313 = g = ifTrue$1311;
+      ;
+    } else {
+      let ifTest$1315 = c;
+      let ifTest$1316 = 0xffffffff;
+      let ifTest$1314 = ifTest$1315 <= ifTest$1316;
+      if (ifTest$1314) {
+        let ifTrue$1317 = h.concat([h.partial(16, 65534)], [c]);
+        let AssnRes$1318 = g = ifTrue$1317;
+        ;
+      }
+    }
+    let ifTrue$1319 = h.concat(g, d);
+    let AssnRes$1320 = g = ifTrue$1319;
+    for (d = 0; d < g.length; d += 4) {
+      let ifTrue$1321 = a.encrypt(i(f, g.slice(d, d + 4)));
+      let AssnRes$1322 = f = ifTrue$1321;
+      ;
+    }
+  }
+  for (d = 0; d < b.length; d += 4) {
+    let js3$1323 = a.encrypt(i(f, b.slice(d, d + 4)));
+    let AssnRes$1324 = f = js3$1323;
+    ;
+  }
+  let returnStmt$1325 = h.clamp(f, e * 8);
+  return returnStmt$1325;
+}][0];
+let noname$1385 = [function (a, b, c, d, e, f) {
+  var g;
+  let js3$1327 = sjcl.bitArray;
+  var h = js3$1327;
+  let js3$1328 = h.k;
+  let AssnRes$1329 = g = js3$1328;
+  let js3$1330 = b.length;
+  var i = js3$1330;
+  let js3$1331 = h.bitLength(b);
+  var k = js3$1331;
+  let js3$1334 = h.concat([h.partial(8, f - 1)], c);
+  let js3$1333 = js3$1334.concat([0, 0, 0]);
+  let js3$1332 = js3$1333.slice(0, 4);
+  let AssnRes$1335 = c = js3$1332;
+  let js3$1336 = h.bitSlice(g(d, a.encrypt(c)), 0, e);
+  let AssnRes$1337 = d = js3$1336;
+  let ifTest$1338 = !i;
+  if (ifTest$1338) {
+    let returnStmt$1340 = [];
+    let returnStmt$1339 = {
+      tag: d,
+      data: returnStmt$1340
+    };
+    return returnStmt$1339;
+  }
+  for (g = 0; g < i; g += 4) {
+    {
+      let js3$1342 = 3;
+      let js3$1341 = c[js3$1342]++;
+      let js3$1343 = a.encrypt(c);
+      let AssnRes$1344 = e = js3$1343;
+      let js3$1346 = b[g];
+      let js3$1348 = 0;
+      let js3$1347 = e[js3$1348];
+      let js3$1345 = js3$1346 ^ js3$1347;
+      let AssnRes$1349 = b[g] = js3$1345;
+      let js3$1353 = g;
+      let js3$1354 = 1;
+      let js3$1352 = js3$1353 + js3$1354;
+      let js3$1351 = b[js3$1352];
+      let js3$1356 = 1;
+      let js3$1355 = e[js3$1356];
+      let js3$1350 = js3$1351 ^ js3$1355;
+      let js3$1358 = g;
+      let js3$1359 = 1;
+      let js3$1357 = js3$1358 + js3$1359;
+      let AssnRes$1360 = b[js3$1357] = js3$1350;
+      let js3$1364 = g;
+      let js3$1365 = 2;
+      let js3$1363 = js3$1364 + js3$1365;
+      let js3$1362 = b[js3$1363];
+      let js3$1367 = 2;
+      let js3$1366 = e[js3$1367];
+      let js3$1361 = js3$1362 ^ js3$1366;
+      let js3$1369 = g;
+      let js3$1370 = 2;
+      let js3$1368 = js3$1369 + js3$1370;
+      let AssnRes$1371 = b[js3$1368] = js3$1361;
+      let js3$1375 = g;
+      let js3$1376 = 3;
+      let js3$1374 = js3$1375 + js3$1376;
+      let js3$1373 = b[js3$1374];
+      let js3$1378 = 3;
+      let js3$1377 = e[js3$1378];
+      let js3$1372 = js3$1373 ^ js3$1377;
+      let js3$1380 = g;
+      let js3$1381 = 3;
+      let js3$1379 = js3$1380 + js3$1381;
+      let AssnRes$1382 = b[js3$1379] = js3$1372;
+    }
+  }
+  let returnStmt$1384 = h.clamp(b, k);
+  let returnStmt$1383 = {
+    tag: d,
+    data: returnStmt$1384
+  };
+  return returnStmt$1383;
+}][0];
+let js3$1161 = {
+  name: "ccm",
+  encrypt: noname$1205,
+  decrypt: noname$1260,
+  G: noname$1326,
+  I: noname$1385
+};
+let js3$1386 = sjcl.mode;
+let AssnRes$1387 = js3$1386.ccm = js3$1161;
+let noname$1449 = [function (a, b, c, d, e, f) {
+  let ifTest$1391 = sjcl.bitArray;
+  let ifTest$1390 = ifTest$1391.bitLength(c);
+  let ifTest$1392 = 128;
+  let ifTest$1389 = ifTest$1390 !== ifTest$1392;
+  if (ifTest$1389) {
+    let ifTrue$1395 = sjcl.exception;
+    let ifTrue$1394 = ifTrue$1395.invalid;
+    let ifTrue$1396 = "ocb iv must be 128 bits";
+    let ifTrue$1393 = new ifTrue$1394(ifTrue$1396);
+    throw ifTrue$1393;
+  }
+  var g;
+  let js3$1399 = sjcl.mode;
+  let js3$1398 = js3$1399.ocb2;
+  let js3$1397 = js3$1398.A;
+  var h = js3$1397;
+  let js3$1400 = sjcl.bitArray;
+  var i = js3$1400;
+  let js3$1401 = i.k;
+  var k = js3$1401;
+  let js3$1402 = [0, 0, 0, 0];
+  var j = js3$1402;
+  let js3$1404 = a.encrypt(c);
+  let js3$1403 = h(js3$1404);
+  let AssnRes$1405 = c = js3$1403;
+  var l;
+  let js3$1406 = [];
+  var m = js3$1406;
+  let js3$1408 = d;
+  let js3$1409 = js3$1408 ? js3$1408 : [];
+  let js3$1407 = js3$1409;
+  let AssnRes$1410 = d = js3$1407;
+  let js3$1412 = e;
+  let js3$1413 = js3$1412 ? js3$1412 : 64;
+  let js3$1411 = js3$1413;
+  let AssnRes$1414 = e = js3$1411;
+  for (g = 0; g + 4 < b.length; g += 4) {
+    {
+      let js3$1415 = b.slice(g, g + 4);
+      let AssnRes$1416 = l = js3$1415;
+      let js3$1418 = j;
+      let js3$1419 = l;
+      let js3$1417 = k(js3$1418, js3$1419);
+      let AssnRes$1420 = j = js3$1417;
+      let js3$1421 = m.concat(k(c, a.encrypt(k(c, l))));
+      let AssnRes$1422 = m = js3$1421;
+      let js3$1424 = c;
+      let js3$1423 = h(js3$1424);
+      let AssnRes$1425 = c = js3$1423;
+    }
+  }
+  let js3$1426 = b.slice(g);
+  let AssnRes$1427 = l = js3$1426;
+  let js3$1428 = i.bitLength(l);
+  let AssnRes$1429 = b = js3$1428;
+  let js3$1430 = a.encrypt(k(c, [0, 0, 0, b]));
+  let AssnRes$1431 = g = js3$1430;
+  let js3$1432 = i.clamp(k(l, g), b);
+  let AssnRes$1433 = l = js3$1432;
+  let js3$1435 = j;
+  let js3$1437 = l;
+  let js3$1438 = g;
+  let js3$1436 = k(js3$1437, js3$1438);
+  let js3$1434 = k(js3$1435, js3$1436);
+  let AssnRes$1439 = j = js3$1434;
+  let js3$1440 = a.encrypt(k(j, k(c, h(c))));
+  let AssnRes$1441 = j = js3$1440;
+  let ifTest$1442 = d.length;
+  if (ifTest$1442) {
+    let ifTrue$1444 = j;
+    let ifTrue$1446 = f;
+    let ifTrue$1445 = ifTrue$1446 ? d : sjcl.mode.ocb2.pmac(a, d);
+    let ifTrue$1443 = k(ifTrue$1444, ifTrue$1445);
+    let AssnRes$1447 = j = ifTrue$1443;
+    ;
+  }
+  let returnStmt$1448 = m.concat(i.concat(l, i.clamp(j, e)));
+  return returnStmt$1448;
+}][0];
+let noname$1523 = [function (a, b, c, d, e, f) {
+  let ifTest$1452 = sjcl.bitArray;
+  let ifTest$1451 = ifTest$1452.bitLength(c);
+  let ifTest$1453 = 128;
+  let ifTest$1450 = ifTest$1451 !== ifTest$1453;
+  if (ifTest$1450) {
+    let ifTrue$1456 = sjcl.exception;
+    let ifTrue$1455 = ifTrue$1456.invalid;
+    let ifTrue$1457 = "ocb iv must be 128 bits";
+    let ifTrue$1454 = new ifTrue$1455(ifTrue$1457);
+    throw ifTrue$1454;
+  }
+  let js3$1459 = e;
+  let js3$1460 = js3$1459 ? js3$1459 : 64;
+  let js3$1458 = js3$1460;
+  let AssnRes$1461 = e = js3$1458;
+  let js3$1464 = sjcl.mode;
+  let js3$1463 = js3$1464.ocb2;
+  let js3$1462 = js3$1463.A;
+  var g = js3$1462;
+  let js3$1465 = sjcl.bitArray;
+  var h = js3$1465;
+  let js3$1466 = h.k;
+  var i = js3$1466;
+  let js3$1467 = [0, 0, 0, 0];
+  var k = js3$1467;
+  let js3$1469 = a.encrypt(c);
+  let js3$1468 = g(js3$1469);
+  var j = js3$1468;
+  var l;
+  var m;
+  let js3$1472 = sjcl.bitArray;
+  let js3$1471 = js3$1472.bitLength(b);
+  let js3$1473 = e;
+  let js3$1470 = js3$1471 - js3$1473;
+  var n = js3$1470;
+  let js3$1474 = [];
+  var o = js3$1474;
+  let js3$1476 = d;
+  let js3$1477 = js3$1476 ? js3$1476 : [];
+  let js3$1475 = js3$1477;
+  let AssnRes$1478 = d = js3$1475;
+  for (c = 0; c + 4 < n / 32; c += 4) {
+    {
+      let js3$1480 = j;
+      let js3$1481 = a.decrypt(i(j, b.slice(c, c + 4)));
+      let js3$1479 = i(js3$1480, js3$1481);
+      let AssnRes$1482 = l = js3$1479;
+      let js3$1484 = k;
+      let js3$1485 = l;
+      let js3$1483 = i(js3$1484, js3$1485);
+      let AssnRes$1486 = k = js3$1483;
+      let js3$1487 = o.concat(l);
+      let AssnRes$1488 = o = js3$1487;
+      let js3$1490 = j;
+      let js3$1489 = g(js3$1490);
+      let AssnRes$1491 = j = js3$1489;
+    }
+  }
+  let js3$1493 = n;
+  let js3$1495 = c;
+  let js3$1496 = 32;
+  let js3$1494 = js3$1495 * js3$1496;
+  let js3$1492 = js3$1493 - js3$1494;
+  let AssnRes$1497 = m = js3$1492;
+  let js3$1498 = a.encrypt(i(j, [0, 0, 0, m]));
+  let AssnRes$1499 = l = js3$1498;
+  let js3$1501 = l;
+  let js3$1502 = h.clamp(b.slice(c), m);
+  let js3$1500 = i(js3$1501, js3$1502);
+  let AssnRes$1503 = l = js3$1500;
+  let js3$1505 = k;
+  let js3$1506 = l;
+  let js3$1504 = i(js3$1505, js3$1506);
+  let AssnRes$1507 = k = js3$1504;
+  let js3$1508 = a.encrypt(i(k, i(j, g(j))));
+  let AssnRes$1509 = k = js3$1508;
+  let ifTest$1510 = d.length;
+  if (ifTest$1510) {
+    let ifTrue$1512 = k;
+    let ifTrue$1514 = f;
+    let ifTrue$1513 = ifTrue$1514 ? d : sjcl.mode.ocb2.pmac(a, d);
+    let ifTrue$1511 = i(ifTrue$1512, ifTrue$1513);
+    let AssnRes$1515 = k = ifTrue$1511;
+    ;
+  }
+  let ifTest$1517 = h.equal(h.clamp(k, e), h.bitSlice(b, n));
+  let ifTest$1516 = !ifTest$1517;
+  if (ifTest$1516) {
+    let ifTrue$1520 = sjcl.exception;
+    let ifTrue$1519 = ifTrue$1520.corrupt;
+    let ifTrue$1521 = "ocb: tag doesn't match";
+    let ifTrue$1518 = new ifTrue$1519(ifTrue$1521);
+    throw ifTrue$1518;
+  }
+  let returnStmt$1522 = o.concat(h.clamp(l, m));
+  return returnStmt$1522;
+}][0];
+let noname$1561 = [function (a, b) {
+  var c;
+  let js3$1526 = sjcl.mode;
+  let js3$1525 = js3$1526.ocb2;
+  let js3$1524 = js3$1525.A;
+  var d = js3$1524;
+  let js3$1527 = sjcl.bitArray;
+  var e = js3$1527;
+  let js3$1528 = e.k;
+  var f = js3$1528;
+  let js3$1529 = [0, 0, 0, 0];
+  var g = js3$1529;
+  let js3$1530 = a.encrypt([0, 0, 0, 0]);
+  var h = js3$1530;
+  let js3$1532 = h;
+  let js3$1535 = h;
+  let js3$1534 = d(js3$1535);
+  let js3$1533 = d(js3$1534);
+  let js3$1531 = f(js3$1532, js3$1533);
+  let AssnRes$1536 = h = js3$1531;
+  for (c = 0; c + 4 < b.length; c += 4) {
+    {
+      let js3$1538 = h;
+      let js3$1537 = d(js3$1538);
+      let AssnRes$1539 = h = js3$1537;
+      let js3$1541 = g;
+      let js3$1542 = a.encrypt(f(h, b.slice(c, c + 4)));
+      let js3$1540 = f(js3$1541, js3$1542);
+      let AssnRes$1543 = g = js3$1540;
+    }
+  }
+  let js3$1544 = b.slice(c);
+  let AssnRes$1545 = b = js3$1544;
+  let ifTest$1547 = e.bitLength(b);
+  let ifTest$1548 = 128;
+  let ifTest$1546 = ifTest$1547 < ifTest$1548;
+  if (ifTest$1546) {
+    let ifTrue$1550 = h;
+    let ifTrue$1552 = h;
+    let ifTrue$1551 = d(ifTrue$1552);
+    let ifTrue$1549 = f(ifTrue$1550, ifTrue$1551);
+    let AssnRes$1553 = h = ifTrue$1549;
+    let ifTrue$1554 = e.concat(b, [2147483648 | 0]);
+    let AssnRes$1555 = b = ifTrue$1554;
+  }
+  let js3$1557 = g;
+  let js3$1558 = b;
+  let js3$1556 = f(js3$1557, js3$1558);
+  let AssnRes$1559 = g = js3$1556;
+  let returnStmt$1560 = a.encrypt(f(d(f(h, d(h))), g));
+  return returnStmt$1560;
+}][0];
+let noname$1601 = [function (a) {
+  let returnStmt$1566 = 0;
+  let returnStmt$1565 = a[returnStmt$1566];
+  let returnStmt$1567 = 1;
+  let returnStmt$1564 = returnStmt$1565 << returnStmt$1567;
+  let returnStmt$1570 = 1;
+  let returnStmt$1569 = a[returnStmt$1570];
+  let returnStmt$1571 = 31;
+  let returnStmt$1568 = returnStmt$1569 >>> returnStmt$1571;
+  let returnStmt$1563 = returnStmt$1564 ^ returnStmt$1568;
+  let returnStmt$1575 = 1;
+  let returnStmt$1574 = a[returnStmt$1575];
+  let returnStmt$1576 = 1;
+  let returnStmt$1573 = returnStmt$1574 << returnStmt$1576;
+  let returnStmt$1579 = 2;
+  let returnStmt$1578 = a[returnStmt$1579];
+  let returnStmt$1580 = 31;
+  let returnStmt$1577 = returnStmt$1578 >>> returnStmt$1580;
+  let returnStmt$1572 = returnStmt$1573 ^ returnStmt$1577;
+  let returnStmt$1584 = 2;
+  let returnStmt$1583 = a[returnStmt$1584];
+  let returnStmt$1585 = 1;
+  let returnStmt$1582 = returnStmt$1583 << returnStmt$1585;
+  let returnStmt$1588 = 3;
+  let returnStmt$1587 = a[returnStmt$1588];
+  let returnStmt$1589 = 31;
+  let returnStmt$1586 = returnStmt$1587 >>> returnStmt$1589;
+  let returnStmt$1581 = returnStmt$1582 ^ returnStmt$1586;
+  let returnStmt$1593 = 3;
+  let returnStmt$1592 = a[returnStmt$1593];
+  let returnStmt$1594 = 1;
+  let returnStmt$1591 = returnStmt$1592 << returnStmt$1594;
+  let returnStmt$1598 = 0;
+  let returnStmt$1597 = a[returnStmt$1598];
+  let returnStmt$1599 = 31;
+  let returnStmt$1596 = returnStmt$1597 >>> returnStmt$1599;
+  let returnStmt$1600 = 135;
+  let returnStmt$1595 = returnStmt$1596 * returnStmt$1600;
+  let returnStmt$1590 = returnStmt$1591 ^ returnStmt$1595;
+  let returnStmt$1562 = [returnStmt$1563, returnStmt$1572, returnStmt$1581, returnStmt$1590];
+  return returnStmt$1562;
+}][0];
+let js3$1388 = {
+  name: "ocb2",
+  encrypt: noname$1449,
+  decrypt: noname$1523,
+  pmac: noname$1561,
+  A: noname$1601
+};
+let js3$1602 = sjcl.mode;
+let AssnRes$1603 = js3$1602.ocb2 = js3$1388;
+let js3$1647 = sjcl.misc;
+let AssnRes$1648 = js3$1647.hmac = function (a, b) {
+  let js3$1605 = b;
+  let js3$1606 = js3$1605 ? js3$1605 : sjcl.hash.sha256;
+  let js3$1604 = js3$1606;
+  let AssnRes$1607 = b = js3$1604;
+  let AssnRes$1608 = this.M = AssnRes$1607;
+  let js3$1610 = [];
+  let js3$1611 = [];
+  let js3$1609 = [js3$1610, js3$1611];
+  var c = js3$1609;
+  let js3$1614 = b.prototype;
+  let js3$1613 = js3$1614.blockSize;
+  let js3$1615 = 32;
+  let js3$1612 = js3$1613 / js3$1615;
+  var d = js3$1612;
+  let js3$1618 = b;
+  let js3$1617 = new js3$1618();
+  let js3$1620 = b;
+  let js3$1619 = new js3$1620();
+  let js3$1616 = [js3$1617, js3$1619];
+  let AssnRes$1621 = this.l = js3$1616;
+  let ifTest$1623 = a.length;
+  let ifTest$1624 = d;
+  let ifTest$1622 = ifTest$1623 > ifTest$1624;
+  if (ifTest$1622) {
+    let ifTrue$1625 = b.hash(a);
+    let AssnRes$1626 = a = ifTrue$1625;
+    ;
+  }
+  for (b = 0; b < d; b++) {
+    {
+      let js3$1628 = a[b];
+      let js3$1629 = 909522486;
+      let js3$1627 = js3$1628 ^ js3$1629;
+      let js3$1631 = 0;
+      let js3$1630 = c[js3$1631];
+      let AssnRes$1632 = js3$1630[b] = js3$1627;
+      let js3$1634 = a[b];
+      let js3$1635 = 1549556828;
+      let js3$1633 = js3$1634 ^ js3$1635;
+      let js3$1637 = 1;
+      let js3$1636 = c[js3$1637];
+      let AssnRes$1638 = js3$1636[b] = js3$1633;
+    }
+  }
+  let js3$1641 = this.l;
+  let js3$1642 = 0;
+  let js3$1640 = js3$1641[js3$1642];
+  let js3$1639 = js3$1640.update(c[0]);
+  let js3$1645 = this.l;
+  let js3$1646 = 1;
+  let js3$1644 = js3$1645[js3$1646];
+  let js3$1643 = js3$1644.update(c[1]);
+};
+let js3$1666 = sjcl.misc;
+let js3$1665 = js3$1666.hmac;
+let js3$1664 = js3$1665.prototype;
+let AssnRes$1667 = js3$1664.mac = function (a, b) {
+  let js3$1652 = this.M;
+  let js3$1654 = this.l;
+  let js3$1655 = 0;
+  let js3$1653 = js3$1654[js3$1655];
+  let js3$1651 = new js3$1652(js3$1653);
+  let js3$1650 = js3$1651.update(a, b);
+  let js3$1649 = js3$1650.finalize();
+  let AssnRes$1656 = a = js3$1649;
+  let returnStmt$1660 = this.M;
+  let returnStmt$1662 = this.l;
+  let returnStmt$1663 = 1;
+  let returnStmt$1661 = returnStmt$1662[returnStmt$1663];
+  let returnStmt$1659 = new returnStmt$1660(returnStmt$1661);
+  let returnStmt$1658 = returnStmt$1659.update(a);
+  let returnStmt$1657 = returnStmt$1658.finalize();
+  return returnStmt$1657;
+};
+let js3$1670 = sjcl.misc;
+let js3$1669 = js3$1670.hmac;
+let js3$1668 = js3$1669.prototype;
+let AssnRes$1671 = js3$1668.encrypt = AssnRes$1667;
+let js3$1715 = sjcl.misc;
+let AssnRes$1716 = js3$1715.pbkdf2 = function (a, b, c, d, e) {
+  let js3$1673 = c;
+  let js3$1674 = js3$1673 ? js3$1673 : 1e3;
+  let js3$1672 = js3$1674;
+  let AssnRes$1675 = c = js3$1672;
+  let ifTest$1678 = d;
+  let ifTest$1679 = 0;
+  let ifTest$1677 = ifTest$1678 < ifTest$1679;
+  let ifTest$1680 = ifTest$1677 ? ifTest$1677 : c < 0;
+  let ifTest$1676 = ifTest$1680;
+  if (ifTest$1676) {
+    let ifTrue$1682 = sjcl.exception;
+    let ifTrue$1681 = ifTrue$1682.invalid("invalid params to pbkdf2");
+    throw ifTrue$1681;
+  }
+  let ifTest$1684 = typeof a;
+  let ifTest$1685 = "string";
+  let ifTest$1683 = ifTest$1684 === ifTest$1685;
+  if (ifTest$1683) {
+    let ifTrue$1688 = sjcl.codec;
+    let ifTrue$1687 = ifTrue$1688.utf8String;
+    let ifTrue$1686 = ifTrue$1687.toBits(a);
+    let AssnRes$1689 = a = ifTrue$1686;
+    ;
+  }
+  let js3$1691 = e;
+  let js3$1692 = js3$1691 ? js3$1691 : sjcl.misc.hmac;
+  let js3$1690 = js3$1692;
+  let AssnRes$1693 = e = js3$1690;
+  let js3$1695 = e;
+  let js3$1696 = a;
+  let js3$1694 = new js3$1695(js3$1696);
+  let AssnRes$1697 = a = js3$1694;
+  var f;
+  var g;
+  var h;
+  var i;
+  let js3$1698 = [];
+  var k = js3$1698;
+  let js3$1699 = sjcl.bitArray;
+  var j = js3$1699;
+  for (i = 1; 32 * k.length < (d || 1); i++) {
+    {
+      let js3$1700 = a.encrypt(j.concat(b, [i]));
+      let AssnRes$1701 = f = js3$1700;
+      let AssnRes$1702 = e = AssnRes$1701;
+      for (g = 1; g < c; g++) {
+        {
+          let js3$1703 = a.encrypt(f);
+          let AssnRes$1704 = f = js3$1703;
+          for (h = 0; h < f.length; h++) {
+            let js3$1706 = e[h];
+            let js3$1707 = f[h];
+            let js3$1705 = js3$1706 ^ js3$1707;
+            let AssnRes$1708 = e[h] = js3$1705;
+            ;
+          }
+        }
+      }
+      let js3$1709 = k.concat(e);
+      let AssnRes$1710 = k = js3$1709;
+    }
+  }
+  let ifTest$1711 = d;
+  if (ifTest$1711) {
+    let ifTrue$1712 = j.clamp(k, d);
+    let AssnRes$1713 = k = ifTrue$1712;
+    ;
+  }
+  let returnStmt$1714 = k;
+  return returnStmt$1714;
+};
+let noname$1747 = [function (a, b) {
+  let js3$1718 = [];
+  var c = js3$1718;
+  let js3$1719 = this.isReady(b);
+  let AssnRes$1720 = b = js3$1719;
+  var d;
+  let ifTest$1722 = b;
+  let ifTest$1723 = 0;
+  let ifTest$1721 = ifTest$1722 === ifTest$1723;
+  if (ifTest$1721) {
+    let ifTrue$1726 = sjcl.exception;
+    let ifTrue$1725 = ifTrue$1726.notready;
+    let ifTrue$1727 = "generator isn't seeded";
+    let ifTrue$1724 = new ifTrue$1725(ifTrue$1727);
+    throw ifTrue$1724;
+  } else {
+    let ifFalse$1730 = b;
+    let ifFalse$1731 = 2;
+    let ifFalse$1729 = ifFalse$1730 & ifFalse$1731;
+    let ifFalse$1732 = ifFalse$1729 ? this.U(!(b & 1)) : ifFalse$1729;
+    let ifFalse$1728 = ifFalse$1732;
+    ;
+  }
+  for (b = 0; b < a; b += 4) {
+    {
+      let js3$1737 = b;
+      let js3$1738 = 1;
+      let js3$1736 = js3$1737 + js3$1738;
+      let js3$1739 = 0x10000;
+      let js3$1735 = js3$1736 % js3$1739;
+      let js3$1740 = 0;
+      let js3$1734 = js3$1735 === js3$1740;
+      let js3$1741 = js3$1734 ? this.L() : js3$1734;
+      let js3$1733 = js3$1741;
+      let js3$1742 = this.u();
+      let AssnRes$1743 = d = js3$1742;
+      let js3$1744 = c.push(d[0], d[1], d[2], d[3]);
+    }
+  }
+  let js3$1745 = this.L();
+  let returnStmt$1746 = c.slice(0, a);
+  return returnStmt$1746;
+}][0];
+let noname$1749 = [function (a) {
+  let AssnRes$1748 = this.t = a;
+}][0];
+let noname$1831 = [function (a, b, c) {
+  let js3$1751 = c;
+  let js3$1752 = js3$1751 ? js3$1751 : "user";
+  let js3$1750 = js3$1752;
+  let AssnRes$1753 = c = js3$1750;
+  var d;
+  var e;
+  let js3$1756 = Date;
+  let js3$1755 = new js3$1756();
+  let js3$1754 = js3$1755.valueOf();
+  var f = js3$1754;
+  let js3$1758 = this.q;
+  let js3$1757 = js3$1758[c];
+  var g = js3$1757;
+  let js3$1759 = this.isReady();
+  var h = js3$1759;
+  let js3$1761 = this.F;
+  let js3$1760 = js3$1761[c];
+  let AssnRes$1762 = d = js3$1760;
+  let ifTest$1764 = d;
+  let ifTest$1765 = undefined;
+  let ifTest$1763 = ifTest$1764 === ifTest$1765;
+  if (ifTest$1763) {
+    let ifTrue$1766 = this.R++;
+    let ifTrue$1767 = this.F;
+    let AssnRes$1768 = ifTrue$1767[c] = ifTrue$1766;
+    let AssnRes$1769 = d = AssnRes$1768;
+    ;
+  }
+  let ifTest$1771 = g;
+  let ifTest$1772 = undefined;
+  let ifTest$1770 = ifTest$1771 === ifTest$1772;
+  if (ifTest$1770) {
+    let ifTrue$1773 = this.q;
+    let AssnRes$1774 = ifTrue$1773[c] = 0;
+    let AssnRes$1775 = g = AssnRes$1774;
+    ;
+  }
+  let js3$1779 = this.q;
+  let js3$1778 = js3$1779[c];
+  let js3$1780 = 1;
+  let js3$1777 = js3$1778 + js3$1780;
+  let js3$1782 = this.b;
+  let js3$1781 = js3$1782.length;
+  let js3$1776 = js3$1777 % js3$1781;
+  let js3$1783 = this.q;
+  let AssnRes$1784 = js3$1783[c] = js3$1776;
+  let js3$1785 = typeof a;
+  switch (js3$1785) {
+    case "number":
+      break;
+    case "object":
+      let ifTest$1787 = b;
+      let ifTest$1788 = undefined;
+      let ifTest$1786 = ifTest$1787 === ifTest$1788;
+      if (ifTest$1786) {
+        for (c = b = 0; c < a.length; c++) {
+          for (e = a[c]; e > 0;) {
+            {
+              let ifTrue$1789 = b++;
+              let ifTrue$1791 = e;
+              let ifTrue$1792 = 1;
+              let ifTrue$1790 = ifTrue$1791 >>> ifTrue$1792;
+              let AssnRes$1793 = e = ifTrue$1790;
+            }
+          }
+        }
+      }
+      let js3$1796 = this.b;
+      let js3$1795 = js3$1796[g];
+      let js3$1794 = js3$1795.update([d, this.J++, 2, b, f, a.length].concat(a));
+      ;
+      break;
+    case "string":
+      let ifTest$1798 = b;
+      let ifTest$1799 = undefined;
+      let ifTest$1797 = ifTest$1798 === ifTest$1799;
+      if (ifTest$1797) {
+        let ifTrue$1800 = a.length;
+        let AssnRes$1801 = b = ifTrue$1800;
+        ;
+      }
+      let js3$1804 = this.b;
+      let js3$1803 = js3$1804[g];
+      let js3$1802 = js3$1803.update([d, this.J++, 3, b, f, a.length]);
+      ;
+      let js3$1807 = this.b;
+      let js3$1806 = js3$1807[g];
+      let js3$1805 = js3$1806.update(a);
+      ;
+      break;
+    default:
+      let js3$1810 = sjcl.exception;
+      let js3$1809 = js3$1810.bug;
+      let js3$1811 = "random: addEntropy only supports number, array or string";
+      let js3$1808 = new js3$1809(js3$1811);
+      throw js3$1808;
+  }
+  let js3$1814 = this.j;
+  let js3$1813 = js3$1814[g];
+  let js3$1815 = b;
+  let js3$1812 = js3$1813 + js3$1815;
+  let js3$1816 = this.j;
+  let AssnRes$1817 = js3$1816[g] = js3$1812;
+  let js3$1819 = this.f;
+  let js3$1820 = b;
+  let js3$1818 = js3$1819 + js3$1820;
+  let AssnRes$1821 = this.f = js3$1818;
+  let ifTest$1823 = h;
+  let ifTest$1824 = 0;
+  let ifTest$1822 = ifTest$1823 === ifTest$1824;
+  if (ifTest$1822) {
+    let ifTrue$1827 = this.isReady();
+    let ifTrue$1828 = 0;
+    let ifTrue$1826 = ifTrue$1827 !== ifTrue$1828;
+    let ifTrue$1829 = ifTrue$1826 ? this.K("seeded", Math.max(this.g, this.f)) : ifTrue$1826;
+    let ifTrue$1825 = ifTrue$1829;
+    let ifTrue$1830 = this.K("progress", this.getProgress());
+  }
+}][0];
+let noname$1843 = [function (a) {
+  let js3$1833 = this.B;
+  let js3$1836 = a;
+  let js3$1837 = undefined;
+  let js3$1835 = js3$1836 !== js3$1837;
+  let js3$1834 = js3$1835 ? a : this.t;
+  let js3$1832 = js3$1833[js3$1834];
+  let AssnRes$1838 = a = js3$1832;
+  let returnStmt$1841 = this.g;
+  let returnStmt$1842 = returnStmt$1841 ? this.g >= a : returnStmt$1841;
+  let returnStmt$1840 = returnStmt$1842;
+  let returnStmt$1839 = returnStmt$1840 ? this.j[0] > 80 && new Date().valueOf() > this.O ? 3 : 1 : this.f >= a ? 2 : 0;
+  return returnStmt$1839;
+}][0];
+let noname$1853 = [function (a) {
+  let js3$1845 = this.B;
+  let js3$1847 = a;
+  let js3$1846 = js3$1847 ? a : this.t;
+  let js3$1844 = js3$1845[js3$1846];
+  let AssnRes$1848 = a = js3$1844;
+  let returnStmt$1851 = this.g;
+  let returnStmt$1852 = a;
+  let returnStmt$1850 = returnStmt$1851 >= returnStmt$1852;
+  let returnStmt$1849 = returnStmt$1850 ? 1["0"] : this.f > a ? 1["0"] : this.f / a;
+  return returnStmt$1849;
+}][0];
+let noname$1867 = [function () {
+  let ifTest$1855 = this.m;
+  let ifTest$1854 = !ifTest$1855;
+  if (ifTest$1854) {
+    let ifTest$1856 = window.addEventListener;
+    if (ifTest$1856) {
+      let ifTrue$1857 = window.addEventListener("load", this.o, false);
+      let ifTrue$1858 = window.addEventListener("mousemove", this.p, false);
+    } else {
+      let ifTest$1859 = document.attachEvent;
+      if (ifTest$1859) {
+        let ifTrue$1860 = document.attachEvent("onload", this.o);
+        let ifTrue$1861 = document.attachEvent("onmousemove", this.p);
+      } else {
+        let ifFalse$1864 = sjcl.exception;
+        let ifFalse$1863 = ifFalse$1864.bug;
+        let ifFalse$1865 = "can't attach event";
+        let ifFalse$1862 = new ifFalse$1863(ifFalse$1865);
+        throw ifFalse$1862;
+      }
+    }
+    let AssnRes$1866 = this.m = true;
+  }
+}][0];
+let noname$1876 = [function () {
+  let ifTest$1868 = this.m;
+  if (ifTest$1868) {
+    let ifTest$1869 = window.removeEventListener;
+    if (ifTest$1869) {
+      let ifTrue$1870 = window.removeEventListener("load", this.o);
+      let ifTrue$1871 = window.removeEventListener("mousemove", this.p);
+    } else {
+      let ifTest$1872 = window.detachEvent;
+      if (ifTest$1872) {
+        let ifTrue$1873 = window.detachEvent("onload", this.o);
+        let ifTrue$1874 = window.detachEvent("onmousemove", this.p);
+      }
+    }
+    let AssnRes$1875 = this.m = false;
+  }
+}][0];
+let noname$1881 = [function (a, b) {
+  let js3$1878 = this.r;
+  let js3$1877 = js3$1878[a];
+  let js3$1879 = this.Q++;
+  let AssnRes$1880 = js3$1877[js3$1879] = b;
+}][0];
+let noname$1896 = [function (a, b) {
+  var c;
+  let js3$1883 = this.r;
+  let js3$1882 = js3$1883[a];
+  let AssnRes$1884 = a = js3$1882;
+  let js3$1885 = [];
+  var d = js3$1885;
+  let js3$1886 = a;
+  for (c in js3$1886) {
+    let js3$1890 = a.hasOwnProperty;
+    let js3$1889 = js3$1890[c];
+    let js3$1891 = js3$1889 ? a[c] === b : js3$1889;
+    let js3$1888 = js3$1891;
+    let js3$1892 = js3$1888 ? d.push(c) : js3$1888;
+    let js3$1887 = js3$1892;
+    ;
+  }
+  for (b = 0; b < d.length; b++) {
+    {
+      let js3$1893 = d[b];
+      let AssnRes$1894 = c = js3$1893;
+      let js3$1895 = delete a[c];
+    }
+  }
+}][0];
+let js3$1900 = sjcl.hash;
+let js3$1899 = js3$1900.sha256;
+let js3$1898 = new js3$1899();
+let js3$1897 = [js3$1898];
+let js3$1901 = [0];
+let js3$1902 = {};
+let js3$1903 = {};
+let js3$1904 = [0, 0, 0, 0, 0, 0, 0, 0];
+let js3$1905 = [0, 0, 0, 0];
+let js3$1907 = {};
+let js3$1908 = {};
+let js3$1906 = {
+  progress: js3$1907,
+  seeded: js3$1908
+};
+let js3$1909 = [0, 48, 64, 96, 128, 192, 0x100, 384, 512, 768, 1024];
+let noname$1922 = [function () {
+  for (var a = 0; a < 4; a++) {
+    {
+      let js3$1913 = this.d;
+      let js3$1912 = js3$1913[a];
+      let js3$1914 = 1;
+      let js3$1911 = js3$1912 + js3$1914;
+      let js3$1915 = 0;
+      let js3$1910 = js3$1911 | js3$1915;
+      let js3$1916 = this.d;
+      let AssnRes$1917 = js3$1916[a] = js3$1910;
+      let ifTest$1919 = this.d;
+      let ifTest$1918 = ifTest$1919[a];
+      if (ifTest$1918) {
+        break;
+      }
+    }
+  }
+  let returnStmt$1921 = this.s;
+  let returnStmt$1920 = returnStmt$1921.encrypt(this.d);
+  return returnStmt$1920;
+}][0];
+let noname$1931 = [function () {
+  let js3$1924 = this.u();
+  let js3$1923 = js3$1924.concat(this.u());
+  let AssnRes$1925 = this.a = js3$1923;
+  let js3$1928 = sjcl.cipher;
+  let js3$1927 = js3$1928.aes;
+  let js3$1929 = this.a;
+  let js3$1926 = new js3$1927(js3$1929);
+  let AssnRes$1930 = this.s = js3$1926;
+}][0];
+let noname$1951 = [function (a) {
+  let js3$1934 = sjcl.hash;
+  let js3$1933 = js3$1934.sha256;
+  let js3$1932 = js3$1933.hash(this.a.concat(a));
+  let AssnRes$1935 = this.a = js3$1932;
+  let js3$1938 = sjcl.cipher;
+  let js3$1937 = js3$1938.aes;
+  let js3$1939 = this.a;
+  let js3$1936 = new js3$1937(js3$1939);
+  let AssnRes$1940 = this.s = js3$1936;
+  for (a = 0; a < 4; a++) {
+    {
+      let js3$1944 = this.d;
+      let js3$1943 = js3$1944[a];
+      let js3$1945 = 1;
+      let js3$1942 = js3$1943 + js3$1945;
+      let js3$1946 = 0;
+      let js3$1941 = js3$1942 | js3$1946;
+      let js3$1947 = this.d;
+      let AssnRes$1948 = js3$1947[a] = js3$1941;
+      let ifTest$1950 = this.d;
+      let ifTest$1949 = ifTest$1950[a];
+      if (ifTest$1949) {
+        break;
+      }
+    }
+  }
+}][0];
+let noname$1994 = [function (a) {
+  let js3$1952 = [];
+  var b = js3$1952;
+  var c = 0;
+  var d;
+  let js3$1956 = Date;
+  let js3$1955 = new js3$1956();
+  let js3$1954 = js3$1955.valueOf();
+  let js3$1957 = 3e4;
+  let js3$1953 = js3$1954 + js3$1957;
+  let js3$1958 = 0;
+  let AssnRes$1959 = b[js3$1958] = js3$1953;
+  let AssnRes$1960 = this.O = AssnRes$1959;
+  for (d = 0; d < 16; d++) {
+    let js3$1961 = b.push(Math.random() * 0x100000000 | 0);
+    ;
+  }
+  for (d = 0; d < this.b.length; d++) {
+    {
+      let js3$1962 = b.concat(this.b[d].finalize());
+      let AssnRes$1963 = b = js3$1962;
+      let js3$1965 = c;
+      let js3$1967 = this.j;
+      let js3$1966 = js3$1967[d];
+      let js3$1964 = js3$1965 + js3$1966;
+      let AssnRes$1968 = c = js3$1964;
+      let js3$1969 = this.j;
+      let AssnRes$1970 = js3$1969[d] = 0;
+      let ifTest$1972 = !a;
+      let ifTest$1973 = ifTest$1972 ? this.z & 1 << d : ifTest$1972;
+      let ifTest$1971 = ifTest$1973;
+      if (ifTest$1971) {
+        break;
+      }
+    }
+  }
+  let ifTest$1975 = this.z;
+  let ifTest$1977 = 1;
+  let ifTest$1979 = this.b;
+  let ifTest$1978 = ifTest$1979.length;
+  let ifTest$1976 = ifTest$1977 << ifTest$1978;
+  let ifTest$1974 = ifTest$1975 >= ifTest$1976;
+  if (ifTest$1974) {
+    let ifTrue$1981 = this.b;
+    let ifTrue$1980 = ifTrue$1981.push(new sjcl.hash.sha256());
+    let ifTrue$1983 = this.j;
+    let ifTrue$1982 = ifTrue$1983.push(0);
+  }
+  let js3$1985 = this.f;
+  let js3$1986 = c;
+  let js3$1984 = js3$1985 - js3$1986;
+  let AssnRes$1987 = this.f = js3$1984;
+  let ifTest$1989 = c;
+  let ifTest$1990 = this.g;
+  let ifTest$1988 = ifTest$1989 > ifTest$1990;
+  if (ifTest$1988) {
+    let AssnRes$1991 = this.g = c;
+    ;
+  }
+  let js3$1992 = this.z++;
+  let js3$1993 = this.T(b);
+}][0];
+let noname$1997 = [function (a) {
+  let js3$1996 = sjcl.random;
+  let js3$1995 = js3$1996.addEntropy([a.x || a.clientX || a.offsetX, a.y || a.clientY || a.offsetY], 2, "mouse");
+}][0];
+let noname$2000 = [function () {
+  let js3$1999 = sjcl.random;
+  let js3$1998 = js3$1999.addEntropy(new Date(), 2, "loadtime");
+}][0];
+let noname$2011 = [function (a, b) {
+  var c;
+  let js3$2003 = sjcl.random;
+  let js3$2002 = js3$2003.r;
+  let js3$2001 = js3$2002[a];
+  let AssnRes$2004 = a = js3$2001;
+  let js3$2005 = [];
+  var d = js3$2005;
+  let js3$2006 = a;
+  for (c in js3$2006) {
+    let js3$2008 = a.hasOwnProperty(c);
+    let js3$2009 = js3$2008 ? d.push(a[c]) : js3$2008;
+    let js3$2007 = js3$2009;
+    ;
+  }
+  for (c = 0; c < d.length; c++) {
+    let js3$2010 = d[c](b);
+    ;
+  }
+}][0];
+let js3$1717 = {
+  randomWords: noname$1747,
+  setDefaultParanoia: noname$1749,
+  addEntropy: noname$1831,
+  isReady: noname$1843,
+  getProgress: noname$1853,
+  startCollectors: noname$1867,
+  stopCollectors: noname$1876,
+  addEventListener: noname$1881,
+  removeEventListener: noname$1896,
+  b: js3$1897,
+  j: js3$1901,
+  z: 0,
+  q: js3$1902,
+  J: 0,
+  F: js3$1903,
+  R: 0,
+  g: 0,
+  f: 0,
+  O: 0,
+  a: js3$1904,
+  d: js3$1905,
+  s: undefined,
+  t: 6,
+  m: false,
+  r: js3$1906,
+  Q: 0,
+  B: js3$1909,
+  u: noname$1922,
+  L: noname$1931,
+  T: noname$1951,
+  U: noname$1994,
+  p: noname$1997,
+  o: noname$2000,
+  K: noname$2011
+};
+let AssnRes$2012 = sjcl.random = js3$1717;
+let js3$2014 = {
+  v: 1,
+  iter: 1e3,
+  ks: 128,
+  ts: 64,
+  mode: "ccm",
+  adata: "",
+  cipher: "aes"
+};
+let noname$2094 = [function (a, b, c, d) {
+  let js3$2016 = c;
+  let js3$2017 = js3$2016 ? js3$2016 : {};
+  let js3$2015 = js3$2017;
+  let AssnRes$2018 = c = js3$2015;
+  let js3$2020 = d;
+  let js3$2021 = js3$2020 ? js3$2020 : {};
+  let js3$2019 = js3$2021;
+  let AssnRes$2022 = d = js3$2019;
+  let js3$2023 = sjcl.json;
+  var e = js3$2023;
+  let js3$2024 = e.c({
+    iv: sjcl.random.randomWords(4, 0)
+  }, e.defaults);
+  var f = js3$2024;
+  let js3$2025 = e.c(f, c);
+  let ifTest$2028 = f.salt;
+  let ifTest$2027 = typeof ifTest$2028;
+  let ifTest$2029 = "string";
+  let ifTest$2026 = ifTest$2027 === ifTest$2029;
+  if (ifTest$2026) {
+    let ifTrue$2032 = sjcl.codec;
+    let ifTrue$2031 = ifTrue$2032.base64;
+    let ifTrue$2030 = ifTrue$2031.toBits(f.salt);
+    let AssnRes$2033 = f.salt = ifTrue$2030;
+    ;
+  }
+  let ifTest$2036 = f.iv;
+  let ifTest$2035 = typeof ifTest$2036;
+  let ifTest$2037 = "string";
+  let ifTest$2034 = ifTest$2035 === ifTest$2037;
+  if (ifTest$2034) {
+    let ifTrue$2040 = sjcl.codec;
+    let ifTrue$2039 = ifTrue$2040.base64;
+    let ifTrue$2038 = ifTrue$2039.toBits(f.iv);
+    let AssnRes$2041 = f.iv = ifTrue$2038;
+    ;
+  }
+  let ifTest$2050 = sjcl.mode;
+  let ifTest$2051 = f.mode;
+  let ifTest$2049 = ifTest$2050[ifTest$2051];
+  let ifTest$2048 = !ifTest$2049;
+  let ifTest$2052 = ifTest$2048 ? ifTest$2048 : !sjcl.cipher[f.cipher];
+  let ifTest$2047 = ifTest$2052;
+  let ifTest$2053 = ifTest$2047 ? ifTest$2047 : (typeof a === "string" && f.iter <= 100);
+  let ifTest$2046 = ifTest$2053;
+  let ifTest$2054 = ifTest$2046 ? ifTest$2046 : (f.ts !== 64 && f.ts !== 96 && f.ts !== 128);
+  let ifTest$2045 = ifTest$2054;
+  let ifTest$2055 = ifTest$2045 ? ifTest$2045 : (f.ks !== 128 && f.ks !== 192 && f.ks !== 0x100);
+  let ifTest$2044 = ifTest$2055;
+  let ifTest$2056 = ifTest$2044 ? ifTest$2044 : f.iv.length < 2;
+  let ifTest$2043 = ifTest$2056;
+  let ifTest$2057 = ifTest$2043 ? ifTest$2043 : f.iv.length > 4;
+  let ifTest$2042 = ifTest$2057;
+  if (ifTest$2042) {
+    let ifTrue$2060 = sjcl.exception;
+    let ifTrue$2059 = ifTrue$2060.invalid;
+    let ifTrue$2061 = "json encrypt: invalid parameters";
+    let ifTrue$2058 = new ifTrue$2059(ifTrue$2061);
+    throw ifTrue$2058;
+  }
+  let ifTest$2063 = typeof a;
+  let ifTest$2064 = "string";
+  let ifTest$2062 = ifTest$2063 === ifTest$2064;
+  if (ifTest$2062) {
+    let ifTrue$2066 = sjcl.misc;
+    let ifTrue$2065 = ifTrue$2066.cachedPbkdf2(a, f);
+    let AssnRes$2067 = c = ifTrue$2065;
+    let ifTrue$2069 = c.key;
+    let ifTrue$2068 = ifTrue$2069.slice(0, f.ks / 32);
+    let AssnRes$2070 = a = ifTrue$2068;
+    let ifTrue$2071 = c.salt;
+    let AssnRes$2072 = f.salt = ifTrue$2071;
+  }
+  let ifTest$2074 = typeof b;
+  let ifTest$2075 = "string";
+  let ifTest$2073 = ifTest$2074 === ifTest$2075;
+  if (ifTest$2073) {
+    let ifTrue$2078 = sjcl.codec;
+    let ifTrue$2077 = ifTrue$2078.utf8String;
+    let ifTrue$2076 = ifTrue$2077.toBits(b);
+    let AssnRes$2079 = b = ifTrue$2076;
+    ;
+  }
+  let js3$2082 = sjcl.cipher;
+  let js3$2083 = f.cipher;
+  let js3$2081 = js3$2082[js3$2083];
+  let js3$2084 = a;
+  let js3$2080 = new js3$2081(js3$2084);
+  let AssnRes$2085 = c = js3$2080;
+  let js3$2086 = e.c(d, f);
+  let AssnRes$2087 = d.key = a;
+  let js3$2090 = sjcl.mode;
+  let js3$2091 = f.mode;
+  let js3$2089 = js3$2090[js3$2091];
+  let js3$2088 = js3$2089.encrypt(c, b, f.iv, f.adata, f.tag);
+  let AssnRes$2092 = f.ct = js3$2088;
+  let returnStmt$2093 = e.encode(e.V(f, e.defaults));
+  return returnStmt$2093;
+}][0];
+let noname$2171 = [function (a, b, c, d) {
+  let js3$2096 = c;
+  let js3$2097 = js3$2096 ? js3$2096 : {};
+  let js3$2095 = js3$2097;
+  let AssnRes$2098 = c = js3$2095;
+  let js3$2100 = d;
+  let js3$2101 = js3$2100 ? js3$2100 : {};
+  let js3$2099 = js3$2101;
+  let AssnRes$2102 = d = js3$2099;
+  let js3$2103 = sjcl.json;
+  var e = js3$2103;
+  let js3$2104 = e.c(e.c(e.c({}, e.defaults), e.decode(b)), c, true);
+  let AssnRes$2105 = b = js3$2104;
+  let ifTest$2108 = b.salt;
+  let ifTest$2107 = typeof ifTest$2108;
+  let ifTest$2109 = "string";
+  let ifTest$2106 = ifTest$2107 === ifTest$2109;
+  if (ifTest$2106) {
+    let ifTrue$2112 = sjcl.codec;
+    let ifTrue$2111 = ifTrue$2112.base64;
+    let ifTrue$2110 = ifTrue$2111.toBits(b.salt);
+    let AssnRes$2113 = b.salt = ifTrue$2110;
+    ;
+  }
+  let ifTest$2116 = b.iv;
+  let ifTest$2115 = typeof ifTest$2116;
+  let ifTest$2117 = "string";
+  let ifTest$2114 = ifTest$2115 === ifTest$2117;
+  if (ifTest$2114) {
+    let ifTrue$2120 = sjcl.codec;
+    let ifTrue$2119 = ifTrue$2120.base64;
+    let ifTrue$2118 = ifTrue$2119.toBits(b.iv);
+    let AssnRes$2121 = b.iv = ifTrue$2118;
+    ;
+  }
+  let ifTest$2131 = sjcl.mode;
+  let ifTest$2132 = b.mode;
+  let ifTest$2130 = ifTest$2131[ifTest$2132];
+  let ifTest$2129 = !ifTest$2130;
+  let ifTest$2133 = ifTest$2129 ? ifTest$2129 : !sjcl.cipher[b.cipher];
+  let ifTest$2128 = ifTest$2133;
+  let ifTest$2134 = ifTest$2128 ? ifTest$2128 : (typeof a === "string" && b.iter <= 100);
+  let ifTest$2127 = ifTest$2134;
+  let ifTest$2135 = ifTest$2127 ? ifTest$2127 : (b.ts !== 64 && b.ts !== 96 && b.ts !== 128);
+  let ifTest$2126 = ifTest$2135;
+  let ifTest$2136 = ifTest$2126 ? ifTest$2126 : (b.ks !== 128 && b.ks !== 192 && b.ks !== 0x100);
+  let ifTest$2125 = ifTest$2136;
+  let ifTest$2137 = ifTest$2125 ? ifTest$2125 : !b.iv;
+  let ifTest$2124 = ifTest$2137;
+  let ifTest$2138 = ifTest$2124 ? ifTest$2124 : b.iv.length < 2;
+  let ifTest$2123 = ifTest$2138;
+  let ifTest$2139 = ifTest$2123 ? ifTest$2123 : b.iv.length > 4;
+  let ifTest$2122 = ifTest$2139;
+  if (ifTest$2122) {
+    let ifTrue$2142 = sjcl.exception;
+    let ifTrue$2141 = ifTrue$2142.invalid;
+    let ifTrue$2143 = "json decrypt: invalid parameters";
+    let ifTrue$2140 = new ifTrue$2141(ifTrue$2143);
+    throw ifTrue$2140;
+  }
+  let ifTest$2145 = typeof a;
+  let ifTest$2146 = "string";
+  let ifTest$2144 = ifTest$2145 === ifTest$2146;
+  if (ifTest$2144) {
+    let ifTrue$2148 = sjcl.misc;
+    let ifTrue$2147 = ifTrue$2148.cachedPbkdf2(a, b);
+    let AssnRes$2149 = c = ifTrue$2147;
+    let ifTrue$2151 = c.key;
+    let ifTrue$2150 = ifTrue$2151.slice(0, b.ks / 32);
+    let AssnRes$2152 = a = ifTrue$2150;
+    let ifTrue$2153 = c.salt;
+    let AssnRes$2154 = b.salt = ifTrue$2153;
+  }
+  let js3$2157 = sjcl.cipher;
+  let js3$2158 = b.cipher;
+  let js3$2156 = js3$2157[js3$2158];
+  let js3$2159 = a;
+  let js3$2155 = new js3$2156(js3$2159);
+  let AssnRes$2160 = c = js3$2155;
+  let js3$2163 = sjcl.mode;
+  let js3$2164 = b.mode;
+  let js3$2162 = js3$2163[js3$2164];
+  let js3$2161 = js3$2162.decrypt(c, b.ct, b.iv, b.adata, b.tag);
+  let AssnRes$2165 = c = js3$2161;
+  let js3$2166 = e.c(d, b);
+  let AssnRes$2167 = d.key = a;
+  let returnStmt$2170 = sjcl.codec;
+  let returnStmt$2169 = returnStmt$2170.utf8String;
+  let returnStmt$2168 = returnStmt$2169.fromBits(c);
+  return returnStmt$2168;
+}][0];
+let noname$2221 = [function (a) {
+  var b;
+  var c = "{";
+  var d = "";
+  let js3$2172 = a;
+  for (b in js3$2172) {
+    let ifTest$2173 = a.hasOwnProperty(b);
+    if (ifTest$2173) {
+      let ifTest$2175 = b.match(/^[a-z0-9]+$/i);
+      let ifTest$2174 = !ifTest$2175;
+      if (ifTest$2174) {
+        let ifTrue$2178 = sjcl.exception;
+        let ifTrue$2177 = ifTrue$2178.invalid;
+        let ifTrue$2179 = "json encode: invalid property name";
+        let ifTrue$2176 = new ifTrue$2177(ifTrue$2179);
+        throw ifTrue$2176;
+      }
+      let ifTrue$2181 = c;
+      let ifTrue$2184 = d;
+      let ifTrue$2185 = b;
+      let ifTrue$2183 = ifTrue$2184 + ifTrue$2185;
+      let ifTrue$2186 = ":";
+      let ifTrue$2182 = ifTrue$2183 + ifTrue$2186;
+      let ifTrue$2180 = ifTrue$2181 + ifTrue$2182;
+      let AssnRes$2187 = c = ifTrue$2180;
+      let AssnRes$2188 = d = ",";
+      let ifTrue$2190 = a[b];
+      let ifTrue$2189 = typeof ifTrue$2190;
+      switch (ifTrue$2189) {
+        case "number":
+        case "boolean":
+          let ifTrue$2192 = c;
+          let ifTrue$2193 = a[b];
+          let ifTrue$2191 = ifTrue$2192 + ifTrue$2193;
+          let AssnRes$2194 = c = ifTrue$2191;
+          ;
+          break;
+        case "string":
+          let ifTrue$2196 = c;
+          let ifTrue$2199 = '"';
+          let ifTrue$2201 = a[b];
+          let ifTrue$2200 = escape(ifTrue$2201);
+          let ifTrue$2198 = ifTrue$2199 + ifTrue$2200;
+          let ifTrue$2202 = '"';
+          let ifTrue$2197 = ifTrue$2198 + ifTrue$2202;
+          let ifTrue$2195 = ifTrue$2196 + ifTrue$2197;
+          let AssnRes$2203 = c = ifTrue$2195;
+          ;
+          break;
+        case "object":
+          let ifTrue$2205 = c;
+          let ifTrue$2208 = '"';
+          let ifTrue$2211 = sjcl.codec;
+          let ifTrue$2210 = ifTrue$2211.base64;
+          let ifTrue$2209 = ifTrue$2210.fromBits(a[b], 1);
+          let ifTrue$2207 = ifTrue$2208 + ifTrue$2209;
+          let ifTrue$2212 = '"';
+          let ifTrue$2206 = ifTrue$2207 + ifTrue$2212;
+          let ifTrue$2204 = ifTrue$2205 + ifTrue$2206;
+          let AssnRes$2213 = c = ifTrue$2204;
+          ;
+          break;
+        default:
+          let ifTrue$2216 = sjcl.exception;
+          let ifTrue$2215 = ifTrue$2216.bug;
+          let ifTrue$2217 = "json encode: unsupported type";
+          let ifTrue$2214 = new ifTrue$2215(ifTrue$2217);
+          throw ifTrue$2214;
+      }
+    }
+  }
+  let returnStmt$2219 = c;
+  let returnStmt$2220 = "}";
+  let returnStmt$2218 = returnStmt$2219 + returnStmt$2220;
+  return returnStmt$2218;
+}][0];
+let noname$2249 = [function (a) {
+  let js3$2222 = a.replace(/\s/g, "");
+  let AssnRes$2223 = a = js3$2222;
+  let ifTest$2225 = a.match(/^\{.*\}$/);
+  let ifTest$2224 = !ifTest$2225;
+  if (ifTest$2224) {
+    let ifTrue$2228 = sjcl.exception;
+    let ifTrue$2227 = ifTrue$2228.invalid;
+    let ifTrue$2229 = "json decode: this isn't json!";
+    let ifTrue$2226 = new ifTrue$2227(ifTrue$2229);
+    throw ifTrue$2226;
+  }
+  let js3$2231 = a.replace(/^\{|\}$/g, "");
+  let js3$2230 = js3$2231.split(/,/);
+  let AssnRes$2232 = a = js3$2230;
+  let js3$2233 = {};
+  var b = js3$2233;
+  var c;
+  var d;
+  for (c = 0; c < a.length; c++) {
+    {
+      let ifTest$2236 = a[c];
+      let ifTest$2235 = ifTest$2236.match(/^([a-z][a-z0-9]*):(?:(\d+)|"([a-z0-9+\/%*_.@=\-]*)")$/i);
+      let AssnRes$2237 = d = ifTest$2235;
+      let ifTest$2234 = !AssnRes$2237;
+      if (ifTest$2234) {
+        let ifTrue$2240 = sjcl.exception;
+        let ifTrue$2239 = ifTrue$2240.invalid;
+        let ifTrue$2241 = "json decode: this isn't json!";
+        let ifTrue$2238 = new ifTrue$2239(ifTrue$2241);
+        throw ifTrue$2238;
+      }
+      let js3$2244 = 2;
+      let js3$2243 = d[js3$2244];
+      let js3$2242 = js3$2243 ? parseInt(d[2], 10) : d[1].match(/^(ct|salt|iv)$/) ? sjcl.codec.base64.toBits(d[3]) : unescape(d[3]);
+      let js3$2246 = 1;
+      let js3$2245 = d[js3$2246];
+      let AssnRes$2247 = b[js3$2245] = js3$2242;
+    }
+  }
+  let returnStmt$2248 = b;
+  return returnStmt$2248;
+}][0];
+let noname$2273 = [function (a, b, c) {
+  let ifTest$2251 = a;
+  let ifTest$2252 = undefined;
+  let ifTest$2250 = ifTest$2251 === ifTest$2252;
+  if (ifTest$2250) {
+    let ifTrue$2253 = {};
+    let AssnRes$2254 = a = ifTrue$2253;
+    ;
+  }
+  let ifTest$2256 = b;
+  let ifTest$2257 = undefined;
+  let ifTest$2255 = ifTest$2256 === ifTest$2257;
+  if (ifTest$2255) {
+    let returnStmt$2258 = a;
+    return returnStmt$2258;
+  }
+  var d;
+  let js3$2259 = b;
+  for (d in js3$2259) {
+    let ifTest$2260 = b.hasOwnProperty(d);
+    if (ifTest$2260) {
+      let ifTest$2263 = c;
+      let ifTest$2264 = ifTest$2263 ? a[d] !== undefined : ifTest$2263;
+      let ifTest$2262 = ifTest$2264;
+      let ifTest$2265 = ifTest$2262 ? a[d] !== b[d] : ifTest$2262;
+      let ifTest$2261 = ifTest$2265;
+      if (ifTest$2261) {
+        let ifTrue$2268 = sjcl.exception;
+        let ifTrue$2267 = ifTrue$2268.invalid;
+        let ifTrue$2269 = "required parameter overridden";
+        let ifTrue$2266 = new ifTrue$2267(ifTrue$2269);
+        throw ifTrue$2266;
+      }
+      let ifTrue$2270 = b[d];
+      let AssnRes$2271 = a[d] = ifTrue$2270;
+    }
+  }
+  let returnStmt$2272 = a;
+  return returnStmt$2272;
+}][0];
+let noname$2282 = [function (a, b) {
+  let js3$2274 = {};
+  var c = js3$2274;
+  var d;
+  let js3$2275 = a;
+  for (d in js3$2275) {
+    let ifTest$2277 = a.hasOwnProperty(d);
+    let ifTest$2278 = ifTest$2277 ? a[d] !== b[d] : ifTest$2277;
+    let ifTest$2276 = ifTest$2278;
+    if (ifTest$2276) {
+      let ifTrue$2279 = a[d];
+      let AssnRes$2280 = c[d] = ifTrue$2279;
+      ;
+    }
+  }
+  let returnStmt$2281 = c;
+  return returnStmt$2281;
+}][0];
+let noname$2293 = [function (a, b) {
+  let js3$2283 = {};
+  var c = js3$2283;
+  var d;
+  for (d = 0; d < b.length; d++) {
+    let ifTest$2286 = b[d];
+    let ifTest$2285 = a[ifTest$2286];
+    let ifTest$2287 = undefined;
+    let ifTest$2284 = ifTest$2285 !== ifTest$2287;
+    if (ifTest$2284) {
+      let ifTrue$2289 = b[d];
+      let ifTrue$2288 = a[ifTrue$2289];
+      let ifTrue$2290 = b[d];
+      let AssnRes$2291 = c[ifTrue$2290] = ifTrue$2288;
+      ;
+    }
+  }
+  let returnStmt$2292 = c;
+  return returnStmt$2292;
+}][0];
+let js3$2013 = {
+  defaults: js3$2014,
+  encrypt: noname$2094,
+  decrypt: noname$2171,
+  encode: noname$2221,
+  decode: noname$2249,
+  c: noname$2273,
+  V: noname$2282,
+  W: noname$2293
+};
+let AssnRes$2294 = sjcl.json = js3$2013;
+let js3$2296 = sjcl.json;
+let js3$2295 = js3$2296.encrypt;
+let AssnRes$2297 = sjcl.encrypt = js3$2295;
+let js3$2299 = sjcl.json;
+let js3$2298 = js3$2299.decrypt;
+let AssnRes$2300 = sjcl.decrypt = js3$2298;
+let js3$2301 = {};
+let js3$2302 = sjcl.misc;
+let AssnRes$2303 = js3$2302.S = js3$2301;
+let js3$2337 = sjcl.misc;
+let AssnRes$2338 = js3$2337.cachedPbkdf2 = function (a, b) {
+  let js3$2305 = sjcl.misc;
+  let js3$2304 = js3$2305.S;
+  var c = js3$2304;
+  var d;
+  let js3$2307 = b;
+  let js3$2308 = js3$2307 ? js3$2307 : {};
+  let js3$2306 = js3$2308;
+  let AssnRes$2309 = b = js3$2306;
+  let js3$2311 = b.iter;
+  let js3$2312 = js3$2311 ? js3$2311 : 1e3;
+  let js3$2310 = js3$2312;
+  let AssnRes$2313 = d = js3$2310;
+  let js3$2315 = c[a];
+  let js3$2316 = js3$2315 ? js3$2315 : {};
+  let js3$2314 = js3$2316;
+  let AssnRes$2317 = c[a] = js3$2314;
+  let AssnRes$2318 = c = AssnRes$2317;
+  let js3$2320 = c[d];
+  let js3$2321 = js3$2320 ? js3$2320 : {
+    firstSalt: b.salt && b.salt.length ? b.salt.slice(0) : sjcl.random.randomWords(2, 0)
+  };
+  let js3$2319 = js3$2321;
+  let AssnRes$2322 = c[d] = js3$2319;
+  let AssnRes$2323 = d = AssnRes$2322;
+  let js3$2326 = b.salt;
+  let js3$2327 = undefined;
+  let js3$2325 = js3$2326 === js3$2327;
+  let js3$2324 = js3$2325 ? d.firstSalt : b.salt;
+  let AssnRes$2328 = c = js3$2324;
+  let js3$2330 = d[c];
+  let js3$2331 = js3$2330 ? js3$2330 : sjcl.misc.pbkdf2(a, c, b.iter);
+  let js3$2329 = js3$2331;
+  let AssnRes$2332 = d[c] = js3$2329;
+  let returnStmt$2335 = d[c];
+  let returnStmt$2334 = returnStmt$2335.slice(0);
+  let returnStmt$2336 = c.slice(0);
+  let returnStmt$2333 = {
+    key: returnStmt$2334,
+    salt: returnStmt$2336
+  };
+  return returnStmt$2333;
+};
+let noname$2341 = [function (cb) {
+  let js3$2340 = cb();
+}][0];
+let noname$2357 = [function (f, start, end, pause, callback) {
+  function go() {
+    var called = false;
+    let ifTest$2343 = start;
+    let ifTest$2344 = end;
+    let ifTest$2342 = ifTest$2343 >= ifTest$2344;
+    if (ifTest$2342) {
+      let ifTrue$2346 = callback;
+      let ifTrue$2347 = ifTrue$2346 ? callback() : ifTrue$2346;
+      let ifTrue$2345 = ifTrue$2347;
+    } else {
+      let ifFalse$2349 = start;
+      let noname$2354 = [function () {
+        let ifTest$2350 = !called;
+        if (ifTest$2350) {
+          let AssnRes$2351 = called = true;
+          let ifTrue$2352 = start++;
+          let ifTrue$2353 = go();
+        }
+      }][0];
+      let ifFalse$2348 = f(ifFalse$2349, noname$2354);
+    }
+  }
+  let js3$2356 = start;
+  let js3$2355 = go(js3$2356);
+}][0];
+let noname$2359 = [function (map, list, pause, callback) {
+  let js3$2358 = browserUtil.cpsIterate(function (i, cb) {
+    map(list[i], i, list.length, cb);
+  }, 0, list.length, pause, callback);
+}][0];
+let noname$2365 = [function (scriptNames, callback) {
+  for (i = 0; i < scriptNames.length; i++) {
+    {
+      let js3$2361 = scriptNames[i];
+      let js3$2360 = load(js3$2361);
+      let js3$2363 = callback;
+      let js3$2364 = js3$2363 ? callback() : js3$2363;
+      let js3$2362 = js3$2364;
+    }
+  }
+}][0];
+let noname$2388 = [function (type, message) {
+  let js3$2367 = message;
+  let js3$2366 = print(js3$2367);
+  let noname$2387 = [function (type2, message2) {
+    let ifTest$2370 = type2;
+    let ifTest$2371 = "pass";
+    let ifTest$2369 = ifTest$2370 === ifTest$2371;
+    if (ifTest$2369) {
+      let ifTrue$2374 = "  + ";
+      let ifTrue$2375 = message2;
+      let ifTrue$2373 = ifTrue$2374 + ifTrue$2375;
+      let ifTrue$2372 = print(ifTrue$2373);
+    } else {
+      let ifTest$2377 = type2;
+      let ifTest$2378 = "unimplemented";
+      let ifTest$2376 = ifTest$2377 === ifTest$2378;
+      if (ifTest$2376) {
+        let ifTrue$2381 = "  ? ";
+        let ifTrue$2382 = message2;
+        let ifTrue$2380 = ifTrue$2381 + ifTrue$2382;
+        let ifTrue$2379 = print(ifTrue$2380);
+      } else {
+        let ifFalse$2385 = "  - ";
+        let ifFalse$2386 = message2;
+        let ifFalse$2384 = ifFalse$2385 + ifFalse$2386;
+        let ifFalse$2383 = print(ifFalse$2384);
+      }
+    }
+  }][0];
+  let returnStmt$2368 = {
+    update: noname$2387
+  };
+  return returnStmt$2368;
+}][0];
+let noname$2391 = [function () {
+  let js3$2390 = "";
+  let js3$2389 = print(js3$2390);
+}][0];
+let noname$2392 = [function (message) {}][0];
+let js3$2339 = {
+  isRhino: true,
+  pauseAndThen: noname$2341,
+  cpsIterate: noname$2357,
+  cpsMap: noname$2359,
+  loadScripts: noname$2365,
+  write: noname$2388,
+  writeNewline: noname$2391,
+  status: noname$2392
+};
+var browserUtil = js3$2339;
+let js3$2394 = {};
+let js3$2395 = {};
+let js3$2393 = {
+  vector: js3$2394,
+  all: js3$2395
+};
+let AssnRes$2396 = sjcl.test = js3$2393;
+let ifTest$2399 = browserUtil.allPassed;
+let ifTest$2398 = typeof ifTest$2399;
+let ifTest$2400 = "undefined";
+let ifTest$2397 = ifTest$2398 === ifTest$2400;
+if (ifTest$2397) {
+  let AssnRes$2401 = browserUtil.allPassed = true;
+}
+let js3$2411 = sjcl.test;
+let AssnRes$2412 = js3$2411.TestCase = function (name, doRun) {
+  let AssnRes$2402 = this.doRun = doRun;
+  let AssnRes$2403 = this.name = name;
+  let AssnRes$2404 = this.passes = 0;
+  let AssnRes$2405 = this.failures = 0;
+  let AssnRes$2406 = this.isUnimplemented = false;
+  let js3$2407 = this;
+  let js3$2409 = sjcl.test;
+  let js3$2408 = js3$2409.all;
+  let AssnRes$2410 = js3$2408[name] = js3$2407;
+};
+let noname$2415 = [function () {
+  let js3$2414 = this.passes++;
+}][0];
+let noname$2423 = [function (message) {
+  let ifTest$2417 = message;
+  let ifTest$2418 = undefined;
+  let ifTest$2416 = ifTest$2417 !== ifTest$2418;
+  if (ifTest$2416) {
+    let ifTrue$2419 = this.log("fail", "*** FAIL *** " + this.name + ": " + message);
+  } else {
+    let ifFalse$2420 = this.log("fail", "*** FAIL *** " + this.name);
+  }
+  let js3$2421 = this.failures++;
+  let AssnRes$2422 = browserUtil.allPassed = false;
+}][0];
+let noname$2425 = [function () {
+  let AssnRes$2424 = this.isUnimplemented = true;
+}][0];
+let js3$2426 = browserUtil.write;
+let noname$2434 = [function (bool, message) {
+  let ifTest$2427 = bool;
+  if (ifTest$2427) {
+    let ifTrue$2428 = this.pass();
+  } else {
+    let ifTest$2430 = message;
+    let ifTest$2431 = undefined;
+    let ifTest$2429 = ifTest$2430 !== ifTest$2431;
+    if (ifTest$2429) {
+      let ifTrue$2432 = this.fail(message);
+    } else {
+      let ifFalse$2433 = this.fail("requirement failed");
+    }
+  }
+}][0];
+let js3$2435 = browserUtil.pauseAndThen;
+let js3$2436 = browserUtil.cpsIterate;
+let js3$2437 = browserUtil.cpsMap;
+let noname$2455 = [function (repo) {
+  let js3$2441 = Date;
+  let js3$2440 = new js3$2441();
+  let js3$2439 = js3$2440.valueOf();
+  let js3$2442 = this.startTime;
+  let js3$2438 = js3$2439 - js3$2442;
+  var t = js3$2438;
+  let ifTest$2444 = this.failures;
+  let ifTest$2445 = 0;
+  let ifTest$2443 = ifTest$2444 !== ifTest$2445;
+  if (ifTest$2443) {
+    let ifTrue$2446 = repo.update("fail", "failed " + this.failures + " / " + (this.passes + this.failures) + " tests. (" + t + " ms)");
+  } else {
+    let ifTest$2448 = this.passes;
+    let ifTest$2449 = 1;
+    let ifTest$2447 = ifTest$2448 === ifTest$2449;
+    if (ifTest$2447) {
+      let ifTrue$2450 = repo.update("pass", "passed. (" + t + " ms)");
+    } else {
+      let ifTest$2451 = this.isUnimplemented;
+      if (ifTest$2451) {
+        let ifTrue$2452 = repo.update("unimplemented", "unimplemented");
+      } else {
+        let ifFalse$2453 = repo.update("pass", "passed all " + this.passes + " tests. (" + t + " ms)");
+      }
+    }
+  }
+  let js3$2454 = browserUtil.writeNewline();
+}][0];
+let noname$2462 = [function (ntests, i, cb) {
+  let js3$2456 = this;
+  var thiz = js3$2456;
+  let js3$2459 = Date;
+  let js3$2458 = new js3$2459();
+  let js3$2457 = js3$2458.valueOf();
+  let AssnRes$2460 = this.startTime = js3$2457;
+  let js3$2461 = this.pauseAndThen(function () {
+    thiz.doRun(function () {
+      cb && cb();
+    });
+  });
+}][0];
+let js3$2413 = {
+  pass: noname$2415,
+  fail: noname$2423,
+  unimplemented: noname$2425,
+  log: js3$2426,
+  require: noname$2434,
+  pauseAndThen: js3$2435,
+  cpsIterate: js3$2436,
+  cpsMap: js3$2437,
+  report: noname$2455,
+  run: noname$2462
+};
+let js3$2464 = sjcl.test;
+let js3$2463 = js3$2464.TestCase;
+let AssnRes$2465 = js3$2463.prototype = js3$2413;
+let js3$2480 = sjcl.test;
+let AssnRes$2481 = js3$2480.run = function (tests, callback) {
+  var t;
+  let ifTest$2468 = tests;
+  let ifTest$2469 = undefined;
+  let ifTest$2467 = ifTest$2468 === ifTest$2469;
+  let ifTest$2470 = ifTest$2467 ? ifTest$2467 : tests.length == 0;
+  let ifTest$2466 = ifTest$2470;
+  if (ifTest$2466) {
+    let ifTrue$2471 = [];
+    let AssnRes$2472 = tests = ifTrue$2471;
+    let ifTrue$2474 = sjcl.test;
+    let ifTrue$2473 = ifTrue$2474.all;
+    for (t in ifTrue$2473) {
+      let ifTest$2477 = sjcl.test;
+      let ifTest$2476 = ifTest$2477.all;
+      let ifTest$2475 = ifTest$2476.hasOwnProperty(t);
+      if (ifTest$2475) {
+        let ifTrue$2478 = tests.push(t);
+      }
+    }
+  }
+  let js3$2479 = browserUtil.cpsMap(function (t, i, n, cb) {
+    sjcl.test.all[tests[i]].run(n, i + 1, cb);
+  }, tests, true, callback);
+};
+let js3$2483 = sjcl.codec;
+let js3$2484 = js3$2483 ? js3$2483 : {};
+let js3$2482 = js3$2484;
+let AssnRes$2485 = sjcl.codec = js3$2482;
+let js3$2488 = sjcl.codec;
+let js3$2487 = js3$2488.hex;
+let js3$2489 = js3$2487 ? js3$2487 : {
+  fromBits: function (arr) {
+    var out = "",
+      i,
+      x;
+    for (i = 0; i < arr.length; i++) {
+      out += ((arr[i] | 0) + 0xf00000000000).toString(16).substr(4);
+    }
+    return out.substr(0, sjcl.bitArray.bitLength(arr) / 4);
+  },
+  toBits: function (str) {
+    var i,
+      out = [],
+      len;
+    str = str.replace(/\s|0x/g, "");
+    len = str.length;
+    str = str + "00000000";
+    for (i = 0; i < str.length; i += 8) {
+      out.push(parseInt(str.substr(i, 8), 16) ^ 0);
+    }
+    return sjcl.bitArray.clamp(out, len * 4);
+  }
+};
+let js3$2486 = js3$2489;
+let js3$2490 = sjcl.codec;
+let AssnRes$2491 = js3$2490.hex = js3$2486;
+let js3$2494 = sjcl.test;
+let js3$2493 = js3$2494.TestCase;
+let js3$2495 = "PBKDF2";
+let noname$2518 = [function (cb) {
+  let ifTest$2500 = sjcl.misc;
+  let ifTest$2499 = ifTest$2500.pbkdf2;
+  let ifTest$2498 = !ifTest$2499;
+  let ifTest$2501 = ifTest$2498 ? ifTest$2498 : !sjcl.misc.hmac;
+  let ifTest$2497 = ifTest$2501;
+  let ifTest$2502 = ifTest$2497 ? ifTest$2497 : !sjcl.hash.sha256;
+  let ifTest$2496 = ifTest$2502;
+  if (ifTest$2496) {
+    let ifTrue$2503 = this.unimplemented();
+    let ifTrue$2505 = cb;
+    let ifTrue$2506 = ifTrue$2505 ? cb() : ifTrue$2505;
+    let ifTrue$2504 = ifTrue$2506;
+    return;
+  }
+  for (var index = 0; index < 8; index++) {
+    {
+      let js3$2508 = sjcl.codec;
+      let js3$2507 = js3$2508.hex;
+      var h = js3$2507;
+      var password = "password";
+      var salt = "78 57 8E 5A 5D 63 CB 06";
+      var count = 2048;
+      var output;
+      var goodOutput = "97b5a91d35af542324881315c4f849e327c4707d1bc9d322";
+      let js3$2510 = sjcl.misc;
+      let js3$2509 = js3$2510.pbkdf2(password, h.toBits(salt), count);
+      let AssnRes$2511 = output = js3$2509;
+      let js3$2512 = h.fromBits(output);
+      let AssnRes$2513 = output = js3$2512;
+      let js3$2514 = this.require(output.substr(0, goodOutput.length) == goodOutput);
+      let js3$2516 = cb;
+      let js3$2517 = js3$2516 ? cb() : js3$2516;
+      let js3$2515 = js3$2517;
+    }
+  }
+}][0];
+let js3$2492 = new js3$2493(js3$2495, noname$2518);
+let js3$2520 = sjcl.test;
+let js3$2519 = js3$2520.run();

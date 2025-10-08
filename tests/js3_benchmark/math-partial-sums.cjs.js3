@@ -1,0 +1,138 @@
+function partial(n) {
+  let AssnRes$1 = a9 = 0.0;
+  let AssnRes$2 = a8 = AssnRes$1;
+  let AssnRes$3 = a7 = AssnRes$2;
+  let AssnRes$4 = a6 = AssnRes$3;
+  let AssnRes$5 = a5 = AssnRes$4;
+  let AssnRes$6 = a4 = AssnRes$5;
+  let AssnRes$7 = a3 = AssnRes$6;
+  let AssnRes$8 = a2 = AssnRes$7;
+  var a1 = AssnRes$8;
+  let js3$10 = 2.0;
+  let js3$11 = 3.0;
+  let js3$9 = js3$10 / js3$11;
+  var twothirds = js3$9;
+  let js3$13 = 1.0;
+  let js3$12 = -js3$13;
+  var alt = js3$12;
+  let AssnRes$14 = ck = 0.0;
+  let AssnRes$15 = sk = AssnRes$14;
+  let AssnRes$16 = k3 = AssnRes$15;
+  var k2 = AssnRes$16;
+  for (var k = 1; k <= n; k++) {
+    {
+      let js3$18 = k;
+      let js3$19 = k;
+      let js3$17 = js3$18 * js3$19;
+      let AssnRes$20 = k2 = js3$17;
+      let js3$22 = k2;
+      let js3$23 = k;
+      let js3$21 = js3$22 * js3$23;
+      let AssnRes$24 = k3 = js3$21;
+      let js3$25 = Math.sin(k);
+      let AssnRes$26 = sk = js3$25;
+      let js3$27 = Math.cos(k);
+      let AssnRes$28 = ck = js3$27;
+      let js3$29 = -alt;
+      let AssnRes$30 = alt = js3$29;
+      let js3$32 = a1;
+      let js3$33 = Math.pow(twothirds, k - 1);
+      let js3$31 = js3$32 + js3$33;
+      let AssnRes$34 = a1 = js3$31;
+      let js3$36 = a2;
+      let js3$37 = Math.pow(k, -0.5);
+      let js3$35 = js3$36 + js3$37;
+      let AssnRes$38 = a2 = js3$35;
+      let js3$40 = a3;
+      let js3$42 = 1.0;
+      let js3$44 = k;
+      let js3$46 = k;
+      let js3$47 = 1.0;
+      let js3$45 = js3$46 + js3$47;
+      let js3$43 = js3$44 * js3$45;
+      let js3$41 = js3$42 / js3$43;
+      let js3$39 = js3$40 + js3$41;
+      let AssnRes$48 = a3 = js3$39;
+      let js3$50 = a4;
+      let js3$52 = 1.0;
+      let js3$55 = k3;
+      let js3$56 = sk;
+      let js3$54 = js3$55 * js3$56;
+      let js3$57 = sk;
+      let js3$53 = js3$54 * js3$57;
+      let js3$51 = js3$52 / js3$53;
+      let js3$49 = js3$50 + js3$51;
+      let AssnRes$58 = a4 = js3$49;
+      let js3$60 = a5;
+      let js3$62 = 1.0;
+      let js3$65 = k3;
+      let js3$66 = ck;
+      let js3$64 = js3$65 * js3$66;
+      let js3$67 = ck;
+      let js3$63 = js3$64 * js3$67;
+      let js3$61 = js3$62 / js3$63;
+      let js3$59 = js3$60 + js3$61;
+      let AssnRes$68 = a5 = js3$59;
+      let js3$70 = a6;
+      let js3$72 = 1.0;
+      let js3$73 = k;
+      let js3$71 = js3$72 / js3$73;
+      let js3$69 = js3$70 + js3$71;
+      let AssnRes$74 = a6 = js3$69;
+      let js3$76 = a7;
+      let js3$78 = 1.0;
+      let js3$79 = k2;
+      let js3$77 = js3$78 / js3$79;
+      let js3$75 = js3$76 + js3$77;
+      let AssnRes$80 = a7 = js3$75;
+      let js3$82 = a8;
+      let js3$84 = alt;
+      let js3$85 = k;
+      let js3$83 = js3$84 / js3$85;
+      let js3$81 = js3$82 + js3$83;
+      let AssnRes$86 = a8 = js3$81;
+      let js3$88 = a9;
+      let js3$90 = alt;
+      let js3$93 = 2;
+      let js3$94 = k;
+      let js3$92 = js3$93 * js3$94;
+      let js3$95 = 1;
+      let js3$91 = js3$92 - js3$95;
+      let js3$89 = js3$90 / js3$91;
+      let js3$87 = js3$88 + js3$89;
+      let AssnRes$96 = a9 = js3$87;
+    }
+  }
+  let returnStmt$100 = a6;
+  let returnStmt$101 = a7;
+  let returnStmt$99 = returnStmt$100 + returnStmt$101;
+  let returnStmt$102 = a8;
+  let returnStmt$98 = returnStmt$99 + returnStmt$102;
+  let returnStmt$103 = a9;
+  let returnStmt$97 = returnStmt$98 + returnStmt$103;
+  return returnStmt$97;
+}
+var total = 0;
+for (var i = 1024; i <= 16384; i *= 2) {
+  {
+    let js3$105 = total;
+    let js3$107 = i;
+    let js3$106 = partial(js3$107);
+    let js3$104 = js3$105 + js3$106;
+    let AssnRes$108 = total = js3$104;
+  }
+}
+var expected = 60.08994194659945;
+let ifTest$110 = total;
+let ifTest$111 = expected;
+let ifTest$109 = ifTest$110 != ifTest$111;
+if (ifTest$109) {
+  let ifTrue$115 = "ERROR: bad result: expected ";
+  let ifTrue$116 = expected;
+  let ifTrue$114 = ifTrue$115 + ifTrue$116;
+  let ifTrue$117 = " but got ";
+  let ifTrue$113 = ifTrue$114 + ifTrue$117;
+  let ifTrue$118 = total;
+  let ifTrue$112 = ifTrue$113 + ifTrue$118;
+  throw ifTrue$112;
+}

@@ -1,0 +1,129 @@
+function ack(m, n) {
+  let ifTest$2 = m;
+  let ifTest$3 = 0;
+  let ifTest$1 = ifTest$2 == ifTest$3;
+  if (ifTest$1) {
+    let returnStmt$5 = n;
+    let returnStmt$6 = 1;
+    let returnStmt$4 = returnStmt$5 + returnStmt$6;
+    return returnStmt$4;
+  }
+  let ifTest$8 = n;
+  let ifTest$9 = 0;
+  let ifTest$7 = ifTest$8 == ifTest$9;
+  if (ifTest$7) {
+    let returnStmt$12 = m;
+    let returnStmt$13 = 1;
+    let returnStmt$11 = returnStmt$12 - returnStmt$13;
+    let returnStmt$14 = 1;
+    let returnStmt$10 = ack(returnStmt$11, returnStmt$14);
+    return returnStmt$10;
+  }
+  let returnStmt$17 = m;
+  let returnStmt$18 = 1;
+  let returnStmt$16 = returnStmt$17 - returnStmt$18;
+  let returnStmt$20 = m;
+  let returnStmt$22 = n;
+  let returnStmt$23 = 1;
+  let returnStmt$21 = returnStmt$22 - returnStmt$23;
+  let returnStmt$19 = ack(returnStmt$20, returnStmt$21);
+  let returnStmt$15 = ack(returnStmt$16, returnStmt$19);
+  return returnStmt$15;
+}
+function fib(n) {
+  let ifTest$25 = n;
+  let ifTest$26 = 2;
+  let ifTest$24 = ifTest$25 < ifTest$26;
+  if (ifTest$24) {
+    let returnStmt$27 = 1;
+    return returnStmt$27;
+  }
+  let returnStmt$31 = n;
+  let returnStmt$32 = 2;
+  let returnStmt$30 = returnStmt$31 - returnStmt$32;
+  let returnStmt$29 = fib(returnStmt$30);
+  let returnStmt$35 = n;
+  let returnStmt$36 = 1;
+  let returnStmt$34 = returnStmt$35 - returnStmt$36;
+  let returnStmt$33 = fib(returnStmt$34);
+  let returnStmt$28 = returnStmt$29 + returnStmt$33;
+  return returnStmt$28;
+}
+function tak(x, y, z) {
+  let ifTest$38 = y;
+  let ifTest$39 = x;
+  let ifTest$37 = ifTest$38 >= ifTest$39;
+  if (ifTest$37) {
+    let returnStmt$40 = z;
+    return returnStmt$40;
+  }
+  let returnStmt$44 = x;
+  let returnStmt$45 = 1;
+  let returnStmt$43 = returnStmt$44 - returnStmt$45;
+  let returnStmt$46 = y;
+  let returnStmt$47 = z;
+  let returnStmt$42 = tak(returnStmt$43, returnStmt$46, returnStmt$47);
+  let returnStmt$50 = y;
+  let returnStmt$51 = 1;
+  let returnStmt$49 = returnStmt$50 - returnStmt$51;
+  let returnStmt$52 = z;
+  let returnStmt$53 = x;
+  let returnStmt$48 = tak(returnStmt$49, returnStmt$52, returnStmt$53);
+  let returnStmt$56 = z;
+  let returnStmt$57 = 1;
+  let returnStmt$55 = returnStmt$56 - returnStmt$57;
+  let returnStmt$58 = x;
+  let returnStmt$59 = y;
+  let returnStmt$54 = tak(returnStmt$55, returnStmt$58, returnStmt$59);
+  let returnStmt$41 = tak(returnStmt$42, returnStmt$48, returnStmt$54);
+  return returnStmt$41;
+}
+var result = 0;
+for (var i = 3; i <= 5; i++) {
+  {
+    let js3$61 = result;
+    let js3$63 = 3;
+    let js3$64 = i;
+    let js3$62 = ack(js3$63, js3$64);
+    let js3$60 = js3$61 + js3$62;
+    let AssnRes$65 = result = js3$60;
+    let js3$67 = result;
+    let js3$70 = 17.0;
+    let js3$71 = i;
+    let js3$69 = js3$70 + js3$71;
+    let js3$68 = fib(js3$69);
+    let js3$66 = js3$67 + js3$68;
+    let AssnRes$72 = result = js3$66;
+    let js3$74 = result;
+    let js3$78 = 3;
+    let js3$79 = i;
+    let js3$77 = js3$78 * js3$79;
+    let js3$80 = 3;
+    let js3$76 = js3$77 + js3$80;
+    let js3$83 = 2;
+    let js3$84 = i;
+    let js3$82 = js3$83 * js3$84;
+    let js3$85 = 2;
+    let js3$81 = js3$82 + js3$85;
+    let js3$87 = i;
+    let js3$88 = 1;
+    let js3$86 = js3$87 + js3$88;
+    let js3$75 = tak(js3$76, js3$81, js3$86);
+    let js3$73 = js3$74 + js3$75;
+    let AssnRes$89 = result = js3$73;
+  }
+}
+var expected = 57775;
+let ifTest$91 = result;
+let ifTest$92 = expected;
+let ifTest$90 = ifTest$91 != ifTest$92;
+if (ifTest$90) {
+  let ifTrue$96 = "ERROR: bad result: expected ";
+  let ifTrue$97 = expected;
+  let ifTrue$95 = ifTrue$96 + ifTrue$97;
+  let ifTrue$98 = " but got ";
+  let ifTrue$94 = ifTrue$95 + ifTrue$98;
+  let ifTrue$99 = result;
+  let ifTrue$93 = ifTrue$94 + ifTrue$99;
+  throw ifTrue$93;
+}

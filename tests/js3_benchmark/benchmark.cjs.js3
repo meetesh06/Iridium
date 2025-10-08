@@ -1,0 +1,594 @@
+const defaultIterationCount = 120;
+const PlayerExpectation = class PlayerExpectation {
+  constructor(iterations, wins, handTypeCounts) {
+    let js3$2 = iterations;
+    let js3$3 = defaultIterationCount;
+    let js3$1 = js3$2 / js3$3;
+    const factor = js3$1;
+    let js3$5 = wins;
+    let js3$6 = factor;
+    let js3$4 = js3$5 * js3$6;
+    let AssnRes$7 = this._wins = js3$4;
+    let js3$8 = handTypeCounts.map(each => each * factor);
+    let AssnRes$9 = this._handTypeCounts = js3$8;
+  }
+  validate(player) {
+    let ifTest$11 = player.wins;
+    let ifTest$12 = this._wins;
+    let ifTest$10 = ifTest$11 != ifTest$12;
+    if (ifTest$10) {
+      let ifTrue$18 = "Expected ";
+      let ifTrue$19 = player.name;
+      let ifTrue$17 = ifTrue$18 + ifTrue$19;
+      let ifTrue$20 = " to have ";
+      let ifTrue$16 = ifTrue$17 + ifTrue$20;
+      let ifTrue$21 = this._wins;
+      let ifTrue$15 = ifTrue$16 + ifTrue$21;
+      let ifTrue$22 = ", but they have ";
+      let ifTrue$14 = ifTrue$15 + ifTrue$22;
+      let ifTrue$23 = player.wins;
+      let ifTrue$13 = ifTrue$14 + ifTrue$23;
+      throw ifTrue$13;
+    }
+    let js3$24 = player.handTypeCounts;
+    let actualHandTypeCounts = js3$24;
+    let ifTest$27 = this._handTypeCounts;
+    let ifTest$26 = ifTest$27.length;
+    let ifTest$28 = actualHandTypeCounts.length;
+    let ifTest$25 = ifTest$26 != ifTest$28;
+    if (ifTest$25) {
+      let ifTrue$34 = "Expected ";
+      let ifTrue$35 = player.name;
+      let ifTrue$33 = ifTrue$34 + ifTrue$35;
+      let ifTrue$36 = " to have ";
+      let ifTrue$32 = ifTrue$33 + ifTrue$36;
+      let ifTrue$38 = this._handTypeCounts;
+      let ifTrue$37 = ifTrue$38.length;
+      let ifTrue$31 = ifTrue$32 + ifTrue$37;
+      let ifTrue$39 = " hand types, but they have ";
+      let ifTrue$30 = ifTrue$31 + ifTrue$39;
+      let ifTrue$40 = actualHandTypeCounts.length;
+      let ifTrue$29 = ifTrue$30 + ifTrue$40;
+      throw ifTrue$29;
+    }
+    for (let handTypeIdx = 0; handTypeIdx < this._handTypeCounts.length; handTypeIdx++) {
+      {
+        let ifTest$43 = this._handTypeCounts;
+        let ifTest$42 = ifTest$43[handTypeIdx];
+        let ifTest$44 = actualHandTypeCounts[handTypeIdx];
+        let ifTest$41 = ifTest$42 != ifTest$44;
+        if (ifTest$41) {
+          let ifTrue$52 = "Expected ";
+          let ifTrue$53 = player.name;
+          let ifTrue$51 = ifTrue$52 + ifTrue$53;
+          let ifTrue$54 = " to have ";
+          let ifTrue$50 = ifTrue$51 + ifTrue$54;
+          let ifTrue$56 = this._handTypeCounts;
+          let ifTrue$55 = ifTrue$56[handTypeIdx];
+          let ifTrue$49 = ifTrue$50 + ifTrue$55;
+          let ifTrue$57 = " ";
+          let ifTrue$48 = ifTrue$49 + ifTrue$57;
+          let ifTrue$59 = PlayerExpectation._handTypes;
+          let ifTrue$58 = ifTrue$59[handTypeIdx];
+          let ifTrue$47 = ifTrue$48 + ifTrue$58;
+          let ifTrue$60 = " hands, but they have ";
+          let ifTrue$46 = ifTrue$47 + ifTrue$60;
+          let ifTrue$61 = actualHandTypeCounts[handTypeIdx];
+          let ifTrue$45 = ifTrue$46 + ifTrue$61;
+          throw ifTrue$45;
+        }
+      }
+    }
+  }
+};
+let js3$62 = ["High Cards", "Pairs", "Two Pairs", "Three of a Kinds", "Straights", "Flushes", "Full Houses", "Four of a Kinds", "Straight Flushes", "Royal Flushes"];
+let AssnRes$63 = PlayerExpectation._handTypes = js3$62;
+function getPlayerExpectations(iterations) {
+  let js3$64 = [];
+  const playerExpectations = js3$64;
+  let js3$65 = playerExpectations.push(new PlayerExpectation(iterations, 60120, [120600, 102000, 10080, 5040, 1440, 360, 480, 0, 0, 0]));
+  let js3$66 = playerExpectations.push(new PlayerExpectation(iterations, 60480, [120360, 99600, 11760, 6120, 1200, 360, 480, 120, 0, 0]));
+  let js3$67 = playerExpectations.push(new PlayerExpectation(iterations, 61440, [121200, 99720, 11040, 6120, 1080, 480, 360, 0, 0, 0]));
+  let js3$68 = playerExpectations.push(new PlayerExpectation(iterations, 57960, [121320, 100440, 11040, 5760, 840, 480, 120, 0, 0, 0]));
+  let returnStmt$69 = playerExpectations;
+  return returnStmt$69;
+}
+const CardDeck = class CardDeck {
+  constructor() {
+    let js3$70 = this.newDeck();
+  }
+  newDeck() {
+    let js3$72 = CardDeck._newDeck;
+    let js3$71 = js3$72.slice(0);
+    let AssnRes$73 = this._cards = js3$71;
+  }
+  shuffle() {
+    let js3$74 = this.newDeck();
+    for (let index = 52; index !== 0;) {
+      {
+        let js3$75 = Math.floor(Math.random() * index);
+        let randomIndex = js3$75;
+        let js3$76 = index--;
+        let js3$78 = this._cards;
+        let js3$77 = js3$78[index];
+        let tempCard = js3$77;
+        let js3$80 = this._cards;
+        let js3$79 = js3$80[randomIndex];
+        let js3$81 = this._cards;
+        let AssnRes$82 = js3$81[index] = js3$79;
+        let js3$83 = this._cards;
+        let AssnRes$84 = js3$83[randomIndex] = tempCard;
+      }
+    }
+  }
+  dealOneCard() {
+    let returnStmt$86 = this._cards;
+    let returnStmt$85 = returnStmt$86.shift();
+    return returnStmt$85;
+  }
+  static cardRank(card) {
+    let js3$88 = card.codePointAt(0);
+    let js3$89 = 0xf;
+    let js3$87 = js3$88 & js3$89;
+    let rankOfCard = js3$87;
+    let ifTest$91 = rankOfCard;
+    let ifTest$92 = 0x1;
+    let ifTest$90 = ifTest$91 == ifTest$92;
+    if (ifTest$90) {
+      let AssnRes$93 = rankOfCard = 0xf;
+      ;
+    }
+    let returnStmt$94 = rankOfCard;
+    return returnStmt$94;
+  }
+  static cardName(card) {
+    let ifTest$96 = typeof card;
+    let ifTest$97 = "string";
+    let ifTest$95 = ifTest$96 == ifTest$97;
+    if (ifTest$95) {
+      let ifTrue$98 = card.codePointAt(0);
+      let AssnRes$99 = card = ifTrue$98;
+      ;
+    }
+    let returnStmt$101 = this._rankNames;
+    let returnStmt$103 = card;
+    let returnStmt$104 = 0xf;
+    let returnStmt$102 = returnStmt$103 & returnStmt$104;
+    let returnStmt$100 = returnStmt$101[returnStmt$102];
+    return returnStmt$100;
+  }
+};
+let js3$105 = ["", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "", "Queen", "King"];
+let AssnRes$106 = CardDeck._rankNames = js3$105;
+let js3$107 = ["\u{1f0a1}", "\u{1f0a2}", "\u{1f0a3}", "\u{1f0a4}", "\u{1f0a5}", "\u{1f0a6}", "\u{1f0a7}", "\u{1f0a8}", "\u{1f0a9}", "\u{1f0aa}", "\u{1f0ab}", "\u{1f0ad}", "\u{1f0ae}", "\u{1f0b1}", "\u{1f0b2}", "\u{1f0b3}", "\u{1f0b4}", "\u{1f0b5}", "\u{1f0b6}", "\u{1f0b7}", "\u{1f0b8}", "\u{1f0b9}", "\u{1f0ba}", "\u{1f0bb}", "\u{1f0bd}", "\u{1f0be}", "\u{1f0d1}", "\u{1f0d2}", "\u{1f0d3}", "\u{1f0d4}", "\u{1f0d5}", "\u{1f0d6}", "\u{1f0d7}", "\u{1f0d8}", "\u{1f0d9}", "\u{1f0da}", "\u{1f0db}", "\u{1f0dd}", "\u{1f0de}", "\u{1f0c1}", "\u{1f0c2}", "\u{1f0c3}", "\u{1f0c4}", "\u{1f0c5}", "\u{1f0c6}", "\u{1f0c7}", "\u{1f0c8}", "\u{1f0c9}", "\u{1f0ca}", "\u{1f0cb}", "\u{1f0cd}", "\u{1f0ce}"];
+let AssnRes$108 = CardDeck._newDeck = js3$107;
+const Hand = class Hand {
+  constructor() {
+    let js3$109 = this.clear();
+  }
+  clear() {
+    let js3$110 = [];
+    let AssnRes$111 = this._cards = js3$110;
+    let AssnRes$112 = this._rank = 0;
+  }
+  takeCard(card) {
+    let js3$114 = this._cards;
+    let js3$113 = js3$114.push(card);
+  }
+  score() {
+    let js3$116 = this._cards;
+    let js3$115 = js3$116.sort((a, b) => {
+      return CardDeck.cardRank(b) - CardDeck.cardRank(a);
+    });
+    let js3$118 = this._cards;
+    let js3$117 = js3$118.join("");
+    let handString = js3$117;
+    let js3$119 = handString.match(Hand.FlushRegExp);
+    let flushResult = js3$119;
+    let js3$120 = handString.match(Hand.StraightRegExp);
+    let straightResult = js3$120;
+    let js3$121 = handString.match(Hand.OfAKindRegExp);
+    let ofAKindResult = js3$121;
+    let ifTest$122 = flushResult;
+    if (ifTest$122) {
+      let ifTest$123 = straightResult;
+      if (ifTest$123) {
+        let ifTest$125 = 1;
+        let ifTest$124 = straightResult[ifTest$125];
+        if (ifTest$124) {
+          let ifTrue$126 = Hand.RoyalFlush;
+          let AssnRes$127 = this._rank = ifTrue$126;
+          ;
+        } else {
+          let ifFalse$128 = Hand.StraightFlush;
+          let AssnRes$129 = this._rank = ifFalse$128;
+          ;
+        }
+      } else {
+        let ifFalse$130 = Hand.Flush;
+        let AssnRes$131 = this._rank = ifFalse$130;
+        ;
+      }
+      let ifTrue$133 = this._rank;
+      let ifTrue$136 = CardDeck.cardRank(this._cards[0]);
+      let ifTrue$137 = 16;
+      let ifTrue$135 = ifTrue$136 << ifTrue$137;
+      let ifTrue$139 = CardDeck.cardRank(this._cards[1]);
+      let ifTrue$140 = 12;
+      let ifTrue$138 = ifTrue$139 << ifTrue$140;
+      let ifTrue$134 = ifTrue$135 | ifTrue$138;
+      let ifTrue$132 = ifTrue$133 | ifTrue$134;
+      let AssnRes$141 = this._rank = ifTrue$132;
+    } else {
+      let ifTest$142 = straightResult;
+      if (ifTest$142) {
+        let ifTrue$145 = Hand.Straight;
+        let ifTrue$147 = CardDeck.cardRank(this._cards[0]);
+        let ifTrue$148 = 16;
+        let ifTrue$146 = ifTrue$147 << ifTrue$148;
+        let ifTrue$144 = ifTrue$145 | ifTrue$146;
+        let ifTrue$150 = CardDeck.cardRank(this._cards[1]);
+        let ifTrue$151 = 12;
+        let ifTrue$149 = ifTrue$150 << ifTrue$151;
+        let ifTrue$143 = ifTrue$144 | ifTrue$149;
+        let AssnRes$152 = this._rank = ifTrue$143;
+        ;
+      } else {
+        let ifTest$153 = ofAKindResult;
+        if (ifTest$153) {
+          let ifTest$157 = 0;
+          let ifTest$156 = ofAKindResult[ifTest$157];
+          let ifTest$155 = ifTest$156.length;
+          let ifTest$158 = 8;
+          let ifTest$154 = ifTest$155 == ifTest$158;
+          if (ifTest$154) {
+            let ifTrue$160 = Hand.FourOfAKind;
+            let ifTrue$161 = CardDeck.cardRank(this._cards[0]);
+            let ifTrue$159 = ifTrue$160 | ifTrue$161;
+            let AssnRes$162 = this._rank = ifTrue$159;
+            ;
+          } else {
+            let ifFalse$164 = 0;
+            let ifFalse$163 = ofAKindResult[ifFalse$164];
+            let firstOfAKind = ifFalse$163;
+            let ifFalse$166 = handString.indexOf(firstOfAKind);
+            let ifFalse$167 = firstOfAKind.length;
+            let ifFalse$165 = ifFalse$166 + ifFalse$167;
+            let remainingCardsIndex = ifFalse$165;
+            let secondOfAKindResult;
+            let ifTest$170 = remainingCardsIndex;
+            let ifTest$171 = 6;
+            let ifTest$169 = ifTest$170 <= ifTest$171;
+            let ifTest$172 = ifTest$169 ? (secondOfAKindResult = handString.slice(remainingCardsIndex).match(Hand.OfAKindRegExp)) : ifTest$169;
+            let ifTest$168 = ifTest$172;
+            if (ifTest$168) {
+              let ifTest$176 = firstOfAKind.length;
+              let ifTest$177 = 6;
+              let ifTest$175 = ifTest$176 == ifTest$177;
+              let ifTest$178 = ifTest$175 ? secondOfAKindResult[0].length == 4 : ifTest$175;
+              let ifTest$174 = ifTest$178;
+              let ifTest$179 = ifTest$174 ? ifTest$174 : (firstOfAKind.length == 4 && secondOfAKindResult[0].length == 6);
+              let ifTest$173 = ifTest$179;
+              if (ifTest$173) {
+                let threeOfAKindCardRank;
+                let twoOfAKindCardRank;
+                let ifTest$181 = firstOfAKind.length;
+                let ifTest$182 = 6;
+                let ifTest$180 = ifTest$181 == ifTest$182;
+                if (ifTest$180) {
+                  let ifTrue$183 = CardDeck.cardRank(firstOfAKind.slice(0, 2));
+                  let AssnRes$184 = threeOfAKindCardRank = ifTrue$183;
+                  let ifTrue$185 = CardDeck.cardRank(secondOfAKindResult[0].slice(0, 2));
+                  let AssnRes$186 = twoOfAKindCardRank = ifTrue$185;
+                } else {
+                  let ifFalse$187 = CardDeck.cardRank(secondOfAKindResult[0].slice(0, 2));
+                  let AssnRes$188 = threeOfAKindCardRank = ifFalse$187;
+                  let ifFalse$189 = CardDeck.cardRank(firstOfAKind.slice(0, 2));
+                  let AssnRes$190 = twoOfAKindCardRank = ifFalse$189;
+                }
+                let ifTrue$196 = Hand.FullHouse;
+                let ifTrue$198 = threeOfAKindCardRank;
+                let ifTrue$199 = 16;
+                let ifTrue$197 = ifTrue$198 << ifTrue$199;
+                let ifTrue$195 = ifTrue$196 | ifTrue$197;
+                let ifTrue$201 = threeOfAKindCardRank;
+                let ifTrue$202 = 12;
+                let ifTrue$200 = ifTrue$201 < ifTrue$202;
+                let ifTrue$194 = ifTrue$195 | ifTrue$200;
+                let ifTrue$204 = threeOfAKindCardRank;
+                let ifTrue$205 = 8;
+                let ifTrue$203 = ifTrue$204 << ifTrue$205;
+                let ifTrue$193 = ifTrue$194 | ifTrue$203;
+                let ifTrue$207 = twoOfAKindCardRank;
+                let ifTrue$208 = 4;
+                let ifTrue$206 = ifTrue$207 << ifTrue$208;
+                let ifTrue$192 = ifTrue$193 | ifTrue$206;
+                let ifTrue$209 = twoOfAKindCardRank;
+                let ifTrue$191 = ifTrue$192 | ifTrue$209;
+                let AssnRes$210 = this._rank = ifTrue$191;
+              } else {
+                let ifTest$213 = firstOfAKind.length;
+                let ifTest$214 = 4;
+                let ifTest$212 = ifTest$213 == ifTest$214;
+                let ifTest$215 = ifTest$212 ? secondOfAKindResult[0].length == 4 : ifTest$212;
+                let ifTest$211 = ifTest$215;
+                if (ifTest$211) {
+                  let ifTrue$216 = CardDeck.cardRank(firstOfAKind.slice(0, 2));
+                  let firstPairCardRank = ifTrue$216;
+                  let ifTrue$217 = CardDeck.cardRank(secondOfAKindResult[0].slice(0, 2));
+                  let SecondPairCardRank = ifTrue$217;
+                  let otherCardRank;
+                  let ifTest$219 = firstOfAKind.codePointAt(0);
+                  let ifTest$220 = handString.codePointAt(0);
+                  let ifTest$218 = ifTest$219 == ifTest$220;
+                  if (ifTest$218) {
+                    let ifTest$224 = 0;
+                    let ifTest$223 = secondOfAKindResult[ifTest$224];
+                    let ifTest$222 = ifTest$223.codePointAt(0);
+                    let ifTest$225 = handString.codePointAt(4);
+                    let ifTest$221 = ifTest$222 == ifTest$225;
+                    if (ifTest$221) {
+                      let ifTrue$226 = CardDeck.cardRank(handString.slice(8, 10));
+                      let AssnRes$227 = otherCardRank = ifTrue$226;
+                      ;
+                    } else {
+                      let ifFalse$228 = CardDeck.cardRank(handString.slice(4, 6));
+                      let AssnRes$229 = otherCardRank = ifFalse$228;
+                      ;
+                    }
+                  } else {
+                    let ifFalse$230 = CardDeck.cardRank(handString.slice(0, 2));
+                    let AssnRes$231 = otherCardRank = ifFalse$230;
+                    ;
+                  }
+                  let ifTrue$237 = Hand.TwoPair;
+                  let ifTrue$239 = firstPairCardRank;
+                  let ifTrue$240 = 16;
+                  let ifTrue$238 = ifTrue$239 << ifTrue$240;
+                  let ifTrue$236 = ifTrue$237 | ifTrue$238;
+                  let ifTrue$242 = firstPairCardRank;
+                  let ifTrue$243 = 12;
+                  let ifTrue$241 = ifTrue$242 << ifTrue$243;
+                  let ifTrue$235 = ifTrue$236 | ifTrue$241;
+                  let ifTrue$245 = SecondPairCardRank;
+                  let ifTrue$246 = 8;
+                  let ifTrue$244 = ifTrue$245 << ifTrue$246;
+                  let ifTrue$234 = ifTrue$235 | ifTrue$244;
+                  let ifTrue$248 = SecondPairCardRank;
+                  let ifTrue$249 = 4;
+                  let ifTrue$247 = ifTrue$248 << ifTrue$249;
+                  let ifTrue$233 = ifTrue$234 | ifTrue$247;
+                  let ifTrue$250 = otherCardRank;
+                  let ifTrue$232 = ifTrue$233 | ifTrue$250;
+                  let AssnRes$251 = this._rank = ifTrue$232;
+                }
+              }
+            } else {
+              let ifFalse$252 = CardDeck.cardRank(firstOfAKind.slice(0, 2));
+              let ofAKindCardRank = ifFalse$252;
+              let otherCardsRank = 0;
+              let ifFalse$253 = this._cards;
+              for (let card of ifFalse$253) {
+                let ifFalse$254 = CardDeck.cardRank(card);
+                let cardRank = ifFalse$254;
+                let ifTest$256 = cardRank;
+                let ifTest$257 = ofAKindCardRank;
+                let ifTest$255 = ifTest$256 != ifTest$257;
+                if (ifTest$255) {
+                  let ifTrue$260 = otherCardsRank;
+                  let ifTrue$261 = 4;
+                  let ifTrue$259 = ifTrue$260 << ifTrue$261;
+                  let ifTrue$262 = cardRank;
+                  let ifTrue$258 = ifTrue$259 | ifTrue$262;
+                  let AssnRes$263 = otherCardsRank = ifTrue$258;
+                  ;
+                }
+              }
+              let ifTest$265 = firstOfAKind.length;
+              let ifTest$266 = 6;
+              let ifTest$264 = ifTest$265 == ifTest$266;
+              if (ifTest$264) {
+                let ifTrue$271 = Hand.ThreeOfAKind;
+                let ifTrue$273 = ofAKindCardRank;
+                let ifTrue$274 = 16;
+                let ifTrue$272 = ifTrue$273 << ifTrue$274;
+                let ifTrue$270 = ifTrue$271 | ifTrue$272;
+                let ifTrue$276 = ofAKindCardRank;
+                let ifTrue$277 = 12;
+                let ifTrue$275 = ifTrue$276 << ifTrue$277;
+                let ifTrue$269 = ifTrue$270 | ifTrue$275;
+                let ifTrue$279 = ofAKindCardRank;
+                let ifTrue$280 = 8;
+                let ifTrue$278 = ifTrue$279 << ifTrue$280;
+                let ifTrue$268 = ifTrue$269 | ifTrue$278;
+                let ifTrue$281 = otherCardsRank;
+                let ifTrue$267 = ifTrue$268 | ifTrue$281;
+                let AssnRes$282 = this._rank = ifTrue$267;
+                ;
+              } else {
+                let ifFalse$286 = Hand.Pair;
+                let ifFalse$288 = ofAKindCardRank;
+                let ifFalse$289 = 16;
+                let ifFalse$287 = ifFalse$288 << ifFalse$289;
+                let ifFalse$285 = ifFalse$286 | ifFalse$287;
+                let ifFalse$291 = ofAKindCardRank;
+                let ifFalse$292 = 12;
+                let ifFalse$290 = ifFalse$291 << ifFalse$292;
+                let ifFalse$284 = ifFalse$285 | ifFalse$290;
+                let ifFalse$293 = otherCardsRank;
+                let ifFalse$283 = ifFalse$284 | ifFalse$293;
+                let AssnRes$294 = this._rank = ifFalse$283;
+                ;
+              }
+            }
+          }
+        } else {
+          let AssnRes$295 = this._rank = 0;
+          let ifFalse$296 = this._cards;
+          for (let card of ifFalse$296) {
+            let ifFalse$297 = CardDeck.cardRank(card);
+            let cardRank = ifFalse$297;
+            let ifFalse$300 = this._rank;
+            let ifFalse$301 = 4;
+            let ifFalse$299 = ifFalse$300 << ifFalse$301;
+            let ifFalse$302 = cardRank;
+            let ifFalse$298 = ifFalse$299 | ifFalse$302;
+            let AssnRes$303 = this._rank = ifFalse$298;
+          }
+        }
+      }
+    }
+  }
+  get rank() {
+    let returnStmt$304 = this._rank;
+    return returnStmt$304;
+  }
+  toString() {
+    let returnStmt$306 = this._cards;
+    let returnStmt$305 = returnStmt$306.join("");
+    return returnStmt$305;
+  }
+};
+let js3$308 = RegExp;
+let js3$309 = "([\u{1f0a1}-\u{1f0ae}]{5})|([\u{1f0b1}-\u{1f0be}]{5})|([\u{1f0c1}-\u{1f0ce}]{5})|([\u{1f0d1}-\u{1f0de}]{5})";
+let js3$310 = "u";
+let js3$307 = new js3$308(js3$309, js3$310);
+let AssnRes$311 = Hand.FlushRegExp = js3$307;
+let js3$313 = RegExp;
+let js3$314 = "([\u{1f0a1}\u{1f0b1}\u{1f0d1}\u{1f0c1}][\u{1f0ae}\u{1f0be}\u{1f0de}\u{1f0ce}][\u{1f0ad}\u{1f0bd}\u{1f0dd}\u{1f0cd}][\u{1f0ab}\u{1f0bb}\u{1f0db}\u{1f0cb}][\u{1f0aa}\u{1f0ba}\u{1f0da}\u{1f0ca}])|[\u{1f0ae}\u{1f0be}\u{1f0de}\u{1f0ce}][\u{1f0ad}\u{1f0bd}\u{1f0dd}\u{1f0cd}][\u{1f0ab}\u{1f0bb}\u{1f0db}\u{1f0cb}][\u{1f0aa}\u{1f0ba}\u{1f0da}\u{1f0ca}][\u{1f0a9}\u{1f0b9}\u{1f0d9}\u{1f0c9}]|[\u{1f0ad}\u{1f0bd}\u{1f0dd}\u{1f0cd}][\u{1f0ab}\u{1f0bb}\u{1f0db}\u{1f0cb}][\u{1f0aa}\u{1f0ba}\u{1f0da}\u{1f0ca}][\u{1f0a9}\u{1f0b9}\u{1f0d9}\u{1f0c9}][\u{1f0a8}\u{1f0b8}\u{1f0d8}\u{1f0c8}]|[\u{1f0ab}\u{1f0bb}\u{1f0db}\u{1f0cb}][\u{1f0aa}\u{1f0ba}\u{1f0da}\u{1f0ca}][\u{1f0a9}\u{1f0b9}\u{1f0d9}\u{1f0c9}][\u{1f0a8}\u{1f0b8}\u{1f0d8}\u{1f0c8}][\u{1f0a7}\u{1f0b7}\u{1f0d7}\u{1f0c7}]|[\u{1f0aa}\u{1f0ba}\u{1f0da}\u{1f0ca}][\u{1f0a9}\u{1f0b9}\u{1f0d9}\u{1f0c9}][\u{1f0a8}\u{1f0b8}\u{1f0d8}\u{1f0c8}][\u{1f0a7}\u{1f0b7}\u{1f0d7}\u{1f0c7}][\u{1f0a6}\u{1f0b6}\u{1f0d6}\u{1f0c6}]|[\u{1f0a9}\u{1f0b9}\u{1f0d9}\u{1f0c9}][\u{1f0a8}\u{1f0b8}\u{1f0d8}\u{1f0c8}][\u{1f0a7}\u{1f0b7}\u{1f0d7}\u{1f0c7}][\u{1f0a6}\u{1f0b6}\u{1f0d6}\u{1f0c6}][\u{1f0a5}\u{1f0b5}\u{1f0d5}\u{1f0c5}]|[\u{1f0a8}\u{1f0b8}\u{1f0d8}\u{1f0c8}][\u{1f0a7}\u{1f0b7}\u{1f0d7}\u{1f0c7}][\u{1f0a6}\u{1f0b6}\u{1f0d6}\u{1f0c6}][\u{1f0a5}\u{1f0b5}\u{1f0d5}\u{1f0c5}][\u{1f0a4}\u{1f0b4}\u{1f0d4}\u{1f0c4}]|[\u{1f0a7}\u{1f0b7}\u{1f0d7}\u{1f0c7}][\u{1f0a6}\u{1f0b6}\u{1f0d6}\u{1f0c6}][\u{1f0a5}\u{1f0b5}\u{1f0d5}\u{1f0c5}][\u{1f0a4}\u{1f0b4}\u{1f0d4}\u{1f0c4}][\u{1f0a3}\u{1f0b3}\u{1f0d3}\u{1f0c3}]|[\u{1f0a6}\u{1f0b6}\u{1f0d6}\u{1f0c6}][\u{1f0a5}\u{1f0b5}\u{1f0d5}\u{1f0c5}][\u{1f0a4}\u{1f0b4}\u{1f0d4}\u{1f0c4}][\u{1f0a3}\u{1f0b3}\u{1f0d3}\u{1f0c3}][\u{1f0a2}\u{1f0b2}\u{1f0d2}\u{1f0c2}]|[\u{1f0a1}\u{1f0b1}\u{1f0d1}\u{1f0c1}][\u{1f0a5}\u{1f0b5}\u{1f0d5}\u{1f0c5}][\u{1f0a4}\u{1f0b4}\u{1f0d4}\u{1f0c4}][\u{1f0a3}\u{1f0b3}\u{1f0d3}\u{1f0c3}][\u{1f0a2}\u{1f0b2}\u{1f0d2}\u{1f0c2}]";
+let js3$315 = "u";
+let js3$312 = new js3$313(js3$314, js3$315);
+let AssnRes$316 = Hand.StraightRegExp = js3$312;
+let js3$318 = RegExp;
+let js3$319 = "(?:[\u{1f0a1}\u{1f0b1}\u{1f0d1}\u{1f0c1}]{2,4})|(?:[\u{1f0ae}\u{1f0be}\u{1f0de}\u{1f0ce}]{2,4})|(?:[\u{1f0ad}\u{1f0bd}\u{1f0dd}\u{1f0cd}]{2,4})|(?:[\u{1f0ab}\u{1f0bb}\u{1f0db}\u{1f0cb}]{2,4})|(?:[\u{1f0aa}\u{1f0ba}\u{1f0da}\u{1f0ca}]{2,4})|(?:[\u{1f0a9}\u{1f0b9}\u{1f0d9}\u{1f0c9}]{2,4})|(?:[\u{1f0a8}\u{1f0b8}\u{1f0d8}\u{1f0c8}]{2,4})|(?:[\u{1f0a7}\u{1f0b7}\u{1f0d7}\u{1f0c7}]{2,4})|(?:[\u{1f0a6}\u{1f0b6}\u{1f0d6}\u{1f0c6}]{2,4})|(?:[\u{1f0a5}\u{1f0b5}\u{1f0d5}\u{1f0c5}]{2,4})|(?:[\u{1f0a4}\u{1f0b4}\u{1f0d4}\u{1f0c4}]{2,4})|(?:[\u{1f0a3}\u{1f0b3}\u{1f0d3}\u{1f0c3}]{2,4})|(?:[\u{1f0a2}\u{1f0b2}\u{1f0d2}\u{1f0c2}]{2,4})";
+let js3$320 = "u";
+let js3$317 = new js3$318(js3$319, js3$320);
+let AssnRes$321 = Hand.OfAKindRegExp = js3$317;
+let AssnRes$322 = Hand.RoyalFlush = 0x900000;
+let AssnRes$323 = Hand.StraightFlush = 0x800000;
+let AssnRes$324 = Hand.FourOfAKind = 0x700000;
+let AssnRes$325 = Hand.FullHouse = 0x600000;
+let AssnRes$326 = Hand.Flush = 0x500000;
+let AssnRes$327 = Hand.Straight = 0x400000;
+let AssnRes$328 = Hand.ThreeOfAKind = 0x300000;
+let AssnRes$329 = Hand.TwoPair = 0x200000;
+let AssnRes$330 = Hand.Pair = 0x100000;
+const Player = class Player extends Hand {
+  constructor(name) {
+    let js3$331 = super();
+    let AssnRes$332 = this._name = name;
+    let AssnRes$333 = this._wins = 0;
+    let js3$334 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let AssnRes$335 = this._handTypeCounts = js3$334;
+  }
+  scoreHand() {
+    let js3$336 = this.score();
+    let js3$338 = this.rank;
+    let js3$339 = 20;
+    let js3$337 = js3$338 >> js3$339;
+    let handType = js3$337;
+    let js3$341 = this._handTypeCounts;
+    let js3$340 = js3$341[handType]++;
+  }
+  wonHand() {
+    let js3$342 = this._wins++;
+  }
+  get name() {
+    let returnStmt$343 = this._name;
+    return returnStmt$343;
+  }
+  get hand() {
+    let returnStmt$344 = super.toString();
+    return returnStmt$344;
+  }
+  get wins() {
+    let returnStmt$345 = this._wins;
+    return returnStmt$345;
+  }
+  get handTypeCounts() {
+    let returnStmt$346 = this._handTypeCounts;
+    return returnStmt$346;
+  }
+};
+function playHands(players) {
+  let js3$348 = CardDeck;
+  let js3$347 = new js3$348();
+  let cardDeck = js3$347;
+  let handsPlayed = 0;
+  let highestRank = 0;
+  do {
+    {
+      let js3$349 = cardDeck.shuffle();
+      let js3$350 = players;
+      for (let player of js3$350) {
+        let js3$351 = player.clear();
+        ;
+      }
+      for (let i = 0; i < 5; i++) {
+        {
+          let js3$352 = players;
+          for (let player of js3$352) {
+            let js3$353 = player.takeCard(cardDeck.dealOneCard());
+            ;
+          }
+        }
+      }
+      let js3$354 = players;
+      for (let player of js3$354) {
+        let js3$355 = player.scoreHand();
+        ;
+      }
+      let js3$356 = handsPlayed++;
+      let AssnRes$357 = highestRank = 0;
+      let js3$358 = players;
+      for (let player of js3$358) {
+        let ifTest$360 = player.rank;
+        let ifTest$361 = highestRank;
+        let ifTest$359 = ifTest$360 > ifTest$361;
+        if (ifTest$359) {
+          let ifTrue$362 = player.rank;
+          let AssnRes$363 = highestRank = ifTrue$362;
+          ;
+        }
+      }
+      let js3$364 = players;
+      for (let player of js3$364) {
+        let ifTest$366 = player.rank;
+        let ifTest$367 = highestRank;
+        let ifTest$365 = ifTest$366 == ifTest$367;
+        if (ifTest$365) {
+          let ifTrue$368 = player.wonHand();
+          ;
+        }
+      }
+    }
+  } while (handsPlayed < 2000);
+}
+const Benchmark = class Benchmark {
+  constructor() {
+    let js3$369 = [];
+    let AssnRes$370 = this._players = js3$369;
+    let js3$372 = this._players;
+    let js3$371 = js3$372.push(new Player("Player 1"));
+    let js3$374 = this._players;
+    let js3$373 = js3$374.push(new Player("Player 2"));
+    let js3$376 = this._players;
+    let js3$375 = js3$376.push(new Player("Player 3"));
+    let js3$378 = this._players;
+    let js3$377 = js3$378.push(new Player("Player 4"));
+  }
+  runIteration() {
+    let js3$380 = this._players;
+    let js3$379 = playHands(js3$380);
+  }
+};
+{
+  for (let xx = 0; xx < 10; xx++) {
+    {
+      let js3$382 = Benchmark;
+      let js3$381 = new js3$382();
+      let benchmark = js3$381;
+      let js3$383 = benchmark.runIteration();
+    }
+  }
+}

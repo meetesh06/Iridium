@@ -27,62 +27,45 @@ SUNSPIDER = [
     "benchmarks/sunspider/3d-raytrace.cjs",
     "benchmarks/sunspider/access-binary-trees.cjs",
     "benchmarks/sunspider/access-fannkuch.cjs",
-    "benchmarks/sunspider/access-nbody.cjs",
-    "benchmarks/sunspider/access-nsieve.cjs",
-    "benchmarks/sunspider/bitops-3bit-bits-in-byte.cjs",
-    "benchmarks/sunspider/bitops-bits-in-byte.cjs",
-    "benchmarks/sunspider/bitops-bitwise-and.cjs",
-    "benchmarks/sunspider/bitops-nsieve-bits.cjs",
-    "benchmarks/sunspider/controlflow-recursive.cjs",
-    # "benchmarks/sunspider/crypto-aes.cjs",
-    "benchmarks/sunspider/crypto-md5.cjs",
-    "benchmarks/sunspider/crypto-sha1.cjs",
-    "benchmarks/sunspider/date-format-xparb.cjs",
-    "benchmarks/sunspider/math-cordic.cjs",
-    "benchmarks/sunspider/math-partial-sums.cjs",
-    "benchmarks/sunspider/math-spectral-norm.cjs",
-    "benchmarks/sunspider/regexp-dna.cjs",
-    "benchmarks/sunspider/string-base64.cjs",
-    "benchmarks/sunspider/string-fasta.cjs",
-    "benchmarks/sunspider/string-tagcloud.cjs",
-    "benchmarks/sunspider/string-unpack-code.cjs",
-    "benchmarks/sunspider/string-validate-input.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-ai-astar.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-audio-beat-detection.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-audio-dft.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-audio-fft.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-audio-oscillator.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-imaging-darkroom.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-imaging-desaturate.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-imaging-gaussian-blur.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-json-parse-financial.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-json-stringify-tinderbox.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-aes.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-ccm.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-pbkdf2.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-sha256-iterative.cjs",
-    "benchmarks/ML/ML_load.cjs",
+    # "benchmarks/sunspider/access-nbody.cjs",
+    # "benchmarks/sunspider/access-nsieve.cjs",
+    # "benchmarks/sunspider/bitops-3bit-bits-in-byte.cjs",
+    # "benchmarks/sunspider/bitops-bits-in-byte.cjs",
+    # "benchmarks/sunspider/bitops-bitwise-and.cjs",
+    # "benchmarks/sunspider/bitops-nsieve-bits.cjs",
+    # "benchmarks/sunspider/controlflow-recursive.cjs",
+    # # "benchmarks/sunspider/crypto-aes.cjs",
+    # "benchmarks/sunspider/crypto-md5.cjs",
+    # "benchmarks/sunspider/crypto-sha1.cjs",
+    # "benchmarks/sunspider/date-format-xparb.cjs",
+    # "benchmarks/sunspider/math-cordic.cjs",
+    # "benchmarks/sunspider/math-partial-sums.cjs",
+    # "benchmarks/sunspider/math-spectral-norm.cjs",
+    # "benchmarks/sunspider/regexp-dna.cjs",
+    # "benchmarks/sunspider/string-base64.cjs",
+    # "benchmarks/sunspider/string-fasta.cjs",
+    # "benchmarks/sunspider/string-tagcloud.cjs",
+    # "benchmarks/sunspider/string-unpack-code.cjs",
+    # "benchmarks/sunspider/string-validate-input.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-ai-astar.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-audio-beat-detection.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-audio-dft.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-audio-fft.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-audio-oscillator.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-imaging-darkroom.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-imaging-desaturate.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-imaging-gaussian-blur.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-json-parse-financial.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-json-stringify-tinderbox.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-aes.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-ccm.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-pbkdf2.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-sha256-iterative.cjs",
+    # "benchmarks/ML/ML_load.cjs",
     "benchmarks/Octane2/Regexpbenchmark.cjs",
-    "benchmarks/SeaMonster/gaussian-blur.cjs",
+    # "benchmarks/SeaMonster/gaussian-blur.cjs",
     "benchmarks/UniPoker/benchmark.cjs",
 ]
-
-
-    # "benchmarks/octane/box2d_standalone.js",
-    # "benchmarks/octane/code-load_standalone.js",
-    # "benchmarks/octane/crypto_standalone.js",
-    # "benchmarks/octane/deltablue_standalone.js",
-    # "benchmarks/octane/earley-boyer_standalone.js",
-    # "benchmarks/octane/gbemu_standalone.js",
-    # "benchmarks/octane/mandreel_standalone.js",
-    # "benchmarks/octane/navier-stokes_standalone.js",
-    # "benchmarks/octane/pdfjs_standalone.js",
-    # "benchmarks/octane/raytrace_standalone.js",
-    # "benchmarks/octane/regexp_standalone.js",
-    # "benchmarks/octane/richards_standalone.js",
-    # "benchmarks/octane/splay_standalone.js",
-    # "benchmarks/octane/typescript_standalone.js",
-    # "benchmarks/octane/zlib_standalone.js",
 
 # ======================
 # Utilities
@@ -112,6 +95,10 @@ def run_multiple(cmd, runs=RUNS, cwd=None):
 # Main Benchmark Loop
 # ======================
 def main():
+    # --- ADDED: Record start time ---
+    start_time = datetime.now()
+    print(f"--- Script started at: {start_time.strftime('%Y-%m-%d %H:%M:%S')} ---", flush=True)
+
     timestamp = datetime.now().strftime("%d-%m-%Y-%H-%M-%S")
     run_output_dir = RESULTS_DIR / timestamp
     run_output_dir.mkdir(parents=True, exist_ok=True)
@@ -196,6 +183,12 @@ def main():
 
     plot_grid(all_results, plot_png_path)
     print(f"📊 Plot saved to {plot_png_path}", flush=True)
+    
+    # --- ADDED: Record end time and calculate duration ---
+    end_time = datetime.now()
+    total_runtime = end_time - start_time
+    print(f"\n--- Script finished at: {end_time.strftime('%Y-%m-%d %H:%M:%S')} ---", flush=True)
+    print(f"--- Total runtime: {total_runtime} ---", flush=True)
 
 
 # ======================
@@ -203,14 +196,18 @@ def main():
 # ======================
 def plot_grid(results, output_path):
     df = pd.DataFrame(results, columns=["benchmark", "config", "time_sec"])
-    benchmarks = sorted(df["benchmark"].unique())
+    
+    # --- CHANGE HERE ---
+    # Use the SUNSPIDER list to set the plot order instead of sorting alphabetically.
+    benchmarks_in_results = df["benchmark"].unique()
+    benchmarks = [bm for bm in SUNSPIDER if bm in benchmarks_in_results]
 
     ncols = GRID_COLS
     nrows = (len(benchmarks) + ncols - 1) // ncols
     fig, axes = plt.subplots(
         nrows, ncols, 
         figsize=(4 * ncols, 3 * nrows), 
-        constrained_layout=True  # Better than tight_layout
+        constrained_layout=True
     )
     axes = axes.flatten()
 
@@ -228,7 +225,6 @@ def plot_grid(results, output_path):
             ax.axis("off")
             continue
 
-        # FIX: Changed 'labels' to 'tick_labels' to remove the warning
         bp = ax.boxplot(data, patch_artist=True, tick_labels=labels)
         
         for patch, config_name in zip(bp["boxes"], config_order):
@@ -238,6 +234,7 @@ def plot_grid(results, output_path):
         ax.tick_params(axis="x", labelrotation=45, labelsize=7)
         ax.grid(axis="y", linestyle="--", alpha=0.5)
 
+    # Hide any unused axes
     for j in range(len(benchmarks), len(axes)):
         axes[j].axis("off")
 

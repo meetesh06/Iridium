@@ -1,0 +1,138 @@
+function A(i, j) {
+  let returnStmt$2 = 1;
+  let returnStmt$8 = i;
+  let returnStmt$9 = j;
+  let returnStmt$7 = returnStmt$8 + returnStmt$9;
+  let returnStmt$12 = i;
+  let returnStmt$13 = j;
+  let returnStmt$11 = returnStmt$12 + returnStmt$13;
+  let returnStmt$14 = 1;
+  let returnStmt$10 = returnStmt$11 + returnStmt$14;
+  let returnStmt$6 = returnStmt$7 * returnStmt$10;
+  let returnStmt$15 = 2;
+  let returnStmt$5 = returnStmt$6 / returnStmt$15;
+  let returnStmt$16 = i;
+  let returnStmt$4 = returnStmt$5 + returnStmt$16;
+  let returnStmt$17 = 1;
+  let returnStmt$3 = returnStmt$4 + returnStmt$17;
+  let returnStmt$1 = returnStmt$2 / returnStmt$3;
+  return returnStmt$1;
+}
+function Au(u, v) {
+  for (var i = 0; i < u.length; ++i) {
+    {
+      var t = 0;
+      for (var j = 0; j < u.length; ++j) {
+        let js3$19 = t;
+        let js3$22 = i;
+        let js3$23 = j;
+        let js3$21 = A(js3$22, js3$23);
+        let js3$24 = u[j];
+        let js3$20 = js3$21 * js3$24;
+        let js3$18 = js3$19 + js3$20;
+        let AssnRes$25 = t = js3$18;
+        ;
+      }
+      let AssnRes$26 = v[i] = t;
+    }
+  }
+}
+function Atu(u, v) {
+  for (var i = 0; i < u.length; ++i) {
+    {
+      var t = 0;
+      for (var j = 0; j < u.length; ++j) {
+        let js3$28 = t;
+        let js3$31 = j;
+        let js3$32 = i;
+        let js3$30 = A(js3$31, js3$32);
+        let js3$33 = u[j];
+        let js3$29 = js3$30 * js3$33;
+        let js3$27 = js3$28 + js3$29;
+        let AssnRes$34 = t = js3$27;
+        ;
+      }
+      let AssnRes$35 = v[i] = t;
+    }
+  }
+}
+function AtAu(u, v, w) {
+  let js3$37 = u;
+  let js3$38 = w;
+  let js3$36 = Au(js3$37, js3$38);
+  let js3$40 = w;
+  let js3$41 = v;
+  let js3$39 = Atu(js3$40, js3$41);
+}
+function spectralnorm(n) {
+  var i;
+  let js3$42 = [];
+  var u = js3$42;
+  let js3$43 = [];
+  var v = js3$43;
+  let js3$44 = [];
+  var w = js3$44;
+  var vv = 0;
+  var vBv = 0;
+  for (i = 0; i < n; ++i) {
+    {
+      let AssnRes$45 = u[i] = 1;
+      let AssnRes$46 = w[i] = 0;
+      let AssnRes$47 = v[i] = AssnRes$46;
+    }
+  }
+  for (i = 0; i < 10; ++i) {
+    {
+      let js3$49 = u;
+      let js3$50 = v;
+      let js3$51 = w;
+      let js3$48 = AtAu(js3$49, js3$50, js3$51);
+      let js3$53 = v;
+      let js3$54 = u;
+      let js3$55 = w;
+      let js3$52 = AtAu(js3$53, js3$54, js3$55);
+    }
+  }
+  for (i = 0; i < n; ++i) {
+    {
+      let js3$57 = vBv;
+      let js3$59 = u[i];
+      let js3$60 = v[i];
+      let js3$58 = js3$59 * js3$60;
+      let js3$56 = js3$57 + js3$58;
+      let AssnRes$61 = vBv = js3$56;
+      let js3$63 = vv;
+      let js3$65 = v[i];
+      let js3$66 = v[i];
+      let js3$64 = js3$65 * js3$66;
+      let js3$62 = js3$63 + js3$64;
+      let AssnRes$67 = vv = js3$62;
+    }
+  }
+  let returnStmt$68 = Math.sqrt(vBv / vv);
+  return returnStmt$68;
+}
+var total = 0;
+for (var i = 6; i <= 48; i *= 2) {
+  {
+    let js3$70 = total;
+    let js3$72 = i;
+    let js3$71 = spectralnorm(js3$72);
+    let js3$69 = js3$70 + js3$71;
+    let AssnRes$73 = total = js3$69;
+  }
+}
+var expected = 5.086694231303284;
+let ifTest$75 = total;
+let ifTest$76 = expected;
+let ifTest$74 = ifTest$75 != ifTest$76;
+if (ifTest$74) {
+  let ifTrue$80 = "ERROR: bad result: expected ";
+  let ifTrue$81 = expected;
+  let ifTrue$79 = ifTrue$80 + ifTrue$81;
+  let ifTrue$82 = " but got ";
+  let ifTrue$78 = ifTrue$79 + ifTrue$82;
+  let ifTrue$83 = total;
+  let ifTrue$77 = ifTrue$78 + ifTrue$83;
+  throw ifTrue$77;
+}

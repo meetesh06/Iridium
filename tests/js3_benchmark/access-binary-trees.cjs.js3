@@ -1,0 +1,130 @@
+function TreeNode(left, right, item) {
+  let AssnRes$1 = this.left = left;
+  let AssnRes$2 = this.right = right;
+  let AssnRes$3 = this.item = item;
+}
+let js3$15 = TreeNode.prototype;
+let AssnRes$16 = js3$15.itemCheck = function () {
+  let ifTest$5 = this.left;
+  let ifTest$6 = null;
+  let ifTest$4 = ifTest$5 == ifTest$6;
+  if (ifTest$4) {
+    let returnStmt$7 = this.item;
+    return returnStmt$7;
+  } else {
+    let returnStmt$10 = this.item;
+    let returnStmt$12 = this.left;
+    let returnStmt$11 = returnStmt$12.itemCheck();
+    let returnStmt$9 = returnStmt$10 + returnStmt$11;
+    let returnStmt$14 = this.right;
+    let returnStmt$13 = returnStmt$14.itemCheck();
+    let returnStmt$8 = returnStmt$9 - returnStmt$13;
+    return returnStmt$8;
+  }
+};
+function bottomUpTree(item, depth) {
+  let ifTest$18 = depth;
+  let ifTest$19 = 0;
+  let ifTest$17 = ifTest$18 > ifTest$19;
+  if (ifTest$17) {
+    let returnStmt$21 = TreeNode;
+    let returnStmt$25 = 2;
+    let returnStmt$26 = item;
+    let returnStmt$24 = returnStmt$25 * returnStmt$26;
+    let returnStmt$27 = 1;
+    let returnStmt$23 = returnStmt$24 - returnStmt$27;
+    let returnStmt$29 = depth;
+    let returnStmt$30 = 1;
+    let returnStmt$28 = returnStmt$29 - returnStmt$30;
+    let returnStmt$22 = bottomUpTree(returnStmt$23, returnStmt$28);
+    let returnStmt$33 = 2;
+    let returnStmt$34 = item;
+    let returnStmt$32 = returnStmt$33 * returnStmt$34;
+    let returnStmt$36 = depth;
+    let returnStmt$37 = 1;
+    let returnStmt$35 = returnStmt$36 - returnStmt$37;
+    let returnStmt$31 = bottomUpTree(returnStmt$32, returnStmt$35);
+    let returnStmt$38 = item;
+    let returnStmt$20 = new returnStmt$21(returnStmt$22, returnStmt$31, returnStmt$38);
+    return returnStmt$20;
+  } else {
+    let returnStmt$40 = TreeNode;
+    let returnStmt$41 = null;
+    let returnStmt$42 = null;
+    let returnStmt$43 = item;
+    let returnStmt$39 = new returnStmt$40(returnStmt$41, returnStmt$42, returnStmt$43);
+    return returnStmt$39;
+  }
+}
+var ret = 0;
+for (var n = 4; n <= 7; n += 1) {
+  {
+    var minDepth = 4;
+    let js3$44 = Math.max(minDepth + 2, n);
+    var maxDepth = js3$44;
+    let js3$46 = maxDepth;
+    let js3$47 = 1;
+    let js3$45 = js3$46 + js3$47;
+    var stretchDepth = js3$45;
+    let js3$50 = 0;
+    let js3$51 = stretchDepth;
+    let js3$49 = bottomUpTree(js3$50, js3$51);
+    let js3$48 = js3$49.itemCheck();
+    var check = js3$48;
+    let js3$53 = 0;
+    let js3$54 = maxDepth;
+    let js3$52 = bottomUpTree(js3$53, js3$54);
+    var longLivedTree = js3$52;
+    for (var depth = minDepth; depth <= maxDepth; depth += 2) {
+      {
+        let js3$56 = 1;
+        let js3$59 = maxDepth;
+        let js3$60 = depth;
+        let js3$58 = js3$59 - js3$60;
+        let js3$61 = minDepth;
+        let js3$57 = js3$58 + js3$61;
+        let js3$55 = js3$56 << js3$57;
+        var iterations = js3$55;
+        let AssnRes$62 = check = 0;
+        for (var i = 1; i <= iterations; i++) {
+          {
+            let js3$64 = check;
+            let js3$67 = i;
+            let js3$68 = depth;
+            let js3$66 = bottomUpTree(js3$67, js3$68);
+            let js3$65 = js3$66.itemCheck();
+            let js3$63 = js3$64 + js3$65;
+            let AssnRes$69 = check = js3$63;
+            let js3$71 = check;
+            let js3$74 = -i;
+            let js3$75 = depth;
+            let js3$73 = bottomUpTree(js3$74, js3$75);
+            let js3$72 = js3$73.itemCheck();
+            let js3$70 = js3$71 + js3$72;
+            let AssnRes$76 = check = js3$70;
+          }
+        }
+      }
+    }
+    let js3$78 = ret;
+    let js3$79 = longLivedTree.itemCheck();
+    let js3$77 = js3$78 + js3$79;
+    let AssnRes$80 = ret = js3$77;
+  }
+}
+let js3$82 = 4;
+let js3$81 = -js3$82;
+var expected = js3$81;
+let ifTest$84 = ret;
+let ifTest$85 = expected;
+let ifTest$83 = ifTest$84 != ifTest$85;
+if (ifTest$83) {
+  let ifTrue$89 = "ERROR: bad result: expected ";
+  let ifTrue$90 = expected;
+  let ifTrue$88 = ifTrue$89 + ifTrue$90;
+  let ifTrue$91 = " but got ";
+  let ifTrue$87 = ifTrue$88 + ifTrue$91;
+  let ifTrue$92 = ret;
+  let ifTrue$86 = ifTrue$87 + ifTrue$92;
+  throw ifTrue$86;
+}

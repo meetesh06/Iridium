@@ -1,0 +1,76 @@
+var result = 0;
+function fast3bitlookup(b) {
+  var c;
+  var bi3b = 0xE994;
+  let js3$2 = 3;
+  let js3$4 = bi3b;
+  let js3$7 = b;
+  let js3$8 = 1;
+  let js3$6 = js3$7 << js3$8;
+  let js3$9 = 14;
+  let js3$5 = js3$6 & js3$9;
+  let js3$3 = js3$4 >> js3$5;
+  let js3$1 = js3$2 & js3$3;
+  let AssnRes$10 = c = js3$1;
+  let js3$12 = c;
+  let js3$14 = 3;
+  let js3$16 = bi3b;
+  let js3$19 = b;
+  let js3$20 = 2;
+  let js3$18 = js3$19 >> js3$20;
+  let js3$21 = 14;
+  let js3$17 = js3$18 & js3$21;
+  let js3$15 = js3$16 >> js3$17;
+  let js3$13 = js3$14 & js3$15;
+  let js3$11 = js3$12 + js3$13;
+  let AssnRes$22 = c = js3$11;
+  let js3$24 = c;
+  let js3$26 = 3;
+  let js3$28 = bi3b;
+  let js3$31 = b;
+  let js3$32 = 5;
+  let js3$30 = js3$31 >> js3$32;
+  let js3$33 = 6;
+  let js3$29 = js3$30 & js3$33;
+  let js3$27 = js3$28 >> js3$29;
+  let js3$25 = js3$26 & js3$27;
+  let js3$23 = js3$24 + js3$25;
+  let AssnRes$34 = c = js3$23;
+  let returnStmt$35 = c;
+  return returnStmt$35;
+}
+function TimeFunc(func) {
+  var x;
+  var y;
+  var t;
+  var sum = 0;
+  for (var x = 0; x < 500; x++) {
+    for (var y = 0; y < 256; y++) {
+      let js3$37 = sum;
+      let js3$39 = y;
+      let js3$38 = func(js3$39);
+      let js3$36 = js3$37 + js3$38;
+      let AssnRes$40 = sum = js3$36;
+      ;
+    }
+  }
+  let returnStmt$41 = sum;
+  return returnStmt$41;
+}
+let js3$43 = fast3bitlookup;
+let js3$42 = TimeFunc(js3$43);
+let AssnRes$44 = sum = js3$42;
+var expected = 512000;
+let ifTest$46 = sum;
+let ifTest$47 = expected;
+let ifTest$45 = ifTest$46 != ifTest$47;
+if (ifTest$45) {
+  let ifTrue$51 = "ERROR: bad result: expected ";
+  let ifTrue$52 = expected;
+  let ifTrue$50 = ifTrue$51 + ifTrue$52;
+  let ifTrue$53 = " but got ";
+  let ifTrue$49 = ifTrue$50 + ifTrue$53;
+  let ifTrue$54 = sum;
+  let ifTrue$48 = ifTrue$49 + ifTrue$54;
+  throw ifTrue$48;
+}

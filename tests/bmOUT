@@ -1,0 +1,256 @@
+nohup: ignoring input
+
+=== Running benchmarks/sunspider/3d-cube.cjs ===
+  ↪️ Using cached files for 3d-cube.cjs
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/3d-morph.cjs ===
+  ↪️ Using cached files for 3d-morph.cjs
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/3d-raytrace.cjs ===
+  ↪️ Using cached files for 3d-raytrace.cjs
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/access-binary-trees.cjs ===
+  ↪️ Using cached files for access-binary-trees.cjs
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/access-fannkuch.cjs ===
+  ↪️ Using cached files for access-fannkuch.cjs
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/access-nbody.cjs ===
+  ▷ Cache miss. Compiling access-nbody.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/access-nsieve.cjs ===
+  ▷ Cache miss. Compiling access-nsieve.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/bitops-3bit-bits-in-byte.cjs ===
+  ▷ Cache miss. Compiling bitops-3bit-bits-in-byte.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/bitops-bits-in-byte.cjs ===
+  ▷ Cache miss. Compiling bitops-bits-in-byte.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/bitops-bitwise-and.cjs ===
+  ▷ Cache miss. Compiling bitops-bitwise-and.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/bitops-nsieve-bits.cjs ===
+  ▷ Cache miss. Compiling bitops-nsieve-bits.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/controlflow-recursive.cjs ===
+  ▷ Cache miss. Compiling controlflow-recursive.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/crypto-md5.cjs ===
+  ▷ Cache miss. Compiling crypto-md5.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/crypto-sha1.cjs ===
+  ▷ Cache miss. Compiling crypto-sha1.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/date-format-xparb.cjs ===
+  ▷ Cache miss. Compiling date-format-xparb.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/math-cordic.cjs ===
+  ▷ Cache miss. Compiling math-cordic.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/math-partial-sums.cjs ===
+  ▷ Cache miss. Compiling math-partial-sums.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/math-spectral-norm.cjs ===
+  ▷ Cache miss. Compiling math-spectral-norm.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/regexp-dna.cjs ===
+  ▷ Cache miss. Compiling regexp-dna.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/string-base64.cjs ===
+  ▷ Cache miss. Compiling string-base64.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/string-fasta.cjs ===
+  ▷ Cache miss. Compiling string-fasta.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/string-tagcloud.cjs ===
+  ▷ Cache miss. Compiling string-tagcloud.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/string-unpack-code.cjs ===
+  ▷ Cache miss. Compiling string-unpack-code.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/sunspider/string-validate-input.cjs ===
+  ▷ Cache miss. Compiling string-validate-input.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/kraken-1.0/kraken-1.0-ai-astar.cjs ===
+  ▷ Cache miss. Compiling kraken-1.0-ai-astar.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/kraken-1.0/kraken-1.0-audio-beat-detection.cjs ===
+  ▷ Cache miss. Compiling kraken-1.0-audio-beat-detection.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/kraken-1.0/kraken-1.0-audio-dft.cjs ===
+  ▷ Cache miss. Compiling kraken-1.0-audio-dft.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/kraken-1.0/kraken-1.0-audio-fft.cjs ===
+  ▷ Cache miss. Compiling kraken-1.0-audio-fft.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/kraken-1.0/kraken-1.0-audio-oscillator.cjs ===
+  ▷ Cache miss. Compiling kraken-1.0-audio-oscillator.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/kraken-1.0/kraken-1.0-imaging-darkroom.cjs ===
+  ▷ Cache miss. Compiling kraken-1.0-imaging-darkroom.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/kraken-1.0/kraken-1.0-imaging-desaturate.cjs ===
+  ▷ Cache miss. Compiling kraken-1.0-imaging-desaturate.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/kraken-1.0/kraken-1.0-imaging-gaussian-blur.cjs ===
+  ▷ Cache miss. Compiling kraken-1.0-imaging-gaussian-blur.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/kraken-1.0/kraken-1.0-json-parse-financial.cjs ===
+  ▷ Cache miss. Compiling kraken-1.0-json-parse-financial.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/kraken-1.0/kraken-1.0-json-stringify-tinderbox.cjs ===
+  ▷ Cache miss. Compiling kraken-1.0-json-stringify-tinderbox.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-aes.cjs ===
+  ▷ Cache miss. Compiling kraken-1.0-stanford-crypto-aes.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-ccm.cjs ===
+  ▷ Cache miss. Compiling kraken-1.0-stanford-crypto-ccm.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-pbkdf2.cjs ===
+  ▷ Cache miss. Compiling kraken-1.0-stanford-crypto-pbkdf2.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-sha256-iterative.cjs ===
+  ▷ Cache miss. Compiling kraken-1.0-stanford-crypto-sha256-iterative.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/ML/ML_load.cjs ===
+  ↪️ Using cached files for ML_load.cjs
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/Octane2/Regexpbenchmark.cjs ===
+  ▷ Cache miss. Compiling Regexpbenchmark.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/SeaMonster/gaussian-blur.cjs ===
+  ↪️ Using cached files for gaussian-blur.cjs
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+=== Running benchmarks/UniPoker/benchmark.cjs ===
+  ▷ Cache miss. Compiling benchmark.cjs with Iridium...
+→ QJS+SOURCE
+→ QJS+JS3
+→ IRIDIUM
+
+✅ Results written to /home/anirudh/wd/Iridium/tests/results/07-10-2025-15-01-08/benchmark_results.csv
+📊 Plot saved to /home/anirudh/wd/Iridium/tests/results/07-10-2025-15-01-08/benchmark_grid_boxplots.png

@@ -1,0 +1,55 @@
+var result = 0;
+function bitsinbyte(b) {
+  var m = 1;
+  var c = 0;
+  while (m < 0x100) {
+    let ifTest$2 = b;
+    let ifTest$3 = m;
+    let ifTest$1 = ifTest$2 & ifTest$3;
+    if (ifTest$1) {
+      let ifTrue$4 = c++;
+      ;
+    }
+    let js3$6 = m;
+    let js3$7 = 1;
+    let js3$5 = js3$6 << js3$7;
+    let AssnRes$8 = m = js3$5;
+  }
+  let returnStmt$9 = c;
+  return returnStmt$9;
+}
+function TimeFunc(func) {
+  var x;
+  var y;
+  var t;
+  var sum = 0;
+  for (var x = 0; x < 350; x++) {
+    for (var y = 0; y < 256; y++) {
+      let js3$11 = sum;
+      let js3$13 = y;
+      let js3$12 = func(js3$13);
+      let js3$10 = js3$11 + js3$12;
+      let AssnRes$14 = sum = js3$10;
+      ;
+    }
+  }
+  let returnStmt$15 = sum;
+  return returnStmt$15;
+}
+let js3$17 = bitsinbyte;
+let js3$16 = TimeFunc(js3$17);
+let AssnRes$18 = result = js3$16;
+var expected = 358400;
+let ifTest$20 = result;
+let ifTest$21 = expected;
+let ifTest$19 = ifTest$20 != ifTest$21;
+if (ifTest$19) {
+  let ifTrue$25 = "ERROR: bad result: expected ";
+  let ifTrue$26 = expected;
+  let ifTrue$24 = ifTrue$25 + ifTrue$26;
+  let ifTrue$27 = " but got ";
+  let ifTrue$23 = ifTrue$24 + ifTrue$27;
+  let ifTrue$28 = result;
+  let ifTrue$22 = ifTrue$23 + ifTrue$28;
+  throw ifTrue$22;
+}

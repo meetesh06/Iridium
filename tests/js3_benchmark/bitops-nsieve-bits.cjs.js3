@@ -1,0 +1,111 @@
+function pad(n, width) {
+  let js3$1 = n.toString();
+  var s = js3$1;
+  while (s.length < width) {
+    let js3$3 = ' ';
+    let js3$4 = s;
+    let js3$2 = js3$3 + js3$4;
+    let AssnRes$5 = s = js3$2;
+    ;
+  }
+  let returnStmt$6 = s;
+  return returnStmt$6;
+}
+function primes(isPrime, n) {
+  var i;
+  var count = 0;
+  let js3$8 = 10000;
+  let js3$9 = n;
+  let js3$7 = js3$8 << js3$9;
+  var m = js3$7;
+  let js3$12 = m;
+  let js3$13 = 31;
+  let js3$11 = js3$12 + js3$13;
+  let js3$14 = 5;
+  let js3$10 = js3$11 >> js3$14;
+  var size = js3$10;
+  for (i = 0; i < size; i++) {
+    let AssnRes$15 = isPrime[i] = 0xffffffff;
+    ;
+  }
+  for (i = 2; i < m; i++) {
+    let ifTest$19 = i;
+    let ifTest$20 = 5;
+    let ifTest$18 = ifTest$19 >> ifTest$20;
+    let ifTest$17 = isPrime[ifTest$18];
+    let ifTest$22 = 1;
+    let ifTest$24 = i;
+    let ifTest$25 = 31;
+    let ifTest$23 = ifTest$24 & ifTest$25;
+    let ifTest$21 = ifTest$22 << ifTest$23;
+    let ifTest$16 = ifTest$17 & ifTest$21;
+    if (ifTest$16) {
+      for (var j = i + i; j < m; j += i) {
+        let ifTrue$29 = j;
+        let ifTrue$30 = 5;
+        let ifTrue$28 = ifTrue$29 >> ifTrue$30;
+        let ifTrue$27 = isPrime[ifTrue$28];
+        let ifTrue$33 = 1;
+        let ifTrue$35 = j;
+        let ifTrue$36 = 31;
+        let ifTrue$34 = ifTrue$35 & ifTrue$36;
+        let ifTrue$32 = ifTrue$33 << ifTrue$34;
+        let ifTrue$31 = ~ifTrue$32;
+        let ifTrue$26 = ifTrue$27 & ifTrue$31;
+        let ifTrue$38 = j;
+        let ifTrue$39 = 5;
+        let ifTrue$37 = ifTrue$38 >> ifTrue$39;
+        let AssnRes$40 = isPrime[ifTrue$37] = ifTrue$26;
+        ;
+      }
+      let ifTrue$41 = count++;
+    }
+  }
+}
+function sieve() {
+  for (var i = 4; i <= 4; i++) {
+    {
+      let js3$43 = Array;
+      let js3$47 = 10000;
+      let js3$48 = i;
+      let js3$46 = js3$47 << js3$48;
+      let js3$49 = 31;
+      let js3$45 = js3$46 + js3$49;
+      let js3$50 = 5;
+      let js3$44 = js3$45 >> js3$50;
+      let js3$42 = new js3$43(js3$44);
+      var isPrime = js3$42;
+      let js3$52 = isPrime;
+      let js3$53 = i;
+      let js3$51 = primes(js3$52, js3$53);
+    }
+  }
+  let returnStmt$54 = isPrime;
+  return returnStmt$54;
+}
+let js3$55 = sieve();
+var result = js3$55;
+var sum = 0;
+for (var i = 0; i < result.length; ++i) {
+  let js3$57 = sum;
+  let js3$58 = result[i];
+  let js3$56 = js3$57 + js3$58;
+  let AssnRes$59 = sum = js3$56;
+  ;
+}
+let js3$61 = 1286749544853;
+let js3$60 = -js3$61;
+var expected = js3$60;
+let ifTest$63 = sum;
+let ifTest$64 = expected;
+let ifTest$62 = ifTest$63 != ifTest$64;
+if (ifTest$62) {
+  let ifTrue$68 = "ERROR: bad result: expected ";
+  let ifTrue$69 = expected;
+  let ifTrue$67 = ifTrue$68 + ifTrue$69;
+  let ifTrue$70 = " but got ";
+  let ifTrue$66 = ifTrue$67 + ifTrue$70;
+  let ifTrue$71 = sum;
+  let ifTrue$65 = ifTrue$66 + ifTrue$71;
+  throw ifTrue$65;
+}

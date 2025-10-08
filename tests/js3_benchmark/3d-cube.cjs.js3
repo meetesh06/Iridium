@@ -1,0 +1,1207 @@
+let js3$2 = Array;
+let js3$1 = new js3$2();
+var Q = js3$1;
+let js3$4 = Array;
+let js3$3 = new js3$4();
+var MTrans = js3$3;
+let js3$6 = Array;
+let js3$5 = new js3$6();
+var MQube = js3$5;
+let js3$8 = Array;
+let js3$7 = new js3$8();
+var I = js3$7;
+let js3$10 = Object;
+let js3$9 = new js3$10();
+var Origin = js3$9;
+let js3$12 = Object;
+let js3$11 = new js3$12();
+var Testing = js3$11;
+var LoopTimer;
+let js3$13 = {
+  20: 2889.0000000000045,
+  40: 2889.0000000000055,
+  80: 2889.000000000005,
+  160: 2889.0000000000055
+};
+var validation = js3$13;
+let js3$15 = Object;
+let js3$14 = new js3$15();
+var DisplArea = js3$14;
+let AssnRes$16 = DisplArea.Width = 300;
+let AssnRes$17 = DisplArea.Height = 300;
+function DrawLine(From, To) {
+  let js3$19 = From.V;
+  let js3$20 = 0;
+  let js3$18 = js3$19[js3$20];
+  var x1 = js3$18;
+  let js3$22 = To.V;
+  let js3$23 = 0;
+  let js3$21 = js3$22[js3$23];
+  var x2 = js3$21;
+  let js3$25 = From.V;
+  let js3$26 = 1;
+  let js3$24 = js3$25[js3$26];
+  var y1 = js3$24;
+  let js3$28 = To.V;
+  let js3$29 = 1;
+  let js3$27 = js3$28[js3$29];
+  var y2 = js3$27;
+  let js3$30 = Math.abs(x2 - x1);
+  var dx = js3$30;
+  let js3$31 = Math.abs(y2 - y1);
+  var dy = js3$31;
+  var x = x1;
+  var y = y1;
+  var IncX1;
+  var IncY1;
+  var IncX2;
+  var IncY2;
+  var Den;
+  var Num;
+  var NumAdd;
+  var NumPix;
+  let ifTest$33 = x2;
+  let ifTest$34 = x1;
+  let ifTest$32 = ifTest$33 >= ifTest$34;
+  if (ifTest$32) {
+    let AssnRes$35 = IncX1 = 1;
+    let AssnRes$36 = IncX2 = 1;
+  } else {
+    let ifFalse$38 = 1;
+    let ifFalse$37 = -ifFalse$38;
+    let AssnRes$39 = IncX1 = ifFalse$37;
+    let ifFalse$41 = 1;
+    let ifFalse$40 = -ifFalse$41;
+    let AssnRes$42 = IncX2 = ifFalse$40;
+  }
+  let ifTest$44 = y2;
+  let ifTest$45 = y1;
+  let ifTest$43 = ifTest$44 >= ifTest$45;
+  if (ifTest$43) {
+    let AssnRes$46 = IncY1 = 1;
+    let AssnRes$47 = IncY2 = 1;
+  } else {
+    let ifFalse$49 = 1;
+    let ifFalse$48 = -ifFalse$49;
+    let AssnRes$50 = IncY1 = ifFalse$48;
+    let ifFalse$52 = 1;
+    let ifFalse$51 = -ifFalse$52;
+    let AssnRes$53 = IncY2 = ifFalse$51;
+  }
+  let ifTest$55 = dx;
+  let ifTest$56 = dy;
+  let ifTest$54 = ifTest$55 >= ifTest$56;
+  if (ifTest$54) {
+    let AssnRes$57 = IncX1 = 0;
+    let AssnRes$58 = IncY2 = 0;
+    let AssnRes$59 = Den = dx;
+    let ifTrue$61 = dx;
+    let ifTrue$62 = 2;
+    let ifTrue$60 = ifTrue$61 / ifTrue$62;
+    let AssnRes$63 = Num = ifTrue$60;
+    let AssnRes$64 = NumAdd = dy;
+    let AssnRes$65 = NumPix = dx;
+  } else {
+    let AssnRes$66 = IncX2 = 0;
+    let AssnRes$67 = IncY1 = 0;
+    let AssnRes$68 = Den = dy;
+    let ifFalse$70 = dy;
+    let ifFalse$71 = 2;
+    let ifFalse$69 = ifFalse$70 / ifFalse$71;
+    let AssnRes$72 = Num = ifFalse$69;
+    let AssnRes$73 = NumAdd = dx;
+    let AssnRes$74 = NumPix = dy;
+  }
+  let js3$75 = Math.round(Q.LastPx + NumPix);
+  let AssnRes$76 = NumPix = js3$75;
+  let js3$77 = Q.LastPx;
+  var i = js3$77;
+  for (; i < NumPix; i++) {
+    {
+      let js3$79 = Num;
+      let js3$80 = NumAdd;
+      let js3$78 = js3$79 + js3$80;
+      let AssnRes$81 = Num = js3$78;
+      let ifTest$83 = Num;
+      let ifTest$84 = Den;
+      let ifTest$82 = ifTest$83 >= ifTest$84;
+      if (ifTest$82) {
+        let ifTrue$86 = Num;
+        let ifTrue$87 = Den;
+        let ifTrue$85 = ifTrue$86 - ifTrue$87;
+        let AssnRes$88 = Num = ifTrue$85;
+        let ifTrue$90 = x;
+        let ifTrue$91 = IncX1;
+        let ifTrue$89 = ifTrue$90 + ifTrue$91;
+        let AssnRes$92 = x = ifTrue$89;
+        let ifTrue$94 = y;
+        let ifTrue$95 = IncY1;
+        let ifTrue$93 = ifTrue$94 + ifTrue$95;
+        let AssnRes$96 = y = ifTrue$93;
+      }
+      let js3$98 = x;
+      let js3$99 = IncX2;
+      let js3$97 = js3$98 + js3$99;
+      let AssnRes$100 = x = js3$97;
+      let js3$102 = y;
+      let js3$103 = IncY2;
+      let js3$101 = js3$102 + js3$103;
+      let AssnRes$104 = y = js3$101;
+    }
+  }
+  let AssnRes$105 = Q.LastPx = NumPix;
+}
+function CalcCross(V0, V1) {
+  let js3$107 = Array;
+  let js3$106 = new js3$107();
+  var Cross = js3$106;
+  let js3$111 = 1;
+  let js3$110 = V0[js3$111];
+  let js3$113 = 2;
+  let js3$112 = V1[js3$113];
+  let js3$109 = js3$110 * js3$112;
+  let js3$116 = 2;
+  let js3$115 = V0[js3$116];
+  let js3$118 = 1;
+  let js3$117 = V1[js3$118];
+  let js3$114 = js3$115 * js3$117;
+  let js3$108 = js3$109 - js3$114;
+  let js3$119 = 0;
+  let AssnRes$120 = Cross[js3$119] = js3$108;
+  let js3$124 = 2;
+  let js3$123 = V0[js3$124];
+  let js3$126 = 0;
+  let js3$125 = V1[js3$126];
+  let js3$122 = js3$123 * js3$125;
+  let js3$129 = 0;
+  let js3$128 = V0[js3$129];
+  let js3$131 = 2;
+  let js3$130 = V1[js3$131];
+  let js3$127 = js3$128 * js3$130;
+  let js3$121 = js3$122 - js3$127;
+  let js3$132 = 1;
+  let AssnRes$133 = Cross[js3$132] = js3$121;
+  let js3$137 = 0;
+  let js3$136 = V0[js3$137];
+  let js3$139 = 1;
+  let js3$138 = V1[js3$139];
+  let js3$135 = js3$136 * js3$138;
+  let js3$142 = 1;
+  let js3$141 = V0[js3$142];
+  let js3$144 = 0;
+  let js3$143 = V1[js3$144];
+  let js3$140 = js3$141 * js3$143;
+  let js3$134 = js3$135 - js3$140;
+  let js3$145 = 2;
+  let AssnRes$146 = Cross[js3$145] = js3$134;
+  let returnStmt$147 = Cross;
+  return returnStmt$147;
+}
+function CalcNormal(V0, V1, V2) {
+  let js3$149 = Array;
+  let js3$148 = new js3$149();
+  var A = js3$148;
+  let js3$151 = Array;
+  let js3$150 = new js3$151();
+  var B = js3$150;
+  for (var i = 0; i < 3; i++) {
+    {
+      let js3$153 = V0[i];
+      let js3$154 = V1[i];
+      let js3$152 = js3$153 - js3$154;
+      let AssnRes$155 = A[i] = js3$152;
+      let js3$157 = V2[i];
+      let js3$158 = V1[i];
+      let js3$156 = js3$157 - js3$158;
+      let AssnRes$159 = B[i] = js3$156;
+    }
+  }
+  let js3$161 = A;
+  let js3$162 = B;
+  let js3$160 = CalcCross(js3$161, js3$162);
+  let AssnRes$163 = A = js3$160;
+  let js3$164 = Math.sqrt(A[0] * A[0] + A[1] * A[1] + A[2] * A[2]);
+  var Length = js3$164;
+  for (var i = 0; i < 3; i++) {
+    let js3$166 = A[i];
+    let js3$167 = Length;
+    let js3$165 = js3$166 / js3$167;
+    let AssnRes$168 = A[i] = js3$165;
+    ;
+  }
+  let js3$169 = 3;
+  let AssnRes$170 = A[js3$169] = 1;
+  let returnStmt$171 = A;
+  return returnStmt$171;
+}
+function CreateP(X, Y, Z) {
+  let js3$172 = [X, Y, Z, 1];
+  let AssnRes$173 = this.V = js3$172;
+}
+function MMulti(M1, M2) {
+  let js3$175 = [];
+  let js3$176 = [];
+  let js3$177 = [];
+  let js3$178 = [];
+  let js3$174 = [js3$175, js3$176, js3$177, js3$178];
+  var M = js3$174;
+  var i = 0;
+  var j = 0;
+  for (; i < 4; i++) {
+    {
+      let AssnRes$179 = j = 0;
+      for (; j < 4; j++) {
+        let js3$185 = M1[i];
+        let js3$186 = 0;
+        let js3$184 = js3$185[js3$186];
+        let js3$189 = 0;
+        let js3$188 = M2[js3$189];
+        let js3$187 = js3$188[j];
+        let js3$183 = js3$184 * js3$187;
+        let js3$192 = M1[i];
+        let js3$193 = 1;
+        let js3$191 = js3$192[js3$193];
+        let js3$196 = 1;
+        let js3$195 = M2[js3$196];
+        let js3$194 = js3$195[j];
+        let js3$190 = js3$191 * js3$194;
+        let js3$182 = js3$183 + js3$190;
+        let js3$199 = M1[i];
+        let js3$200 = 2;
+        let js3$198 = js3$199[js3$200];
+        let js3$203 = 2;
+        let js3$202 = M2[js3$203];
+        let js3$201 = js3$202[j];
+        let js3$197 = js3$198 * js3$201;
+        let js3$181 = js3$182 + js3$197;
+        let js3$206 = M1[i];
+        let js3$207 = 3;
+        let js3$205 = js3$206[js3$207];
+        let js3$210 = 3;
+        let js3$209 = M2[js3$210];
+        let js3$208 = js3$209[j];
+        let js3$204 = js3$205 * js3$208;
+        let js3$180 = js3$181 + js3$204;
+        let js3$211 = M[i];
+        let AssnRes$212 = js3$211[j] = js3$180;
+        ;
+      }
+    }
+  }
+  let returnStmt$213 = M;
+  return returnStmt$213;
+}
+function VMulti(M, V) {
+  let js3$215 = Array;
+  let js3$214 = new js3$215();
+  var Vect = js3$214;
+  var i = 0;
+  for (; i < 4; i++) {
+    let js3$221 = M[i];
+    let js3$222 = 0;
+    let js3$220 = js3$221[js3$222];
+    let js3$224 = 0;
+    let js3$223 = V[js3$224];
+    let js3$219 = js3$220 * js3$223;
+    let js3$227 = M[i];
+    let js3$228 = 1;
+    let js3$226 = js3$227[js3$228];
+    let js3$230 = 1;
+    let js3$229 = V[js3$230];
+    let js3$225 = js3$226 * js3$229;
+    let js3$218 = js3$219 + js3$225;
+    let js3$233 = M[i];
+    let js3$234 = 2;
+    let js3$232 = js3$233[js3$234];
+    let js3$236 = 2;
+    let js3$235 = V[js3$236];
+    let js3$231 = js3$232 * js3$235;
+    let js3$217 = js3$218 + js3$231;
+    let js3$239 = M[i];
+    let js3$240 = 3;
+    let js3$238 = js3$239[js3$240];
+    let js3$242 = 3;
+    let js3$241 = V[js3$242];
+    let js3$237 = js3$238 * js3$241;
+    let js3$216 = js3$217 + js3$237;
+    let AssnRes$243 = Vect[i] = js3$216;
+    ;
+  }
+  let returnStmt$244 = Vect;
+  return returnStmt$244;
+}
+function VMulti2(M, V) {
+  let js3$246 = Array;
+  let js3$245 = new js3$246();
+  var Vect = js3$245;
+  var i = 0;
+  for (; i < 3; i++) {
+    let js3$251 = M[i];
+    let js3$252 = 0;
+    let js3$250 = js3$251[js3$252];
+    let js3$254 = 0;
+    let js3$253 = V[js3$254];
+    let js3$249 = js3$250 * js3$253;
+    let js3$257 = M[i];
+    let js3$258 = 1;
+    let js3$256 = js3$257[js3$258];
+    let js3$260 = 1;
+    let js3$259 = V[js3$260];
+    let js3$255 = js3$256 * js3$259;
+    let js3$248 = js3$249 + js3$255;
+    let js3$263 = M[i];
+    let js3$264 = 2;
+    let js3$262 = js3$263[js3$264];
+    let js3$266 = 2;
+    let js3$265 = V[js3$266];
+    let js3$261 = js3$262 * js3$265;
+    let js3$247 = js3$248 + js3$261;
+    let AssnRes$267 = Vect[i] = js3$247;
+    ;
+  }
+  let returnStmt$268 = Vect;
+  return returnStmt$268;
+}
+function MAdd(M1, M2) {
+  let js3$270 = [];
+  let js3$271 = [];
+  let js3$272 = [];
+  let js3$273 = [];
+  let js3$269 = [js3$270, js3$271, js3$272, js3$273];
+  var M = js3$269;
+  var i = 0;
+  var j = 0;
+  for (; i < 4; i++) {
+    {
+      let AssnRes$274 = j = 0;
+      for (; j < 4; j++) {
+        let js3$277 = M1[i];
+        let js3$276 = js3$277[j];
+        let js3$279 = M2[i];
+        let js3$278 = js3$279[j];
+        let js3$275 = js3$276 + js3$278;
+        let js3$280 = M[i];
+        let AssnRes$281 = js3$280[j] = js3$275;
+        ;
+      }
+    }
+  }
+  let returnStmt$282 = M;
+  return returnStmt$282;
+}
+function Translate(M, Dx, Dy, Dz) {
+  let js3$284 = [1, 0, 0, Dx];
+  let js3$285 = [0, 1, 0, Dy];
+  let js3$286 = [0, 0, 1, Dz];
+  let js3$287 = [0, 0, 0, 1];
+  let js3$283 = [js3$284, js3$285, js3$286, js3$287];
+  var T = js3$283;
+  let returnStmt$289 = T;
+  let returnStmt$290 = M;
+  let returnStmt$288 = MMulti(returnStmt$289, returnStmt$290);
+  return returnStmt$288;
+}
+function RotateX(M, Phi) {
+  var a = Phi;
+  let js3$292 = a;
+  let js3$294 = Math.PI;
+  let js3$295 = 180;
+  let js3$293 = js3$294 / js3$295;
+  let js3$291 = js3$292 * js3$293;
+  let AssnRes$296 = a = js3$291;
+  let js3$297 = Math.cos(a);
+  var Cos = js3$297;
+  let js3$298 = Math.sin(a);
+  var Sin = js3$298;
+  let js3$300 = [1, 0, 0, 0];
+  let js3$302 = -Sin;
+  let js3$301 = [0, Cos, js3$302, 0];
+  let js3$303 = [0, Sin, Cos, 0];
+  let js3$304 = [0, 0, 0, 1];
+  let js3$299 = [js3$300, js3$301, js3$303, js3$304];
+  var R = js3$299;
+  let returnStmt$306 = R;
+  let returnStmt$307 = M;
+  let returnStmt$305 = MMulti(returnStmt$306, returnStmt$307);
+  return returnStmt$305;
+}
+function RotateY(M, Phi) {
+  var a = Phi;
+  let js3$309 = a;
+  let js3$311 = Math.PI;
+  let js3$312 = 180;
+  let js3$310 = js3$311 / js3$312;
+  let js3$308 = js3$309 * js3$310;
+  let AssnRes$313 = a = js3$308;
+  let js3$314 = Math.cos(a);
+  var Cos = js3$314;
+  let js3$315 = Math.sin(a);
+  var Sin = js3$315;
+  let js3$317 = [Cos, 0, Sin, 0];
+  let js3$318 = [0, 1, 0, 0];
+  let js3$320 = -Sin;
+  let js3$319 = [js3$320, 0, Cos, 0];
+  let js3$321 = [0, 0, 0, 1];
+  let js3$316 = [js3$317, js3$318, js3$319, js3$321];
+  var R = js3$316;
+  let returnStmt$323 = R;
+  let returnStmt$324 = M;
+  let returnStmt$322 = MMulti(returnStmt$323, returnStmt$324);
+  return returnStmt$322;
+}
+function RotateZ(M, Phi) {
+  var a = Phi;
+  let js3$326 = a;
+  let js3$328 = Math.PI;
+  let js3$329 = 180;
+  let js3$327 = js3$328 / js3$329;
+  let js3$325 = js3$326 * js3$327;
+  let AssnRes$330 = a = js3$325;
+  let js3$331 = Math.cos(a);
+  var Cos = js3$331;
+  let js3$332 = Math.sin(a);
+  var Sin = js3$332;
+  let js3$335 = -Sin;
+  let js3$334 = [Cos, js3$335, 0, 0];
+  let js3$336 = [Sin, Cos, 0, 0];
+  let js3$337 = [0, 0, 1, 0];
+  let js3$338 = [0, 0, 0, 1];
+  let js3$333 = [js3$334, js3$336, js3$337, js3$338];
+  var R = js3$333;
+  let returnStmt$340 = R;
+  let returnStmt$341 = M;
+  let returnStmt$339 = MMulti(returnStmt$340, returnStmt$341);
+  return returnStmt$339;
+}
+function DrawQube() {
+  let js3$343 = Array;
+  let js3$342 = new js3$343();
+  var CurN = js3$342;
+  var i = 5;
+  let AssnRes$344 = Q.LastPx = 0;
+  for (; i > -1; i--) {
+    let js3$346 = MQube;
+    let js3$348 = Q.Normal;
+    let js3$347 = js3$348[i];
+    let js3$345 = VMulti2(js3$346, js3$347);
+    let AssnRes$349 = CurN[i] = js3$345;
+    ;
+  }
+  let ifTest$353 = 0;
+  let ifTest$352 = CurN[ifTest$353];
+  let ifTest$354 = 2;
+  let ifTest$351 = ifTest$352[ifTest$354];
+  let ifTest$355 = 0;
+  let ifTest$350 = ifTest$351 < ifTest$355;
+  if (ifTest$350) {
+    let ifTest$358 = Q.Line;
+    let ifTest$359 = 0;
+    let ifTest$357 = ifTest$358[ifTest$359];
+    let ifTest$356 = !ifTest$357;
+    if (ifTest$356) {
+      let ifTrue$362 = 0;
+      let ifTrue$361 = Q[ifTrue$362];
+      let ifTrue$364 = 1;
+      let ifTrue$363 = Q[ifTrue$364];
+      let ifTrue$360 = DrawLine(ifTrue$361, ifTrue$363);
+      let ifTrue$365 = Q.Line;
+      let ifTrue$366 = 0;
+      let AssnRes$367 = ifTrue$365[ifTrue$366] = true;
+    }
+    ;
+    let ifTest$370 = Q.Line;
+    let ifTest$371 = 1;
+    let ifTest$369 = ifTest$370[ifTest$371];
+    let ifTest$368 = !ifTest$369;
+    if (ifTest$368) {
+      let ifTrue$374 = 1;
+      let ifTrue$373 = Q[ifTrue$374];
+      let ifTrue$376 = 2;
+      let ifTrue$375 = Q[ifTrue$376];
+      let ifTrue$372 = DrawLine(ifTrue$373, ifTrue$375);
+      let ifTrue$377 = Q.Line;
+      let ifTrue$378 = 1;
+      let AssnRes$379 = ifTrue$377[ifTrue$378] = true;
+    }
+    ;
+    let ifTest$382 = Q.Line;
+    let ifTest$383 = 2;
+    let ifTest$381 = ifTest$382[ifTest$383];
+    let ifTest$380 = !ifTest$381;
+    if (ifTest$380) {
+      let ifTrue$386 = 2;
+      let ifTrue$385 = Q[ifTrue$386];
+      let ifTrue$388 = 3;
+      let ifTrue$387 = Q[ifTrue$388];
+      let ifTrue$384 = DrawLine(ifTrue$385, ifTrue$387);
+      let ifTrue$389 = Q.Line;
+      let ifTrue$390 = 2;
+      let AssnRes$391 = ifTrue$389[ifTrue$390] = true;
+    }
+    ;
+    let ifTest$394 = Q.Line;
+    let ifTest$395 = 3;
+    let ifTest$393 = ifTest$394[ifTest$395];
+    let ifTest$392 = !ifTest$393;
+    if (ifTest$392) {
+      let ifTrue$398 = 3;
+      let ifTrue$397 = Q[ifTrue$398];
+      let ifTrue$400 = 0;
+      let ifTrue$399 = Q[ifTrue$400];
+      let ifTrue$396 = DrawLine(ifTrue$397, ifTrue$399);
+      let ifTrue$401 = Q.Line;
+      let ifTrue$402 = 3;
+      let AssnRes$403 = ifTrue$401[ifTrue$402] = true;
+    }
+    ;
+  }
+  let ifTest$407 = 1;
+  let ifTest$406 = CurN[ifTest$407];
+  let ifTest$408 = 2;
+  let ifTest$405 = ifTest$406[ifTest$408];
+  let ifTest$409 = 0;
+  let ifTest$404 = ifTest$405 < ifTest$409;
+  if (ifTest$404) {
+    let ifTest$412 = Q.Line;
+    let ifTest$413 = 2;
+    let ifTest$411 = ifTest$412[ifTest$413];
+    let ifTest$410 = !ifTest$411;
+    if (ifTest$410) {
+      let ifTrue$416 = 3;
+      let ifTrue$415 = Q[ifTrue$416];
+      let ifTrue$418 = 2;
+      let ifTrue$417 = Q[ifTrue$418];
+      let ifTrue$414 = DrawLine(ifTrue$415, ifTrue$417);
+      let ifTrue$419 = Q.Line;
+      let ifTrue$420 = 2;
+      let AssnRes$421 = ifTrue$419[ifTrue$420] = true;
+    }
+    ;
+    let ifTest$424 = Q.Line;
+    let ifTest$425 = 9;
+    let ifTest$423 = ifTest$424[ifTest$425];
+    let ifTest$422 = !ifTest$423;
+    if (ifTest$422) {
+      let ifTrue$428 = 2;
+      let ifTrue$427 = Q[ifTrue$428];
+      let ifTrue$430 = 6;
+      let ifTrue$429 = Q[ifTrue$430];
+      let ifTrue$426 = DrawLine(ifTrue$427, ifTrue$429);
+      let ifTrue$431 = Q.Line;
+      let ifTrue$432 = 9;
+      let AssnRes$433 = ifTrue$431[ifTrue$432] = true;
+    }
+    ;
+    let ifTest$436 = Q.Line;
+    let ifTest$437 = 6;
+    let ifTest$435 = ifTest$436[ifTest$437];
+    let ifTest$434 = !ifTest$435;
+    if (ifTest$434) {
+      let ifTrue$440 = 6;
+      let ifTrue$439 = Q[ifTrue$440];
+      let ifTrue$442 = 7;
+      let ifTrue$441 = Q[ifTrue$442];
+      let ifTrue$438 = DrawLine(ifTrue$439, ifTrue$441);
+      let ifTrue$443 = Q.Line;
+      let ifTrue$444 = 6;
+      let AssnRes$445 = ifTrue$443[ifTrue$444] = true;
+    }
+    ;
+    let ifTest$448 = Q.Line;
+    let ifTest$449 = 10;
+    let ifTest$447 = ifTest$448[ifTest$449];
+    let ifTest$446 = !ifTest$447;
+    if (ifTest$446) {
+      let ifTrue$452 = 7;
+      let ifTrue$451 = Q[ifTrue$452];
+      let ifTrue$454 = 3;
+      let ifTrue$453 = Q[ifTrue$454];
+      let ifTrue$450 = DrawLine(ifTrue$451, ifTrue$453);
+      let ifTrue$455 = Q.Line;
+      let ifTrue$456 = 10;
+      let AssnRes$457 = ifTrue$455[ifTrue$456] = true;
+    }
+    ;
+  }
+  let ifTest$461 = 2;
+  let ifTest$460 = CurN[ifTest$461];
+  let ifTest$462 = 2;
+  let ifTest$459 = ifTest$460[ifTest$462];
+  let ifTest$463 = 0;
+  let ifTest$458 = ifTest$459 < ifTest$463;
+  if (ifTest$458) {
+    let ifTest$466 = Q.Line;
+    let ifTest$467 = 4;
+    let ifTest$465 = ifTest$466[ifTest$467];
+    let ifTest$464 = !ifTest$465;
+    if (ifTest$464) {
+      let ifTrue$470 = 4;
+      let ifTrue$469 = Q[ifTrue$470];
+      let ifTrue$472 = 5;
+      let ifTrue$471 = Q[ifTrue$472];
+      let ifTrue$468 = DrawLine(ifTrue$469, ifTrue$471);
+      let ifTrue$473 = Q.Line;
+      let ifTrue$474 = 4;
+      let AssnRes$475 = ifTrue$473[ifTrue$474] = true;
+    }
+    ;
+    let ifTest$478 = Q.Line;
+    let ifTest$479 = 5;
+    let ifTest$477 = ifTest$478[ifTest$479];
+    let ifTest$476 = !ifTest$477;
+    if (ifTest$476) {
+      let ifTrue$482 = 5;
+      let ifTrue$481 = Q[ifTrue$482];
+      let ifTrue$484 = 6;
+      let ifTrue$483 = Q[ifTrue$484];
+      let ifTrue$480 = DrawLine(ifTrue$481, ifTrue$483);
+      let ifTrue$485 = Q.Line;
+      let ifTrue$486 = 5;
+      let AssnRes$487 = ifTrue$485[ifTrue$486] = true;
+    }
+    ;
+    let ifTest$490 = Q.Line;
+    let ifTest$491 = 6;
+    let ifTest$489 = ifTest$490[ifTest$491];
+    let ifTest$488 = !ifTest$489;
+    if (ifTest$488) {
+      let ifTrue$494 = 6;
+      let ifTrue$493 = Q[ifTrue$494];
+      let ifTrue$496 = 7;
+      let ifTrue$495 = Q[ifTrue$496];
+      let ifTrue$492 = DrawLine(ifTrue$493, ifTrue$495);
+      let ifTrue$497 = Q.Line;
+      let ifTrue$498 = 6;
+      let AssnRes$499 = ifTrue$497[ifTrue$498] = true;
+    }
+    ;
+    let ifTest$502 = Q.Line;
+    let ifTest$503 = 7;
+    let ifTest$501 = ifTest$502[ifTest$503];
+    let ifTest$500 = !ifTest$501;
+    if (ifTest$500) {
+      let ifTrue$506 = 7;
+      let ifTrue$505 = Q[ifTrue$506];
+      let ifTrue$508 = 4;
+      let ifTrue$507 = Q[ifTrue$508];
+      let ifTrue$504 = DrawLine(ifTrue$505, ifTrue$507);
+      let ifTrue$509 = Q.Line;
+      let ifTrue$510 = 7;
+      let AssnRes$511 = ifTrue$509[ifTrue$510] = true;
+    }
+    ;
+  }
+  let ifTest$515 = 3;
+  let ifTest$514 = CurN[ifTest$515];
+  let ifTest$516 = 2;
+  let ifTest$513 = ifTest$514[ifTest$516];
+  let ifTest$517 = 0;
+  let ifTest$512 = ifTest$513 < ifTest$517;
+  if (ifTest$512) {
+    let ifTest$520 = Q.Line;
+    let ifTest$521 = 4;
+    let ifTest$519 = ifTest$520[ifTest$521];
+    let ifTest$518 = !ifTest$519;
+    if (ifTest$518) {
+      let ifTrue$524 = 4;
+      let ifTrue$523 = Q[ifTrue$524];
+      let ifTrue$526 = 5;
+      let ifTrue$525 = Q[ifTrue$526];
+      let ifTrue$522 = DrawLine(ifTrue$523, ifTrue$525);
+      let ifTrue$527 = Q.Line;
+      let ifTrue$528 = 4;
+      let AssnRes$529 = ifTrue$527[ifTrue$528] = true;
+    }
+    ;
+    let ifTest$532 = Q.Line;
+    let ifTest$533 = 8;
+    let ifTest$531 = ifTest$532[ifTest$533];
+    let ifTest$530 = !ifTest$531;
+    if (ifTest$530) {
+      let ifTrue$536 = 5;
+      let ifTrue$535 = Q[ifTrue$536];
+      let ifTrue$538 = 1;
+      let ifTrue$537 = Q[ifTrue$538];
+      let ifTrue$534 = DrawLine(ifTrue$535, ifTrue$537);
+      let ifTrue$539 = Q.Line;
+      let ifTrue$540 = 8;
+      let AssnRes$541 = ifTrue$539[ifTrue$540] = true;
+    }
+    ;
+    let ifTest$544 = Q.Line;
+    let ifTest$545 = 0;
+    let ifTest$543 = ifTest$544[ifTest$545];
+    let ifTest$542 = !ifTest$543;
+    if (ifTest$542) {
+      let ifTrue$548 = 1;
+      let ifTrue$547 = Q[ifTrue$548];
+      let ifTrue$550 = 0;
+      let ifTrue$549 = Q[ifTrue$550];
+      let ifTrue$546 = DrawLine(ifTrue$547, ifTrue$549);
+      let ifTrue$551 = Q.Line;
+      let ifTrue$552 = 0;
+      let AssnRes$553 = ifTrue$551[ifTrue$552] = true;
+    }
+    ;
+    let ifTest$556 = Q.Line;
+    let ifTest$557 = 11;
+    let ifTest$555 = ifTest$556[ifTest$557];
+    let ifTest$554 = !ifTest$555;
+    if (ifTest$554) {
+      let ifTrue$560 = 0;
+      let ifTrue$559 = Q[ifTrue$560];
+      let ifTrue$562 = 4;
+      let ifTrue$561 = Q[ifTrue$562];
+      let ifTrue$558 = DrawLine(ifTrue$559, ifTrue$561);
+      let ifTrue$563 = Q.Line;
+      let ifTrue$564 = 11;
+      let AssnRes$565 = ifTrue$563[ifTrue$564] = true;
+    }
+    ;
+  }
+  let ifTest$569 = 4;
+  let ifTest$568 = CurN[ifTest$569];
+  let ifTest$570 = 2;
+  let ifTest$567 = ifTest$568[ifTest$570];
+  let ifTest$571 = 0;
+  let ifTest$566 = ifTest$567 < ifTest$571;
+  if (ifTest$566) {
+    let ifTest$574 = Q.Line;
+    let ifTest$575 = 11;
+    let ifTest$573 = ifTest$574[ifTest$575];
+    let ifTest$572 = !ifTest$573;
+    if (ifTest$572) {
+      let ifTrue$578 = 4;
+      let ifTrue$577 = Q[ifTrue$578];
+      let ifTrue$580 = 0;
+      let ifTrue$579 = Q[ifTrue$580];
+      let ifTrue$576 = DrawLine(ifTrue$577, ifTrue$579);
+      let ifTrue$581 = Q.Line;
+      let ifTrue$582 = 11;
+      let AssnRes$583 = ifTrue$581[ifTrue$582] = true;
+    }
+    ;
+    let ifTest$586 = Q.Line;
+    let ifTest$587 = 3;
+    let ifTest$585 = ifTest$586[ifTest$587];
+    let ifTest$584 = !ifTest$585;
+    if (ifTest$584) {
+      let ifTrue$590 = 0;
+      let ifTrue$589 = Q[ifTrue$590];
+      let ifTrue$592 = 3;
+      let ifTrue$591 = Q[ifTrue$592];
+      let ifTrue$588 = DrawLine(ifTrue$589, ifTrue$591);
+      let ifTrue$593 = Q.Line;
+      let ifTrue$594 = 3;
+      let AssnRes$595 = ifTrue$593[ifTrue$594] = true;
+    }
+    ;
+    let ifTest$598 = Q.Line;
+    let ifTest$599 = 10;
+    let ifTest$597 = ifTest$598[ifTest$599];
+    let ifTest$596 = !ifTest$597;
+    if (ifTest$596) {
+      let ifTrue$602 = 3;
+      let ifTrue$601 = Q[ifTrue$602];
+      let ifTrue$604 = 7;
+      let ifTrue$603 = Q[ifTrue$604];
+      let ifTrue$600 = DrawLine(ifTrue$601, ifTrue$603);
+      let ifTrue$605 = Q.Line;
+      let ifTrue$606 = 10;
+      let AssnRes$607 = ifTrue$605[ifTrue$606] = true;
+    }
+    ;
+    let ifTest$610 = Q.Line;
+    let ifTest$611 = 7;
+    let ifTest$609 = ifTest$610[ifTest$611];
+    let ifTest$608 = !ifTest$609;
+    if (ifTest$608) {
+      let ifTrue$614 = 7;
+      let ifTrue$613 = Q[ifTrue$614];
+      let ifTrue$616 = 4;
+      let ifTrue$615 = Q[ifTrue$616];
+      let ifTrue$612 = DrawLine(ifTrue$613, ifTrue$615);
+      let ifTrue$617 = Q.Line;
+      let ifTrue$618 = 7;
+      let AssnRes$619 = ifTrue$617[ifTrue$618] = true;
+    }
+    ;
+  }
+  let ifTest$623 = 5;
+  let ifTest$622 = CurN[ifTest$623];
+  let ifTest$624 = 2;
+  let ifTest$621 = ifTest$622[ifTest$624];
+  let ifTest$625 = 0;
+  let ifTest$620 = ifTest$621 < ifTest$625;
+  if (ifTest$620) {
+    let ifTest$628 = Q.Line;
+    let ifTest$629 = 8;
+    let ifTest$627 = ifTest$628[ifTest$629];
+    let ifTest$626 = !ifTest$627;
+    if (ifTest$626) {
+      let ifTrue$632 = 1;
+      let ifTrue$631 = Q[ifTrue$632];
+      let ifTrue$634 = 5;
+      let ifTrue$633 = Q[ifTrue$634];
+      let ifTrue$630 = DrawLine(ifTrue$631, ifTrue$633);
+      let ifTrue$635 = Q.Line;
+      let ifTrue$636 = 8;
+      let AssnRes$637 = ifTrue$635[ifTrue$636] = true;
+    }
+    ;
+    let ifTest$640 = Q.Line;
+    let ifTest$641 = 5;
+    let ifTest$639 = ifTest$640[ifTest$641];
+    let ifTest$638 = !ifTest$639;
+    if (ifTest$638) {
+      let ifTrue$644 = 5;
+      let ifTrue$643 = Q[ifTrue$644];
+      let ifTrue$646 = 6;
+      let ifTrue$645 = Q[ifTrue$646];
+      let ifTrue$642 = DrawLine(ifTrue$643, ifTrue$645);
+      let ifTrue$647 = Q.Line;
+      let ifTrue$648 = 5;
+      let AssnRes$649 = ifTrue$647[ifTrue$648] = true;
+    }
+    ;
+    let ifTest$652 = Q.Line;
+    let ifTest$653 = 9;
+    let ifTest$651 = ifTest$652[ifTest$653];
+    let ifTest$650 = !ifTest$651;
+    if (ifTest$650) {
+      let ifTrue$656 = 6;
+      let ifTrue$655 = Q[ifTrue$656];
+      let ifTrue$658 = 2;
+      let ifTrue$657 = Q[ifTrue$658];
+      let ifTrue$654 = DrawLine(ifTrue$655, ifTrue$657);
+      let ifTrue$659 = Q.Line;
+      let ifTrue$660 = 9;
+      let AssnRes$661 = ifTrue$659[ifTrue$660] = true;
+    }
+    ;
+    let ifTest$664 = Q.Line;
+    let ifTest$665 = 1;
+    let ifTest$663 = ifTest$664[ifTest$665];
+    let ifTest$662 = !ifTest$663;
+    if (ifTest$662) {
+      let ifTrue$668 = 2;
+      let ifTrue$667 = Q[ifTrue$668];
+      let ifTrue$670 = 1;
+      let ifTrue$669 = Q[ifTrue$670];
+      let ifTrue$666 = DrawLine(ifTrue$667, ifTrue$669);
+      let ifTrue$671 = Q.Line;
+      let ifTrue$672 = 1;
+      let AssnRes$673 = ifTrue$671[ifTrue$672] = true;
+    }
+    ;
+  }
+  let js3$674 = [false, false, false, false, false, false, false, false, false, false, false, false];
+  let AssnRes$675 = Q.Line = js3$674;
+  let AssnRes$676 = Q.LastPx = 0;
+}
+function Loop() {
+  let ifTest$678 = Testing.LoopCount;
+  let ifTest$679 = Testing.LoopMax;
+  let ifTest$677 = ifTest$678 > ifTest$679;
+  if (ifTest$677) {
+    return;
+  }
+  let js3$681 = Testing.LoopCount;
+  let js3$680 = String(js3$681);
+  var TestingStr = js3$680;
+  while (TestingStr.length < 3) {
+    let js3$683 = "0";
+    let js3$684 = TestingStr;
+    let js3$682 = js3$683 + js3$684;
+    let AssnRes$685 = TestingStr = js3$682;
+    ;
+  }
+  let js3$687 = I;
+  let js3$692 = 8;
+  let js3$691 = Q[js3$692];
+  let js3$690 = js3$691.V;
+  let js3$693 = 0;
+  let js3$689 = js3$690[js3$693];
+  let js3$688 = -js3$689;
+  let js3$698 = 8;
+  let js3$697 = Q[js3$698];
+  let js3$696 = js3$697.V;
+  let js3$699 = 1;
+  let js3$695 = js3$696[js3$699];
+  let js3$694 = -js3$695;
+  let js3$704 = 8;
+  let js3$703 = Q[js3$704];
+  let js3$702 = js3$703.V;
+  let js3$705 = 2;
+  let js3$701 = js3$702[js3$705];
+  let js3$700 = -js3$701;
+  let js3$686 = Translate(js3$687, js3$688, js3$694, js3$700);
+  let AssnRes$706 = MTrans = js3$686;
+  let js3$708 = MTrans;
+  let js3$709 = 1;
+  let js3$707 = RotateX(js3$708, js3$709);
+  let AssnRes$710 = MTrans = js3$707;
+  let js3$712 = MTrans;
+  let js3$713 = 3;
+  let js3$711 = RotateY(js3$712, js3$713);
+  let AssnRes$714 = MTrans = js3$711;
+  let js3$716 = MTrans;
+  let js3$717 = 5;
+  let js3$715 = RotateZ(js3$716, js3$717);
+  let AssnRes$718 = MTrans = js3$715;
+  let js3$720 = MTrans;
+  let js3$724 = 8;
+  let js3$723 = Q[js3$724];
+  let js3$722 = js3$723.V;
+  let js3$725 = 0;
+  let js3$721 = js3$722[js3$725];
+  let js3$729 = 8;
+  let js3$728 = Q[js3$729];
+  let js3$727 = js3$728.V;
+  let js3$730 = 1;
+  let js3$726 = js3$727[js3$730];
+  let js3$734 = 8;
+  let js3$733 = Q[js3$734];
+  let js3$732 = js3$733.V;
+  let js3$735 = 2;
+  let js3$731 = js3$732[js3$735];
+  let js3$719 = Translate(js3$720, js3$721, js3$726, js3$731);
+  let AssnRes$736 = MTrans = js3$719;
+  let js3$738 = MTrans;
+  let js3$739 = MQube;
+  let js3$737 = MMulti(js3$738, js3$739);
+  let AssnRes$740 = MQube = js3$737;
+  var i = 8;
+  for (; i > -1; i--) {
+    {
+      let js3$742 = MTrans;
+      let js3$744 = Q[i];
+      let js3$743 = js3$744.V;
+      let js3$741 = VMulti(js3$742, js3$743);
+      let js3$745 = Q[i];
+      let AssnRes$746 = js3$745.V = js3$741;
+    }
+  }
+  let js3$747 = DrawQube();
+  let js3$748 = Testing.LoopCount++;
+  let js3$749 = Loop();
+}
+function Init(CubeSize) {
+  let js3$750 = [150, 150, 20, 1];
+  let AssnRes$751 = Origin.V = js3$750;
+  let AssnRes$752 = Testing.LoopCount = 0;
+  let AssnRes$753 = Testing.LoopMax = 50;
+  let AssnRes$754 = Testing.TimeMax = 0;
+  let AssnRes$755 = Testing.TimeAvg = 0;
+  let AssnRes$756 = Testing.TimeMin = 0;
+  let AssnRes$757 = Testing.TimeTemp = 0;
+  let AssnRes$758 = Testing.TimeTotal = 0;
+  let AssnRes$759 = Testing.Init = false;
+  let js3$761 = [1, 0, 0, 0];
+  let js3$762 = [0, 1, 0, 0];
+  let js3$763 = [0, 0, 1, 0];
+  let js3$764 = [0, 0, 0, 1];
+  let js3$760 = [js3$761, js3$762, js3$763, js3$764];
+  let AssnRes$765 = MTrans = js3$760;
+  let js3$767 = [1, 0, 0, 0];
+  let js3$768 = [0, 1, 0, 0];
+  let js3$769 = [0, 0, 1, 0];
+  let js3$770 = [0, 0, 0, 1];
+  let js3$766 = [js3$767, js3$768, js3$769, js3$770];
+  let AssnRes$771 = MQube = js3$766;
+  let js3$773 = [1, 0, 0, 0];
+  let js3$774 = [0, 1, 0, 0];
+  let js3$775 = [0, 0, 1, 0];
+  let js3$776 = [0, 0, 0, 1];
+  let js3$772 = [js3$773, js3$774, js3$775, js3$776];
+  let AssnRes$777 = I = js3$772;
+  let js3$779 = CreateP;
+  let js3$780 = -CubeSize;
+  let js3$781 = -CubeSize;
+  let js3$782 = CubeSize;
+  let js3$778 = new js3$779(js3$780, js3$781, js3$782);
+  let js3$783 = 0;
+  let AssnRes$784 = Q[js3$783] = js3$778;
+  let js3$786 = CreateP;
+  let js3$787 = -CubeSize;
+  let js3$788 = CubeSize;
+  let js3$789 = CubeSize;
+  let js3$785 = new js3$786(js3$787, js3$788, js3$789);
+  let js3$790 = 1;
+  let AssnRes$791 = Q[js3$790] = js3$785;
+  let js3$793 = CreateP;
+  let js3$794 = CubeSize;
+  let js3$795 = CubeSize;
+  let js3$796 = CubeSize;
+  let js3$792 = new js3$793(js3$794, js3$795, js3$796);
+  let js3$797 = 2;
+  let AssnRes$798 = Q[js3$797] = js3$792;
+  let js3$800 = CreateP;
+  let js3$801 = CubeSize;
+  let js3$802 = -CubeSize;
+  let js3$803 = CubeSize;
+  let js3$799 = new js3$800(js3$801, js3$802, js3$803);
+  let js3$804 = 3;
+  let AssnRes$805 = Q[js3$804] = js3$799;
+  let js3$807 = CreateP;
+  let js3$808 = -CubeSize;
+  let js3$809 = -CubeSize;
+  let js3$810 = -CubeSize;
+  let js3$806 = new js3$807(js3$808, js3$809, js3$810);
+  let js3$811 = 4;
+  let AssnRes$812 = Q[js3$811] = js3$806;
+  let js3$814 = CreateP;
+  let js3$815 = -CubeSize;
+  let js3$816 = CubeSize;
+  let js3$817 = -CubeSize;
+  let js3$813 = new js3$814(js3$815, js3$816, js3$817);
+  let js3$818 = 5;
+  let AssnRes$819 = Q[js3$818] = js3$813;
+  let js3$821 = CreateP;
+  let js3$822 = CubeSize;
+  let js3$823 = CubeSize;
+  let js3$824 = -CubeSize;
+  let js3$820 = new js3$821(js3$822, js3$823, js3$824);
+  let js3$825 = 6;
+  let AssnRes$826 = Q[js3$825] = js3$820;
+  let js3$828 = CreateP;
+  let js3$829 = CubeSize;
+  let js3$830 = -CubeSize;
+  let js3$831 = -CubeSize;
+  let js3$827 = new js3$828(js3$829, js3$830, js3$831);
+  let js3$832 = 7;
+  let AssnRes$833 = Q[js3$832] = js3$827;
+  let js3$835 = CreateP;
+  let js3$836 = 0;
+  let js3$837 = 0;
+  let js3$838 = 0;
+  let js3$834 = new js3$835(js3$836, js3$837, js3$838);
+  let js3$839 = 8;
+  let AssnRes$840 = Q[js3$839] = js3$834;
+  let js3$842 = [0, 1, 2];
+  let js3$843 = [3, 2, 6];
+  let js3$844 = [7, 6, 5];
+  let js3$845 = [4, 5, 1];
+  let js3$846 = [4, 0, 3];
+  let js3$847 = [1, 5, 6];
+  let js3$841 = [js3$842, js3$843, js3$844, js3$845, js3$846, js3$847];
+  let AssnRes$848 = Q.Edge = js3$841;
+  let js3$850 = Array;
+  let js3$849 = new js3$850();
+  let AssnRes$851 = Q.Normal = js3$849;
+  for (var i = 0; i < Q.Edge.length; i++) {
+    let js3$857 = Q.Edge;
+    let js3$856 = js3$857[i];
+    let js3$858 = 0;
+    let js3$855 = js3$856[js3$858];
+    let js3$854 = Q[js3$855];
+    let js3$853 = js3$854.V;
+    let js3$863 = Q.Edge;
+    let js3$862 = js3$863[i];
+    let js3$864 = 1;
+    let js3$861 = js3$862[js3$864];
+    let js3$860 = Q[js3$861];
+    let js3$859 = js3$860.V;
+    let js3$869 = Q.Edge;
+    let js3$868 = js3$869[i];
+    let js3$870 = 2;
+    let js3$867 = js3$868[js3$870];
+    let js3$866 = Q[js3$867];
+    let js3$865 = js3$866.V;
+    let js3$852 = CalcNormal(js3$853, js3$859, js3$865);
+    let js3$871 = Q.Normal;
+    let AssnRes$872 = js3$871[i] = js3$852;
+    ;
+  }
+  let js3$873 = [false, false, false, false, false, false, false, false, false, false, false, false];
+  let AssnRes$874 = Q.Line = js3$873;
+  let js3$877 = 9;
+  let js3$878 = 2;
+  let js3$876 = js3$877 * js3$878;
+  let js3$879 = CubeSize;
+  let js3$875 = js3$876 * js3$879;
+  let AssnRes$880 = Q.NumPx = js3$875;
+  for (var i = 0; i < Q.NumPx; i++) {
+    let js3$882 = 0;
+    let js3$883 = 0;
+    let js3$884 = 0;
+    let js3$881 = CreateP(js3$882, js3$883, js3$884);
+    ;
+  }
+  let js3$886 = MTrans;
+  let js3$888 = Origin.V;
+  let js3$889 = 0;
+  let js3$887 = js3$888[js3$889];
+  let js3$891 = Origin.V;
+  let js3$892 = 1;
+  let js3$890 = js3$891[js3$892];
+  let js3$894 = Origin.V;
+  let js3$895 = 2;
+  let js3$893 = js3$894[js3$895];
+  let js3$885 = Translate(js3$886, js3$887, js3$890, js3$893);
+  let AssnRes$896 = MTrans = js3$885;
+  let js3$898 = MTrans;
+  let js3$899 = MQube;
+  let js3$897 = MMulti(js3$898, js3$899);
+  let AssnRes$900 = MQube = js3$897;
+  var i = 0;
+  for (; i < 9; i++) {
+    {
+      let js3$902 = MTrans;
+      let js3$904 = Q[i];
+      let js3$903 = js3$904.V;
+      let js3$901 = VMulti(js3$902, js3$903);
+      let js3$905 = Q[i];
+      let AssnRes$906 = js3$905.V = js3$901;
+    }
+  }
+  let js3$907 = DrawQube();
+  let AssnRes$908 = Testing.Init = true;
+  let js3$909 = Loop();
+  var sum = 0;
+  for (var i = 0; i < Q.length; ++i) {
+    {
+      let js3$911 = Q[i];
+      let js3$910 = js3$911.V;
+      var vector = js3$910;
+      for (var j = 0; j < vector.length; ++j) {
+        let js3$913 = sum;
+        let js3$914 = vector[j];
+        let js3$912 = js3$913 + js3$914;
+        let AssnRes$915 = sum = js3$912;
+        ;
+      }
+    }
+  }
+  let ifTest$917 = sum;
+  let ifTest$918 = validation[CubeSize];
+  let ifTest$916 = ifTest$917 != ifTest$918;
+  if (ifTest$916) {
+    let ifTrue$924 = "Error: bad vector sum for CubeSize = ";
+    let ifTrue$925 = CubeSize;
+    let ifTrue$923 = ifTrue$924 + ifTrue$925;
+    let ifTrue$926 = "; expected ";
+    let ifTrue$922 = ifTrue$923 + ifTrue$926;
+    let ifTrue$927 = validation[CubeSize];
+    let ifTrue$921 = ifTrue$922 + ifTrue$927;
+    let ifTrue$928 = " but got ";
+    let ifTrue$920 = ifTrue$921 + ifTrue$928;
+    let ifTrue$929 = sum;
+    let ifTrue$919 = ifTrue$920 + ifTrue$929;
+    throw ifTrue$919;
+  }
+}
+for (var i = 20; i <= 160; i *= 2) {
+  {
+    let js3$931 = i;
+    let js3$930 = Init(js3$931);
+  }
+}
+let AssnRes$932 = Q = null;
+let AssnRes$933 = MTrans = null;
+let AssnRes$934 = MQube = null;
+let AssnRes$935 = I = null;
+let AssnRes$936 = Origin = null;
+let AssnRes$937 = Testing = null;
+let AssnRes$938 = LoopTime = null;
+let AssnRes$939 = DisplArea = null;

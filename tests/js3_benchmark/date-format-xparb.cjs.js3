@@ -1,0 +1,773 @@
+let js3$1 = {
+  count: 0
+};
+let AssnRes$2 = Date.parseFunctions = js3$1;
+let js3$3 = [];
+let AssnRes$4 = Date.parseRegexes = js3$3;
+let js3$5 = {
+  count: 0
+};
+let AssnRes$6 = Date.formatFunctions = js3$5;
+let js3$15 = Date.prototype;
+let AssnRes$16 = js3$15.dateFormat = function (format) {
+  let ifTest$9 = Date.formatFunctions;
+  let ifTest$8 = ifTest$9[format];
+  let ifTest$10 = null;
+  let ifTest$7 = ifTest$8 == ifTest$10;
+  if (ifTest$7) {
+    let ifTrue$11 = Date.createNewFormat(format);
+  }
+  let js3$13 = Date.formatFunctions;
+  let js3$12 = js3$13[format];
+  var func = js3$12;
+  let returnStmt$14 = this[func]();
+  return returnStmt$14;
+};
+let AssnRes$52 = Date.createNewFormat = function (format) {
+  let js3$18 = "format";
+  let js3$20 = Date.formatFunctions;
+  let js3$19 = js3$20.count++;
+  let js3$17 = js3$18 + js3$19;
+  var funcName = js3$17;
+  let js3$21 = Date.formatFunctions;
+  let AssnRes$22 = js3$21[format] = funcName;
+  let js3$25 = "Date.prototype.";
+  let js3$26 = funcName;
+  let js3$24 = js3$25 + js3$26;
+  let js3$27 = " = function(){return ";
+  let js3$23 = js3$24 + js3$27;
+  var code = js3$23;
+  var special = false;
+  var ch = '';
+  for (var i = 0; i < format.length; ++i) {
+    {
+      let js3$28 = format.charAt(i);
+      let AssnRes$29 = ch = js3$28;
+      let ifTest$31 = !special;
+      let ifTest$32 = ifTest$31 ? ch == "\\" : ifTest$31;
+      let ifTest$30 = ifTest$32;
+      if (ifTest$30) {
+        let AssnRes$33 = special = true;
+      } else {
+        let ifTest$34 = special;
+        if (ifTest$34) {
+          let AssnRes$35 = special = false;
+          let ifTrue$37 = code;
+          let ifTrue$40 = "'";
+          let ifTrue$41 = String.escape(ch);
+          let ifTrue$39 = ifTrue$40 + ifTrue$41;
+          let ifTrue$42 = "' + ";
+          let ifTrue$38 = ifTrue$39 + ifTrue$42;
+          let ifTrue$36 = ifTrue$37 + ifTrue$38;
+          let AssnRes$43 = code = ifTrue$36;
+        } else {
+          let ifFalse$45 = code;
+          let ifFalse$46 = Date.getFormatCode(ch);
+          let ifFalse$44 = ifFalse$45 + ifFalse$46;
+          let AssnRes$47 = code = ifFalse$44;
+        }
+      }
+    }
+  }
+  let js3$50 = code.substring(0, code.length - 3);
+  let js3$51 = ";}";
+  let js3$49 = js3$50 + js3$51;
+  let js3$48 = eval(js3$49);
+};
+let AssnRes$86 = Date.getFormatCode = function (character) {
+  let js3$53 = character;
+  switch (js3$53) {
+    case "d":
+      let returnStmt$54 = "String.leftPad(this.getDate(), 2, '0') + ";
+      return returnStmt$54;
+    case "D":
+      let returnStmt$55 = "Date.dayNames[this.getDay()].substring(0, 3) + ";
+      return returnStmt$55;
+    case "j":
+      let returnStmt$56 = "this.getDate() + ";
+      return returnStmt$56;
+    case "l":
+      let returnStmt$57 = "Date.dayNames[this.getDay()] + ";
+      return returnStmt$57;
+    case "S":
+      let returnStmt$58 = "this.getSuffix() + ";
+      return returnStmt$58;
+    case "w":
+      let returnStmt$59 = "this.getDay() + ";
+      return returnStmt$59;
+    case "z":
+      let returnStmt$60 = "this.getDayOfYear() + ";
+      return returnStmt$60;
+    case "W":
+      let returnStmt$61 = "this.getWeekOfYear() + ";
+      return returnStmt$61;
+    case "F":
+      let returnStmt$62 = "Date.monthNames[this.getMonth()] + ";
+      return returnStmt$62;
+    case "m":
+      let returnStmt$63 = "String.leftPad(this.getMonth() + 1, 2, '0') + ";
+      return returnStmt$63;
+    case "M":
+      let returnStmt$64 = "Date.monthNames[this.getMonth()].substring(0, 3) + ";
+      return returnStmt$64;
+    case "n":
+      let returnStmt$65 = "(this.getMonth() + 1) + ";
+      return returnStmt$65;
+    case "t":
+      let returnStmt$66 = "this.getDaysInMonth() + ";
+      return returnStmt$66;
+    case "L":
+      let returnStmt$67 = "(this.isLeapYear() ? 1 : 0) + ";
+      return returnStmt$67;
+    case "Y":
+      let returnStmt$68 = "this.getFullYear() + ";
+      return returnStmt$68;
+    case "y":
+      let returnStmt$69 = "('' + this.getFullYear()).substring(2, 4) + ";
+      return returnStmt$69;
+    case "a":
+      let returnStmt$70 = "(this.getHours() < 12 ? 'am' : 'pm') + ";
+      return returnStmt$70;
+    case "A":
+      let returnStmt$71 = "(this.getHours() < 12 ? 'AM' : 'PM') + ";
+      return returnStmt$71;
+    case "g":
+      let returnStmt$72 = "((this.getHours() %12) ? this.getHours() % 12 : 12) + ";
+      return returnStmt$72;
+    case "G":
+      let returnStmt$73 = "this.getHours() + ";
+      return returnStmt$73;
+    case "h":
+      let returnStmt$74 = "String.leftPad((this.getHours() %12) ? this.getHours() % 12 : 12, 2, '0') + ";
+      return returnStmt$74;
+    case "H":
+      let returnStmt$75 = "String.leftPad(this.getHours(), 2, '0') + ";
+      return returnStmt$75;
+    case "i":
+      let returnStmt$76 = "String.leftPad(this.getMinutes(), 2, '0') + ";
+      return returnStmt$76;
+    case "s":
+      let returnStmt$77 = "String.leftPad(this.getSeconds(), 2, '0') + ";
+      return returnStmt$77;
+    case "O":
+      let returnStmt$78 = "this.getGMTOffset() + ";
+      return returnStmt$78;
+    case "T":
+      let returnStmt$79 = "this.getTimezone() + ";
+      return returnStmt$79;
+    case "Z":
+      let returnStmt$80 = "(this.getTimezoneOffset() * -60) + ";
+      return returnStmt$80;
+    default:
+      let returnStmt$83 = "'";
+      let returnStmt$84 = String.escape(character);
+      let returnStmt$82 = returnStmt$83 + returnStmt$84;
+      let returnStmt$85 = "' + ";
+      let returnStmt$81 = returnStmt$82 + returnStmt$85;
+      return returnStmt$81;
+  }
+};
+let AssnRes$95 = Date.parseDate = function (input, format) {
+  let ifTest$89 = Date.parseFunctions;
+  let ifTest$88 = ifTest$89[format];
+  let ifTest$90 = null;
+  let ifTest$87 = ifTest$88 == ifTest$90;
+  if (ifTest$87) {
+    let ifTrue$91 = Date.createParser(format);
+  }
+  let js3$93 = Date.parseFunctions;
+  let js3$92 = js3$93[format];
+  var func = js3$92;
+  let returnStmt$94 = Date[func](input);
+  return returnStmt$94;
+};
+let AssnRes$195 = Date.createParser = function (format) {
+  let js3$97 = "parse";
+  let js3$99 = Date.parseFunctions;
+  let js3$98 = js3$99.count++;
+  let js3$96 = js3$97 + js3$98;
+  var funcName = js3$96;
+  let js3$101 = Date.parseRegexes;
+  let js3$100 = js3$101.length;
+  var regexNum = js3$100;
+  var currentGroup = 1;
+  let js3$102 = Date.parseFunctions;
+  let AssnRes$103 = js3$102[format] = funcName;
+  let js3$115 = "Date.";
+  let js3$116 = funcName;
+  let js3$114 = js3$115 + js3$116;
+  let js3$117 = " = function(input){\n";
+  let js3$113 = js3$114 + js3$117;
+  let js3$118 = "var y = -1, m = -1, d = -1, h = -1, i = -1, s = -1;\n";
+  let js3$112 = js3$113 + js3$118;
+  let js3$119 = "var d = new Date();\n";
+  let js3$111 = js3$112 + js3$119;
+  let js3$120 = "y = d.getFullYear();\n";
+  let js3$110 = js3$111 + js3$120;
+  let js3$121 = "m = d.getMonth();\n";
+  let js3$109 = js3$110 + js3$121;
+  let js3$122 = "d = d.getDate();\n";
+  let js3$108 = js3$109 + js3$122;
+  let js3$123 = "var results = input.match(Date.parseRegexes[";
+  let js3$107 = js3$108 + js3$123;
+  let js3$124 = regexNum;
+  let js3$106 = js3$107 + js3$124;
+  let js3$125 = "]);\n";
+  let js3$105 = js3$106 + js3$125;
+  let js3$126 = "if (results && results.length > 0) {";
+  let js3$104 = js3$105 + js3$126;
+  var code = js3$104;
+  var regex = "";
+  var special = false;
+  var ch = '';
+  for (var i = 0; i < format.length; ++i) {
+    {
+      let js3$127 = format.charAt(i);
+      let AssnRes$128 = ch = js3$127;
+      let ifTest$130 = !special;
+      let ifTest$131 = ifTest$130 ? ch == "\\" : ifTest$130;
+      let ifTest$129 = ifTest$131;
+      if (ifTest$129) {
+        let AssnRes$132 = special = true;
+      } else {
+        let ifTest$133 = special;
+        if (ifTest$133) {
+          let AssnRes$134 = special = false;
+          let ifTrue$136 = regex;
+          let ifTrue$137 = String.escape(ch);
+          let ifTrue$135 = ifTrue$136 + ifTrue$137;
+          let AssnRes$138 = regex = ifTrue$135;
+        } else {
+          let ifFalse$139 = Date.formatCodeToRegex(ch, currentGroup);
+          let AssnRes$140 = obj = ifFalse$139;
+          let ifFalse$142 = currentGroup;
+          let ifFalse$143 = obj.g;
+          let ifFalse$141 = ifFalse$142 + ifFalse$143;
+          let AssnRes$144 = currentGroup = ifFalse$141;
+          let ifFalse$146 = regex;
+          let ifFalse$147 = obj.s;
+          let ifFalse$145 = ifFalse$146 + ifFalse$147;
+          let AssnRes$148 = regex = ifFalse$145;
+          let ifTest$150 = obj.g;
+          let ifTest$151 = ifTest$150 ? obj.c : ifTest$150;
+          let ifTest$149 = ifTest$151;
+          if (ifTest$149) {
+            let ifTrue$153 = code;
+            let ifTrue$154 = obj.c;
+            let ifTrue$152 = ifTrue$153 + ifTrue$154;
+            let AssnRes$155 = code = ifTrue$152;
+          }
+        }
+      }
+    }
+  }
+  let js3$157 = code;
+  let js3$170 = "if (y > 0 && m >= 0 && d > 0 && h >= 0 && i >= 0 && s >= 0)\n";
+  let js3$171 = "{return new Date(y, m, d, h, i, s);}\n";
+  let js3$169 = js3$170 + js3$171;
+  let js3$172 = "else if (y > 0 && m >= 0 && d > 0 && h >= 0 && i >= 0)\n";
+  let js3$168 = js3$169 + js3$172;
+  let js3$173 = "{return new Date(y, m, d, h, i);}\n";
+  let js3$167 = js3$168 + js3$173;
+  let js3$174 = "else if (y > 0 && m >= 0 && d > 0 && h >= 0)\n";
+  let js3$166 = js3$167 + js3$174;
+  let js3$175 = "{return new Date(y, m, d, h);}\n";
+  let js3$165 = js3$166 + js3$175;
+  let js3$176 = "else if (y > 0 && m >= 0 && d > 0)\n";
+  let js3$164 = js3$165 + js3$176;
+  let js3$177 = "{return new Date(y, m, d);}\n";
+  let js3$163 = js3$164 + js3$177;
+  let js3$178 = "else if (y > 0 && m >= 0)\n";
+  let js3$162 = js3$163 + js3$178;
+  let js3$179 = "{return new Date(y, m);}\n";
+  let js3$161 = js3$162 + js3$179;
+  let js3$180 = "else if (y > 0)\n";
+  let js3$160 = js3$161 + js3$180;
+  let js3$181 = "{return new Date(y);}\n";
+  let js3$159 = js3$160 + js3$181;
+  let js3$182 = "}return null;}";
+  let js3$158 = js3$159 + js3$182;
+  let js3$156 = js3$157 + js3$158;
+  let AssnRes$183 = code = js3$156;
+  let js3$185 = RegExp;
+  let js3$188 = "^";
+  let js3$189 = regex;
+  let js3$187 = js3$188 + js3$189;
+  let js3$190 = "$";
+  let js3$186 = js3$187 + js3$190;
+  let js3$184 = new js3$185(js3$186);
+  let js3$191 = Date.parseRegexes;
+  let AssnRes$192 = js3$191[regexNum] = js3$184;
+  let js3$194 = code;
+  let js3$193 = eval(js3$194);
+};
+let AssnRes$298 = Date.formatCodeToRegex = function (character, currentGroup) {
+  let js3$196 = character;
+  switch (js3$196) {
+    case "D":
+      let returnStmt$197 = {
+        g: 0,
+        c: null,
+        s: "(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)"
+      };
+      return returnStmt$197;
+    case "j":
+    case "d":
+      let returnStmt$201 = "d = parseInt(results[";
+      let returnStmt$202 = currentGroup;
+      let returnStmt$200 = returnStmt$201 + returnStmt$202;
+      let returnStmt$203 = "], 10);\n";
+      let returnStmt$199 = returnStmt$200 + returnStmt$203;
+      let returnStmt$198 = {
+        g: 1,
+        c: returnStmt$199,
+        s: "(\\d{1,2})"
+      };
+      return returnStmt$198;
+    case "l":
+      let returnStmt$207 = "(?:";
+      let returnStmt$209 = Date.dayNames;
+      let returnStmt$208 = returnStmt$209.join("|");
+      let returnStmt$206 = returnStmt$207 + returnStmt$208;
+      let returnStmt$210 = ")";
+      let returnStmt$205 = returnStmt$206 + returnStmt$210;
+      let returnStmt$204 = {
+        g: 0,
+        c: null,
+        s: returnStmt$205
+      };
+      return returnStmt$204;
+    case "S":
+      let returnStmt$211 = {
+        g: 0,
+        c: null,
+        s: "(?:st|nd|rd|th)"
+      };
+      return returnStmt$211;
+    case "w":
+      let returnStmt$212 = {
+        g: 0,
+        c: null,
+        s: "\\d"
+      };
+      return returnStmt$212;
+    case "z":
+      let returnStmt$213 = {
+        g: 0,
+        c: null,
+        s: "(?:\\d{1,3})"
+      };
+      return returnStmt$213;
+    case "W":
+      let returnStmt$214 = {
+        g: 0,
+        c: null,
+        s: "(?:\\d{2})"
+      };
+      return returnStmt$214;
+    case "F":
+      let returnStmt$218 = "m = parseInt(Date.monthNumbers[results[";
+      let returnStmt$219 = currentGroup;
+      let returnStmt$217 = returnStmt$218 + returnStmt$219;
+      let returnStmt$220 = "].substring(0, 3)], 10);\n";
+      let returnStmt$216 = returnStmt$217 + returnStmt$220;
+      let returnStmt$223 = "(";
+      let returnStmt$225 = Date.monthNames;
+      let returnStmt$224 = returnStmt$225.join("|");
+      let returnStmt$222 = returnStmt$223 + returnStmt$224;
+      let returnStmt$226 = ")";
+      let returnStmt$221 = returnStmt$222 + returnStmt$226;
+      let returnStmt$215 = {
+        g: 1,
+        c: returnStmt$216,
+        s: returnStmt$221
+      };
+      return returnStmt$215;
+    case "M":
+      let returnStmt$230 = "m = parseInt(Date.monthNumbers[results[";
+      let returnStmt$231 = currentGroup;
+      let returnStmt$229 = returnStmt$230 + returnStmt$231;
+      let returnStmt$232 = "]], 10);\n";
+      let returnStmt$228 = returnStmt$229 + returnStmt$232;
+      let returnStmt$227 = {
+        g: 1,
+        c: returnStmt$228,
+        s: "(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)"
+      };
+      return returnStmt$227;
+    case "n":
+    case "m":
+      let returnStmt$236 = "m = parseInt(results[";
+      let returnStmt$237 = currentGroup;
+      let returnStmt$235 = returnStmt$236 + returnStmt$237;
+      let returnStmt$238 = "], 10) - 1;\n";
+      let returnStmt$234 = returnStmt$235 + returnStmt$238;
+      let returnStmt$233 = {
+        g: 1,
+        c: returnStmt$234,
+        s: "(\\d{1,2})"
+      };
+      return returnStmt$233;
+    case "t":
+      let returnStmt$239 = {
+        g: 0,
+        c: null,
+        s: "\\d{1,2}"
+      };
+      return returnStmt$239;
+    case "L":
+      let returnStmt$240 = {
+        g: 0,
+        c: null,
+        s: "(?:1|0)"
+      };
+      return returnStmt$240;
+    case "Y":
+      let returnStmt$244 = "y = parseInt(results[";
+      let returnStmt$245 = currentGroup;
+      let returnStmt$243 = returnStmt$244 + returnStmt$245;
+      let returnStmt$246 = "], 10);\n";
+      let returnStmt$242 = returnStmt$243 + returnStmt$246;
+      let returnStmt$241 = {
+        g: 1,
+        c: returnStmt$242,
+        s: "(\\d{4})"
+      };
+      return returnStmt$241;
+    case "y":
+      let returnStmt$251 = "var ty = parseInt(results[";
+      let returnStmt$252 = currentGroup;
+      let returnStmt$250 = returnStmt$251 + returnStmt$252;
+      let returnStmt$253 = "], 10);\n";
+      let returnStmt$249 = returnStmt$250 + returnStmt$253;
+      let returnStmt$254 = "y = ty > Date.y2kYear ? 1900 + ty : 2000 + ty;\n";
+      let returnStmt$248 = returnStmt$249 + returnStmt$254;
+      let returnStmt$247 = {
+        g: 1,
+        c: returnStmt$248,
+        s: "(\\d{1,2})"
+      };
+      return returnStmt$247;
+    case "a":
+      let returnStmt$260 = "if (results[";
+      let returnStmt$261 = currentGroup;
+      let returnStmt$259 = returnStmt$260 + returnStmt$261;
+      let returnStmt$262 = "] == 'am') {\n";
+      let returnStmt$258 = returnStmt$259 + returnStmt$262;
+      let returnStmt$263 = "if (h == 12) { h = 0; }\n";
+      let returnStmt$257 = returnStmt$258 + returnStmt$263;
+      let returnStmt$264 = "} else { if (h < 12) { h += 12; }}";
+      let returnStmt$256 = returnStmt$257 + returnStmt$264;
+      let returnStmt$255 = {
+        g: 1,
+        c: returnStmt$256,
+        s: "(am|pm)"
+      };
+      return returnStmt$255;
+    case "A":
+      let returnStmt$270 = "if (results[";
+      let returnStmt$271 = currentGroup;
+      let returnStmt$269 = returnStmt$270 + returnStmt$271;
+      let returnStmt$272 = "] == 'AM') {\n";
+      let returnStmt$268 = returnStmt$269 + returnStmt$272;
+      let returnStmt$273 = "if (h == 12) { h = 0; }\n";
+      let returnStmt$267 = returnStmt$268 + returnStmt$273;
+      let returnStmt$274 = "} else { if (h < 12) { h += 12; }}";
+      let returnStmt$266 = returnStmt$267 + returnStmt$274;
+      let returnStmt$265 = {
+        g: 1,
+        c: returnStmt$266,
+        s: "(AM|PM)"
+      };
+      return returnStmt$265;
+    case "g":
+    case "G":
+    case "h":
+    case "H":
+      let returnStmt$278 = "h = parseInt(results[";
+      let returnStmt$279 = currentGroup;
+      let returnStmt$277 = returnStmt$278 + returnStmt$279;
+      let returnStmt$280 = "], 10);\n";
+      let returnStmt$276 = returnStmt$277 + returnStmt$280;
+      let returnStmt$275 = {
+        g: 1,
+        c: returnStmt$276,
+        s: "(\\d{1,2})"
+      };
+      return returnStmt$275;
+    case "i":
+      let returnStmt$284 = "i = parseInt(results[";
+      let returnStmt$285 = currentGroup;
+      let returnStmt$283 = returnStmt$284 + returnStmt$285;
+      let returnStmt$286 = "], 10);\n";
+      let returnStmt$282 = returnStmt$283 + returnStmt$286;
+      let returnStmt$281 = {
+        g: 1,
+        c: returnStmt$282,
+        s: "(\\d{2})"
+      };
+      return returnStmt$281;
+    case "s":
+      let returnStmt$290 = "s = parseInt(results[";
+      let returnStmt$291 = currentGroup;
+      let returnStmt$289 = returnStmt$290 + returnStmt$291;
+      let returnStmt$292 = "], 10);\n";
+      let returnStmt$288 = returnStmt$289 + returnStmt$292;
+      let returnStmt$287 = {
+        g: 1,
+        c: returnStmt$288,
+        s: "(\\d{2})"
+      };
+      return returnStmt$287;
+    case "O":
+      let returnStmt$293 = {
+        g: 0,
+        c: null,
+        s: "[+-]\\d{4}"
+      };
+      return returnStmt$293;
+    case "T":
+      let returnStmt$294 = {
+        g: 0,
+        c: null,
+        s: "[A-Z]{3}"
+      };
+      return returnStmt$294;
+    case "Z":
+      let returnStmt$295 = {
+        g: 0,
+        c: null,
+        s: "[+-]\\d{1,5}"
+      };
+      return returnStmt$295;
+    default:
+      let returnStmt$297 = String.escape(character);
+      let returnStmt$296 = {
+        g: 0,
+        c: null,
+        s: returnStmt$297
+      };
+      return returnStmt$296;
+  }
+};
+let js3$302 = Date.prototype;
+let AssnRes$303 = js3$302.getTimezone = function () {
+  let returnStmt$301 = this.toString();
+  let returnStmt$300 = returnStmt$301.replace(/^.*? ([A-Z]{3}) [0-9]{4}.*$/, "$1");
+  let returnStmt$299 = returnStmt$300.replace(/^.*?\(([A-Z])[a-z]+ ([A-Z])[a-z]+ ([A-Z])[a-z]+\)$/, "$1$2$3");
+  return returnStmt$299;
+};
+let js3$312 = Date.prototype;
+let AssnRes$313 = js3$312.getGMTOffset = function () {
+  let returnStmt$308 = this.getTimezoneOffset();
+  let returnStmt$309 = 0;
+  let returnStmt$307 = returnStmt$308 > returnStmt$309;
+  let returnStmt$306 = returnStmt$307 ? "-" : "+";
+  let returnStmt$310 = String.leftPad(Math.floor(this.getTimezoneOffset() / 60), 2, "0");
+  let returnStmt$305 = returnStmt$306 + returnStmt$310;
+  let returnStmt$311 = String.leftPad(this.getTimezoneOffset() % 60, 2, "0");
+  let returnStmt$304 = returnStmt$305 + returnStmt$311;
+  return returnStmt$304;
+};
+let js3$329 = Date.prototype;
+let AssnRes$330 = js3$329.getDayOfYear = function () {
+  var num = 0;
+  let js3$315 = this.isLeapYear();
+  let js3$314 = js3$315 ? 29 : 28;
+  let js3$316 = Date.daysInMonth;
+  let js3$317 = 1;
+  let AssnRes$318 = js3$316[js3$317] = js3$314;
+  for (var i = 0; i < this.getMonth(); ++i) {
+    {
+      let js3$320 = num;
+      let js3$322 = Date.daysInMonth;
+      let js3$321 = js3$322[i];
+      let js3$319 = js3$320 + js3$321;
+      let AssnRes$323 = num = js3$319;
+    }
+  }
+  let returnStmt$326 = num;
+  let returnStmt$327 = this.getDate();
+  let returnStmt$325 = returnStmt$326 + returnStmt$327;
+  let returnStmt$328 = 1;
+  let returnStmt$324 = returnStmt$325 - returnStmt$328;
+  return returnStmt$324;
+};
+let js3$348 = Date.prototype;
+let AssnRes$349 = js3$348.getWeekOfYear = function () {
+  let js3$332 = this.getDayOfYear();
+  let js3$334 = 4;
+  let js3$335 = this.getDay();
+  let js3$333 = js3$334 - js3$335;
+  let js3$331 = js3$332 + js3$333;
+  var now = js3$331;
+  let js3$337 = Date;
+  let js3$338 = this.getFullYear();
+  let js3$339 = 0;
+  let js3$340 = 1;
+  let js3$336 = new js3$337(js3$338, js3$339, js3$340);
+  var jan1 = js3$336;
+  let js3$343 = 7;
+  let js3$344 = jan1.getDay();
+  let js3$342 = js3$343 - js3$344;
+  let js3$345 = 4;
+  let js3$341 = js3$342 + js3$345;
+  var then = js3$341;
+  let js3$346 = document.write(then);
+  let returnStmt$347 = String.leftPad((now - then) / 7 + 1, 2, "0");
+  return returnStmt$347;
+};
+let js3$358 = Date.prototype;
+let AssnRes$359 = js3$358.isLeapYear = function () {
+  let js3$350 = this.getFullYear();
+  var year = js3$350;
+  let returnStmt$354 = year;
+  let returnStmt$355 = 3;
+  let returnStmt$353 = returnStmt$354 & returnStmt$355;
+  let returnStmt$356 = 0;
+  let returnStmt$352 = returnStmt$353 == returnStmt$356;
+  let returnStmt$357 = returnStmt$352 ? (year % 100 || year % 400 == 0 && year) : returnStmt$352;
+  let returnStmt$351 = returnStmt$357;
+  return returnStmt$351;
+};
+let js3$371 = Date.prototype;
+let AssnRes$372 = js3$371.getFirstDayOfMonth = function () {
+  let js3$362 = this.getDay();
+  let js3$364 = this.getDate();
+  let js3$365 = 1;
+  let js3$363 = js3$364 - js3$365;
+  let js3$361 = js3$362 - js3$363;
+  let js3$366 = 7;
+  let js3$360 = js3$361 % js3$366;
+  var day = js3$360;
+  let returnStmt$369 = day;
+  let returnStmt$370 = 0;
+  let returnStmt$368 = returnStmt$369 < returnStmt$370;
+  let returnStmt$367 = returnStmt$368 ? (day + 7) : day;
+  return returnStmt$367;
+};
+let js3$386 = Date.prototype;
+let AssnRes$387 = js3$386.getLastDayOfMonth = function () {
+  let js3$375 = this.getDay();
+  let js3$378 = Date.daysInMonth;
+  let js3$379 = this.getMonth();
+  let js3$377 = js3$378[js3$379];
+  let js3$380 = this.getDate();
+  let js3$376 = js3$377 - js3$380;
+  let js3$374 = js3$375 + js3$376;
+  let js3$381 = 7;
+  let js3$373 = js3$374 % js3$381;
+  var day = js3$373;
+  let returnStmt$384 = day;
+  let returnStmt$385 = 0;
+  let returnStmt$383 = returnStmt$384 < returnStmt$385;
+  let returnStmt$382 = returnStmt$383 ? (day + 7) : day;
+  return returnStmt$382;
+};
+let js3$396 = Date.prototype;
+let AssnRes$397 = js3$396.getDaysInMonth = function () {
+  let js3$389 = this.isLeapYear();
+  let js3$388 = js3$389 ? 29 : 28;
+  let js3$390 = Date.daysInMonth;
+  let js3$391 = 1;
+  let AssnRes$392 = js3$390[js3$391] = js3$388;
+  let returnStmt$394 = Date.daysInMonth;
+  let returnStmt$395 = this.getMonth();
+  let returnStmt$393 = returnStmt$394[returnStmt$395];
+  return returnStmt$393;
+};
+let js3$403 = Date.prototype;
+let AssnRes$404 = js3$403.getSuffix = function () {
+  let js3$398 = this.getDate();
+  switch (js3$398) {
+    case 1:
+    case 21:
+    case 31:
+      let returnStmt$399 = "st";
+      return returnStmt$399;
+    case 2:
+    case 22:
+      let returnStmt$400 = "nd";
+      return returnStmt$400;
+    case 3:
+    case 23:
+      let returnStmt$401 = "rd";
+      return returnStmt$401;
+    default:
+      let returnStmt$402 = "th";
+      return returnStmt$402;
+  }
+};
+let AssnRes$406 = String.escape = function (string) {
+  let returnStmt$405 = string.replace(/('|\\)/g, "\\$1");
+  return returnStmt$405;
+};
+let AssnRes$419 = String.leftPad = function (val, size, ch) {
+  let js3$408 = String;
+  let js3$409 = val;
+  let js3$407 = new js3$408(js3$409);
+  var result = js3$407;
+  let ifTest$411 = ch;
+  let ifTest$412 = null;
+  let ifTest$410 = ifTest$411 == ifTest$412;
+  if (ifTest$410) {
+    let AssnRes$413 = ch = " ";
+  }
+  while (result.length < size) {
+    let js3$415 = ch;
+    let js3$416 = result;
+    let js3$414 = js3$415 + js3$416;
+    let AssnRes$417 = result = js3$414;
+  }
+  let returnStmt$418 = result;
+  return returnStmt$418;
+};
+let js3$420 = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+let AssnRes$421 = Date.daysInMonth = js3$420;
+let js3$422 = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let AssnRes$423 = Date.monthNames = js3$422;
+let js3$424 = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let AssnRes$425 = Date.dayNames = js3$424;
+let AssnRes$426 = Date.y2kYear = 50;
+let js3$427 = {
+  Jan: 0,
+  Feb: 1,
+  Mar: 2,
+  Apr: 3,
+  May: 4,
+  Jun: 5,
+  Jul: 6,
+  Aug: 7,
+  Sep: 8,
+  Oct: 9,
+  Nov: 10,
+  Dec: 11
+};
+let AssnRes$428 = Date.monthNumbers = js3$427;
+let js3$429 = {
+  ISO8601LongPattern: "Y-m-d H:i:s",
+  ISO8601ShortPattern: "Y-m-d",
+  ShortDatePattern: "n/j/Y",
+  LongDatePattern: "l, F d, Y",
+  FullDateTimePattern: "l, F d, Y g:i:s A",
+  MonthDayPattern: "F d",
+  ShortTimePattern: "g:i A",
+  LongTimePattern: "g:i:s A",
+  SortableDateTimePattern: "Y-m-d\\TH:i:s",
+  UniversalSortableDateTimePattern: "Y-m-d H:i:sO",
+  YearMonthPattern: "F, Y"
+};
+let AssnRes$430 = Date.patterns = js3$429;
+let js3$432 = Date;
+let js3$433 = "1/1/2007 1:11:11";
+let js3$431 = new js3$432(js3$433);
+var date = js3$431;
+for (i = 0; i < 4000; ++i) {
+  {
+    let js3$434 = date.dateFormat("Y-m-d");
+    var shortFormat = js3$434;
+    let js3$435 = date.dateFormat("l, F d, Y g:i:s A");
+    var longFormat = js3$435;
+    let js3$436 = date.setTime(date.getTime() + 84266956);
+  }
+}

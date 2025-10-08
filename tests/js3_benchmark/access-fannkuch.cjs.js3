@@ -1,0 +1,154 @@
+function fannkuch(n) {
+  var check = 0;
+  let js3$2 = n;
+  let js3$1 = Array(js3$2);
+  var perm = js3$1;
+  let js3$4 = n;
+  let js3$3 = Array(js3$4);
+  var perm1 = js3$3;
+  let js3$6 = n;
+  let js3$5 = Array(js3$6);
+  var count = js3$5;
+  let js3$8 = n;
+  let js3$7 = Array(js3$8);
+  var maxPerm = js3$7;
+  var maxFlipsCount = 0;
+  let js3$10 = n;
+  let js3$11 = 1;
+  let js3$9 = js3$10 - js3$11;
+  var m = js3$9;
+  for (var i = 0; i < n; i++) {
+    let AssnRes$12 = perm1[i] = i;
+    ;
+  }
+  var r = n;
+  while (true) {
+    let ifTest$14 = check;
+    let ifTest$15 = 30;
+    let ifTest$13 = ifTest$14 < ifTest$15;
+    if (ifTest$13) {
+      var s = "";
+      for (var i = 0; i < n; i++) {
+        let ifTrue$17 = s;
+        let ifTrue$20 = perm1[i];
+        let ifTrue$21 = 1;
+        let ifTrue$19 = ifTrue$20 + ifTrue$21;
+        let ifTrue$18 = ifTrue$19.toString();
+        let ifTrue$16 = ifTrue$17 + ifTrue$18;
+        let AssnRes$22 = s = ifTrue$16;
+        ;
+      }
+      let ifTrue$23 = check++;
+    }
+    while (r != 1) {
+      let js3$25 = r;
+      let js3$26 = 1;
+      let js3$24 = js3$25 - js3$26;
+      let AssnRes$27 = count[js3$24] = r;
+      let js3$28 = r--;
+    }
+    let ifTest$33 = 0;
+    let ifTest$32 = perm1[ifTest$33];
+    let ifTest$34 = 0;
+    let ifTest$31 = ifTest$32 == ifTest$34;
+    let ifTest$35 = ifTest$31 ? ifTest$31 : perm1[m] == m;
+    let ifTest$30 = ifTest$35;
+    let ifTest$29 = !ifTest$30;
+    if (ifTest$29) {
+      for (var i = 0; i < n; i++) {
+        let ifTrue$36 = perm1[i];
+        let AssnRes$37 = perm[i] = ifTrue$36;
+        ;
+      }
+      var flipsCount = 0;
+      var k;
+      while (!((k = perm[0]) == 0)) {
+        let ifTrue$40 = k;
+        let ifTrue$41 = 1;
+        let ifTrue$39 = ifTrue$40 + ifTrue$41;
+        let ifTrue$42 = 1;
+        let ifTrue$38 = ifTrue$39 >> ifTrue$42;
+        var k2 = ifTrue$38;
+        for (var i = 0; i < k2; i++) {
+          {
+            let ifTrue$43 = perm[i];
+            var temp = ifTrue$43;
+            let ifTrue$46 = k;
+            let ifTrue$47 = i;
+            let ifTrue$45 = ifTrue$46 - ifTrue$47;
+            let ifTrue$44 = perm[ifTrue$45];
+            let AssnRes$48 = perm[i] = ifTrue$44;
+            let ifTrue$50 = k;
+            let ifTrue$51 = i;
+            let ifTrue$49 = ifTrue$50 - ifTrue$51;
+            let AssnRes$52 = perm[ifTrue$49] = temp;
+          }
+        }
+        let ifTrue$53 = flipsCount++;
+      }
+      let ifTest$55 = flipsCount;
+      let ifTest$56 = maxFlipsCount;
+      let ifTest$54 = ifTest$55 > ifTest$56;
+      if (ifTest$54) {
+        let AssnRes$57 = maxFlipsCount = flipsCount;
+        for (var i = 0; i < n; i++) {
+          let ifTrue$58 = perm1[i];
+          let AssnRes$59 = maxPerm[i] = ifTrue$58;
+          ;
+        }
+      }
+    }
+    while (true) {
+      let ifTest$61 = r;
+      let ifTest$62 = n;
+      let ifTest$60 = ifTest$61 == ifTest$62;
+      if (ifTest$60) {
+        let returnStmt$63 = maxFlipsCount;
+        return returnStmt$63;
+      }
+      let js3$65 = 0;
+      let js3$64 = perm1[js3$65];
+      var perm0 = js3$64;
+      var i = 0;
+      while (i < r) {
+        let js3$67 = i;
+        let js3$68 = 1;
+        let js3$66 = js3$67 + js3$68;
+        var j = js3$66;
+        let js3$69 = perm1[j];
+        let AssnRes$70 = perm1[i] = js3$69;
+        let AssnRes$71 = i = j;
+      }
+      let AssnRes$72 = perm1[r] = perm0;
+      let js3$74 = count[r];
+      let js3$75 = 1;
+      let js3$73 = js3$74 - js3$75;
+      let AssnRes$76 = count[r] = js3$73;
+      let ifTest$78 = count[r];
+      let ifTest$79 = 0;
+      let ifTest$77 = ifTest$78 > ifTest$79;
+      if (ifTest$77) {
+        break;
+      }
+      let js3$80 = r++;
+    }
+  }
+}
+var n = 8;
+let js3$82 = n;
+let js3$81 = fannkuch(js3$82);
+var ret = js3$81;
+var expected = 22;
+let ifTest$84 = ret;
+let ifTest$85 = expected;
+let ifTest$83 = ifTest$84 != ifTest$85;
+if (ifTest$83) {
+  let ifTrue$89 = "ERROR: bad result: expected ";
+  let ifTrue$90 = expected;
+  let ifTrue$88 = ifTrue$89 + ifTrue$90;
+  let ifTrue$91 = " but got ";
+  let ifTrue$87 = ifTrue$88 + ifTrue$91;
+  let ifTrue$92 = ret;
+  let ifTrue$86 = ifTrue$87 + ifTrue$92;
+  throw ifTrue$86;
+}

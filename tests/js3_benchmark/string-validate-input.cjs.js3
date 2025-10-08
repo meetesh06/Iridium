@@ -1,0 +1,190 @@
+let js3$2 = Array;
+let js3$3 = "a";
+let js3$4 = "b";
+let js3$5 = "c";
+let js3$6 = "d";
+let js3$7 = "e";
+let js3$8 = "f";
+let js3$9 = "g";
+let js3$10 = "h";
+let js3$11 = "i";
+let js3$12 = "j";
+let js3$13 = "k";
+let js3$14 = "l";
+let js3$15 = "m";
+let js3$16 = "n";
+let js3$17 = "o";
+let js3$18 = "p";
+let js3$19 = "q";
+let js3$20 = "r";
+let js3$21 = "s";
+let js3$22 = "t";
+let js3$23 = "u";
+let js3$24 = "v";
+let js3$25 = "w";
+let js3$26 = "x";
+let js3$27 = "y";
+let js3$28 = "z";
+let js3$1 = new js3$2(js3$3, js3$4, js3$5, js3$6, js3$7, js3$8, js3$9, js3$10, js3$11, js3$12, js3$13, js3$14, js3$15, js3$16, js3$17, js3$18, js3$19, js3$20, js3$21, js3$22, js3$23, js3$24, js3$25, js3$26, js3$27, js3$28);
+let AssnRes$29 = letters = js3$1;
+let js3$31 = Array;
+let js3$32 = 1;
+let js3$33 = 2;
+let js3$34 = 3;
+let js3$35 = 4;
+let js3$36 = 5;
+let js3$37 = 6;
+let js3$38 = 7;
+let js3$39 = 8;
+let js3$40 = 9;
+let js3$41 = 10;
+let js3$42 = 11;
+let js3$43 = 12;
+let js3$44 = 13;
+let js3$45 = 14;
+let js3$46 = 15;
+let js3$47 = 16;
+let js3$48 = 17;
+let js3$49 = 18;
+let js3$50 = 19;
+let js3$51 = 20;
+let js3$52 = 21;
+let js3$53 = 22;
+let js3$54 = 23;
+let js3$55 = 24;
+let js3$56 = 25;
+let js3$57 = 26;
+let js3$30 = new js3$31(js3$32, js3$33, js3$34, js3$35, js3$36, js3$37, js3$38, js3$39, js3$40, js3$41, js3$42, js3$43, js3$44, js3$45, js3$46, js3$47, js3$48, js3$49, js3$50, js3$51, js3$52, js3$53, js3$54, js3$55, js3$56, js3$57);
+let AssnRes$58 = numbers = js3$30;
+let js3$60 = Array;
+let js3$61 = "FF";
+let js3$62 = "CC";
+let js3$63 = "99";
+let js3$64 = "66";
+let js3$65 = "33";
+let js3$66 = "00";
+let js3$59 = new js3$60(js3$61, js3$62, js3$63, js3$64, js3$65, js3$66);
+let AssnRes$67 = colors = js3$59;
+var endResult;
+function doTest() {
+  let AssnRes$68 = endResult = "";
+  for (var k = 0; k < 4000; k++) {
+    {
+      let js3$70 = 6;
+      let js3$69 = makeName(js3$70);
+      let AssnRes$71 = username = js3$69;
+      let js3$74 = k;
+      let js3$75 = 2;
+      let js3$73 = js3$74 % js3$75;
+      let js3$72 = js3$73 ? email = username + "@mac.com" : email = username + "(at)mac.com";
+      let js3$76 = /^[a-zA-Z0-9\-\._]+@[a-zA-Z0-9\-_]+(\.?[a-zA-Z0-9\-_]*)\.[a-zA-Z]{2,3}$/;
+      var pattern = js3$76;
+      let ifTest$77 = pattern.test(email);
+      if (ifTest$77) {
+        let ifTrue$79 = email;
+        let ifTrue$80 = " appears to be a valid email address.";
+        let ifTrue$78 = ifTrue$79 + ifTrue$80;
+        var r = ifTrue$78;
+        let ifTrue$82 = r;
+        let ifTrue$81 = addResult(ifTrue$82);
+      } else {
+        let ifFalse$84 = email;
+        let ifFalse$85 = " does NOT appear to be a valid email address.";
+        let ifFalse$83 = ifFalse$84 + ifFalse$85;
+        let AssnRes$86 = r = ifFalse$83;
+        let ifFalse$88 = r;
+        let ifFalse$87 = addResult(ifFalse$88);
+      }
+    }
+  }
+  for (var s = 0; s < 4000; s++) {
+    {
+      var zipGood = true;
+      let js3$90 = 4;
+      let js3$89 = makeNumber(js3$90);
+      var zip = js3$89;
+      let js3$93 = s;
+      let js3$94 = 2;
+      let js3$92 = js3$93 % js3$94;
+      let js3$91 = js3$92 ? zip = zip + "xyz" : zip = zip.concat("7");
+      for (var i = 0; i < zip.length; i++) {
+        {
+          let js3$95 = zip.charAt(i);
+          var ch = js3$95;
+          let ifTest$98 = ch;
+          let ifTest$99 = "0";
+          let ifTest$97 = ifTest$98 < ifTest$99;
+          let ifTest$100 = ifTest$97 ? ifTest$97 : ch > "9";
+          let ifTest$96 = ifTest$100;
+          if (ifTest$96) {
+            let AssnRes$101 = zipGood = false;
+            let ifTrue$103 = zip;
+            let ifTrue$104 = " contains letters.";
+            let ifTrue$102 = ifTrue$103 + ifTrue$104;
+            let AssnRes$105 = r = ifTrue$102;
+            let ifTrue$107 = r;
+            let ifTrue$106 = addResult(ifTrue$107);
+          }
+        }
+      }
+      let ifTest$109 = zipGood;
+      let ifTest$110 = ifTest$109 ? zip.length > 5 : ifTest$109;
+      let ifTest$108 = ifTest$110;
+      if (ifTest$108) {
+        let AssnRes$111 = zipGood = false;
+        let ifTrue$113 = zip;
+        let ifTrue$114 = " is longer than five characters.";
+        let ifTrue$112 = ifTrue$113 + ifTrue$114;
+        let AssnRes$115 = r = ifTrue$112;
+        let ifTrue$117 = r;
+        let ifTrue$116 = addResult(ifTrue$117);
+      }
+      let ifTest$118 = zipGood;
+      if (ifTest$118) {
+        let ifTrue$120 = zip;
+        let ifTrue$121 = " appears to be a valid ZIP code.";
+        let ifTrue$119 = ifTrue$120 + ifTrue$121;
+        let AssnRes$122 = r = ifTrue$119;
+        let ifTrue$124 = r;
+        let ifTrue$123 = addResult(ifTrue$124);
+      }
+    }
+  }
+}
+function makeName(n) {
+  var tmp = "";
+  for (var i = 0; i < n; i++) {
+    {
+      let js3$125 = Math.floor(26 * Math.random());
+      var l = js3$125;
+      let js3$127 = tmp;
+      let js3$128 = letters[l];
+      let js3$126 = js3$127 + js3$128;
+      let AssnRes$129 = tmp = js3$126;
+    }
+  }
+  let returnStmt$130 = tmp;
+  return returnStmt$130;
+}
+function makeNumber(n) {
+  var tmp = "";
+  for (var i = 0; i < n; i++) {
+    {
+      let js3$131 = Math.floor(9 * Math.random());
+      var l = js3$131;
+      let js3$132 = tmp.concat(l);
+      let AssnRes$133 = tmp = js3$132;
+    }
+  }
+  let returnStmt$134 = tmp;
+  return returnStmt$134;
+}
+function addResult(r) {
+  let js3$136 = endResult;
+  let js3$138 = "\n";
+  let js3$139 = r;
+  let js3$137 = js3$138 + js3$139;
+  let js3$135 = js3$136 + js3$137;
+  let AssnRes$140 = endResult = js3$135;
+}
+let js3$141 = doTest();

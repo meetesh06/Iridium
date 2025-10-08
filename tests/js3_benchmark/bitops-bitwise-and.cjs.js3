@@ -1,0 +1,23 @@
+let AssnRes$1 = bitwiseAndValue = 4294967296;
+for (var i = 0; i < 600000; i++) {
+  let js3$3 = bitwiseAndValue;
+  let js3$4 = i;
+  let js3$2 = js3$3 & js3$4;
+  let AssnRes$5 = bitwiseAndValue = js3$2;
+  ;
+}
+var result = bitwiseAndValue;
+var expected = 0;
+let ifTest$7 = result;
+let ifTest$8 = expected;
+let ifTest$6 = ifTest$7 != ifTest$8;
+if (ifTest$6) {
+  let ifTrue$12 = "ERROR: bad result: expected ";
+  let ifTrue$13 = expected;
+  let ifTrue$11 = ifTrue$12 + ifTrue$13;
+  let ifTrue$14 = " but got ";
+  let ifTrue$10 = ifTrue$11 + ifTrue$14;
+  let ifTrue$15 = result;
+  let ifTrue$9 = ifTrue$10 + ifTrue$15;
+  throw ifTrue$9;
+}

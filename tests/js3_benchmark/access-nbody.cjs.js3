@@ -1,0 +1,413 @@
+var PI = 3.141592653589793;
+let js3$3 = 4;
+let js3$4 = PI;
+let js3$2 = js3$3 * js3$4;
+let js3$5 = PI;
+let js3$1 = js3$2 * js3$5;
+var SOLAR_MASS = js3$1;
+var DAYS_PER_YEAR = 365.24;
+function Body(x, y, z, vx, vy, vz, mass) {
+  let AssnRes$6 = this.x = x;
+  let AssnRes$7 = this.y = y;
+  let AssnRes$8 = this.z = z;
+  let AssnRes$9 = this.vx = vx;
+  let AssnRes$10 = this.vy = vy;
+  let AssnRes$11 = this.vz = vz;
+  let AssnRes$12 = this.mass = mass;
+}
+let js3$26 = Body.prototype;
+let AssnRes$27 = js3$26.offsetMomentum = function (px, py, pz) {
+  let js3$14 = -px;
+  let js3$15 = SOLAR_MASS;
+  let js3$13 = js3$14 / js3$15;
+  let AssnRes$16 = this.vx = js3$13;
+  let js3$18 = -py;
+  let js3$19 = SOLAR_MASS;
+  let js3$17 = js3$18 / js3$19;
+  let AssnRes$20 = this.vy = js3$17;
+  let js3$22 = -pz;
+  let js3$23 = SOLAR_MASS;
+  let js3$21 = js3$22 / js3$23;
+  let AssnRes$24 = this.vz = js3$21;
+  let returnStmt$25 = this;
+  return returnStmt$25;
+};
+function Jupiter() {
+  let returnStmt$29 = Body;
+  let returnStmt$30 = 4.84143144246472090e+00;
+  let returnStmt$32 = 1.16032004402742839e+00;
+  let returnStmt$31 = -returnStmt$32;
+  let returnStmt$34 = 1.03622044471123109e-01;
+  let returnStmt$33 = -returnStmt$34;
+  let returnStmt$36 = 1.66007664274403694e-03;
+  let returnStmt$37 = DAYS_PER_YEAR;
+  let returnStmt$35 = returnStmt$36 * returnStmt$37;
+  let returnStmt$39 = 7.69901118419740425e-03;
+  let returnStmt$40 = DAYS_PER_YEAR;
+  let returnStmt$38 = returnStmt$39 * returnStmt$40;
+  let returnStmt$43 = 6.90460016972063023e-05;
+  let returnStmt$42 = -returnStmt$43;
+  let returnStmt$44 = DAYS_PER_YEAR;
+  let returnStmt$41 = returnStmt$42 * returnStmt$44;
+  let returnStmt$46 = 9.54791938424326609e-04;
+  let returnStmt$47 = SOLAR_MASS;
+  let returnStmt$45 = returnStmt$46 * returnStmt$47;
+  let returnStmt$28 = new returnStmt$29(returnStmt$30, returnStmt$31, returnStmt$33, returnStmt$35, returnStmt$38, returnStmt$41, returnStmt$45);
+  return returnStmt$28;
+}
+function Saturn() {
+  let returnStmt$49 = Body;
+  let returnStmt$50 = 8.34336671824457987e+00;
+  let returnStmt$51 = 4.12479856412430479e+00;
+  let returnStmt$53 = 4.03523417114321381e-01;
+  let returnStmt$52 = -returnStmt$53;
+  let returnStmt$56 = 2.76742510726862411e-03;
+  let returnStmt$55 = -returnStmt$56;
+  let returnStmt$57 = DAYS_PER_YEAR;
+  let returnStmt$54 = returnStmt$55 * returnStmt$57;
+  let returnStmt$59 = 4.99852801234917238e-03;
+  let returnStmt$60 = DAYS_PER_YEAR;
+  let returnStmt$58 = returnStmt$59 * returnStmt$60;
+  let returnStmt$62 = 2.30417297573763929e-05;
+  let returnStmt$63 = DAYS_PER_YEAR;
+  let returnStmt$61 = returnStmt$62 * returnStmt$63;
+  let returnStmt$65 = 2.85885980666130812e-04;
+  let returnStmt$66 = SOLAR_MASS;
+  let returnStmt$64 = returnStmt$65 * returnStmt$66;
+  let returnStmt$48 = new returnStmt$49(returnStmt$50, returnStmt$51, returnStmt$52, returnStmt$54, returnStmt$58, returnStmt$61, returnStmt$64);
+  return returnStmt$48;
+}
+function Uranus() {
+  let returnStmt$68 = Body;
+  let returnStmt$69 = 1.28943695621391310e+01;
+  let returnStmt$71 = 1.51111514016986312e+01;
+  let returnStmt$70 = -returnStmt$71;
+  let returnStmt$73 = 2.23307578892655734e-01;
+  let returnStmt$72 = -returnStmt$73;
+  let returnStmt$75 = 2.96460137564761618e-03;
+  let returnStmt$76 = DAYS_PER_YEAR;
+  let returnStmt$74 = returnStmt$75 * returnStmt$76;
+  let returnStmt$78 = 2.37847173959480950e-03;
+  let returnStmt$79 = DAYS_PER_YEAR;
+  let returnStmt$77 = returnStmt$78 * returnStmt$79;
+  let returnStmt$82 = 2.96589568540237556e-05;
+  let returnStmt$81 = -returnStmt$82;
+  let returnStmt$83 = DAYS_PER_YEAR;
+  let returnStmt$80 = returnStmt$81 * returnStmt$83;
+  let returnStmt$85 = 4.36624404335156298e-05;
+  let returnStmt$86 = SOLAR_MASS;
+  let returnStmt$84 = returnStmt$85 * returnStmt$86;
+  let returnStmt$67 = new returnStmt$68(returnStmt$69, returnStmt$70, returnStmt$72, returnStmt$74, returnStmt$77, returnStmt$80, returnStmt$84);
+  return returnStmt$67;
+}
+function Neptune() {
+  let returnStmt$88 = Body;
+  let returnStmt$89 = 1.53796971148509165e+01;
+  let returnStmt$91 = 2.59193146099879641e+01;
+  let returnStmt$90 = -returnStmt$91;
+  let returnStmt$92 = 1.79258772950371181e-01;
+  let returnStmt$94 = 2.68067772490389322e-03;
+  let returnStmt$95 = DAYS_PER_YEAR;
+  let returnStmt$93 = returnStmt$94 * returnStmt$95;
+  let returnStmt$97 = 1.62824170038242295e-03;
+  let returnStmt$98 = DAYS_PER_YEAR;
+  let returnStmt$96 = returnStmt$97 * returnStmt$98;
+  let returnStmt$101 = 9.51592254519715870e-05;
+  let returnStmt$100 = -returnStmt$101;
+  let returnStmt$102 = DAYS_PER_YEAR;
+  let returnStmt$99 = returnStmt$100 * returnStmt$102;
+  let returnStmt$104 = 5.15138902046611451e-05;
+  let returnStmt$105 = SOLAR_MASS;
+  let returnStmt$103 = returnStmt$104 * returnStmt$105;
+  let returnStmt$87 = new returnStmt$88(returnStmt$89, returnStmt$90, returnStmt$92, returnStmt$93, returnStmt$96, returnStmt$99, returnStmt$103);
+  return returnStmt$87;
+}
+function Sun() {
+  let returnStmt$107 = Body;
+  let returnStmt$108 = 0.0;
+  let returnStmt$109 = 0.0;
+  let returnStmt$110 = 0.0;
+  let returnStmt$111 = 0.0;
+  let returnStmt$112 = 0.0;
+  let returnStmt$113 = 0.0;
+  let returnStmt$114 = SOLAR_MASS;
+  let returnStmt$106 = new returnStmt$107(returnStmt$108, returnStmt$109, returnStmt$110, returnStmt$111, returnStmt$112, returnStmt$113, returnStmt$114);
+  return returnStmt$106;
+}
+function NBodySystem(bodies) {
+  let AssnRes$115 = this.bodies = bodies;
+  var px = 0.0;
+  var py = 0.0;
+  var pz = 0.0;
+  let js3$117 = this.bodies;
+  let js3$116 = js3$117.length;
+  var size = js3$116;
+  for (var i = 0; i < size; i++) {
+    {
+      let js3$119 = this.bodies;
+      let js3$118 = js3$119[i];
+      var b = js3$118;
+      let js3$120 = b.mass;
+      var m = js3$120;
+      let js3$122 = px;
+      let js3$124 = b.vx;
+      let js3$125 = m;
+      let js3$123 = js3$124 * js3$125;
+      let js3$121 = js3$122 + js3$123;
+      let AssnRes$126 = px = js3$121;
+      let js3$128 = py;
+      let js3$130 = b.vy;
+      let js3$131 = m;
+      let js3$129 = js3$130 * js3$131;
+      let js3$127 = js3$128 + js3$129;
+      let AssnRes$132 = py = js3$127;
+      let js3$134 = pz;
+      let js3$136 = b.vz;
+      let js3$137 = m;
+      let js3$135 = js3$136 * js3$137;
+      let js3$133 = js3$134 + js3$135;
+      let AssnRes$138 = pz = js3$133;
+    }
+  }
+  let js3$141 = this.bodies;
+  let js3$142 = 0;
+  let js3$140 = js3$141[js3$142];
+  let js3$139 = js3$140.offsetMomentum(px, py, pz);
+}
+let js3$239 = NBodySystem.prototype;
+let AssnRes$240 = js3$239.advance = function (dt) {
+  var dx;
+  var dy;
+  var dz;
+  var distance;
+  var mag;
+  let js3$144 = this.bodies;
+  let js3$143 = js3$144.length;
+  var size = js3$143;
+  for (var i = 0; i < size; i++) {
+    {
+      let js3$146 = this.bodies;
+      let js3$145 = js3$146[i];
+      var bodyi = js3$145;
+      for (var j = i + 1; j < size; j++) {
+        {
+          let js3$148 = this.bodies;
+          let js3$147 = js3$148[j];
+          var bodyj = js3$147;
+          let js3$150 = bodyi.x;
+          let js3$151 = bodyj.x;
+          let js3$149 = js3$150 - js3$151;
+          let AssnRes$152 = dx = js3$149;
+          let js3$154 = bodyi.y;
+          let js3$155 = bodyj.y;
+          let js3$153 = js3$154 - js3$155;
+          let AssnRes$156 = dy = js3$153;
+          let js3$158 = bodyi.z;
+          let js3$159 = bodyj.z;
+          let js3$157 = js3$158 - js3$159;
+          let AssnRes$160 = dz = js3$157;
+          let js3$161 = Math.sqrt(dx * dx + dy * dy + dz * dz);
+          let AssnRes$162 = distance = js3$161;
+          let js3$164 = dt;
+          let js3$167 = distance;
+          let js3$168 = distance;
+          let js3$166 = js3$167 * js3$168;
+          let js3$169 = distance;
+          let js3$165 = js3$166 * js3$169;
+          let js3$163 = js3$164 / js3$165;
+          let AssnRes$170 = mag = js3$163;
+          let js3$172 = bodyi.vx;
+          let js3$175 = dx;
+          let js3$176 = bodyj.mass;
+          let js3$174 = js3$175 * js3$176;
+          let js3$177 = mag;
+          let js3$173 = js3$174 * js3$177;
+          let js3$171 = js3$172 - js3$173;
+          let AssnRes$178 = bodyi.vx = js3$171;
+          let js3$180 = bodyi.vy;
+          let js3$183 = dy;
+          let js3$184 = bodyj.mass;
+          let js3$182 = js3$183 * js3$184;
+          let js3$185 = mag;
+          let js3$181 = js3$182 * js3$185;
+          let js3$179 = js3$180 - js3$181;
+          let AssnRes$186 = bodyi.vy = js3$179;
+          let js3$188 = bodyi.vz;
+          let js3$191 = dz;
+          let js3$192 = bodyj.mass;
+          let js3$190 = js3$191 * js3$192;
+          let js3$193 = mag;
+          let js3$189 = js3$190 * js3$193;
+          let js3$187 = js3$188 - js3$189;
+          let AssnRes$194 = bodyi.vz = js3$187;
+          let js3$196 = bodyj.vx;
+          let js3$199 = dx;
+          let js3$200 = bodyi.mass;
+          let js3$198 = js3$199 * js3$200;
+          let js3$201 = mag;
+          let js3$197 = js3$198 * js3$201;
+          let js3$195 = js3$196 + js3$197;
+          let AssnRes$202 = bodyj.vx = js3$195;
+          let js3$204 = bodyj.vy;
+          let js3$207 = dy;
+          let js3$208 = bodyi.mass;
+          let js3$206 = js3$207 * js3$208;
+          let js3$209 = mag;
+          let js3$205 = js3$206 * js3$209;
+          let js3$203 = js3$204 + js3$205;
+          let AssnRes$210 = bodyj.vy = js3$203;
+          let js3$212 = bodyj.vz;
+          let js3$215 = dz;
+          let js3$216 = bodyi.mass;
+          let js3$214 = js3$215 * js3$216;
+          let js3$217 = mag;
+          let js3$213 = js3$214 * js3$217;
+          let js3$211 = js3$212 + js3$213;
+          let AssnRes$218 = bodyj.vz = js3$211;
+        }
+      }
+    }
+  }
+  for (var i = 0; i < size; i++) {
+    {
+      let js3$220 = this.bodies;
+      let js3$219 = js3$220[i];
+      var body = js3$219;
+      let js3$222 = body.x;
+      let js3$224 = dt;
+      let js3$225 = body.vx;
+      let js3$223 = js3$224 * js3$225;
+      let js3$221 = js3$222 + js3$223;
+      let AssnRes$226 = body.x = js3$221;
+      let js3$228 = body.y;
+      let js3$230 = dt;
+      let js3$231 = body.vy;
+      let js3$229 = js3$230 * js3$231;
+      let js3$227 = js3$228 + js3$229;
+      let AssnRes$232 = body.y = js3$227;
+      let js3$234 = body.z;
+      let js3$236 = dt;
+      let js3$237 = body.vz;
+      let js3$235 = js3$236 * js3$237;
+      let js3$233 = js3$234 + js3$235;
+      let AssnRes$238 = body.z = js3$233;
+    }
+  }
+};
+let js3$288 = NBodySystem.prototype;
+let AssnRes$289 = js3$288.energy = function () {
+  var dx;
+  var dy;
+  var dz;
+  var distance;
+  var e = 0.0;
+  let js3$242 = this.bodies;
+  let js3$241 = js3$242.length;
+  var size = js3$241;
+  for (var i = 0; i < size; i++) {
+    {
+      let js3$244 = this.bodies;
+      let js3$243 = js3$244[i];
+      var bodyi = js3$243;
+      let js3$246 = e;
+      let js3$249 = 0.5;
+      let js3$250 = bodyi.mass;
+      let js3$248 = js3$249 * js3$250;
+      let js3$254 = bodyi.vx;
+      let js3$255 = bodyi.vx;
+      let js3$253 = js3$254 * js3$255;
+      let js3$257 = bodyi.vy;
+      let js3$258 = bodyi.vy;
+      let js3$256 = js3$257 * js3$258;
+      let js3$252 = js3$253 + js3$256;
+      let js3$260 = bodyi.vz;
+      let js3$261 = bodyi.vz;
+      let js3$259 = js3$260 * js3$261;
+      let js3$251 = js3$252 + js3$259;
+      let js3$247 = js3$248 * js3$251;
+      let js3$245 = js3$246 + js3$247;
+      let AssnRes$262 = e = js3$245;
+      for (var j = i + 1; j < size; j++) {
+        {
+          let js3$264 = this.bodies;
+          let js3$263 = js3$264[j];
+          var bodyj = js3$263;
+          let js3$266 = bodyi.x;
+          let js3$267 = bodyj.x;
+          let js3$265 = js3$266 - js3$267;
+          let AssnRes$268 = dx = js3$265;
+          let js3$270 = bodyi.y;
+          let js3$271 = bodyj.y;
+          let js3$269 = js3$270 - js3$271;
+          let AssnRes$272 = dy = js3$269;
+          let js3$274 = bodyi.z;
+          let js3$275 = bodyj.z;
+          let js3$273 = js3$274 - js3$275;
+          let AssnRes$276 = dz = js3$273;
+          let js3$277 = Math.sqrt(dx * dx + dy * dy + dz * dz);
+          let AssnRes$278 = distance = js3$277;
+          let js3$280 = e;
+          let js3$283 = bodyi.mass;
+          let js3$284 = bodyj.mass;
+          let js3$282 = js3$283 * js3$284;
+          let js3$285 = distance;
+          let js3$281 = js3$282 / js3$285;
+          let js3$279 = js3$280 - js3$281;
+          let AssnRes$286 = e = js3$279;
+        }
+      }
+    }
+  }
+  let returnStmt$287 = e;
+  return returnStmt$287;
+};
+var ret = 0;
+for (var n = 3; n <= 24; n *= 2) {
+  {
+    let noname$311 = [function () {
+      let js3$292 = NBodySystem;
+      let js3$294 = Sun();
+      let js3$295 = Jupiter();
+      let js3$296 = Saturn();
+      let js3$297 = Uranus();
+      let js3$298 = Neptune();
+      let js3$293 = Array(js3$294, js3$295, js3$296, js3$297, js3$298);
+      let js3$291 = new js3$292(js3$293);
+      var bodies = js3$291;
+      let js3$300 = n;
+      let js3$301 = 100;
+      let js3$299 = js3$300 * js3$301;
+      var max = js3$299;
+      let js3$303 = ret;
+      let js3$304 = bodies.energy();
+      let js3$302 = js3$303 + js3$304;
+      let AssnRes$305 = ret = js3$302;
+      for (var i = 0; i < max; i++) {
+        {
+          let js3$306 = bodies.advance(0.01);
+        }
+      }
+      let js3$308 = ret;
+      let js3$309 = bodies.energy();
+      let js3$307 = js3$308 + js3$309;
+      let AssnRes$310 = ret = js3$307;
+    }][0];
+    let js3$290 = noname$311();
+  }
+}
+let js3$313 = 1.3524862408537381;
+let js3$312 = -js3$313;
+var expected = js3$312;
+let ifTest$315 = ret;
+let ifTest$316 = expected;
+let ifTest$314 = ifTest$315 != ifTest$316;
+if (ifTest$314) {
+  let ifTrue$320 = "ERROR: bad result: expected ";
+  let ifTrue$321 = expected;
+  let ifTrue$319 = ifTrue$320 + ifTrue$321;
+  let ifTrue$322 = " but got ";
+  let ifTrue$318 = ifTrue$319 + ifTrue$322;
+  let ifTrue$323 = ret;
+  let ifTrue$317 = ifTrue$318 + ifTrue$323;
+  throw ifTrue$317;
+}

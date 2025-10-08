@@ -1,0 +1,151 @@
+var AG_CONST = 0.6072529350;
+function FIXED(X) {
+  let returnStmt$2 = X;
+  let returnStmt$3 = 65536.0;
+  let returnStmt$1 = returnStmt$2 * returnStmt$3;
+  return returnStmt$1;
+}
+function FLOAT(X) {
+  let returnStmt$5 = X;
+  let returnStmt$6 = 65536.0;
+  let returnStmt$4 = returnStmt$5 / returnStmt$6;
+  return returnStmt$4;
+}
+function DEG2RAD(X) {
+  let returnStmt$8 = 0.017453;
+  let returnStmt$9 = X;
+  let returnStmt$7 = returnStmt$8 * returnStmt$9;
+  return returnStmt$7;
+}
+let js3$12 = 45.0;
+let js3$11 = FIXED(js3$12);
+let js3$14 = 26.565;
+let js3$13 = FIXED(js3$14);
+let js3$16 = 14.0362;
+let js3$15 = FIXED(js3$16);
+let js3$18 = 7.12502;
+let js3$17 = FIXED(js3$18);
+let js3$20 = 3.57633;
+let js3$19 = FIXED(js3$20);
+let js3$22 = 1.78991;
+let js3$21 = FIXED(js3$22);
+let js3$24 = 0.895174;
+let js3$23 = FIXED(js3$24);
+let js3$26 = 0.447614;
+let js3$25 = FIXED(js3$26);
+let js3$28 = 0.223811;
+let js3$27 = FIXED(js3$28);
+let js3$30 = 0.111906;
+let js3$29 = FIXED(js3$30);
+let js3$32 = 0.055953;
+let js3$31 = FIXED(js3$32);
+let js3$34 = 0.027977;
+let js3$33 = FIXED(js3$34);
+let js3$10 = [js3$11, js3$13, js3$15, js3$17, js3$19, js3$21, js3$23, js3$25, js3$27, js3$29, js3$31, js3$33];
+var Angles = js3$10;
+var Target = 28.027;
+function cordicsincos(Target) {
+  var X;
+  var Y;
+  var TargetAngle;
+  var CurrAngle;
+  var Step;
+  let js3$36 = AG_CONST;
+  let js3$35 = FIXED(js3$36);
+  let AssnRes$37 = X = js3$35;
+  let AssnRes$38 = Y = 0;
+  let js3$40 = Target;
+  let js3$39 = FIXED(js3$40);
+  let AssnRes$41 = TargetAngle = js3$39;
+  let AssnRes$42 = CurrAngle = 0;
+  for (Step = 0; Step < 12; Step++) {
+    {
+      var NewX;
+      let ifTest$44 = TargetAngle;
+      let ifTest$45 = CurrAngle;
+      let ifTest$43 = ifTest$44 > ifTest$45;
+      if (ifTest$43) {
+        let ifTrue$47 = X;
+        let ifTrue$49 = Y;
+        let ifTrue$50 = Step;
+        let ifTrue$48 = ifTrue$49 >> ifTrue$50;
+        let ifTrue$46 = ifTrue$47 - ifTrue$48;
+        let AssnRes$51 = NewX = ifTrue$46;
+        let ifTrue$54 = X;
+        let ifTrue$55 = Step;
+        let ifTrue$53 = ifTrue$54 >> ifTrue$55;
+        let ifTrue$56 = Y;
+        let ifTrue$52 = ifTrue$53 + ifTrue$56;
+        let AssnRes$57 = Y = ifTrue$52;
+        let AssnRes$58 = X = NewX;
+        let ifTrue$60 = CurrAngle;
+        let ifTrue$61 = Angles[Step];
+        let ifTrue$59 = ifTrue$60 + ifTrue$61;
+        let AssnRes$62 = CurrAngle = ifTrue$59;
+      } else {
+        let ifFalse$64 = X;
+        let ifFalse$66 = Y;
+        let ifFalse$67 = Step;
+        let ifFalse$65 = ifFalse$66 >> ifFalse$67;
+        let ifFalse$63 = ifFalse$64 + ifFalse$65;
+        let AssnRes$68 = NewX = ifFalse$63;
+        let ifFalse$72 = X;
+        let ifFalse$73 = Step;
+        let ifFalse$71 = ifFalse$72 >> ifFalse$73;
+        let ifFalse$70 = -ifFalse$71;
+        let ifFalse$74 = Y;
+        let ifFalse$69 = ifFalse$70 + ifFalse$74;
+        let AssnRes$75 = Y = ifFalse$69;
+        let AssnRes$76 = X = NewX;
+        let ifFalse$78 = CurrAngle;
+        let ifFalse$79 = Angles[Step];
+        let ifFalse$77 = ifFalse$78 - ifFalse$79;
+        let AssnRes$80 = CurrAngle = ifFalse$77;
+      }
+    }
+  }
+  let returnStmt$83 = X;
+  let returnStmt$82 = FLOAT(returnStmt$83);
+  let returnStmt$85 = Y;
+  let returnStmt$84 = FLOAT(returnStmt$85);
+  let returnStmt$81 = returnStmt$82 * returnStmt$84;
+  return returnStmt$81;
+}
+var total = 0;
+function cordic(runs) {
+  let js3$87 = Date;
+  let js3$86 = new js3$87();
+  var start = js3$86;
+  for (var i = 0; i < runs; i++) {
+    {
+      let js3$89 = total;
+      let js3$91 = Target;
+      let js3$90 = cordicsincos(js3$91);
+      let js3$88 = js3$89 + js3$90;
+      let AssnRes$92 = total = js3$88;
+    }
+  }
+  let js3$94 = Date;
+  let js3$93 = new js3$94();
+  var end = js3$93;
+  let returnStmt$96 = end.getTime();
+  let returnStmt$97 = start.getTime();
+  let returnStmt$95 = returnStmt$96 - returnStmt$97;
+  return returnStmt$95;
+}
+let js3$99 = 25000;
+let js3$98 = cordic(js3$99);
+var expected = 10362.570468755888;
+let ifTest$101 = total;
+let ifTest$102 = expected;
+let ifTest$100 = ifTest$101 != ifTest$102;
+if (ifTest$100) {
+  let ifTrue$106 = "ERROR: bad result: expected ";
+  let ifTrue$107 = expected;
+  let ifTrue$105 = ifTrue$106 + ifTrue$107;
+  let ifTrue$108 = " but got ";
+  let ifTrue$104 = ifTrue$105 + ifTrue$108;
+  let ifTrue$109 = total;
+  let ifTrue$103 = ifTrue$104 + ifTrue$109;
+  throw ifTrue$103;
+}

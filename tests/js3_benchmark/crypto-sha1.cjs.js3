@@ -1,0 +1,555 @@
+var hexcase = 0;
+var b64pad = "";
+var chrsz = 8;
+function hex_sha1(s) {
+  let returnStmt$4 = s;
+  let returnStmt$3 = str2binb(returnStmt$4);
+  let returnStmt$6 = s.length;
+  let returnStmt$7 = chrsz;
+  let returnStmt$5 = returnStmt$6 * returnStmt$7;
+  let returnStmt$2 = core_sha1(returnStmt$3, returnStmt$5);
+  let returnStmt$1 = binb2hex(returnStmt$2);
+  return returnStmt$1;
+}
+function b64_sha1(s) {
+  let returnStmt$11 = s;
+  let returnStmt$10 = str2binb(returnStmt$11);
+  let returnStmt$13 = s.length;
+  let returnStmt$14 = chrsz;
+  let returnStmt$12 = returnStmt$13 * returnStmt$14;
+  let returnStmt$9 = core_sha1(returnStmt$10, returnStmt$12);
+  let returnStmt$8 = binb2b64(returnStmt$9);
+  return returnStmt$8;
+}
+function str_sha1(s) {
+  let returnStmt$18 = s;
+  let returnStmt$17 = str2binb(returnStmt$18);
+  let returnStmt$20 = s.length;
+  let returnStmt$21 = chrsz;
+  let returnStmt$19 = returnStmt$20 * returnStmt$21;
+  let returnStmt$16 = core_sha1(returnStmt$17, returnStmt$19);
+  let returnStmt$15 = binb2str(returnStmt$16);
+  return returnStmt$15;
+}
+function hex_hmac_sha1(key, data) {
+  let returnStmt$24 = key;
+  let returnStmt$25 = data;
+  let returnStmt$23 = core_hmac_sha1(returnStmt$24, returnStmt$25);
+  let returnStmt$22 = binb2hex(returnStmt$23);
+  return returnStmt$22;
+}
+function b64_hmac_sha1(key, data) {
+  let returnStmt$28 = key;
+  let returnStmt$29 = data;
+  let returnStmt$27 = core_hmac_sha1(returnStmt$28, returnStmt$29);
+  let returnStmt$26 = binb2b64(returnStmt$27);
+  return returnStmt$26;
+}
+function str_hmac_sha1(key, data) {
+  let returnStmt$32 = key;
+  let returnStmt$33 = data;
+  let returnStmt$31 = core_hmac_sha1(returnStmt$32, returnStmt$33);
+  let returnStmt$30 = binb2str(returnStmt$31);
+  return returnStmt$30;
+}
+function sha1_vm_test() {
+  let returnStmt$36 = "abc";
+  let returnStmt$35 = hex_sha1(returnStmt$36);
+  let returnStmt$37 = "a9993e364706816aba3e25717850c26c9cd0d89d";
+  let returnStmt$34 = returnStmt$35 == returnStmt$37;
+  return returnStmt$34;
+}
+function core_sha1(x, len) {
+  let js3$41 = len;
+  let js3$42 = 5;
+  let js3$40 = js3$41 >> js3$42;
+  let js3$39 = x[js3$40];
+  let js3$44 = 0x80;
+  let js3$46 = 24;
+  let js3$48 = len;
+  let js3$49 = 32;
+  let js3$47 = js3$48 % js3$49;
+  let js3$45 = js3$46 - js3$47;
+  let js3$43 = js3$44 << js3$45;
+  let js3$38 = js3$39 | js3$43;
+  let js3$51 = len;
+  let js3$52 = 5;
+  let js3$50 = js3$51 >> js3$52;
+  let AssnRes$53 = x[js3$50] = js3$38;
+  let js3$58 = len;
+  let js3$59 = 64;
+  let js3$57 = js3$58 + js3$59;
+  let js3$60 = 9;
+  let js3$56 = js3$57 >> js3$60;
+  let js3$61 = 4;
+  let js3$55 = js3$56 << js3$61;
+  let js3$62 = 15;
+  let js3$54 = js3$55 + js3$62;
+  let AssnRes$63 = x[js3$54] = len;
+  let js3$65 = 80;
+  let js3$64 = Array(js3$65);
+  var w = js3$64;
+  var a = 1732584193;
+  let js3$67 = 271733879;
+  let js3$66 = -js3$67;
+  var b = js3$66;
+  let js3$69 = 1732584194;
+  let js3$68 = -js3$69;
+  var c = js3$68;
+  var d = 271733878;
+  let js3$71 = 1009589776;
+  let js3$70 = -js3$71;
+  var e = js3$70;
+  for (var i = 0; i < x.length; i += 16) {
+    {
+      var olda = a;
+      var oldb = b;
+      var oldc = c;
+      var oldd = d;
+      var olde = e;
+      for (var j = 0; j < 80; j++) {
+        {
+          let ifTest$73 = j;
+          let ifTest$74 = 16;
+          let ifTest$72 = ifTest$73 < ifTest$74;
+          if (ifTest$72) {
+            let ifTrue$77 = i;
+            let ifTrue$78 = j;
+            let ifTrue$76 = ifTrue$77 + ifTrue$78;
+            let ifTrue$75 = x[ifTrue$76];
+            let AssnRes$79 = w[j] = ifTrue$75;
+            ;
+          } else {
+            let ifFalse$86 = j;
+            let ifFalse$87 = 3;
+            let ifFalse$85 = ifFalse$86 - ifFalse$87;
+            let ifFalse$84 = w[ifFalse$85];
+            let ifFalse$90 = j;
+            let ifFalse$91 = 8;
+            let ifFalse$89 = ifFalse$90 - ifFalse$91;
+            let ifFalse$88 = w[ifFalse$89];
+            let ifFalse$83 = ifFalse$84 ^ ifFalse$88;
+            let ifFalse$94 = j;
+            let ifFalse$95 = 14;
+            let ifFalse$93 = ifFalse$94 - ifFalse$95;
+            let ifFalse$92 = w[ifFalse$93];
+            let ifFalse$82 = ifFalse$83 ^ ifFalse$92;
+            let ifFalse$98 = j;
+            let ifFalse$99 = 16;
+            let ifFalse$97 = ifFalse$98 - ifFalse$99;
+            let ifFalse$96 = w[ifFalse$97];
+            let ifFalse$81 = ifFalse$82 ^ ifFalse$96;
+            let ifFalse$100 = 1;
+            let ifFalse$80 = rol(ifFalse$81, ifFalse$100);
+            let AssnRes$101 = w[j] = ifFalse$80;
+            ;
+          }
+          let js3$105 = a;
+          let js3$106 = 5;
+          let js3$104 = rol(js3$105, js3$106);
+          let js3$108 = j;
+          let js3$109 = b;
+          let js3$110 = c;
+          let js3$111 = d;
+          let js3$107 = sha1_ft(js3$108, js3$109, js3$110, js3$111);
+          let js3$103 = safe_add(js3$104, js3$107);
+          let js3$114 = e;
+          let js3$115 = w[j];
+          let js3$113 = safe_add(js3$114, js3$115);
+          let js3$117 = j;
+          let js3$116 = sha1_kt(js3$117);
+          let js3$112 = safe_add(js3$113, js3$116);
+          let js3$102 = safe_add(js3$103, js3$112);
+          var t = js3$102;
+          let AssnRes$118 = e = d;
+          let AssnRes$119 = d = c;
+          let js3$121 = b;
+          let js3$122 = 30;
+          let js3$120 = rol(js3$121, js3$122);
+          let AssnRes$123 = c = js3$120;
+          let AssnRes$124 = b = a;
+          let AssnRes$125 = a = t;
+        }
+      }
+      let js3$127 = a;
+      let js3$128 = olda;
+      let js3$126 = safe_add(js3$127, js3$128);
+      let AssnRes$129 = a = js3$126;
+      let js3$131 = b;
+      let js3$132 = oldb;
+      let js3$130 = safe_add(js3$131, js3$132);
+      let AssnRes$133 = b = js3$130;
+      let js3$135 = c;
+      let js3$136 = oldc;
+      let js3$134 = safe_add(js3$135, js3$136);
+      let AssnRes$137 = c = js3$134;
+      let js3$139 = d;
+      let js3$140 = oldd;
+      let js3$138 = safe_add(js3$139, js3$140);
+      let AssnRes$141 = d = js3$138;
+      let js3$143 = e;
+      let js3$144 = olde;
+      let js3$142 = safe_add(js3$143, js3$144);
+      let AssnRes$145 = e = js3$142;
+    }
+  }
+  let returnStmt$147 = a;
+  let returnStmt$148 = b;
+  let returnStmt$149 = c;
+  let returnStmt$150 = d;
+  let returnStmt$151 = e;
+  let returnStmt$146 = Array(returnStmt$147, returnStmt$148, returnStmt$149, returnStmt$150, returnStmt$151);
+  return returnStmt$146;
+}
+function sha1_ft(t, b, c, d) {
+  let ifTest$153 = t;
+  let ifTest$154 = 20;
+  let ifTest$152 = ifTest$153 < ifTest$154;
+  if (ifTest$152) {
+    let returnStmt$157 = b;
+    let returnStmt$158 = c;
+    let returnStmt$156 = returnStmt$157 & returnStmt$158;
+    let returnStmt$160 = ~b;
+    let returnStmt$161 = d;
+    let returnStmt$159 = returnStmt$160 & returnStmt$161;
+    let returnStmt$155 = returnStmt$156 | returnStmt$159;
+    return returnStmt$155;
+  }
+  let ifTest$163 = t;
+  let ifTest$164 = 40;
+  let ifTest$162 = ifTest$163 < ifTest$164;
+  if (ifTest$162) {
+    let returnStmt$167 = b;
+    let returnStmt$168 = c;
+    let returnStmt$166 = returnStmt$167 ^ returnStmt$168;
+    let returnStmt$169 = d;
+    let returnStmt$165 = returnStmt$166 ^ returnStmt$169;
+    return returnStmt$165;
+  }
+  let ifTest$171 = t;
+  let ifTest$172 = 60;
+  let ifTest$170 = ifTest$171 < ifTest$172;
+  if (ifTest$170) {
+    let returnStmt$176 = b;
+    let returnStmt$177 = c;
+    let returnStmt$175 = returnStmt$176 & returnStmt$177;
+    let returnStmt$179 = b;
+    let returnStmt$180 = d;
+    let returnStmt$178 = returnStmt$179 & returnStmt$180;
+    let returnStmt$174 = returnStmt$175 | returnStmt$178;
+    let returnStmt$182 = c;
+    let returnStmt$183 = d;
+    let returnStmt$181 = returnStmt$182 & returnStmt$183;
+    let returnStmt$173 = returnStmt$174 | returnStmt$181;
+    return returnStmt$173;
+  }
+  let returnStmt$186 = b;
+  let returnStmt$187 = c;
+  let returnStmt$185 = returnStmt$186 ^ returnStmt$187;
+  let returnStmt$188 = d;
+  let returnStmt$184 = returnStmt$185 ^ returnStmt$188;
+  return returnStmt$184;
+}
+function sha1_kt(t) {
+  let returnStmt$191 = t;
+  let returnStmt$192 = 20;
+  let returnStmt$190 = returnStmt$191 < returnStmt$192;
+  let returnStmt$189 = returnStmt$190 ? 1518500249 : t < 40 ? 1859775393 : t < 60 ? -1894007588 : -899497514;
+  return returnStmt$189;
+}
+function core_hmac_sha1(key, data) {
+  let js3$194 = key;
+  let js3$193 = str2binb(js3$194);
+  var bkey = js3$193;
+  let ifTest$196 = bkey.length;
+  let ifTest$197 = 16;
+  let ifTest$195 = ifTest$196 > ifTest$197;
+  if (ifTest$195) {
+    let ifTrue$199 = bkey;
+    let ifTrue$201 = key.length;
+    let ifTrue$202 = chrsz;
+    let ifTrue$200 = ifTrue$201 * ifTrue$202;
+    let ifTrue$198 = core_sha1(ifTrue$199, ifTrue$200);
+    let AssnRes$203 = bkey = ifTrue$198;
+    ;
+  }
+  let js3$205 = 16;
+  let js3$204 = Array(js3$205);
+  var ipad = js3$204;
+  let js3$207 = 16;
+  let js3$206 = Array(js3$207);
+  var opad = js3$206;
+  for (var i = 0; i < 16; i++) {
+    {
+      let js3$209 = bkey[i];
+      let js3$210 = 0x36363636;
+      let js3$208 = js3$209 ^ js3$210;
+      let AssnRes$211 = ipad[i] = js3$208;
+      let js3$213 = bkey[i];
+      let js3$214 = 0x5C5C5C5C;
+      let js3$212 = js3$213 ^ js3$214;
+      let AssnRes$215 = opad[i] = js3$212;
+    }
+  }
+  let js3$217 = ipad.concat(str2binb(data));
+  let js3$219 = 512;
+  let js3$221 = data.length;
+  let js3$222 = chrsz;
+  let js3$220 = js3$221 * js3$222;
+  let js3$218 = js3$219 + js3$220;
+  let js3$216 = core_sha1(js3$217, js3$218);
+  var hash = js3$216;
+  let returnStmt$224 = opad.concat(hash);
+  let returnStmt$226 = 512;
+  let returnStmt$227 = 160;
+  let returnStmt$225 = returnStmt$226 + returnStmt$227;
+  let returnStmt$223 = core_sha1(returnStmt$224, returnStmt$225);
+  return returnStmt$223;
+}
+function safe_add(x, y) {
+  let js3$230 = x;
+  let js3$231 = 0xFFFF;
+  let js3$229 = js3$230 & js3$231;
+  let js3$233 = y;
+  let js3$234 = 0xFFFF;
+  let js3$232 = js3$233 & js3$234;
+  let js3$228 = js3$229 + js3$232;
+  var lsw = js3$228;
+  let js3$238 = x;
+  let js3$239 = 16;
+  let js3$237 = js3$238 >> js3$239;
+  let js3$241 = y;
+  let js3$242 = 16;
+  let js3$240 = js3$241 >> js3$242;
+  let js3$236 = js3$237 + js3$240;
+  let js3$244 = lsw;
+  let js3$245 = 16;
+  let js3$243 = js3$244 >> js3$245;
+  let js3$235 = js3$236 + js3$243;
+  var msw = js3$235;
+  let returnStmt$248 = msw;
+  let returnStmt$249 = 16;
+  let returnStmt$247 = returnStmt$248 << returnStmt$249;
+  let returnStmt$251 = lsw;
+  let returnStmt$252 = 0xFFFF;
+  let returnStmt$250 = returnStmt$251 & returnStmt$252;
+  let returnStmt$246 = returnStmt$247 | returnStmt$250;
+  return returnStmt$246;
+}
+function rol(num, cnt) {
+  let returnStmt$255 = num;
+  let returnStmt$256 = cnt;
+  let returnStmt$254 = returnStmt$255 << returnStmt$256;
+  let returnStmt$258 = num;
+  let returnStmt$260 = 32;
+  let returnStmt$261 = cnt;
+  let returnStmt$259 = returnStmt$260 - returnStmt$261;
+  let returnStmt$257 = returnStmt$258 >>> returnStmt$259;
+  let returnStmt$253 = returnStmt$254 | returnStmt$257;
+  return returnStmt$253;
+}
+function str2binb(str) {
+  let js3$262 = Array();
+  var bin = js3$262;
+  let js3$265 = 1;
+  let js3$266 = chrsz;
+  let js3$264 = js3$265 << js3$266;
+  let js3$267 = 1;
+  let js3$263 = js3$264 - js3$267;
+  var mask = js3$263;
+  for (var i = 0; i < str.length * chrsz; i += chrsz) {
+    let js3$271 = i;
+    let js3$272 = 5;
+    let js3$270 = js3$271 >> js3$272;
+    let js3$269 = bin[js3$270];
+    let js3$275 = str.charCodeAt(i / chrsz);
+    let js3$276 = mask;
+    let js3$274 = js3$275 & js3$276;
+    let js3$279 = 32;
+    let js3$280 = chrsz;
+    let js3$278 = js3$279 - js3$280;
+    let js3$282 = i;
+    let js3$283 = 32;
+    let js3$281 = js3$282 % js3$283;
+    let js3$277 = js3$278 - js3$281;
+    let js3$273 = js3$274 << js3$277;
+    let js3$268 = js3$269 | js3$273;
+    let js3$285 = i;
+    let js3$286 = 5;
+    let js3$284 = js3$285 >> js3$286;
+    let AssnRes$287 = bin[js3$284] = js3$268;
+    ;
+  }
+  let returnStmt$288 = bin;
+  return returnStmt$288;
+}
+function binb2str(bin) {
+  var str = "";
+  let js3$291 = 1;
+  let js3$292 = chrsz;
+  let js3$290 = js3$291 << js3$292;
+  let js3$293 = 1;
+  let js3$289 = js3$290 - js3$293;
+  var mask = js3$289;
+  for (var i = 0; i < bin.length * 32; i += chrsz) {
+    let js3$295 = str;
+    let js3$296 = String.fromCharCode(bin[i >> 5] >>> 32 - chrsz - i % 32 & mask);
+    let js3$294 = js3$295 + js3$296;
+    let AssnRes$297 = str = js3$294;
+    ;
+  }
+  let returnStmt$298 = str;
+  return returnStmt$298;
+}
+function binb2hex(binarray) {
+  let js3$300 = hexcase;
+  let js3$299 = js3$300 ? "0123456789ABCDEF" : "0123456789abcdef";
+  var hex_tab = js3$299;
+  var str = "";
+  for (var i = 0; i < binarray.length * 4; i++) {
+    {
+      let js3$302 = str;
+      let js3$304 = hex_tab.charAt(binarray[i >> 2] >> (3 - i % 4) * 8 + 4 & 0xF);
+      let js3$305 = hex_tab.charAt(binarray[i >> 2] >> (3 - i % 4) * 8 & 0xF);
+      let js3$303 = js3$304 + js3$305;
+      let js3$301 = js3$302 + js3$303;
+      let AssnRes$306 = str = js3$301;
+    }
+  }
+  let returnStmt$307 = str;
+  return returnStmt$307;
+}
+function binb2b64(binarray) {
+  var tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+  var str = "";
+  for (var i = 0; i < binarray.length * 4; i += 3) {
+    {
+      let js3$315 = i;
+      let js3$316 = 2;
+      let js3$314 = js3$315 >> js3$316;
+      let js3$313 = binarray[js3$314];
+      let js3$318 = 8;
+      let js3$320 = 3;
+      let js3$322 = i;
+      let js3$323 = 4;
+      let js3$321 = js3$322 % js3$323;
+      let js3$319 = js3$320 - js3$321;
+      let js3$317 = js3$318 * js3$319;
+      let js3$312 = js3$313 >> js3$317;
+      let js3$324 = 0xFF;
+      let js3$311 = js3$312 & js3$324;
+      let js3$325 = 16;
+      let js3$310 = js3$311 << js3$325;
+      let js3$332 = i;
+      let js3$333 = 1;
+      let js3$331 = js3$332 + js3$333;
+      let js3$334 = 2;
+      let js3$330 = js3$331 >> js3$334;
+      let js3$329 = binarray[js3$330];
+      let js3$336 = 8;
+      let js3$338 = 3;
+      let js3$341 = i;
+      let js3$342 = 1;
+      let js3$340 = js3$341 + js3$342;
+      let js3$343 = 4;
+      let js3$339 = js3$340 % js3$343;
+      let js3$337 = js3$338 - js3$339;
+      let js3$335 = js3$336 * js3$337;
+      let js3$328 = js3$329 >> js3$335;
+      let js3$344 = 0xFF;
+      let js3$327 = js3$328 & js3$344;
+      let js3$345 = 8;
+      let js3$326 = js3$327 << js3$345;
+      let js3$309 = js3$310 | js3$326;
+      let js3$351 = i;
+      let js3$352 = 2;
+      let js3$350 = js3$351 + js3$352;
+      let js3$353 = 2;
+      let js3$349 = js3$350 >> js3$353;
+      let js3$348 = binarray[js3$349];
+      let js3$355 = 8;
+      let js3$357 = 3;
+      let js3$360 = i;
+      let js3$361 = 2;
+      let js3$359 = js3$360 + js3$361;
+      let js3$362 = 4;
+      let js3$358 = js3$359 % js3$362;
+      let js3$356 = js3$357 - js3$358;
+      let js3$354 = js3$355 * js3$356;
+      let js3$347 = js3$348 >> js3$354;
+      let js3$363 = 0xFF;
+      let js3$346 = js3$347 & js3$363;
+      let js3$308 = js3$309 | js3$346;
+      var triplet = js3$308;
+      for (var j = 0; j < 4; j++) {
+        {
+          let ifTest$367 = i;
+          let ifTest$368 = 8;
+          let ifTest$366 = ifTest$367 * ifTest$368;
+          let ifTest$370 = j;
+          let ifTest$371 = 6;
+          let ifTest$369 = ifTest$370 * ifTest$371;
+          let ifTest$365 = ifTest$366 + ifTest$369;
+          let ifTest$373 = binarray.length;
+          let ifTest$374 = 32;
+          let ifTest$372 = ifTest$373 * ifTest$374;
+          let ifTest$364 = ifTest$365 > ifTest$372;
+          if (ifTest$364) {
+            let ifTrue$376 = str;
+            let ifTrue$377 = b64pad;
+            let ifTrue$375 = ifTrue$376 + ifTrue$377;
+            let AssnRes$378 = str = ifTrue$375;
+            ;
+          } else {
+            let ifFalse$380 = str;
+            let ifFalse$381 = tab.charAt(triplet >> 6 * (3 - j) & 0x3F);
+            let ifFalse$379 = ifFalse$380 + ifFalse$381;
+            let AssnRes$382 = str = ifFalse$379;
+            ;
+          }
+        }
+      }
+    }
+  }
+  let returnStmt$383 = str;
+  return returnStmt$383;
+}
+var plainText = "Two households, both alike in dignity,\n\
+In fair Verona, where we lay our scene,\n\
+From ancient grudge break to new mutiny,\n\
+Where civil blood makes civil hands unclean.\n\
+From forth the fatal loins of these two foes\n\
+A pair of star-cross'd lovers take their life;\n\
+Whole misadventured piteous overthrows\n\
+Do with their death bury their parents' strife.\n\
+The fearful passage of their death-mark'd love,\n\
+And the continuance of their parents' rage,\n\
+Which, but their children's end, nought could remove,\n\
+Is now the two hours' traffic of our stage;\n\
+The which if you with patient ears attend,\n\
+What here shall miss, our toil shall strive to mend.";
+for (var i = 0; i < 4; i++) {
+  {
+    let js3$385 = plainText;
+    let js3$386 = plainText;
+    let js3$384 = js3$385 + js3$386;
+    let AssnRes$387 = plainText = js3$384;
+  }
+}
+let js3$389 = plainText;
+let js3$388 = hex_sha1(js3$389);
+var sha1Output = js3$388;
+var expected = "2524d264def74cce2498bf112bedf00e6c0b796d";
+let ifTest$391 = sha1Output;
+let ifTest$392 = expected;
+let ifTest$390 = ifTest$391 != ifTest$392;
+if (ifTest$390) {
+  let ifTrue$396 = "ERROR: bad result: expected ";
+  let ifTrue$397 = expected;
+  let ifTrue$395 = ifTrue$396 + ifTrue$397;
+  let ifTrue$398 = " but got ";
+  let ifTrue$394 = ifTrue$395 + ifTrue$398;
+  let ifTrue$399 = sha1Output;
+  let ifTrue$393 = ifTrue$394 + ifTrue$399;
+  throw ifTrue$393;
+}

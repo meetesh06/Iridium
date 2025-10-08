@@ -1,0 +1,1540 @@
+function createVector(x, y, z) {
+  let returnStmt$2 = Array;
+  let returnStmt$3 = x;
+  let returnStmt$4 = y;
+  let returnStmt$5 = z;
+  let returnStmt$1 = new returnStmt$2(returnStmt$3, returnStmt$4, returnStmt$5);
+  return returnStmt$1;
+}
+function sqrLengthVector(self) {
+  let returnStmt$10 = 0;
+  let returnStmt$9 = self[returnStmt$10];
+  let returnStmt$12 = 0;
+  let returnStmt$11 = self[returnStmt$12];
+  let returnStmt$8 = returnStmt$9 * returnStmt$11;
+  let returnStmt$15 = 1;
+  let returnStmt$14 = self[returnStmt$15];
+  let returnStmt$17 = 1;
+  let returnStmt$16 = self[returnStmt$17];
+  let returnStmt$13 = returnStmt$14 * returnStmt$16;
+  let returnStmt$7 = returnStmt$8 + returnStmt$13;
+  let returnStmt$20 = 2;
+  let returnStmt$19 = self[returnStmt$20];
+  let returnStmt$22 = 2;
+  let returnStmt$21 = self[returnStmt$22];
+  let returnStmt$18 = returnStmt$19 * returnStmt$21;
+  let returnStmt$6 = returnStmt$7 + returnStmt$18;
+  return returnStmt$6;
+}
+function lengthVector(self) {
+  let returnStmt$23 = Math.sqrt(self[0] * self[0] + self[1] * self[1] + self[2] * self[2]);
+  return returnStmt$23;
+}
+function addVector(self, v) {
+  let js3$26 = 0;
+  let js3$25 = self[js3$26];
+  let js3$28 = 0;
+  let js3$27 = v[js3$28];
+  let js3$24 = js3$25 + js3$27;
+  let js3$29 = 0;
+  let AssnRes$30 = self[js3$29] = js3$24;
+  let js3$33 = 1;
+  let js3$32 = self[js3$33];
+  let js3$35 = 1;
+  let js3$34 = v[js3$35];
+  let js3$31 = js3$32 + js3$34;
+  let js3$36 = 1;
+  let AssnRes$37 = self[js3$36] = js3$31;
+  let js3$40 = 2;
+  let js3$39 = self[js3$40];
+  let js3$42 = 2;
+  let js3$41 = v[js3$42];
+  let js3$38 = js3$39 + js3$41;
+  let js3$43 = 2;
+  let AssnRes$44 = self[js3$43] = js3$38;
+  let returnStmt$45 = self;
+  return returnStmt$45;
+}
+function subVector(self, v) {
+  let js3$48 = 0;
+  let js3$47 = self[js3$48];
+  let js3$50 = 0;
+  let js3$49 = v[js3$50];
+  let js3$46 = js3$47 - js3$49;
+  let js3$51 = 0;
+  let AssnRes$52 = self[js3$51] = js3$46;
+  let js3$55 = 1;
+  let js3$54 = self[js3$55];
+  let js3$57 = 1;
+  let js3$56 = v[js3$57];
+  let js3$53 = js3$54 - js3$56;
+  let js3$58 = 1;
+  let AssnRes$59 = self[js3$58] = js3$53;
+  let js3$62 = 2;
+  let js3$61 = self[js3$62];
+  let js3$64 = 2;
+  let js3$63 = v[js3$64];
+  let js3$60 = js3$61 - js3$63;
+  let js3$65 = 2;
+  let AssnRes$66 = self[js3$65] = js3$60;
+  let returnStmt$67 = self;
+  return returnStmt$67;
+}
+function scaleVector(self, scale) {
+  let js3$70 = 0;
+  let js3$69 = self[js3$70];
+  let js3$71 = scale;
+  let js3$68 = js3$69 * js3$71;
+  let js3$72 = 0;
+  let AssnRes$73 = self[js3$72] = js3$68;
+  let js3$76 = 1;
+  let js3$75 = self[js3$76];
+  let js3$77 = scale;
+  let js3$74 = js3$75 * js3$77;
+  let js3$78 = 1;
+  let AssnRes$79 = self[js3$78] = js3$74;
+  let js3$82 = 2;
+  let js3$81 = self[js3$82];
+  let js3$83 = scale;
+  let js3$80 = js3$81 * js3$83;
+  let js3$84 = 2;
+  let AssnRes$85 = self[js3$84] = js3$80;
+  let returnStmt$86 = self;
+  return returnStmt$86;
+}
+function normaliseVector(self) {
+  let js3$87 = Math.sqrt(self[0] * self[0] + self[1] * self[1] + self[2] * self[2]);
+  var len = js3$87;
+  let js3$90 = 0;
+  let js3$89 = self[js3$90];
+  let js3$91 = len;
+  let js3$88 = js3$89 / js3$91;
+  let js3$92 = 0;
+  let AssnRes$93 = self[js3$92] = js3$88;
+  let js3$96 = 1;
+  let js3$95 = self[js3$96];
+  let js3$97 = len;
+  let js3$94 = js3$95 / js3$97;
+  let js3$98 = 1;
+  let AssnRes$99 = self[js3$98] = js3$94;
+  let js3$102 = 2;
+  let js3$101 = self[js3$102];
+  let js3$103 = len;
+  let js3$100 = js3$101 / js3$103;
+  let js3$104 = 2;
+  let AssnRes$105 = self[js3$104] = js3$100;
+  let returnStmt$106 = self;
+  return returnStmt$106;
+}
+function add(v1, v2) {
+  let returnStmt$108 = Array;
+  let returnStmt$111 = 0;
+  let returnStmt$110 = v1[returnStmt$111];
+  let returnStmt$113 = 0;
+  let returnStmt$112 = v2[returnStmt$113];
+  let returnStmt$109 = returnStmt$110 + returnStmt$112;
+  let returnStmt$116 = 1;
+  let returnStmt$115 = v1[returnStmt$116];
+  let returnStmt$118 = 1;
+  let returnStmt$117 = v2[returnStmt$118];
+  let returnStmt$114 = returnStmt$115 + returnStmt$117;
+  let returnStmt$121 = 2;
+  let returnStmt$120 = v1[returnStmt$121];
+  let returnStmt$123 = 2;
+  let returnStmt$122 = v2[returnStmt$123];
+  let returnStmt$119 = returnStmt$120 + returnStmt$122;
+  let returnStmt$107 = new returnStmt$108(returnStmt$109, returnStmt$114, returnStmt$119);
+  return returnStmt$107;
+}
+function sub(v1, v2) {
+  let returnStmt$125 = Array;
+  let returnStmt$128 = 0;
+  let returnStmt$127 = v1[returnStmt$128];
+  let returnStmt$130 = 0;
+  let returnStmt$129 = v2[returnStmt$130];
+  let returnStmt$126 = returnStmt$127 - returnStmt$129;
+  let returnStmt$133 = 1;
+  let returnStmt$132 = v1[returnStmt$133];
+  let returnStmt$135 = 1;
+  let returnStmt$134 = v2[returnStmt$135];
+  let returnStmt$131 = returnStmt$132 - returnStmt$134;
+  let returnStmt$138 = 2;
+  let returnStmt$137 = v1[returnStmt$138];
+  let returnStmt$140 = 2;
+  let returnStmt$139 = v2[returnStmt$140];
+  let returnStmt$136 = returnStmt$137 - returnStmt$139;
+  let returnStmt$124 = new returnStmt$125(returnStmt$126, returnStmt$131, returnStmt$136);
+  return returnStmt$124;
+}
+function scalev(v1, v2) {
+  let returnStmt$142 = Array;
+  let returnStmt$145 = 0;
+  let returnStmt$144 = v1[returnStmt$145];
+  let returnStmt$147 = 0;
+  let returnStmt$146 = v2[returnStmt$147];
+  let returnStmt$143 = returnStmt$144 * returnStmt$146;
+  let returnStmt$150 = 1;
+  let returnStmt$149 = v1[returnStmt$150];
+  let returnStmt$152 = 1;
+  let returnStmt$151 = v2[returnStmt$152];
+  let returnStmt$148 = returnStmt$149 * returnStmt$151;
+  let returnStmt$155 = 2;
+  let returnStmt$154 = v1[returnStmt$155];
+  let returnStmt$157 = 2;
+  let returnStmt$156 = v2[returnStmt$157];
+  let returnStmt$153 = returnStmt$154 * returnStmt$156;
+  let returnStmt$141 = new returnStmt$142(returnStmt$143, returnStmt$148, returnStmt$153);
+  return returnStmt$141;
+}
+function dot(v1, v2) {
+  let returnStmt$162 = 0;
+  let returnStmt$161 = v1[returnStmt$162];
+  let returnStmt$164 = 0;
+  let returnStmt$163 = v2[returnStmt$164];
+  let returnStmt$160 = returnStmt$161 * returnStmt$163;
+  let returnStmt$167 = 1;
+  let returnStmt$166 = v1[returnStmt$167];
+  let returnStmt$169 = 1;
+  let returnStmt$168 = v2[returnStmt$169];
+  let returnStmt$165 = returnStmt$166 * returnStmt$168;
+  let returnStmt$159 = returnStmt$160 + returnStmt$165;
+  let returnStmt$172 = 2;
+  let returnStmt$171 = v1[returnStmt$172];
+  let returnStmt$174 = 2;
+  let returnStmt$173 = v2[returnStmt$174];
+  let returnStmt$170 = returnStmt$171 * returnStmt$173;
+  let returnStmt$158 = returnStmt$159 + returnStmt$170;
+  return returnStmt$158;
+}
+function scale(v, scale) {
+  let returnStmt$178 = 0;
+  let returnStmt$177 = v[returnStmt$178];
+  let returnStmt$179 = scale;
+  let returnStmt$176 = returnStmt$177 * returnStmt$179;
+  let returnStmt$182 = 1;
+  let returnStmt$181 = v[returnStmt$182];
+  let returnStmt$183 = scale;
+  let returnStmt$180 = returnStmt$181 * returnStmt$183;
+  let returnStmt$186 = 2;
+  let returnStmt$185 = v[returnStmt$186];
+  let returnStmt$187 = scale;
+  let returnStmt$184 = returnStmt$185 * returnStmt$187;
+  let returnStmt$175 = [returnStmt$176, returnStmt$180, returnStmt$184];
+  return returnStmt$175;
+}
+function cross(v1, v2) {
+  let returnStmt$192 = 1;
+  let returnStmt$191 = v1[returnStmt$192];
+  let returnStmt$194 = 2;
+  let returnStmt$193 = v2[returnStmt$194];
+  let returnStmt$190 = returnStmt$191 * returnStmt$193;
+  let returnStmt$197 = 2;
+  let returnStmt$196 = v1[returnStmt$197];
+  let returnStmt$199 = 1;
+  let returnStmt$198 = v2[returnStmt$199];
+  let returnStmt$195 = returnStmt$196 * returnStmt$198;
+  let returnStmt$189 = returnStmt$190 - returnStmt$195;
+  let returnStmt$203 = 2;
+  let returnStmt$202 = v1[returnStmt$203];
+  let returnStmt$205 = 0;
+  let returnStmt$204 = v2[returnStmt$205];
+  let returnStmt$201 = returnStmt$202 * returnStmt$204;
+  let returnStmt$208 = 0;
+  let returnStmt$207 = v1[returnStmt$208];
+  let returnStmt$210 = 2;
+  let returnStmt$209 = v2[returnStmt$210];
+  let returnStmt$206 = returnStmt$207 * returnStmt$209;
+  let returnStmt$200 = returnStmt$201 - returnStmt$206;
+  let returnStmt$214 = 0;
+  let returnStmt$213 = v1[returnStmt$214];
+  let returnStmt$216 = 1;
+  let returnStmt$215 = v2[returnStmt$216];
+  let returnStmt$212 = returnStmt$213 * returnStmt$215;
+  let returnStmt$219 = 1;
+  let returnStmt$218 = v1[returnStmt$219];
+  let returnStmt$221 = 0;
+  let returnStmt$220 = v2[returnStmt$221];
+  let returnStmt$217 = returnStmt$218 * returnStmt$220;
+  let returnStmt$211 = returnStmt$212 - returnStmt$217;
+  let returnStmt$188 = [returnStmt$189, returnStmt$200, returnStmt$211];
+  return returnStmt$188;
+}
+function normalise(v) {
+  let js3$223 = v;
+  let js3$222 = lengthVector(js3$223);
+  var len = js3$222;
+  let returnStmt$227 = 0;
+  let returnStmt$226 = v[returnStmt$227];
+  let returnStmt$228 = len;
+  let returnStmt$225 = returnStmt$226 / returnStmt$228;
+  let returnStmt$231 = 1;
+  let returnStmt$230 = v[returnStmt$231];
+  let returnStmt$232 = len;
+  let returnStmt$229 = returnStmt$230 / returnStmt$232;
+  let returnStmt$235 = 2;
+  let returnStmt$234 = v[returnStmt$235];
+  let returnStmt$236 = len;
+  let returnStmt$233 = returnStmt$234 / returnStmt$236;
+  let returnStmt$224 = [returnStmt$225, returnStmt$229, returnStmt$233];
+  return returnStmt$224;
+}
+function transformMatrix(self, v) {
+  var vals = self;
+  let js3$242 = 0;
+  let js3$241 = vals[js3$242];
+  let js3$244 = 0;
+  let js3$243 = v[js3$244];
+  let js3$240 = js3$241 * js3$243;
+  let js3$247 = 1;
+  let js3$246 = vals[js3$247];
+  let js3$249 = 1;
+  let js3$248 = v[js3$249];
+  let js3$245 = js3$246 * js3$248;
+  let js3$239 = js3$240 + js3$245;
+  let js3$252 = 2;
+  let js3$251 = vals[js3$252];
+  let js3$254 = 2;
+  let js3$253 = v[js3$254];
+  let js3$250 = js3$251 * js3$253;
+  let js3$238 = js3$239 + js3$250;
+  let js3$256 = 3;
+  let js3$255 = vals[js3$256];
+  let js3$237 = js3$238 + js3$255;
+  var x = js3$237;
+  let js3$262 = 4;
+  let js3$261 = vals[js3$262];
+  let js3$264 = 0;
+  let js3$263 = v[js3$264];
+  let js3$260 = js3$261 * js3$263;
+  let js3$267 = 5;
+  let js3$266 = vals[js3$267];
+  let js3$269 = 1;
+  let js3$268 = v[js3$269];
+  let js3$265 = js3$266 * js3$268;
+  let js3$259 = js3$260 + js3$265;
+  let js3$272 = 6;
+  let js3$271 = vals[js3$272];
+  let js3$274 = 2;
+  let js3$273 = v[js3$274];
+  let js3$270 = js3$271 * js3$273;
+  let js3$258 = js3$259 + js3$270;
+  let js3$276 = 7;
+  let js3$275 = vals[js3$276];
+  let js3$257 = js3$258 + js3$275;
+  var y = js3$257;
+  let js3$282 = 8;
+  let js3$281 = vals[js3$282];
+  let js3$284 = 0;
+  let js3$283 = v[js3$284];
+  let js3$280 = js3$281 * js3$283;
+  let js3$287 = 9;
+  let js3$286 = vals[js3$287];
+  let js3$289 = 1;
+  let js3$288 = v[js3$289];
+  let js3$285 = js3$286 * js3$288;
+  let js3$279 = js3$280 + js3$285;
+  let js3$292 = 10;
+  let js3$291 = vals[js3$292];
+  let js3$294 = 2;
+  let js3$293 = v[js3$294];
+  let js3$290 = js3$291 * js3$293;
+  let js3$278 = js3$279 + js3$290;
+  let js3$296 = 11;
+  let js3$295 = vals[js3$296];
+  let js3$277 = js3$278 + js3$295;
+  var z = js3$277;
+  let returnStmt$297 = [x, y, z];
+  return returnStmt$297;
+}
+function invertMatrix(self) {
+  let js3$299 = Array;
+  let js3$300 = 16;
+  let js3$298 = new js3$299(js3$300);
+  var temp = js3$298;
+  let js3$303 = 3;
+  let js3$302 = self[js3$303];
+  let js3$301 = -js3$302;
+  var tx = js3$301;
+  let js3$306 = 7;
+  let js3$305 = self[js3$306];
+  let js3$304 = -js3$305;
+  var ty = js3$304;
+  let js3$309 = 11;
+  let js3$308 = self[js3$309];
+  let js3$307 = -js3$308;
+  var tz = js3$307;
+  for (h = 0; h < 3; h++) {
+    for (v = 0; v < 3; v++) {
+      let js3$312 = v;
+      let js3$314 = h;
+      let js3$315 = 4;
+      let js3$313 = js3$314 * js3$315;
+      let js3$311 = js3$312 + js3$313;
+      let js3$310 = self[js3$311];
+      let js3$317 = h;
+      let js3$319 = v;
+      let js3$320 = 4;
+      let js3$318 = js3$319 * js3$320;
+      let js3$316 = js3$317 + js3$318;
+      let AssnRes$321 = temp[js3$316] = js3$310;
+      ;
+    }
+  }
+  for (i = 0; i < 11; i++) {
+    let js3$322 = temp[i];
+    let AssnRes$323 = self[i] = js3$322;
+    ;
+  }
+  let js3$327 = tx;
+  let js3$329 = 0;
+  let js3$328 = self[js3$329];
+  let js3$326 = js3$327 * js3$328;
+  let js3$331 = ty;
+  let js3$333 = 1;
+  let js3$332 = self[js3$333];
+  let js3$330 = js3$331 * js3$332;
+  let js3$325 = js3$326 + js3$330;
+  let js3$335 = tz;
+  let js3$337 = 2;
+  let js3$336 = self[js3$337];
+  let js3$334 = js3$335 * js3$336;
+  let js3$324 = js3$325 + js3$334;
+  let js3$338 = 3;
+  let AssnRes$339 = self[js3$338] = js3$324;
+  let js3$343 = tx;
+  let js3$345 = 4;
+  let js3$344 = self[js3$345];
+  let js3$342 = js3$343 * js3$344;
+  let js3$347 = ty;
+  let js3$349 = 5;
+  let js3$348 = self[js3$349];
+  let js3$346 = js3$347 * js3$348;
+  let js3$341 = js3$342 + js3$346;
+  let js3$351 = tz;
+  let js3$353 = 6;
+  let js3$352 = self[js3$353];
+  let js3$350 = js3$351 * js3$352;
+  let js3$340 = js3$341 + js3$350;
+  let js3$354 = 7;
+  let AssnRes$355 = self[js3$354] = js3$340;
+  let js3$359 = tx;
+  let js3$361 = 8;
+  let js3$360 = self[js3$361];
+  let js3$358 = js3$359 * js3$360;
+  let js3$363 = ty;
+  let js3$365 = 9;
+  let js3$364 = self[js3$365];
+  let js3$362 = js3$363 * js3$364;
+  let js3$357 = js3$358 + js3$362;
+  let js3$367 = tz;
+  let js3$369 = 10;
+  let js3$368 = self[js3$369];
+  let js3$366 = js3$367 * js3$368;
+  let js3$356 = js3$357 + js3$366;
+  let js3$370 = 11;
+  let AssnRes$371 = self[js3$370] = js3$356;
+  let returnStmt$372 = self;
+  return returnStmt$372;
+}
+function Triangle(p1, p2, p3) {
+  let js3$374 = p3;
+  let js3$375 = p1;
+  let js3$373 = sub(js3$374, js3$375);
+  var edge1 = js3$373;
+  let js3$377 = p2;
+  let js3$378 = p1;
+  let js3$376 = sub(js3$377, js3$378);
+  var edge2 = js3$376;
+  let js3$380 = edge1;
+  let js3$381 = edge2;
+  let js3$379 = cross(js3$380, js3$381);
+  var normal = js3$379;
+  let ifTest$383 = Math.abs(normal[0]);
+  let ifTest$384 = Math.abs(normal[1]);
+  let ifTest$382 = ifTest$383 > ifTest$384;
+  if (ifTest$382) {
+    let ifTest$386 = Math.abs(normal[0]);
+    let ifTest$387 = Math.abs(normal[2]);
+    let ifTest$385 = ifTest$386 > ifTest$387;
+    if (ifTest$385) {
+      let AssnRes$388 = this.axis = 0;
+      ;
+    } else {
+      let AssnRes$389 = this.axis = 2;
+      ;
+    }
+  } else {
+    let ifTest$391 = Math.abs(normal[1]);
+    let ifTest$392 = Math.abs(normal[2]);
+    let ifTest$390 = ifTest$391 > ifTest$392;
+    if (ifTest$390) {
+      let AssnRes$393 = this.axis = 1;
+      ;
+    } else {
+      let AssnRes$394 = this.axis = 2;
+      ;
+    }
+  }
+  let js3$397 = this.axis;
+  let js3$398 = 1;
+  let js3$396 = js3$397 + js3$398;
+  let js3$399 = 3;
+  let js3$395 = js3$396 % js3$399;
+  var u = js3$395;
+  let js3$402 = this.axis;
+  let js3$403 = 2;
+  let js3$401 = js3$402 + js3$403;
+  let js3$404 = 3;
+  let js3$400 = js3$401 % js3$404;
+  var v = js3$400;
+  let js3$405 = edge1[u];
+  var u1 = js3$405;
+  let js3$406 = edge1[v];
+  var v1 = js3$406;
+  let js3$407 = edge2[u];
+  var u2 = js3$407;
+  let js3$408 = edge2[v];
+  var v2 = js3$408;
+  let js3$410 = normal;
+  let js3$409 = normalise(js3$410);
+  let AssnRes$411 = this.normal = js3$409;
+  let js3$413 = normal[u];
+  let js3$415 = this.axis;
+  let js3$414 = normal[js3$415];
+  let js3$412 = js3$413 / js3$414;
+  let AssnRes$416 = this.nu = js3$412;
+  let js3$418 = normal[v];
+  let js3$420 = this.axis;
+  let js3$419 = normal[js3$420];
+  let js3$417 = js3$418 / js3$419;
+  let AssnRes$421 = this.nv = js3$417;
+  let js3$424 = normal;
+  let js3$425 = p1;
+  let js3$423 = dot(js3$424, js3$425);
+  let js3$427 = this.axis;
+  let js3$426 = normal[js3$427];
+  let js3$422 = js3$423 / js3$426;
+  let AssnRes$428 = this.nd = js3$422;
+  let js3$431 = u1;
+  let js3$432 = v2;
+  let js3$430 = js3$431 * js3$432;
+  let js3$434 = v1;
+  let js3$435 = u2;
+  let js3$433 = js3$434 * js3$435;
+  let js3$429 = js3$430 - js3$433;
+  var det = js3$429;
+  let js3$436 = p1[u];
+  let AssnRes$437 = this.eu = js3$436;
+  let js3$438 = p1[v];
+  let AssnRes$439 = this.ev = js3$438;
+  let js3$441 = u1;
+  let js3$442 = det;
+  let js3$440 = js3$441 / js3$442;
+  let AssnRes$443 = this.nu1 = js3$440;
+  let js3$445 = -v1;
+  let js3$446 = det;
+  let js3$444 = js3$445 / js3$446;
+  let AssnRes$447 = this.nv1 = js3$444;
+  let js3$449 = v2;
+  let js3$450 = det;
+  let js3$448 = js3$449 / js3$450;
+  let AssnRes$451 = this.nu2 = js3$448;
+  let js3$453 = -u2;
+  let js3$454 = det;
+  let js3$452 = js3$453 / js3$454;
+  let AssnRes$455 = this.nv2 = js3$452;
+  let js3$456 = [0.7, 0.7, 0.7];
+  let AssnRes$457 = this.material = js3$456;
+}
+let js3$541 = Triangle.prototype;
+let AssnRes$542 = js3$541.intersect = function (orig, dir, near, far) {
+  let js3$460 = this.axis;
+  let js3$461 = 1;
+  let js3$459 = js3$460 + js3$461;
+  let js3$462 = 3;
+  let js3$458 = js3$459 % js3$462;
+  var u = js3$458;
+  let js3$465 = this.axis;
+  let js3$466 = 2;
+  let js3$464 = js3$465 + js3$466;
+  let js3$467 = 3;
+  let js3$463 = js3$464 % js3$467;
+  var v = js3$463;
+  let js3$471 = this.axis;
+  let js3$470 = dir[js3$471];
+  let js3$473 = this.nu;
+  let js3$474 = dir[u];
+  let js3$472 = js3$473 * js3$474;
+  let js3$469 = js3$470 + js3$472;
+  let js3$476 = this.nv;
+  let js3$477 = dir[v];
+  let js3$475 = js3$476 * js3$477;
+  let js3$468 = js3$469 + js3$475;
+  var d = js3$468;
+  let js3$482 = this.nd;
+  let js3$484 = this.axis;
+  let js3$483 = orig[js3$484];
+  let js3$481 = js3$482 - js3$483;
+  let js3$486 = this.nu;
+  let js3$487 = orig[u];
+  let js3$485 = js3$486 * js3$487;
+  let js3$480 = js3$481 - js3$485;
+  let js3$489 = this.nv;
+  let js3$490 = orig[v];
+  let js3$488 = js3$489 * js3$490;
+  let js3$479 = js3$480 - js3$488;
+  let js3$491 = d;
+  let js3$478 = js3$479 / js3$491;
+  var t = js3$478;
+  let ifTest$494 = t;
+  let ifTest$495 = near;
+  let ifTest$493 = ifTest$494 < ifTest$495;
+  let ifTest$496 = ifTest$493 ? ifTest$493 : t > far;
+  let ifTest$492 = ifTest$496;
+  if (ifTest$492) {
+    let returnStmt$497 = null;
+    return returnStmt$497;
+  }
+  let js3$500 = orig[u];
+  let js3$502 = t;
+  let js3$503 = dir[u];
+  let js3$501 = js3$502 * js3$503;
+  let js3$499 = js3$500 + js3$501;
+  let js3$504 = this.eu;
+  let js3$498 = js3$499 - js3$504;
+  var Pu = js3$498;
+  let js3$507 = orig[v];
+  let js3$509 = t;
+  let js3$510 = dir[v];
+  let js3$508 = js3$509 * js3$510;
+  let js3$506 = js3$507 + js3$508;
+  let js3$511 = this.ev;
+  let js3$505 = js3$506 - js3$511;
+  var Pv = js3$505;
+  let js3$514 = Pv;
+  let js3$515 = this.nu1;
+  let js3$513 = js3$514 * js3$515;
+  let js3$517 = Pu;
+  let js3$518 = this.nv1;
+  let js3$516 = js3$517 * js3$518;
+  let js3$512 = js3$513 + js3$516;
+  var a2 = js3$512;
+  let ifTest$520 = a2;
+  let ifTest$521 = 0;
+  let ifTest$519 = ifTest$520 < ifTest$521;
+  if (ifTest$519) {
+    let returnStmt$522 = null;
+    return returnStmt$522;
+  }
+  let js3$525 = Pu;
+  let js3$526 = this.nu2;
+  let js3$524 = js3$525 * js3$526;
+  let js3$528 = Pv;
+  let js3$529 = this.nv2;
+  let js3$527 = js3$528 * js3$529;
+  let js3$523 = js3$524 + js3$527;
+  var a3 = js3$523;
+  let ifTest$531 = a3;
+  let ifTest$532 = 0;
+  let ifTest$530 = ifTest$531 < ifTest$532;
+  if (ifTest$530) {
+    let returnStmt$533 = null;
+    return returnStmt$533;
+  }
+  let ifTest$536 = a2;
+  let ifTest$537 = a3;
+  let ifTest$535 = ifTest$536 + ifTest$537;
+  let ifTest$538 = 1;
+  let ifTest$534 = ifTest$535 > ifTest$538;
+  if (ifTest$534) {
+    let returnStmt$539 = null;
+    return returnStmt$539;
+  }
+  let returnStmt$540 = t;
+  return returnStmt$540;
+};
+function Scene(a_triangles) {
+  let AssnRes$543 = this.triangles = a_triangles;
+  let js3$544 = [];
+  let AssnRes$545 = this.lights = js3$544;
+  let js3$546 = [0, 0, 0];
+  let AssnRes$547 = this.ambient = js3$546;
+  let js3$548 = [0.8, 0.8, 1];
+  let AssnRes$549 = this.background = js3$548;
+}
+let js3$551 = Array;
+let js3$552 = 0;
+let js3$553 = 0;
+let js3$554 = 0;
+let js3$550 = new js3$551(js3$552, js3$553, js3$554);
+var zero = js3$550;
+let js3$678 = Scene.prototype;
+let AssnRes$679 = js3$678.intersect = function (origin, dir, near, far) {
+  var closest = null;
+  for (i = 0; i < this.triangles.length; i++) {
+    {
+      let js3$556 = this.triangles;
+      let js3$555 = js3$556[i];
+      var triangle = js3$555;
+      let js3$557 = triangle.intersect(origin, dir, near, far);
+      var d = js3$557;
+      let ifTest$561 = d;
+      let ifTest$562 = null;
+      let ifTest$560 = ifTest$561 == ifTest$562;
+      let ifTest$563 = ifTest$560 ? ifTest$560 : d > far;
+      let ifTest$559 = ifTest$563;
+      let ifTest$564 = ifTest$559 ? ifTest$559 : d < near;
+      let ifTest$558 = ifTest$564;
+      if (ifTest$558) {
+        continue;
+      }
+      let AssnRes$565 = far = d;
+      let AssnRes$566 = closest = triangle;
+    }
+  }
+  let ifTest$567 = !closest;
+  if (ifTest$567) {
+    let returnStmt$570 = this.background;
+    let returnStmt$571 = 0;
+    let returnStmt$569 = returnStmt$570[returnStmt$571];
+    let returnStmt$573 = this.background;
+    let returnStmt$574 = 1;
+    let returnStmt$572 = returnStmt$573[returnStmt$574];
+    let returnStmt$576 = this.background;
+    let returnStmt$577 = 2;
+    let returnStmt$575 = returnStmt$576[returnStmt$577];
+    let returnStmt$568 = [returnStmt$569, returnStmt$572, returnStmt$575];
+    return returnStmt$568;
+  }
+  let js3$578 = closest.normal;
+  var normal = js3$578;
+  let js3$580 = origin;
+  let js3$582 = dir;
+  let js3$583 = far;
+  let js3$581 = scale(js3$582, js3$583);
+  let js3$579 = add(js3$580, js3$581);
+  var hit = js3$579;
+  let ifTest$586 = dir;
+  let ifTest$587 = normal;
+  let ifTest$585 = dot(ifTest$586, ifTest$587);
+  let ifTest$588 = 0;
+  let ifTest$584 = ifTest$585 > ifTest$588;
+  if (ifTest$584) {
+    let ifTrue$592 = 0;
+    let ifTrue$591 = normal[ifTrue$592];
+    let ifTrue$590 = -ifTrue$591;
+    let ifTrue$595 = 1;
+    let ifTrue$594 = normal[ifTrue$595];
+    let ifTrue$593 = -ifTrue$594;
+    let ifTrue$598 = 2;
+    let ifTrue$597 = normal[ifTrue$598];
+    let ifTrue$596 = -ifTrue$597;
+    let ifTrue$589 = [ifTrue$590, ifTrue$593, ifTrue$596];
+    let AssnRes$599 = normal = ifTrue$589;
+    ;
+  }
+  var colour = null;
+  let ifTest$600 = closest.shader;
+  if (ifTest$600) {
+    let ifTrue$601 = closest.shader(closest, hit, dir);
+    let AssnRes$602 = colour = ifTrue$601;
+  } else {
+    let ifFalse$603 = closest.material;
+    let AssnRes$604 = colour = ifFalse$603;
+  }
+  var reflected = null;
+  let ifTest$606 = colour.reflection;
+  let ifTest$607 = 0.001;
+  let ifTest$605 = ifTest$606 > ifTest$607;
+  if (ifTest$605) {
+    let ifTrue$610 = normal;
+    let ifTrue$613 = 2;
+    let ifTrue$612 = -ifTrue$613;
+    let ifTrue$615 = dir;
+    let ifTrue$616 = normal;
+    let ifTrue$614 = dot(ifTrue$615, ifTrue$616);
+    let ifTrue$611 = ifTrue$612 * ifTrue$614;
+    let ifTrue$609 = scale(ifTrue$610, ifTrue$611);
+    let ifTrue$617 = dir;
+    let ifTrue$608 = addVector(ifTrue$609, ifTrue$617);
+    var reflection = ifTrue$608;
+    let ifTrue$618 = this.intersect(hit, reflection, 0.0001, 1000000);
+    let AssnRes$619 = reflected = ifTrue$618;
+    let ifTest$621 = colour.reflection;
+    let ifTest$622 = 0.999999;
+    let ifTest$620 = ifTest$621 >= ifTest$622;
+    if (ifTest$620) {
+      let returnStmt$623 = reflected;
+      return returnStmt$623;
+    }
+  }
+  let js3$626 = this.ambient;
+  let js3$627 = 0;
+  let js3$625 = js3$626[js3$627];
+  let js3$629 = this.ambient;
+  let js3$630 = 1;
+  let js3$628 = js3$629[js3$630];
+  let js3$632 = this.ambient;
+  let js3$633 = 2;
+  let js3$631 = js3$632[js3$633];
+  let js3$624 = [js3$625, js3$628, js3$631];
+  var l = js3$624;
+  for (var i = 0; i < this.lights.length; i++) {
+    {
+      let js3$635 = this.lights;
+      let js3$634 = js3$635[i];
+      var light = js3$634;
+      let js3$637 = light;
+      let js3$638 = hit;
+      let js3$636 = sub(js3$637, js3$638);
+      var toLight = js3$636;
+      let js3$640 = toLight;
+      let js3$639 = lengthVector(js3$640);
+      var distance = js3$639;
+      let js3$642 = toLight;
+      let js3$644 = 1.0;
+      let js3$645 = distance;
+      let js3$643 = js3$644 / js3$645;
+      let js3$641 = scaleVector(js3$642, js3$643);
+      let js3$647 = distance;
+      let js3$648 = 0.0001;
+      let js3$646 = js3$647 - js3$648;
+      let AssnRes$649 = distance = js3$646;
+      let ifTest$650 = this.blocked(hit, toLight, distance);
+      if (ifTest$650) {
+        continue;
+      }
+      let js3$652 = normal;
+      let js3$653 = toLight;
+      let js3$651 = dot(js3$652, js3$653);
+      var nl = js3$651;
+      let ifTest$655 = nl;
+      let ifTest$656 = 0;
+      let ifTest$654 = ifTest$655 > ifTest$656;
+      if (ifTest$654) {
+        let ifTrue$658 = l;
+        let ifTrue$660 = light.colour;
+        let ifTrue$661 = nl;
+        let ifTrue$659 = scale(ifTrue$660, ifTrue$661);
+        let ifTrue$657 = addVector(ifTrue$658, ifTrue$659);
+        ;
+      }
+    }
+  }
+  let js3$663 = l;
+  let js3$664 = colour;
+  let js3$662 = scalev(js3$663, js3$664);
+  let AssnRes$665 = l = js3$662;
+  let ifTest$666 = reflected;
+  if (ifTest$666) {
+    let ifTrue$669 = l;
+    let ifTrue$671 = 1;
+    let ifTrue$672 = colour.reflection;
+    let ifTrue$670 = ifTrue$671 - ifTrue$672;
+    let ifTrue$668 = scaleVector(ifTrue$669, ifTrue$670);
+    let ifTrue$674 = reflected;
+    let ifTrue$675 = colour.reflection;
+    let ifTrue$673 = scaleVector(ifTrue$674, ifTrue$675);
+    let ifTrue$667 = addVector(ifTrue$668, ifTrue$673);
+    let AssnRes$676 = l = ifTrue$667;
+  }
+  let returnStmt$677 = l;
+  return returnStmt$677;
+};
+let js3$692 = Scene.prototype;
+let AssnRes$693 = js3$692.blocked = function (O, D, far) {
+  var near = 0.0001;
+  var closest = null;
+  for (i = 0; i < this.triangles.length; i++) {
+    {
+      let js3$681 = this.triangles;
+      let js3$680 = js3$681[i];
+      var triangle = js3$680;
+      let js3$682 = triangle.intersect(O, D, near, far);
+      var d = js3$682;
+      let ifTest$686 = d;
+      let ifTest$687 = null;
+      let ifTest$685 = ifTest$686 == ifTest$687;
+      let ifTest$688 = ifTest$685 ? ifTest$685 : d > far;
+      let ifTest$684 = ifTest$688;
+      let ifTest$689 = ifTest$684 ? ifTest$684 : d < near;
+      let ifTest$683 = ifTest$689;
+      if (ifTest$683) {
+        continue;
+      }
+      let returnStmt$690 = true;
+      return returnStmt$690;
+    }
+  }
+  let returnStmt$691 = false;
+  return returnStmt$691;
+};
+function Camera(origin, lookat, up) {
+  let js3$696 = lookat;
+  let js3$697 = origin;
+  let js3$695 = subVector(js3$696, js3$697);
+  let js3$694 = normaliseVector(js3$695);
+  var zaxis = js3$694;
+  let js3$700 = up;
+  let js3$701 = zaxis;
+  let js3$699 = cross(js3$700, js3$701);
+  let js3$698 = normaliseVector(js3$699);
+  var xaxis = js3$698;
+  let js3$704 = xaxis;
+  let js3$706 = [0, 0, 0];
+  let js3$707 = zaxis;
+  let js3$705 = subVector(js3$706, js3$707);
+  let js3$703 = cross(js3$704, js3$705);
+  let js3$702 = normaliseVector(js3$703);
+  var yaxis = js3$702;
+  let js3$709 = Array;
+  let js3$710 = 16;
+  let js3$708 = new js3$709(js3$710);
+  var m = js3$708;
+  let js3$712 = 0;
+  let js3$711 = xaxis[js3$712];
+  let js3$713 = 0;
+  let AssnRes$714 = m[js3$713] = js3$711;
+  let js3$716 = 1;
+  let js3$715 = xaxis[js3$716];
+  let js3$717 = 1;
+  let AssnRes$718 = m[js3$717] = js3$715;
+  let js3$720 = 2;
+  let js3$719 = xaxis[js3$720];
+  let js3$721 = 2;
+  let AssnRes$722 = m[js3$721] = js3$719;
+  let js3$724 = 0;
+  let js3$723 = yaxis[js3$724];
+  let js3$725 = 4;
+  let AssnRes$726 = m[js3$725] = js3$723;
+  let js3$728 = 1;
+  let js3$727 = yaxis[js3$728];
+  let js3$729 = 5;
+  let AssnRes$730 = m[js3$729] = js3$727;
+  let js3$732 = 2;
+  let js3$731 = yaxis[js3$732];
+  let js3$733 = 6;
+  let AssnRes$734 = m[js3$733] = js3$731;
+  let js3$736 = 0;
+  let js3$735 = zaxis[js3$736];
+  let js3$737 = 8;
+  let AssnRes$738 = m[js3$737] = js3$735;
+  let js3$740 = 1;
+  let js3$739 = zaxis[js3$740];
+  let js3$741 = 9;
+  let AssnRes$742 = m[js3$741] = js3$739;
+  let js3$744 = 2;
+  let js3$743 = zaxis[js3$744];
+  let js3$745 = 10;
+  let AssnRes$746 = m[js3$745] = js3$743;
+  let js3$748 = m;
+  let js3$747 = invertMatrix(js3$748);
+  let js3$749 = 3;
+  let AssnRes$750 = m[js3$749] = 0;
+  let js3$751 = 7;
+  let AssnRes$752 = m[js3$751] = 0;
+  let js3$753 = 11;
+  let AssnRes$754 = m[js3$753] = 0;
+  let AssnRes$755 = this.origin = origin;
+  let js3$757 = Array;
+  let js3$758 = 4;
+  let js3$756 = new js3$757(js3$758);
+  let AssnRes$759 = this.directions = js3$756;
+  let js3$763 = 0.7;
+  let js3$762 = -js3$763;
+  let js3$761 = [js3$762, 0.7, 1];
+  let js3$760 = normalise(js3$761);
+  let js3$764 = this.directions;
+  let js3$765 = 0;
+  let AssnRes$766 = js3$764[js3$765] = js3$760;
+  let js3$768 = [0.7, 0.7, 1];
+  let js3$767 = normalise(js3$768);
+  let js3$769 = this.directions;
+  let js3$770 = 1;
+  let AssnRes$771 = js3$769[js3$770] = js3$767;
+  let js3$775 = 0.7;
+  let js3$774 = -js3$775;
+  let js3$773 = [0.7, js3$774, 1];
+  let js3$772 = normalise(js3$773);
+  let js3$776 = this.directions;
+  let js3$777 = 2;
+  let AssnRes$778 = js3$776[js3$777] = js3$772;
+  let js3$782 = 0.7;
+  let js3$781 = -js3$782;
+  let js3$784 = 0.7;
+  let js3$783 = -js3$784;
+  let js3$780 = [js3$781, js3$783, 1];
+  let js3$779 = normalise(js3$780);
+  let js3$785 = this.directions;
+  let js3$786 = 3;
+  let AssnRes$787 = js3$785[js3$786] = js3$779;
+  let js3$789 = m;
+  let js3$791 = this.directions;
+  let js3$792 = 0;
+  let js3$790 = js3$791[js3$792];
+  let js3$788 = transformMatrix(js3$789, js3$790);
+  let js3$793 = this.directions;
+  let js3$794 = 0;
+  let AssnRes$795 = js3$793[js3$794] = js3$788;
+  let js3$797 = m;
+  let js3$799 = this.directions;
+  let js3$800 = 1;
+  let js3$798 = js3$799[js3$800];
+  let js3$796 = transformMatrix(js3$797, js3$798);
+  let js3$801 = this.directions;
+  let js3$802 = 1;
+  let AssnRes$803 = js3$801[js3$802] = js3$796;
+  let js3$805 = m;
+  let js3$807 = this.directions;
+  let js3$808 = 2;
+  let js3$806 = js3$807[js3$808];
+  let js3$804 = transformMatrix(js3$805, js3$806);
+  let js3$809 = this.directions;
+  let js3$810 = 2;
+  let AssnRes$811 = js3$809[js3$810] = js3$804;
+  let js3$813 = m;
+  let js3$815 = this.directions;
+  let js3$816 = 3;
+  let js3$814 = js3$815[js3$816];
+  let js3$812 = transformMatrix(js3$813, js3$814);
+  let js3$817 = this.directions;
+  let js3$818 = 3;
+  let AssnRes$819 = js3$817[js3$818] = js3$812;
+}
+let js3$868 = Camera.prototype;
+let AssnRes$869 = js3$868.generateRayPair = function (y) {
+  let js3$821 = Array;
+  let js3$823 = Object;
+  let js3$822 = new js3$823();
+  let js3$825 = Object;
+  let js3$824 = new js3$825();
+  let js3$820 = new js3$821(js3$822, js3$824);
+  let AssnRes$826 = rays = js3$820;
+  let js3$827 = this.origin;
+  let js3$829 = 0;
+  let js3$828 = rays[js3$829];
+  let AssnRes$830 = js3$828.origin = js3$827;
+  let js3$831 = this.origin;
+  let js3$833 = 1;
+  let js3$832 = rays[js3$833];
+  let AssnRes$834 = js3$832.origin = js3$831;
+  let js3$838 = this.directions;
+  let js3$839 = 0;
+  let js3$837 = js3$838[js3$839];
+  let js3$840 = y;
+  let js3$836 = scale(js3$837, js3$840);
+  let js3$843 = this.directions;
+  let js3$844 = 3;
+  let js3$842 = js3$843[js3$844];
+  let js3$846 = 1;
+  let js3$847 = y;
+  let js3$845 = js3$846 - js3$847;
+  let js3$841 = scale(js3$842, js3$845);
+  let js3$835 = addVector(js3$836, js3$841);
+  let js3$849 = 0;
+  let js3$848 = rays[js3$849];
+  let AssnRes$850 = js3$848.dir = js3$835;
+  let js3$854 = this.directions;
+  let js3$855 = 1;
+  let js3$853 = js3$854[js3$855];
+  let js3$856 = y;
+  let js3$852 = scale(js3$853, js3$856);
+  let js3$859 = this.directions;
+  let js3$860 = 2;
+  let js3$858 = js3$859[js3$860];
+  let js3$862 = 1;
+  let js3$863 = y;
+  let js3$861 = js3$862 - js3$863;
+  let js3$857 = scale(js3$858, js3$861);
+  let js3$851 = addVector(js3$852, js3$857);
+  let js3$865 = 1;
+  let js3$864 = rays[js3$865];
+  let AssnRes$866 = js3$864.dir = js3$851;
+  let returnStmt$867 = rays;
+  return returnStmt$867;
+};
+function renderRows(camera, scene, pixels, width, height, starty, stopy) {
+  for (var y = starty; y < stopy; y++) {
+    {
+      let js3$870 = camera.generateRayPair(y / height);
+      var rays = js3$870;
+      for (var x = 0; x < width; x++) {
+        {
+          let js3$872 = x;
+          let js3$873 = width;
+          let js3$871 = js3$872 / js3$873;
+          var xp = js3$871;
+          let js3$878 = 0;
+          let js3$877 = rays[js3$878];
+          let js3$876 = js3$877.origin;
+          let js3$879 = xp;
+          let js3$875 = scale(js3$876, js3$879);
+          let js3$883 = 1;
+          let js3$882 = rays[js3$883];
+          let js3$881 = js3$882.origin;
+          let js3$885 = 1;
+          let js3$886 = xp;
+          let js3$884 = js3$885 - js3$886;
+          let js3$880 = scale(js3$881, js3$884);
+          let js3$874 = addVector(js3$875, js3$880);
+          var origin = js3$874;
+          let js3$892 = 0;
+          let js3$891 = rays[js3$892];
+          let js3$890 = js3$891.dir;
+          let js3$893 = xp;
+          let js3$889 = scale(js3$890, js3$893);
+          let js3$897 = 1;
+          let js3$896 = rays[js3$897];
+          let js3$895 = js3$896.dir;
+          let js3$899 = 1;
+          let js3$900 = xp;
+          let js3$898 = js3$899 - js3$900;
+          let js3$894 = scale(js3$895, js3$898);
+          let js3$888 = addVector(js3$889, js3$894);
+          let js3$887 = normaliseVector(js3$888);
+          var dir = js3$887;
+          let js3$901 = scene.intersect(origin, dir);
+          var l = js3$901;
+          let js3$902 = pixels[y];
+          let AssnRes$903 = js3$902[x] = l;
+        }
+      }
+    }
+  }
+}
+let js3$913 = Camera.prototype;
+let AssnRes$914 = js3$913.render = function (scene, pixels, width, height) {
+  let js3$904 = this;
+  var cam = js3$904;
+  var row = 0;
+  let js3$906 = cam;
+  let js3$907 = scene;
+  let js3$908 = pixels;
+  let js3$909 = width;
+  let js3$910 = height;
+  let js3$911 = 0;
+  let js3$912 = height;
+  let js3$905 = renderRows(js3$906, js3$907, js3$908, js3$909, js3$910, js3$911, js3$912);
+};
+function raytraceScene() {
+  let js3$917 = Date;
+  let js3$916 = new js3$917();
+  let js3$915 = js3$916.getTime();
+  var startDate = js3$915;
+  let js3$919 = 2;
+  let js3$920 = 6;
+  let js3$918 = js3$919 * js3$920;
+  var numTriangles = js3$918;
+  let js3$922 = Array;
+  let js3$921 = new js3$922();
+  var triangles = js3$921;
+  let js3$925 = 10;
+  let js3$924 = -js3$925;
+  let js3$926 = 10;
+  let js3$928 = 10;
+  let js3$927 = -js3$928;
+  let js3$923 = createVector(js3$924, js3$926, js3$927);
+  var tfl = js3$923;
+  let js3$930 = 10;
+  let js3$931 = 10;
+  let js3$933 = 10;
+  let js3$932 = -js3$933;
+  let js3$929 = createVector(js3$930, js3$931, js3$932);
+  var tfr = js3$929;
+  let js3$936 = 10;
+  let js3$935 = -js3$936;
+  let js3$937 = 10;
+  let js3$938 = 10;
+  let js3$934 = createVector(js3$935, js3$937, js3$938);
+  var tbl = js3$934;
+  let js3$940 = 10;
+  let js3$941 = 10;
+  let js3$942 = 10;
+  let js3$939 = createVector(js3$940, js3$941, js3$942);
+  var tbr = js3$939;
+  let js3$945 = 10;
+  let js3$944 = -js3$945;
+  let js3$947 = 10;
+  let js3$946 = -js3$947;
+  let js3$949 = 10;
+  let js3$948 = -js3$949;
+  let js3$943 = createVector(js3$944, js3$946, js3$948);
+  var bfl = js3$943;
+  let js3$951 = 10;
+  let js3$953 = 10;
+  let js3$952 = -js3$953;
+  let js3$955 = 10;
+  let js3$954 = -js3$955;
+  let js3$950 = createVector(js3$951, js3$952, js3$954);
+  var bfr = js3$950;
+  let js3$958 = 10;
+  let js3$957 = -js3$958;
+  let js3$960 = 10;
+  let js3$959 = -js3$960;
+  let js3$961 = 10;
+  let js3$956 = createVector(js3$957, js3$959, js3$961);
+  var bbl = js3$956;
+  let js3$963 = 10;
+  let js3$965 = 10;
+  let js3$964 = -js3$965;
+  let js3$966 = 10;
+  let js3$962 = createVector(js3$963, js3$964, js3$966);
+  var bbr = js3$962;
+  var i = 0;
+  let js3$968 = Triangle;
+  let js3$969 = tfl;
+  let js3$970 = tfr;
+  let js3$971 = bfr;
+  let js3$967 = new js3$968(js3$969, js3$970, js3$971);
+  let js3$972 = i++;
+  let AssnRes$973 = triangles[js3$972] = js3$967;
+  let js3$975 = Triangle;
+  let js3$976 = tfl;
+  let js3$977 = bfr;
+  let js3$978 = bfl;
+  let js3$974 = new js3$975(js3$976, js3$977, js3$978);
+  let js3$979 = i++;
+  let AssnRes$980 = triangles[js3$979] = js3$974;
+  let js3$982 = Triangle;
+  let js3$983 = tbl;
+  let js3$984 = tbr;
+  let js3$985 = bbr;
+  let js3$981 = new js3$982(js3$983, js3$984, js3$985);
+  let js3$986 = i++;
+  let AssnRes$987 = triangles[js3$986] = js3$981;
+  let js3$989 = Triangle;
+  let js3$990 = tbl;
+  let js3$991 = bbr;
+  let js3$992 = bbl;
+  let js3$988 = new js3$989(js3$990, js3$991, js3$992);
+  let js3$993 = i++;
+  let AssnRes$994 = triangles[js3$993] = js3$988;
+  let js3$996 = Triangle;
+  let js3$997 = tbl;
+  let js3$998 = tfl;
+  let js3$999 = bbl;
+  let js3$995 = new js3$996(js3$997, js3$998, js3$999);
+  let js3$1000 = i++;
+  let AssnRes$1001 = triangles[js3$1000] = js3$995;
+  let js3$1003 = Triangle;
+  let js3$1004 = tfl;
+  let js3$1005 = bfl;
+  let js3$1006 = bbl;
+  let js3$1002 = new js3$1003(js3$1004, js3$1005, js3$1006);
+  let js3$1007 = i++;
+  let AssnRes$1008 = triangles[js3$1007] = js3$1002;
+  let js3$1010 = Triangle;
+  let js3$1011 = tbr;
+  let js3$1012 = tfr;
+  let js3$1013 = bbr;
+  let js3$1009 = new js3$1010(js3$1011, js3$1012, js3$1013);
+  let js3$1014 = i++;
+  let AssnRes$1015 = triangles[js3$1014] = js3$1009;
+  let js3$1017 = Triangle;
+  let js3$1018 = tfr;
+  let js3$1019 = bfr;
+  let js3$1020 = bbr;
+  let js3$1016 = new js3$1017(js3$1018, js3$1019, js3$1020);
+  let js3$1021 = i++;
+  let AssnRes$1022 = triangles[js3$1021] = js3$1016;
+  let js3$1024 = Triangle;
+  let js3$1025 = tbl;
+  let js3$1026 = tbr;
+  let js3$1027 = tfr;
+  let js3$1023 = new js3$1024(js3$1025, js3$1026, js3$1027);
+  let js3$1028 = i++;
+  let AssnRes$1029 = triangles[js3$1028] = js3$1023;
+  let js3$1031 = Triangle;
+  let js3$1032 = tbl;
+  let js3$1033 = tfr;
+  let js3$1034 = tfl;
+  let js3$1030 = new js3$1031(js3$1032, js3$1033, js3$1034);
+  let js3$1035 = i++;
+  let AssnRes$1036 = triangles[js3$1035] = js3$1030;
+  let js3$1038 = Triangle;
+  let js3$1039 = bbl;
+  let js3$1040 = bbr;
+  let js3$1041 = bfr;
+  let js3$1037 = new js3$1038(js3$1039, js3$1040, js3$1041);
+  let js3$1042 = i++;
+  let AssnRes$1043 = triangles[js3$1042] = js3$1037;
+  let js3$1045 = Triangle;
+  let js3$1046 = bbl;
+  let js3$1047 = bfr;
+  let js3$1048 = bfl;
+  let js3$1044 = new js3$1045(js3$1046, js3$1047, js3$1048);
+  let js3$1049 = i++;
+  let AssnRes$1050 = triangles[js3$1049] = js3$1044;
+  let js3$1052 = 0.0;
+  let js3$1053 = 0.4;
+  let js3$1054 = 0.0;
+  let js3$1051 = createVector(js3$1052, js3$1053, js3$1054);
+  var green = js3$1051;
+  let js3$1056 = 0.4;
+  let js3$1057 = 0.4;
+  let js3$1058 = 0.4;
+  let js3$1055 = createVector(js3$1056, js3$1057, js3$1058);
+  var grey = js3$1055;
+  let AssnRes$1059 = grey.reflection = 1.0;
+  var floorShader = function (tri, pos, view) {
+    let js3$1065 = 0;
+    let js3$1064 = pos[js3$1065];
+    let js3$1066 = 32;
+    let js3$1063 = js3$1064 / js3$1066;
+    let js3$1067 = 2;
+    let js3$1062 = js3$1063 % js3$1067;
+    let js3$1068 = 2;
+    let js3$1061 = js3$1062 + js3$1068;
+    let js3$1069 = 2;
+    let js3$1060 = js3$1061 % js3$1069;
+    var x = js3$1060;
+    let js3$1076 = 2;
+    let js3$1075 = pos[js3$1076];
+    let js3$1077 = 32;
+    let js3$1074 = js3$1075 / js3$1077;
+    let js3$1078 = 0.3;
+    let js3$1073 = js3$1074 + js3$1078;
+    let js3$1079 = 2;
+    let js3$1072 = js3$1073 % js3$1079;
+    let js3$1080 = 2;
+    let js3$1071 = js3$1072 + js3$1080;
+    let js3$1081 = 2;
+    let js3$1070 = js3$1071 % js3$1081;
+    var z = js3$1070;
+    let ifTest$1084 = x;
+    let ifTest$1085 = 1;
+    let ifTest$1083 = ifTest$1084 < ifTest$1085;
+    let ifTest$1087 = z;
+    let ifTest$1088 = 1;
+    let ifTest$1086 = ifTest$1087 < ifTest$1088;
+    let ifTest$1082 = ifTest$1083 != ifTest$1086;
+    if (ifTest$1082) {
+      let returnStmt$1089 = grey;
+      return returnStmt$1089;
+    } else {
+      let returnStmt$1090 = green;
+      return returnStmt$1090;
+    }
+  };
+  let js3$1093 = 1000;
+  let js3$1092 = -js3$1093;
+  let js3$1095 = 30;
+  let js3$1094 = -js3$1095;
+  let js3$1097 = 1000;
+  let js3$1096 = -js3$1097;
+  let js3$1091 = createVector(js3$1092, js3$1094, js3$1096);
+  var ffl = js3$1091;
+  let js3$1099 = 1000;
+  let js3$1101 = 30;
+  let js3$1100 = -js3$1101;
+  let js3$1103 = 1000;
+  let js3$1102 = -js3$1103;
+  let js3$1098 = createVector(js3$1099, js3$1100, js3$1102);
+  var ffr = js3$1098;
+  let js3$1106 = 1000;
+  let js3$1105 = -js3$1106;
+  let js3$1108 = 30;
+  let js3$1107 = -js3$1108;
+  let js3$1109 = 1000;
+  let js3$1104 = createVector(js3$1105, js3$1107, js3$1109);
+  var fbl = js3$1104;
+  let js3$1111 = 1000;
+  let js3$1113 = 30;
+  let js3$1112 = -js3$1113;
+  let js3$1114 = 1000;
+  let js3$1110 = createVector(js3$1111, js3$1112, js3$1114);
+  var fbr = js3$1110;
+  let js3$1116 = Triangle;
+  let js3$1117 = fbl;
+  let js3$1118 = fbr;
+  let js3$1119 = ffr;
+  let js3$1115 = new js3$1116(js3$1117, js3$1118, js3$1119);
+  let js3$1120 = i++;
+  let AssnRes$1121 = triangles[js3$1120] = js3$1115;
+  let js3$1124 = i;
+  let js3$1125 = 1;
+  let js3$1123 = js3$1124 - js3$1125;
+  let js3$1122 = triangles[js3$1123];
+  let AssnRes$1126 = js3$1122.shader = floorShader;
+  let js3$1128 = Triangle;
+  let js3$1129 = fbl;
+  let js3$1130 = ffr;
+  let js3$1131 = ffl;
+  let js3$1127 = new js3$1128(js3$1129, js3$1130, js3$1131);
+  let js3$1132 = i++;
+  let AssnRes$1133 = triangles[js3$1132] = js3$1127;
+  let js3$1136 = i;
+  let js3$1137 = 1;
+  let js3$1135 = js3$1136 - js3$1137;
+  let js3$1134 = triangles[js3$1135];
+  let AssnRes$1138 = js3$1134.shader = floorShader;
+  let js3$1140 = Scene;
+  let js3$1141 = triangles;
+  let js3$1139 = new js3$1140(js3$1141);
+  var _scene = js3$1139;
+  let js3$1143 = 20;
+  let js3$1144 = 38;
+  let js3$1146 = 22;
+  let js3$1145 = -js3$1146;
+  let js3$1142 = createVector(js3$1143, js3$1144, js3$1145);
+  let js3$1147 = _scene.lights;
+  let js3$1148 = 0;
+  let AssnRes$1149 = js3$1147[js3$1148] = js3$1142;
+  let js3$1151 = 0.7;
+  let js3$1152 = 0.3;
+  let js3$1153 = 0.3;
+  let js3$1150 = createVector(js3$1151, js3$1152, js3$1153);
+  let js3$1155 = _scene.lights;
+  let js3$1156 = 0;
+  let js3$1154 = js3$1155[js3$1156];
+  let AssnRes$1157 = js3$1154.colour = js3$1150;
+  let js3$1160 = 23;
+  let js3$1159 = -js3$1160;
+  let js3$1161 = 40;
+  let js3$1162 = 17;
+  let js3$1158 = createVector(js3$1159, js3$1161, js3$1162);
+  let js3$1163 = _scene.lights;
+  let js3$1164 = 1;
+  let AssnRes$1165 = js3$1163[js3$1164] = js3$1158;
+  let js3$1167 = 0.7;
+  let js3$1168 = 0.3;
+  let js3$1169 = 0.3;
+  let js3$1166 = createVector(js3$1167, js3$1168, js3$1169);
+  let js3$1171 = _scene.lights;
+  let js3$1172 = 1;
+  let js3$1170 = js3$1171[js3$1172];
+  let AssnRes$1173 = js3$1170.colour = js3$1166;
+  let js3$1175 = 23;
+  let js3$1176 = 20;
+  let js3$1177 = 17;
+  let js3$1174 = createVector(js3$1175, js3$1176, js3$1177);
+  let js3$1178 = _scene.lights;
+  let js3$1179 = 2;
+  let AssnRes$1180 = js3$1178[js3$1179] = js3$1174;
+  let js3$1182 = 0.7;
+  let js3$1183 = 0.7;
+  let js3$1184 = 0.7;
+  let js3$1181 = createVector(js3$1182, js3$1183, js3$1184);
+  let js3$1186 = _scene.lights;
+  let js3$1187 = 2;
+  let js3$1185 = js3$1186[js3$1187];
+  let AssnRes$1188 = js3$1185.colour = js3$1181;
+  let js3$1190 = 0.1;
+  let js3$1191 = 0.1;
+  let js3$1192 = 0.1;
+  let js3$1189 = createVector(js3$1190, js3$1191, js3$1192);
+  let AssnRes$1193 = _scene.ambient = js3$1189;
+  var size = 30;
+  let js3$1195 = Array;
+  let js3$1194 = new js3$1195();
+  var pixels = js3$1194;
+  for (var y = 0; y < size; y++) {
+    {
+      let js3$1197 = Array;
+      let js3$1196 = new js3$1197();
+      let AssnRes$1198 = pixels[y] = js3$1196;
+      for (var x = 0; x < size; x++) {
+        {
+          let js3$1199 = pixels[y];
+          let AssnRes$1200 = js3$1199[x] = 0;
+        }
+      }
+    }
+  }
+  let js3$1202 = Camera;
+  let js3$1205 = 40;
+  let js3$1204 = -js3$1205;
+  let js3$1206 = 40;
+  let js3$1207 = 40;
+  let js3$1203 = createVector(js3$1204, js3$1206, js3$1207);
+  let js3$1209 = 0;
+  let js3$1210 = 0;
+  let js3$1211 = 0;
+  let js3$1208 = createVector(js3$1209, js3$1210, js3$1211);
+  let js3$1213 = 0;
+  let js3$1214 = 1;
+  let js3$1215 = 0;
+  let js3$1212 = createVector(js3$1213, js3$1214, js3$1215);
+  let js3$1201 = new js3$1202(js3$1203, js3$1208, js3$1212);
+  var _camera = js3$1201;
+  let js3$1216 = _camera.render(_scene, pixels, size, size);
+  let returnStmt$1217 = pixels;
+  return returnStmt$1217;
+}
+function arrayToCanvasCommands(pixels) {
+  let js3$1219 = '<canvas id="renderCanvas" width="30px" height="30px"></canvas><scr';
+  let js3$1220 = 'ipt>\nvar pixels = [';
+  let js3$1218 = js3$1219 + js3$1220;
+  var s = js3$1218;
+  var size = 30;
+  for (var y = 0; y < size; y++) {
+    {
+      let js3$1222 = s;
+      let js3$1223 = "[";
+      let js3$1221 = js3$1222 + js3$1223;
+      let AssnRes$1224 = s = js3$1221;
+      for (var x = 0; x < size; x++) {
+        {
+          let js3$1226 = s;
+          let js3$1229 = "[";
+          let js3$1231 = pixels[y];
+          let js3$1230 = js3$1231[x];
+          let js3$1228 = js3$1229 + js3$1230;
+          let js3$1232 = "],";
+          let js3$1227 = js3$1228 + js3$1232;
+          let js3$1225 = js3$1226 + js3$1227;
+          let AssnRes$1233 = s = js3$1225;
+        }
+      }
+      let js3$1235 = s;
+      let js3$1236 = "],";
+      let js3$1234 = js3$1235 + js3$1236;
+      let AssnRes$1237 = s = js3$1234;
+    }
+  }
+  let js3$1239 = s;
+  let js3$1241 = '];\n    var canvas = document.getElementById("renderCanvas").getContext("2d");\n\
+\n\
+\n\
+    var size = 30;\n\
+    canvas.fillStyle = "red";\n\
+    canvas.fillRect(0, 0, size, size);\n\
+    canvas.scale(1, -1);\n\
+    canvas.translate(0, -size);\n\
+\n\
+    if (!canvas.setFillColor)\n\
+        canvas.setFillColor = function(r, g, b, a) {\n\
+            this.fillStyle = "rgb("+[Math.floor(r * 255), Math.floor(g * 255), Math.floor(b * 255)]+")";\n\
+    }\n\
+\n\
+for (var y = 0; y < size; y++) {\n\
+  for (var x = 0; x < size; x++) {\n\
+    var l = pixels[y][x];\n\
+    canvas.setFillColor(l[0], l[1], l[2], 1);\n\
+    canvas.fillRect(x, y, 1, 1);\n\
+  }\n\
+}</scr';
+  let js3$1242 = 'ipt>';
+  let js3$1240 = js3$1241 + js3$1242;
+  let js3$1238 = js3$1239 + js3$1240;
+  let AssnRes$1243 = s = js3$1238;
+  let returnStmt$1244 = s;
+  return returnStmt$1244;
+}
+let js3$1246 = raytraceScene();
+let js3$1245 = arrayToCanvasCommands(js3$1246);
+let AssnRes$1247 = testOutput = js3$1245;
+var expectedLength = 20970;
+let ifTest$1249 = testOutput.length;
+let ifTest$1250 = expectedLength;
+let ifTest$1248 = ifTest$1249 != ifTest$1250;
+if (ifTest$1248) {
+  let ifTrue$1254 = "Error: bad result: expected length ";
+  let ifTrue$1255 = expectedLength;
+  let ifTrue$1253 = ifTrue$1254 + ifTrue$1255;
+  let ifTrue$1256 = " but got ";
+  let ifTrue$1252 = ifTrue$1253 + ifTrue$1256;
+  let ifTrue$1257 = testOutput.length;
+  let ifTrue$1251 = ifTrue$1252 + ifTrue$1257;
+  throw ifTrue$1251;
+}
