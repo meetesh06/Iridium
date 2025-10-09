@@ -1,0 +1,4 @@
+benchmark,config,parse_time_ms,exec_time_ms
+benchmarks/kraken-1.0/kraken-1.0-audio-dft.cjs,QJS+SOURCE,24.594,5806.13
+benchmarks/kraken-1.0/kraken-1.0-audio-dft.cjs,QJS+JS3,355.972,13090.941
+benchmarks/kraken-1.0/kraken-1.0-audio-dft.cjs,IRIDIUM,207.422,6232.27

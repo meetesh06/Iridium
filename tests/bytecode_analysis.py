@@ -15,7 +15,7 @@ import numpy as np
 # Configuration
 # ======================
 IRIDIUM_DIR = Path("..").resolve()
-QJS_DIR = Path("/home/maverick/js_project/quickjs")
+QJS_DIR = Path("/home/anirudh/wd/quickjs")
 
 # --- Directory Configuration ---
 RESULTS_BC_DIR = Path("results_bc").resolve()
@@ -24,7 +24,7 @@ JS3_BENCHMARK_DIR = Path("js3_benchmark").resolve()
 
 
 SUNSPIDER = [
-    "benchmarks/sunspider/3d-cube.cjs",
+    # "benchmarks/sunspider/3d-cube.cjs",
     # "benchmarks/sunspider/3d-morph.cjs",
     # "benchmarks/sunspider/3d-raytrace.cjs",
     # "benchmarks/sunspider/access-binary-trees.cjs",
@@ -51,7 +51,7 @@ SUNSPIDER = [
     # "benchmarks/sunspider/string-validate-input.cjs",
     # "benchmarks/kraken-1.0/kraken-1.0-ai-astar.cjs",
     # "benchmarks/kraken-1.0/kraken-1.0-audio-beat-detection.cjs",
-    # "benchmarks/kraken-1.0/kraken-1.0-audio-dft.cjs",
+    "benchmarks/kraken-1.0/kraken-1.0-audio-dft.cjs",
     # "benchmarks/kraken-1.0/kraken-1.0-audio-fft.cjs",
     # "benchmarks/kraken-1.0/kraken-1.0-audio-oscillator.cjs",
     # "benchmarks/kraken-1.0/kraken-1.0-imaging-darkroom.cjs",
@@ -63,24 +63,26 @@ SUNSPIDER = [
     # "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-ccm.cjs",
     # "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-pbkdf2.cjs",
     # "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-sha256-iterative.cjs",
-    # "benchmarks/ML/ML_load.js",
+    # "benchmarks/ML/ML_load.cjs",
+    # "benchmarks/Octane2/Regexpbenchmark.cjs",
+    # "benchmarks/SeaMonster/gaussian-blur.cjs",
+    # "benchmarks/UniPoker/benchmark.cjs",
 ]
 
 # ======================
 # Utilities
 # ======================
 
-# Bytecode histogram
 def get_bytecode(cmd, cwd=None):
-    """Runs a command and returns its stdout for parsing."""
+    """Runs a command and returns its combined stdout and stderr for parsing."""
     try:
         result = subprocess.run(
             cmd, capture_output=True, text=True, check=True, cwd=cwd,
         )
-        return result.stdout
+        return result.stdout + result.stderr
     except subprocess.CalledProcessError as e:
         print(f"⚠️  Command failed: {' '.join(map(str, cmd))}")
-        print(f"   Stderr: {e.stderr.strip()}")
+        print(f"   Output: {(e.stdout + e.stderr).strip()}")
         return ""
 
 def parse_and_count_opcodes(bytecode_text):
@@ -108,9 +110,9 @@ def parse_and_count_opcodes(bytecode_text):
     return total_counts
 
 def save_opcode_results(data, ordered_benchmarks, output_dir, file_prefix):
-    """Converts collected data to a DataFrame, saves CSV, and generates a heatmap."""
+    """Converts collected opcode data to a DataFrame, saves CSV, and generates a heatmap."""
     if not data:
-        print(f"No data to save for {file_prefix}")
+        print(f"No opcode data to save for {file_prefix}")
         return
 
     df = pd.DataFrame.from_dict(data, orient='index')
@@ -120,10 +122,10 @@ def save_opcode_results(data, ordered_benchmarks, output_dir, file_prefix):
 
     csv_path = output_dir / f"{file_prefix}_bytecode_counts.csv"
     df.to_csv(csv_path)
-    print(f"✅ Saved CSV to {csv_path}")
+    print(f"✅ Saved Opcode CSV to {csv_path}")
 
     if df.empty:
-        print(f"Skipping heatmap for empty data in {file_prefix}")
+        print(f"Skipping opcode heatmap for empty data in {file_prefix}")
         return
         
     heatmap_path = output_dir / f"{file_prefix}_bytecode_heatmap.png"
@@ -137,264 +139,117 @@ def save_opcode_results(data, ordered_benchmarks, output_dir, file_prefix):
     plt.tight_layout()
     plt.savefig(heatmap_path, dpi=150)
     plt.close()
-    print(f"📊 Saved Heatmap to {heatmap_path}")
+    print(f"📊 Saved Opcode Heatmap to {heatmap_path}")
     
 # Auxillary metrics
 def parse_opcode_definitions(opcode_header_path=QJS_DIR/"quickjs-opcode.h"):
-    """
-    Parse quickjs-opcode.h to extract opcode sizes.
-    
-    Args:
-        opcode_header_path: Path to quickjs-opcode.h file
-        
-    Returns:
-        Dictionary mapping opcode names to their sizes
-    """
     opcode_sizes = {}
-    
     try:
-        with open(opcode_header_path, 'r') as f:
-            content = f.read()
-        
-        # Pattern to match DEF(opcode_name, size, ...)
-        # Matches: DEF( push_i32, 5, 0, 1, i32)
+        with open(opcode_header_path, 'r') as f: content = f.read()
         pattern = r'DEF\s*\(\s*(\w+)\s*,\s*(\d+)\s*,'
-        
         for match in re.finditer(pattern, content):
-            opcode_name = match.group(1)
-            size = int(match.group(2))
-            opcode_sizes[opcode_name] = size
-            
+            opcode_sizes[match.group(1)] = int(match.group(2))
         print(f"✅ Parsed {len(opcode_sizes)} opcode definitions")
         return opcode_sizes
-        
     except FileNotFoundError:
-        print(f"⚠️  Warning: Could not find {opcode_header_path}")
-        print("Using default opcode sizes (assuming size 1 for all)")
+        print(f"⚠️  Warning: Could not find {opcode_header_path}. Assuming size 1 for all opcodes.")
         return {}
 
-def aux_analysis(bytecode_str, opcode_sizes=None):
-    """
-    Analyze QuickJS bytecode to extract closure vars, local vars, stack size,
-    bytecode count, and bytecode size.
+def aux_analysis(bytecode_str, opcode_sizes={}):
+    """Analyze bytecode to extract various metrics."""
+    metrics = { "sum_closure_vars": 0, "sum_local_vars": 0, "sum_stack_size": 0,
+                "max_closure_vars": 0, "max_local_vars": 0, "max_stack_size": 0,
+                "bytecode_count": 0, "bytecode_size": 0 }
     
-    Args:
-        bytecode_str: String containing the bytecode dump
-        opcode_sizes: Dictionary mapping opcode names to sizes (from parse_opcode_definitions)
+    function_blocks = bytecode_str.split("function:")
+    
+    for block in function_blocks[1:]:
+        closure_match = re.search(r'closure vars?:\s*\n((?:\s+\d+:.*\n)*)', block)
+        closure_count = len(re.findall(r'^\s+\d+:', closure_match.group(1), re.MULTILINE)) if closure_match else 0
         
-    Returns:
-        Dictionary with all metrics including bytecode_count and bytecode_size
-    """
-    # Initialize counters
-    total_closure = 0
-    total_local = 0
-    total_stack = 0
-    max_closure = 0
-    max_local = 0
-    max_stack = 0
-    total_bytecode_count = 0
-    total_bytecode_size = 0
-    
-    # If no opcode sizes provided, assume size 1 for all
-    if opcode_sizes is None:
-        opcode_sizes = {}
-    
-    # Split bytecode into function blocks
-    function_blocks = re.split(r'/[^\n]+:\d+:\d+: function:', bytecode_str)
-    
-    for block in function_blocks[1:]:  # Skip first empty split
-        # Extract closure vars count
-        closure_section = re.search(r'closures:\s*\n((?:\s+\d+:.*\n)*)', block)
-        if closure_section:
-            closure_lines = re.findall(r'^\s+\d+:', closure_section.group(1), re.MULTILINE)
-            closure_count = len(closure_lines)
-        else:
-            closure_count = 0
+        local_match = re.search(r'locals:\s*\n((?:\s+\d+:.*\n)*)', block)
+        local_count = len(re.findall(r'^\s+\d+:', local_match.group(1), re.MULTILINE)) if local_match else 0
         
-        # Extract local vars count
-        local_section = re.search(r'locals:\s*\n((?:\s+\d+:.*\n)*)', block)
-        if local_section:
-            local_lines = re.findall(r'^\s+\d+:', local_section.group(1), re.MULTILINE)
-            local_count = len(local_lines)
-        else:
-            local_count = 0
-        
-        # Extract stack size
         stack_match = re.search(r'stack_size:\s*(\d+)', block)
-        if stack_match:
-            stack_size = int(stack_match.group(1))
-        else:
-            stack_size = 0
-        
-        # Extract bytecode count (number of opcodes)
-        opcode_match = re.search(r'opcodes:\s*(\d+)', block)
-        if opcode_match:
-            bytecode_count = int(opcode_match.group(1))
-            total_bytecode_count += bytecode_count
-        
-        # Extract bytecode size by parsing individual instructions
-        # Pattern matches lines like: "    0:  get_var         Array"
+        stack_size = int(stack_match.group(1)) if stack_match else 0
+
         instruction_pattern = r'^\s+\d+:\s+(\w+)'
         instructions = re.findall(instruction_pattern, block, re.MULTILINE)
         
-        function_bytecode_size = 0
-        for opcode in instructions:
-            # Get size from opcode_sizes dict, default to 1 if not found
-            opcode_size = opcode_sizes.get(opcode, 1)
-            function_bytecode_size += opcode_size
-        
-        total_bytecode_size += function_bytecode_size
-        
-        # Update totals
-        total_closure += closure_count
-        total_local += local_count
-        total_stack += stack_size
-        
-        # Update maxes
-        max_closure = max(max_closure, closure_count)
-        max_local = max(max_local, local_count)
-        max_stack = max(max_stack, stack_size)
+        metrics["bytecode_count"] += len(instructions)
+        metrics["bytecode_size"] += sum(opcode_sizes.get(op, 1) for op in instructions)
+        metrics["sum_closure_vars"] += closure_count
+        metrics["sum_local_vars"] += local_count
+        metrics["sum_stack_size"] += stack_size
+        metrics["max_closure_vars"] = max(metrics["max_closure_vars"], closure_count)
+        metrics["max_local_vars"] = max(metrics["max_local_vars"], local_count)
+        metrics["max_stack_size"] = max(metrics["max_stack_size"], stack_size)
     
-    return {
-        "sum_closure_vars": total_closure,
-        "sum_local_vars": total_local,
-        "sum_stack_size": total_stack,
-        "max_closure_vars": max_closure,
-        "max_local_vars": max_local,
-        "max_stack_size": max_stack,
-        "bytecode_count": total_bytecode_count,
-        "bytecode_size": total_bytecode_size,
-    }
+    return metrics
 
-def save_aux_results(run_output_dir, config_name, all_counts):
-    """Write benchmark results (per config) to CSV with bytecode metrics."""
-    csv_path = run_output_dir / f"{config_name}_aux.csv"
-    with open(csv_path, "w", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow([
-            "Benchmark",
-            "Max_Closure_Vars", "Max_Local_Vars", "Max_Stack_Size",
-            "Sum_Closure_Vars", "Sum_Local_Vars", "Sum_Stack_Size",
-            "Bytecode_Count", "Bytecode_Size"
-        ])
-        for benchmark, data in all_counts[config_name].items():
-            writer.writerow([
-                benchmark,
-                data["max_closure_vars"], data["max_local_vars"], data["max_stack_size"],
-                data["sum_closure_vars"], data["sum_local_vars"], data["sum_stack_size"],
-                data["bytecode_count"], data["bytecode_size"],
-            ])
-    print(f"✅ Saved CSV for {config_name} → {csv_path}")
+def save_aux_results(data, ordered_benchmarks, output_dir, file_prefix):
+    """Write benchmark auxiliary metrics to CSV."""
+    df = pd.DataFrame.from_dict(data, orient='index')
+    df = df.reindex(ordered_benchmarks).dropna(how='all')
+    df = df.fillna(0)
 
-def plot_aux_results(run_output_dir, config_name, all_counts):
-    """
-    Plot bytecode metrics including bytecode count and size.
-    
-    Args:
-        run_output_dir: Directory to save the plots
-        config_name: Name of the configuration
-        all_counts: Dictionary with structure all_counts[config_name][benchmark][metric]
-    """
-    if config_name not in all_counts or not all_counts[config_name]:
-        print(f"No data to plot for {config_name}")
+    csv_path = output_dir / f"{file_prefix}_aux_metrics.csv"
+    df.to_csv(csv_path)
+    print(f"✅ Saved Aux CSV for {file_prefix} → {csv_path}")
+
+def plot_aux_results(data, ordered_benchmarks, output_dir, file_prefix):
+    """Plot auxiliary bytecode metrics."""
+    if not data:
+        print(f"No aux data to plot for {file_prefix}")
         return
     
-    all_counts_aux = all_counts[config_name]
-    benchmarks = list(all_counts_aux.keys())
-    
-    # Prepare data arrays
-    sum_closure = [all_counts_aux[b]["sum_closure_vars"] for b in benchmarks]
-    sum_local = [all_counts_aux[b]["sum_local_vars"] for b in benchmarks]
-    sum_stack = [all_counts_aux[b]["sum_stack_size"] for b in benchmarks]
-    max_closure = [all_counts_aux[b]["max_closure_vars"] for b in benchmarks]
-    max_local = [all_counts_aux[b]["max_local_vars"] for b in benchmarks]
-    max_stack = [all_counts_aux[b]["max_stack_size"] for b in benchmarks]
-    bytecode_count = [all_counts_aux[b]["bytecode_count"] for b in benchmarks]
-    bytecode_size = [all_counts_aux[b]["bytecode_size"] for b in benchmarks]
-    
-    # Create figure with 3 subplots
-    fig = plt.figure(figsize=(20, 6))
-    gs = fig.add_gridspec(1, 3, hspace=0.3, wspace=0.3)
-    ax1 = fig.add_subplot(gs[0, 0])
-    ax2 = fig.add_subplot(gs[0, 1])
-    ax3 = fig.add_subplot(gs[0, 2])
-    
+    df = pd.DataFrame.from_dict(data, orient='index')
+    df = df.reindex(ordered_benchmarks).dropna(how='all')
+    df = df.fillna(0)
+    benchmarks = df.index.tolist()
+
+    fig, axes = plt.subplots(1, 3, figsize=(24, 8), constrained_layout=True)
+    fig.suptitle(f"Auxiliary Metrics: {file_prefix.replace('_', ' ').title()}", fontsize=16, fontweight='bold')
     x = np.arange(len(benchmarks))
     width = 0.25
     
     # Plot 1: SUM metrics
-    bars1 = ax1.bar(x - width, sum_closure, width, label='Closure Vars', color='#FF6B6B', alpha=0.8)
-    bars2 = ax1.bar(x, sum_local, width, label='Local Vars', color='#4ECDC4', alpha=0.8)
-    bars3 = ax1.bar(x + width, sum_stack, width, label='Stack Size', color='#45B7D1', alpha=0.8)
-    
-    ax1.set_xlabel('Benchmarks', fontsize=12, fontweight='bold')
-    ax1.set_ylabel('Sum Values', fontsize=12, fontweight='bold')
-    ax1.set_title(f'{config_name} - Sum Metrics', fontsize=14, fontweight='bold')
-    ax1.set_xticks(x)
-    ax1.set_xticklabels(benchmarks, rotation=45, ha='right')
-    ax1.legend()
-    ax1.grid(axis='y', alpha=0.3, linestyle='--')
-    
-    for bars in [bars1, bars2, bars3]:
-        for bar in bars:
-            height = bar.get_height()
-            if height > 0:
-                ax1.text(bar.get_x() + bar.get_width()/2., height,
-                        f'{int(height)}', ha='center', va='bottom', fontsize=8)
+    axes[0].bar(x - width, df['sum_closure_vars'], width, label='Closure Vars', color='#FF6B6B')
+    axes[0].bar(x, df['sum_local_vars'], width, label='Local Vars', color='#4ECDC4')
+    axes[0].bar(x + width, df['sum_stack_size'], width, label='Stack Size', color='#45B7D1')
+    axes[0].set_title('Sum Metrics', fontsize=14, fontweight='bold')
+    axes[0].set_ylabel('Sum Values')
     
     # Plot 2: MAX metrics
-    bars4 = ax2.bar(x - width, max_closure, width, label='Closure Vars', color='#FF6B6B', alpha=0.8)
-    bars5 = ax2.bar(x, max_local, width, label='Local Vars', color='#4ECDC4', alpha=0.8)
-    bars6 = ax2.bar(x + width, max_stack, width, label='Stack Size', color='#45B7D1', alpha=0.8)
-    
-    ax2.set_xlabel('Benchmarks', fontsize=12, fontweight='bold')
-    ax2.set_ylabel('Max Values', fontsize=12, fontweight='bold')
-    ax2.set_title(f'{config_name} - Max Metrics', fontsize=14, fontweight='bold')
-    ax2.set_xticks(x)
-    ax2.set_xticklabels(benchmarks, rotation=45, ha='right')
-    ax2.legend()
-    ax2.grid(axis='y', alpha=0.3, linestyle='--')
-    
-    for bars in [bars4, bars5, bars6]:
-        for bar in bars:
-            height = bar.get_height()
-            if height > 0:
-                ax2.text(bar.get_x() + bar.get_width()/2., height,
-                        f'{int(height)}', ha='center', va='bottom', fontsize=8)
-    
+    axes[1].bar(x - width, df['max_closure_vars'], width, label='Closure Vars', color='#FF6B6B')
+    axes[1].bar(x, df['max_local_vars'], width, label='Local Vars', color='#4ECDC4')
+    axes[1].bar(x + width, df['max_stack_size'], width, label='Stack Size', color='#45B7D1')
+    axes[1].set_title('Max Metrics', fontsize=14, fontweight='bold')
+    axes[1].set_ylabel('Max Values')
+
     # Plot 3: Bytecode metrics
     width2 = 0.35
-    bars7 = ax3.bar(x - width2/2, bytecode_count, width2, label='Bytecode Count', color='#A29BFE', alpha=0.8)
-    bars8 = ax3.bar(x + width2/2, bytecode_size, width2, label='Bytecode Size', color='#FD79A8', alpha=0.8)
-    
-    ax3.set_xlabel('Benchmarks', fontsize=12, fontweight='bold')
-    ax3.set_ylabel('Count / Size', fontsize=12, fontweight='bold')
-    ax3.set_title(f'{config_name} - Bytecode Metrics', fontsize=14, fontweight='bold')
-    ax3.set_xticks(x)
-    ax3.set_xticklabels(benchmarks, rotation=45, ha='right')
-    ax3.legend()
-    ax3.grid(axis='y', alpha=0.3, linestyle='--')
-    
-    for bars in [bars7, bars8]:
-        for bar in bars:
-            height = bar.get_height()
-            if height > 0:
-                ax3.text(bar.get_x() + bar.get_width()/2., height,
-                        f'{int(height)}', ha='center', va='bottom', fontsize=8)
-    
-    plt.tight_layout()
-    
-    os.makedirs(run_output_dir, exist_ok=True)
-    output_path = os.path.join(run_output_dir, f'{config_name}_bytecode_metrics.png')
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
-    print(f"📊 Saved bytecode metrics plot to {output_path}")
+    axes[2].bar(x - width2/2, df['bytecode_count'], width2, label='Bytecode Count', color='#A29BFE')
+    axes[2].bar(x + width2/2, df['bytecode_size'], width2, label='Bytecode Size (bytes)', color='#FD79A8')
+    axes[2].set_title('Bytecode Metrics', fontsize=14, fontweight='bold')
+    axes[2].set_ylabel('Count / Size')
+
+    for ax in axes:
+        ax.set_xlabel('Benchmarks', fontweight='bold')
+        ax.set_xticks(x)
+        ax.set_xticklabels(benchmarks, rotation=45, ha='right')
+        ax.legend()
+        ax.grid(axis='y', alpha=0.3, linestyle='--')
+
+    output_path = output_dir / f'{file_prefix}_aux_metrics_plot.png'
+    plt.savefig(output_path, dpi=150)
+    print(f"📊 Saved Aux metrics plot to {output_path}")
     plt.close()
 
 # ======================
 # Main Analysis Loop
 # ======================
 def main():
-    # --- ADDED: Record start time ---
     start_time = datetime.now()
     print(f"--- Script started at: {start_time.strftime('%Y-%m-%d %H:%M:%S')} ---", flush=True)
 
@@ -406,6 +261,8 @@ def main():
 
     all_counts_opcodes = {"QJS+Source": {}, "JS3": {}, "Iridium": {}}
     all_counts_aux = {"QJS+Source": {}, "JS3": {}, "Iridium": {}}
+    
+    opcode_sizes = parse_opcode_definitions()
 
     for test in SUNSPIDER:
         print(f"\n=== Analyzing {test} ===", flush=True)
@@ -422,9 +279,7 @@ def main():
                 cwd=IRIDIUM_DIR, capture_output=True, text=True
             )
             if compile_result.returncode != 0:
-                print(f"  ❌ Iridium compilation FAILED for {benchmark_name}. Skipping.", flush=True)
-                print(f"  Stderr: {compile_result.stderr.strip()}", flush=True)
-                continue
+                print(f"  ❌ Iridium compilation FAILED. Skipping.", flush=True); continue
 
             outputs_dir = IRIDIUM_DIR / "outputs"
             generated_json = next(outputs_dir.glob("*.json"), None)
@@ -437,48 +292,38 @@ def main():
 
         configs = {
             "QJS+Source": ["./script_bc.sh", str(test_path)] if test_path.exists() else None,
-            # "JS3": ["./script_bc.sh", str(js3_file)] if js3_file else None,
-            # "Iridium": ["./tiri_bc.sh", str(json_file)] if json_file else None,
+            "JS3": ["./script_bc.sh", str(js3_file)] if js3_file else None,
+            "Iridium": ["./tiri_bc.sh", str(json_file)] if json_file else None,
         }
 
         for name, cmd in configs.items():
-            if not cmd:
-                print(f"→ Skipping {name} (no input file)")
-                continue
+            if not cmd: continue
             
             print(f"→ Generating bytecode for {name}...", flush=True)
             bytecode_text = get_bytecode(cmd, cwd=QJS_DIR)
-            print(bytecode_text)
             if bytecode_text:
-                opcode_counts = parse_and_count_opcodes(bytecode_text)
-                all_counts_opcodes[name][benchmark_name] = opcode_counts
-
-                aux_results = aux_analysis(bytecode_text)
-                all_counts_aux[name][benchmark_name] = aux_results
+                all_counts_opcodes[name][benchmark_name] = parse_and_count_opcodes(bytecode_text)
+                all_counts_aux[name][benchmark_name] = aux_analysis(bytecode_text, opcode_sizes)
                 
     print("\n--- Aggregating and saving results ---")
 
-    processed_benchmark_names = set()
-    for config_data in all_counts_opcodes.values():
-        processed_benchmark_names.update(config_data.keys())
-
+    processed_benchmark_names = {k for d in all_counts_opcodes.values() for k in d}
     ordered_names = [Path(p).name for p in SUNSPIDER if Path(p).name in processed_benchmark_names]
 
-    save_opcode_results(all_counts_opcodes["Iridium"], ordered_names, run_output_dir, "iridium")
-    save_opcode_results(all_counts_opcodes["JS3"], ordered_names, run_output_dir, "js3")
-    save_opcode_results(all_counts_opcodes["QJS+Source"], ordered_names, run_output_dir, "qjs_source")
-    
-    for config_name in all_counts_aux:
-        if all_counts_aux[config_name]:
-            save_aux_results(run_output_dir, config_name, all_counts_aux)
-            plot_aux_results(run_output_dir, config_name, all_counts_aux)
+    # --- FIX: Refactored saving/plotting loop for consistent naming ---
+    for config_name in ["QJS+Source", "JS3", "Iridium"]:
+        sanitized_name = config_name.lower().replace('+', '-')
 
-    # --- ADDED: Record end time and calculate duration ---
+        if all_counts_opcodes.get(config_name):
+            save_opcode_results(all_counts_opcodes[config_name], ordered_names, run_output_dir, sanitized_name)
+
+        if all_counts_aux.get(config_name):
+            save_aux_results(all_counts_aux[config_name], ordered_names, run_output_dir, sanitized_name)
+            plot_aux_results(all_counts_aux[config_name], ordered_names, run_output_dir, sanitized_name)
+
     end_time = datetime.now()
-    total_runtime = end_time - start_time
     print(f"\n--- Script finished at: {end_time.strftime('%Y-%m-%d %H:%M:%S')} ---", flush=True)
-    print(f"--- Total runtime: {total_runtime} ---", flush=True)
-
+    print(f"--- Total runtime: {end_time - start_time} ---", flush=True)
 
 if __name__ == "__main__":
     main()

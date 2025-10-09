@@ -1,0 +1,2 @@
+,sum_closure_vars,sum_local_vars,sum_stack_size,max_closure_vars,max_local_vars,max_stack_size,bytecode_count,bytecode_size
+kraken-1.0-audio-dft.cjs,9,238,2535,3,20,2055,9334,22688

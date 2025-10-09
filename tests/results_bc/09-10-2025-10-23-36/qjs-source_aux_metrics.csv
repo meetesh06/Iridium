@@ -1,0 +1,6 @@
+,sum_closure_vars,sum_local_vars,sum_stack_size,max_closure_vars,max_local_vars,max_stack_size,bytecode_count,bytecode_size
+3d-cube.cjs,0,55,107,0,17,13,2513,4874
+3d-morph.cjs,0,6,10,0,5,5,220,553
+3d-raytrace.cjs,2,99,159,2,25,8,2836,4920
+access-binary-trees.cjs,0,3,16,0,1,7,238,711
+access-fannkuch.cjs,0,17,7,0,16,5,367,588
