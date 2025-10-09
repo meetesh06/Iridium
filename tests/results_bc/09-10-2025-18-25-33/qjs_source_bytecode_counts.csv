@@ -1,0 +1,2 @@
+,add,call,div,dup,get_arg,get_field,get_loc,get_var,goto,if_false,if_true,inc_loc,is_undefined_or_null,lt,mul,neg,push_,push_i,put_array_el,put_loc,return_undef,sub,swap,to_propkey
+3d-morph.cjs,2,2,1,1,2,3,9,7,2,2,1,2,1,2,8,2,6,2,1,5,1,1,6,2

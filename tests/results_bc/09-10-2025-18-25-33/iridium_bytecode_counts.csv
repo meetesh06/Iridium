@@ -1,0 +1,2 @@
+,add,call,check_define_var,define_func,div,drop,fclosure,get_arg,get_array_el,get_field,get_loc,get_var,get_var_ref,goto,if_false,if_true,lt,mul,neg,neq,push_,push_atom_value,push_empty_string,push_i,put_array_el,put_loc,return,set_loc,sub,throw,undefined
+3d-morph.cjs,14,4,1,1,2,1,1,2,2,3,29,5,4,8,3,3,5,12,2,1,22,2,1,6,2,16,2,3,1,1,4

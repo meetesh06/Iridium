@@ -25,10 +25,10 @@ JS3_BENCHMARK_DIR = Path("js3_benchmark").resolve()
 
 SUNSPIDER = [
     "benchmarks/sunspider/3d-cube.cjs",
-    # "benchmarks/sunspider/3d-morph.cjs",
-    # "benchmarks/sunspider/3d-raytrace.cjs",
-    # "benchmarks/sunspider/access-binary-trees.cjs",
-    # "benchmarks/sunspider/access-fannkuch.cjs",
+    "benchmarks/sunspider/3d-morph.cjs",
+    "benchmarks/sunspider/3d-raytrace.cjs",
+    "benchmarks/sunspider/access-binary-trees.cjs",
+    "benchmarks/sunspider/access-fannkuch.cjs",
     # "benchmarks/sunspider/access-nbody.cjs",
     # "benchmarks/sunspider/access-nsieve.cjs",
     # "benchmarks/sunspider/bitops-3bit-bits-in-byte.cjs",
@@ -140,52 +140,138 @@ def save_opcode_results(data, ordered_benchmarks, output_dir, file_prefix):
     print(f"📊 Saved Heatmap to {heatmap_path}")
     
 # Auxillary metrics
-def parse_opcode_definitions(opcode_header_path=QJS_DIR/"quickjs-opcode.h"):
+def parse_opcode_definitions(opcode_header_path="quickjs-opcode.h"):
     """
     Parse quickjs-opcode.h to extract opcode sizes.
     
-    Args:
-        opcode_header_path: Path to quickjs-opcode.h file
-        
     Returns:
         Dictionary mapping opcode names to their sizes
     """
     opcode_sizes = {}
+    
+    if not os.path.exists(opcode_header_path):
+        raise FileNotFoundError(f"❌ ERROR: Could not find {opcode_header_path}")
     
     try:
         with open(opcode_header_path, 'r') as f:
             content = f.read()
         
         # Pattern to match DEF(opcode_name, size, ...)
-        # Matches: DEF( push_i32, 5, 0, 1, i32)
         pattern = r'DEF\s*\(\s*(\w+)\s*,\s*(\d+)\s*,'
         
+        matches_found = 0
         for match in re.finditer(pattern, content):
             opcode_name = match.group(1)
             size = int(match.group(2))
             opcode_sizes[opcode_name] = size
+            matches_found += 1
             
-        print(f"✅ Parsed {len(opcode_sizes)} opcode definitions")
+        if matches_found == 0:
+            raise ValueError(f"❌ ERROR: No opcode definitions found in {opcode_header_path}")
+            
+        print(f"✅ Parsed {len(opcode_sizes)} opcode definitions from {opcode_header_path}")
+        
+        # Print some examples for verification
+        print(f"   Examples: push_i32={opcode_sizes.get('push_i32', 'N/A')}, "
+              f"get_var={opcode_sizes.get('get_var', 'N/A')}, "
+              f"add={opcode_sizes.get('add', 'N/A')}")
+        
         return opcode_sizes
         
-    except FileNotFoundError:
-        print(f"⚠️  Warning: Could not find {opcode_header_path}")
-        print("Using default opcode sizes (assuming size 1 for all)")
-        return {}
+    except Exception as e:
+        raise RuntimeError(f"❌ ERROR parsing {opcode_header_path}: {str(e)}")
 
-def aux_analysis(bytecode_str, opcode_sizes=None):
+
+def extract_base_opcode(opcode_with_suffix):
     """
-    Analyze QuickJS bytecode to extract closure vars, local vars, stack size,
-    bytecode count, and bytecode size.
+    Extract base opcode name from variants like:
+    - get_var_ref0 -> get_var_ref
+    - put_loc8 -> put_loc
+    - if_false8 -> if_false
+    - push_i8 -> push_i32 (special case)
+    - fclosure8 -> fclosure
+    """
+    # Handle special push_i variants
+    if opcode_with_suffix.startswith('push_i') and opcode_with_suffix[6:].isdigit():
+        return 'push_i32'
     
-    Args:
-        bytecode_str: String containing the bytecode dump
-        opcode_sizes: Dictionary mapping opcode names to sizes (from parse_opcode_definitions)
-        
-    Returns:
-        Dictionary with all metrics including bytecode_count and bytecode_size
+    # Remove numeric suffix at the end
+    base = re.sub(r'\d+$', '', opcode_with_suffix)
+    
+    # Handle 8/16 suffixes (e.g., if_false8 -> if_false)
+    if base.endswith('8') or base.endswith('16'):
+        # But check if it's part of the name (like push_i8)
+        if not base.startswith('push_i'):
+            base = base[:-1] if base.endswith('8') else base[:-2]
+    
+    return base
+
+
+def get_opcode_size(opcode_name, opcode_sizes):
     """
-    # Initialize counters
+    Get size for an opcode, handling variants and reporting errors.
+    """
+    # Try exact match first
+    if opcode_name in opcode_sizes:
+        return opcode_sizes[opcode_name]
+    
+    # Try base opcode
+    base_opcode = extract_base_opcode(opcode_name)
+    if base_opcode in opcode_sizes:
+        return opcode_sizes[base_opcode]
+    
+    # If still not found, report error
+    raise ValueError(f"❌ ERROR: Unknown opcode '{opcode_name}' (tried base: '{base_opcode}')")
+
+
+def extract_opcodes_from_section(block):
+    """
+    Extract opcodes from the opcodes section of a function block.
+    
+    The opcodes section starts after "opcodes: <number>" and continues until
+    the next section (marked by a line starting with a letter at the beginning,
+    or end of block).
+    
+    Returns:
+        List of opcode names (strings after line number and colon, before semicolon)
+    """
+    opcodes = []
+    
+    # Find the "opcodes:" line
+    opcodes_match = re.search(r'opcodes:\s*\d+', block)
+    if not opcodes_match:
+        return opcodes
+    
+    # Get text after "opcodes: N" line
+    start_pos = opcodes_match.end()
+    remaining_text = block[start_pos:]
+    
+    # Process line by line
+    for line in remaining_text.split('\n'):
+        # Stop if we hit a new section (line starting with non-whitespace letter)
+        # Or if line starts with "function:", "closure vars:", "locals:", etc.
+        if re.match(r'^[a-zA-Z]', line):
+            break
+            
+        # Check if this is an opcode line: "    0:  opcode_name  ..."
+        # Pattern: optional whitespace, number, colon, whitespace, opcode_name
+        opcode_match = re.match(r'^\s+\d+:\s+(\w+)', line)
+        if opcode_match:
+            # Remove anything after semicolon
+            line_before_comment = line.split(';')[0]
+            
+            # Extract opcode (first word after the line number)
+            opcode_match = re.search(r'^\s+\d+:\s+(\w+)', line_before_comment)
+            if opcode_match:
+                opcode_name = opcode_match.group(1)
+                opcodes.append(opcode_name)
+    
+    return opcodes
+
+def analyze_qjs_bytecode(bytecode_str, opcode_sizes):
+    """
+    Analyze QuickJS bytecode (QJS+Source format).
+    """
     total_closure = 0
     total_local = 0
     total_stack = 0
@@ -195,23 +281,30 @@ def aux_analysis(bytecode_str, opcode_sizes=None):
     total_bytecode_count = 0
     total_bytecode_size = 0
     
-    # If no opcode sizes provided, assume size 1 for all
-    if opcode_sizes is None:
-        opcode_sizes = {}
+    unknown_opcodes = set()
+    all_opcodes_found = []
     
-    # Split bytecode into function blocks
+    # Split by function headers: /path:line:col: function:
     function_blocks = re.split(r'/[^\n]+:\d+:\d+: function:', bytecode_str)
     
-    for block in function_blocks[1:]:  # Skip first empty split
-        # Extract closure vars count
-        closure_section = re.search(r'closures:\s*\n((?:\s+\d+:.*\n)*)', block)
+    if len(function_blocks) <= 1:
+        print("⚠️  WARNING: No functions found in QJS bytecode")
+        return create_empty_result()
+    
+    functions_analyzed = 0
+    
+    for block in function_blocks[1:]:
+        functions_analyzed += 1
+        
+        # Extract closure vars
+        closure_section = re.search(r'closure vars:\s*\n((?:\s+\d+:.*\n)*)', block)
         if closure_section:
             closure_lines = re.findall(r'^\s+\d+:', closure_section.group(1), re.MULTILINE)
             closure_count = len(closure_lines)
         else:
             closure_count = 0
         
-        # Extract local vars count
+        # Extract local vars
         local_section = re.search(r'locals:\s*\n((?:\s+\d+:.*\n)*)', block)
         if local_section:
             local_lines = re.findall(r'^\s+\d+:', local_section.group(1), re.MULTILINE)
@@ -221,29 +314,33 @@ def aux_analysis(bytecode_str, opcode_sizes=None):
         
         # Extract stack size
         stack_match = re.search(r'stack_size:\s*(\d+)', block)
-        if stack_match:
-            stack_size = int(stack_match.group(1))
-        else:
-            stack_size = 0
+        stack_size = int(stack_match.group(1)) if stack_match else 0
         
-        # Extract bytecode count (number of opcodes)
+        # Extract bytecode count from "opcodes: N" line
         opcode_match = re.search(r'opcodes:\s*(\d+)', block)
-        if opcode_match:
-            bytecode_count = int(opcode_match.group(1))
-            total_bytecode_count += bytecode_count
+        bytecode_count = int(opcode_match.group(1)) if opcode_match else 0
+        total_bytecode_count += bytecode_count
         
-        # Extract bytecode size by parsing individual instructions
-        # Pattern matches lines like: "    0:  get_var         Array"
-        instruction_pattern = r'^\s+\d+:\s+(\w+)'
-        instructions = re.findall(instruction_pattern, block, re.MULTILINE)
+        # Extract opcodes from the opcodes section ONLY
+        opcodes = extract_opcodes_from_section(block)
+        all_opcodes_found.extend(opcodes)
         
+        # Calculate bytecode size
         function_bytecode_size = 0
-        for opcode in instructions:
-            # Get size from opcode_sizes dict, default to 1 if not found
-            opcode_size = opcode_sizes.get(opcode, 1)
-            function_bytecode_size += opcode_size
+        for opcode in opcodes:
+            try:
+                opcode_size = get_opcode_size(opcode, opcode_sizes)
+                function_bytecode_size += opcode_size
+            except ValueError as e:
+                unknown_opcodes.add(opcode)
+                # Use size 1 as fallback
+                function_bytecode_size += 1
         
         total_bytecode_size += function_bytecode_size
+        
+        # Verify: number of opcodes extracted should match bytecode_count
+        if len(opcodes) != bytecode_count:
+            print(f"⚠️  WARNING: Function has opcodes:{bytecode_count} but found {len(opcodes)} opcodes")
         
         # Update totals
         total_closure += closure_count
@@ -254,6 +351,18 @@ def aux_analysis(bytecode_str, opcode_sizes=None):
         max_closure = max(max_closure, closure_count)
         max_local = max(max_local, local_count)
         max_stack = max(max_stack, stack_size)
+    
+    print(f"   Analyzed {functions_analyzed} functions")
+    print(f"   Found {len(all_opcodes_found)} total opcode instances")
+    
+    if unknown_opcodes:
+        print(f"❌ ERROR: Found {len(unknown_opcodes)} unknown opcodes: {sorted(unknown_opcodes)}")
+        raise ValueError(f"Unknown opcodes found: {sorted(unknown_opcodes)}")
+    
+    # Verify bytecode size >= bytecode count
+    if total_bytecode_size < total_bytecode_count:
+        print(f"❌ ERROR: bytecode_size ({total_bytecode_size}) < bytecode_count ({total_bytecode_count})")
+        raise ValueError("Bytecode size calculation is incorrect - size cannot be less than count!")
     
     return {
         "sum_closure_vars": total_closure,
@@ -266,6 +375,152 @@ def aux_analysis(bytecode_str, opcode_sizes=None):
         "bytecode_size": total_bytecode_size,
     }
 
+def analyze_js3_bytecode(bytecode_str, opcode_sizes):
+    """
+    Analyze JS3 bytecode format (similar to QJS but with different local var format).
+    """
+    # JS3 format is very similar to QJS, use same logic
+    return analyze_qjs_bytecode(bytecode_str, opcode_sizes)
+
+def analyze_iridium_bytecode(bytecode_str, opcode_sizes):
+    """
+    Analyze Iridium bytecode format.
+    Different header: "function: <null>" instead of path-based
+    """
+    total_closure = 0
+    total_local = 0
+    total_stack = 0
+    max_closure = 0
+    max_local = 0
+    max_stack = 0
+    total_bytecode_count = 0
+    total_bytecode_size = 0
+    
+    unknown_opcodes = set()
+    all_opcodes_found = []
+    
+    # Split by Iridium function headers: "function: <null>" or "function: name"
+    function_blocks = re.split(r'^function:', bytecode_str, flags=re.MULTILINE)
+    
+    if len(function_blocks) <= 1:
+        print("⚠️  WARNING: No functions found in Iridium bytecode")
+        return create_empty_result()
+    
+    functions_analyzed = 0
+    
+    for block in function_blocks[1:]:
+        functions_analyzed += 1
+        
+        # Extract closure vars
+        closure_section = re.search(r'closure vars:\s*\n((?:\s+\d+:.*\n)*)', block)
+        if closure_section:
+            closure_lines = re.findall(r'^\s+\d+:', closure_section.group(1), re.MULTILINE)
+            closure_count = len(closure_lines)
+        else:
+            closure_count = 0
+        
+        # Extract local vars
+        local_section = re.search(r'locals:\s*\n((?:\s+\d+:.*\n)*)', block)
+        if local_section:
+            local_lines = re.findall(r'^\s+\d+:', local_section.group(1), re.MULTILINE)
+            local_count = len(local_lines)
+        else:
+            local_count = 0
+        
+        # Extract stack size
+        stack_match = re.search(r'stack_size:\s*(\d+)', block)
+        stack_size = int(stack_match.group(1)) if stack_match else 0
+        
+        # Extract bytecode count
+        opcode_match = re.search(r'opcodes:\s*(\d+)', block)
+        bytecode_count = int(opcode_match.group(1)) if opcode_match else 0
+        total_bytecode_count += bytecode_count
+        
+        # Extract opcodes from the opcodes section ONLY
+        opcodes = extract_opcodes_from_section(block)
+        all_opcodes_found.extend(opcodes)
+        
+        # Calculate bytecode size
+        function_bytecode_size = 0
+        for opcode in opcodes:
+            try:
+                opcode_size = get_opcode_size(opcode, opcode_sizes)
+                function_bytecode_size += opcode_size
+            except ValueError as e:
+                unknown_opcodes.add(opcode)
+                # Use size 1 as fallback
+                function_bytecode_size += 1
+        
+        total_bytecode_size += function_bytecode_size
+        
+        # Verify: number of opcodes extracted should match bytecode_count
+        if len(opcodes) != bytecode_count:
+            print(f"⚠️  WARNING: Function has opcodes:{bytecode_count} but found {len(opcodes)} opcodes")
+        
+        # Update totals
+        total_closure += closure_count
+        total_local += local_count
+        total_stack += stack_size
+        
+        # Update maxes
+        max_closure = max(max_closure, closure_count)
+        max_local = max(max_local, local_count)
+        max_stack = max(max_stack, stack_size)
+    
+    print(f"   Analyzed {functions_analyzed} functions")
+    print(f"   Found {len(all_opcodes_found)} total opcode instances")
+    
+    if unknown_opcodes:
+        print(f"❌ ERROR: Found {len(unknown_opcodes)} unknown opcodes: {sorted(unknown_opcodes)}")
+        raise ValueError(f"Unknown opcodes found: {sorted(unknown_opcodes)}")
+    
+    # Verify bytecode size >= bytecode count
+    if total_bytecode_size < total_bytecode_count:
+        print(f"❌ ERROR: bytecode_size ({total_bytecode_size}) < bytecode_count ({total_bytecode_count})")
+        raise ValueError("Bytecode size calculation is incorrect!")
+    
+    return {
+        "sum_closure_vars": total_closure,
+        "sum_local_vars": total_local,
+        "sum_stack_size": total_stack,
+        "max_closure_vars": max_closure,
+        "max_local_vars": max_local,
+        "max_stack_size": max_stack,
+        "bytecode_count": total_bytecode_count,
+        "bytecode_size": total_bytecode_size,
+    }
+
+def analyze_bytecode_auto(bytecode_str, opcode_sizes, config_name=None):
+    """
+    Auto-detect format and analyze bytecode.
+    """
+    # Auto-detect format
+    if config_name:
+        config_lower = config_name.lower()
+        if 'iridium' in config_lower or 'iri' in config_lower:
+            return analyze_iridium_bytecode(bytecode_str, opcode_sizes)
+        elif 'js3' in config_lower:
+            return analyze_js3_bytecode(bytecode_str, opcode_sizes)
+    
+    # Check content for Iridium markers
+    if '[Iridium]' in bytecode_str or re.search(r'^function: <', bytecode_str, re.MULTILINE):
+        return analyze_iridium_bytecode(bytecode_str, opcode_sizes)
+    else:
+        return analyze_qjs_bytecode(bytecode_str, opcode_sizes)
+
+def create_empty_result():
+    """Return empty result dictionary."""
+    return {
+        "sum_closure_vars": 0,
+        "sum_local_vars": 0,
+        "sum_stack_size": 0,
+        "max_closure_vars": 0,
+        "max_local_vars": 0,
+        "max_stack_size": 0,
+        "bytecode_count": 0,
+        "bytecode_size": 0,
+    }
+    
 def save_aux_results(run_output_dir, config_name, all_counts):
     """Write benchmark results (per config) to CSV with bytecode metrics."""
     csv_path = run_output_dir / f"{config_name}_aux.csv"
@@ -437,8 +692,8 @@ def main():
 
         configs = {
             "QJS+Source": ["./script_bc.sh", str(test_path)] if test_path.exists() else None,
-            # "JS3": ["./script_bc.sh", str(js3_file)] if js3_file else None,
-            # "Iridium": ["./tiri_bc.sh", str(json_file)] if json_file else None,
+            "JS3": ["./script_bc.sh", str(js3_file)] if js3_file else None,
+            "Iridium": ["./tiri_bc.sh", str(json_file)] if json_file else None,
         }
 
         for name, cmd in configs.items():
@@ -448,12 +703,18 @@ def main():
             
             print(f"→ Generating bytecode for {name}...", flush=True)
             bytecode_text = get_bytecode(cmd, cwd=QJS_DIR)
-            print(bytecode_text)
+            opcode_sizes = parse_opcode_definitions("/home/maverick/js_project/quickjs/quickjs-opcode.h")
+            # print(bytecode_text)
             if bytecode_text:
                 opcode_counts = parse_and_count_opcodes(bytecode_text)
                 all_counts_opcodes[name][benchmark_name] = opcode_counts
 
-                aux_results = aux_analysis(bytecode_text)
+                if(name=="QJS+Source"):
+                    aux_results = analyze_qjs_bytecode(bytecode_text, opcode_sizes)
+                elif(name=="JS3"):
+                    aux_results = analyze_js3_bytecode(bytecode_text, opcode_sizes)
+                else:
+                    aux_results = analyze_iridium_bytecode(bytecode_text, opcode_sizes)
                 all_counts_aux[name][benchmark_name] = aux_results
                 
     print("\n--- Aggregating and saving results ---")
