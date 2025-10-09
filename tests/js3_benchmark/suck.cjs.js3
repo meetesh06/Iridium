@@ -1,0 +1,8 @@
+let js3$1 = console.log("Hello");
+function f(a, b) {
+  let returnStmt$3 = a;
+  let returnStmt$4 = b;
+  let returnStmt$2 = returnStmt$3 + returnStmt$4;
+  return returnStmt$2;
+}
+let js3$5 = console.log("wow");

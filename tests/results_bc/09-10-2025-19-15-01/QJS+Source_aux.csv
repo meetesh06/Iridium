@@ -1,6 +1,0 @@
-Benchmark,Max_Closure_Vars,Max_Local_Vars,Max_Stack_Size,Sum_Closure_Vars,Sum_Local_Vars,Sum_Stack_Size,Bytecode_Count,Bytecode_Size
-3d-cube.cjs,0,17,13,0,55,107,2458,4819
-3d-morph.cjs,0,5,5,0,6,10,214,547
-3d-raytrace.cjs,2,25,8,2,99,159,2735,4819
-access-binary-trees.cjs,0,1,7,0,3,16,235,708
-access-fannkuch.cjs,0,16,5,0,17,7,350,571

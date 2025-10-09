@@ -1,2 +1,0 @@
-Benchmark,Max_Closure_Vars,Max_Local_Vars,Max_Stack_Size,Sum_Closure_Vars,Sum_Local_Vars,Sum_Stack_Size,Bytecode_Count,Bytecode_Size
-3d-morph.cjs,2,5,5,2,10,10,163,244

@@ -1,2 +1,0 @@
-,add,array_from,call,call_constructor,call_method,check_define_var,define_field,define_func,div,drop,dup,fclosure,get_arg,get_array_el,get_field,get_length,get_loc,get_var,get_var_ref,goto,gt,gte,if_false,if_true,inc,lnot,lt,lte,mul,neg,neq,null,object,push_,push_atom_value,push_const,push_false,push_i,push_this,push_true,put_array_el,put_field,put_loc,put_var,put_var_ref,return,set_loc,sub,tail_call,throw,undefined
-3d-cube.cjs,38,56,44,23,10,15,4,15,6,30,23,15,85,187,93,4,174,84,169,43,3,4,43,11,1,24,21,1,26,24,1,7,1,359,4,4,25,37,1,25,46,24,104,1,11,17,13,10,4,1,14
