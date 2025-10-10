@@ -1,0 +1,125 @@
+=== Totals ===
+locals: 74
+closure_vars: 9
+stack_size: 135
+byte_code_len: 3979
+opcodes: 1497
+opcode_lines_count: 1172
+
+=== Opcode Frequencies ===
+get_loc_check: 110
+call_method: 71
+get_field2: 70
+get_field: 60
+push_0: 57
+drop: 45
+set_loc_uninitialized: 37
+if_false8: 33
+get_var: 32
+dup: 31
+put_loc0: 25
+get_array_el: 25
+push_i8: 25
+get_arg0: 24
+get_loc0: 24
+or: 24
+put_field: 22
+get_loc8: 22
+get_var_ref_check: 21
+push_this: 21
+return_undef: 21
+push_i16: 20
+put_loc8: 20
+add: 18
+shl: 18
+swap: 17
+push_atom_value: 16
+put_loc_check: 16
+get_length: 15
+goto8: 15
+eq: 14
+push_i32: 12
+return: 10
+call_constructor: 10
+push_4: 10
+put_loc1: 8
+array_from: 8
+push_2: 8
+get_loc1: 7
+get_loc2: 7
+if_false: 7
+for_of_start: 7
+for_of_next: 7
+iterator_close: 7
+push_6: 6
+check_ctor: 5
+get_loc3: 5
+put_loc2: 4
+neq: 4
+lt: 4
+to_propkey: 4
+push_1: 4
+undefined: 4
+mul: 3
+throw: 3
+post_inc: 3
+put_loc3: 3
+if_true8: 3
+put_array_el: 3
+tail_call_method: 3
+special_object: 3
+get_arg1: 2
+fclosure8: 2
+is_undefined_or_null: 2
+and: 2
+push_empty_string: 2
+get_super: 2
+inc: 2
+div: 1
+get_arg2: 1
+strict_neq: 1
+post_dec: 1
+typeof: 1
+put_arg0: 1
+sub: 1
+lte: 1
+put_loc_check_init: 1
+sar: 1
+to_propkey2: 1
+dup2: 1
+get_loc0_loc1: 1
+push_5: 1
+gt: 1
+if_true: 1
+call1: 1
+
+=== Breakdown per function ===
+Function #1: {'locals': 0, 'closure_vars': 0, 'stack_size': 0, 'byte_code_len': 0, 'opcodes': 0, 'opcode_lines_count': 0}
+Function #2: {'locals': 0, 'closure_vars': 1, 'stack_size': 2, 'byte_code_len': 6, 'opcodes': 4, 'opcode_lines_count': 4}
+Function #3: {'locals': 2, 'closure_vars': 1, 'stack_size': 4, 'byte_code_len': 55, 'opcodes': 27, 'opcode_lines_count': 27}
+Function #4: {'locals': 3, 'closure_vars': 1, 'stack_size': 3, 'byte_code_len': 230, 'opcodes': 99, 'opcode_lines_count': 99}
+Function #5: {'locals': 1, 'closure_vars': 0, 'stack_size': 16, 'byte_code_len': 243, 'opcodes': 85, 'opcode_lines_count': 85}
+Function #6: {'locals': 1, 'closure_vars': 1, 'stack_size': 2, 'byte_code_len': 25, 'opcodes': 14, 'opcode_lines_count': 14}
+Function #7: {'locals': 1, 'closure_vars': 1, 'stack_size': 4, 'byte_code_len': 26, 'opcodes': 10, 'opcode_lines_count': 10}
+Function #8: {'locals': 4, 'closure_vars': 0, 'stack_size': 4, 'byte_code_len': 141, 'opcodes': 70, 'opcode_lines_count': 70}
+Function #9: {'locals': 1, 'closure_vars': 0, 'stack_size': 2, 'byte_code_len': 16, 'opcodes': 6, 'opcode_lines_count': 6}
+Function #10: {'locals': 1, 'closure_vars': 0, 'stack_size': 3, 'byte_code_len': 35, 'opcodes': 18, 'opcode_lines_count': 18}
+Function #11: {'locals': 1, 'closure_vars': 0, 'stack_size': 3, 'byte_code_len': 35, 'opcodes': 19, 'opcode_lines_count': 19}
+Function #12: {'locals': 1, 'closure_vars': 1, 'stack_size': 2, 'byte_code_len': 25, 'opcodes': 14, 'opcode_lines_count': 14}
+Function #13: {'locals': 1, 'closure_vars': 0, 'stack_size': 2, 'byte_code_len': 19, 'opcodes': 9, 'opcode_lines_count': 9}
+Function #14: {'locals': 1, 'closure_vars': 0, 'stack_size': 3, 'byte_code_len': 18, 'opcodes': 8, 'opcode_lines_count': 8}
+Function #15: {'locals': 0, 'closure_vars': 0, 'stack_size': 4, 'byte_code_len': 30, 'opcodes': 10, 'opcode_lines_count': 10}
+Function #16: {'locals': 19, 'closure_vars': 1, 'stack_size': 7, 'byte_code_len': 1256, 'opcodes': 499, 'opcode_lines_count': 499}
+Function #17: {'locals': 1, 'closure_vars': 0, 'stack_size': 1, 'byte_code_len': 9, 'opcodes': 5, 'opcode_lines_count': 5}
+Function #18: {'locals': 1, 'closure_vars': 0, 'stack_size': 3, 'byte_code_len': 17, 'opcodes': 7, 'opcode_lines_count': 7}
+Function #19: {'locals': 3, 'closure_vars': 1, 'stack_size': 11, 'byte_code_len': 78, 'opcodes': 41, 'opcode_lines_count': 41}
+Function #20: {'locals': 2, 'closure_vars': 0, 'stack_size': 4, 'byte_code_len': 40, 'opcodes': 21, 'opcode_lines_count': 21}
+Function #21: {'locals': 1, 'closure_vars': 0, 'stack_size': 2, 'byte_code_len': 15, 'opcodes': 7, 'opcode_lines_count': 7}
+Function #22: {'locals': 1, 'closure_vars': 0, 'stack_size': 1, 'byte_code_len': 9, 'opcodes': 5, 'opcode_lines_count': 5}
+Function #23: {'locals': 2, 'closure_vars': 0, 'stack_size': 3, 'byte_code_len': 16, 'opcodes': 9, 'opcode_lines_count': 9}
+Function #24: {'locals': 1, 'closure_vars': 0, 'stack_size': 1, 'byte_code_len': 9, 'opcodes': 5, 'opcode_lines_count': 5}
+Function #25: {'locals': 1, 'closure_vars': 0, 'stack_size': 1, 'byte_code_len': 9, 'opcodes': 5, 'opcode_lines_count': 5}
+Function #26: {'locals': 9, 'closure_vars': 0, 'stack_size': 7, 'byte_code_len': 259, 'opcodes': 119, 'opcode_lines_count': 119}
+Function #27: {'locals': 1, 'closure_vars': 1, 'stack_size': 5, 'byte_code_len': 140, 'opcodes': 49, 'opcode_lines_count': 49}
+Function #28: {'locals': 1, 'closure_vars': 0, 'stack_size': 2, 'byte_code_len': 15, 'opcodes': 7, 'opcode_lines_count': 7}
+Function #29: {'locals': 13, 'closure_vars': 0, 'stack_size': 33, 'byte_code_len': 1203, 'opcodes': 325, 'opcode_lines_count': 0}

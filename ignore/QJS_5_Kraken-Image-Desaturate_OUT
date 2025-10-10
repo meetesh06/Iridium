@@ -1,0 +1,54 @@
+=== Totals ===
+locals: 10
+closure_vars: 0
+stack_size: 41
+byte_code_len: 3051233
+opcodes: 854619
+opcode_lines_count: 183
+
+=== Opcode Frequencies ===
+swap: 36
+get_loc8: 15
+get_loc1: 12
+to_propkey: 12
+get_field: 9
+add: 8
+dup: 7
+set_loc8: 7
+is_undefined_or_null: 6
+if_true8: 6
+get_array_el: 6
+put_array_el: 6
+mul: 5
+get_arg0: 4
+put_loc8: 4
+insert3: 4
+if_false8: 3
+push_4: 3
+push_const8: 3
+lnot: 2
+post_dec: 2
+sub: 2
+push_1: 2
+push_2: 2
+goto8: 2
+drop: 1
+push_atom_value: 1
+neq: 1
+put_loc0: 1
+put_loc1: 1
+set_loc2: 1
+put_loc3: 1
+get_loc2: 1
+get_loc3: 1
+get_loc0: 1
+if_false: 1
+push_3: 1
+div: 1
+push_true: 1
+return: 1
+
+=== Breakdown per function ===
+Function #1: {'locals': 0, 'closure_vars': 0, 'stack_size': 0, 'byte_code_len': 0, 'opcodes': 0, 'opcode_lines_count': 0}
+Function #2: {'locals': 9, 'closure_vars': 0, 'stack_size': 9, 'byte_code_len': 267, 'opcodes': 183, 'opcode_lines_count': 183}
+Function #3: {'locals': 1, 'closure_vars': 0, 'stack_size': 32, 'byte_code_len': 3050966, 'opcodes': 854436, 'opcode_lines_count': 0}

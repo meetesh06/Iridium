@@ -1,0 +1,31 @@
+Iridium Compiler Optimization Counts
+========================================
+
+benchmarks/sunspider/3d-cube.cjs:
+  Removed Read Casts:  920
+  Removed Write Casts: 230
+
+benchmarks/sunspider/3d-morph.cjs:
+  Removed Read Casts:  10
+  Removed Write Casts: 10
+
+benchmarks/sunspider/access-fannkuch.cjs:
+  Removed Read Casts:  55
+  Removed Write Casts: 40
+
+benchmarks/sunspider/bitops-bitwise-and.cjs:
+  Removed Read Casts:  0
+  Removed Write Casts: 0
+
+benchmarks/sunspider/math-spectral-norm.cjs:
+  Removed Read Casts:  30
+  Removed Write Casts: 25
+
+benchmarks/sunspider/string-fasta.cjs:
+  Removed Read Casts:  0
+  Removed Write Casts: 5
+
+benchmarks/UniPoker/benchmark.cjs:
+  Removed Read Casts:  105
+  Removed Write Casts: 5
+

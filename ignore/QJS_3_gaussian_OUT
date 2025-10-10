@@ -1,0 +1,102 @@
+=== Totals ===
+locals: 48
+closure_vars: 2
+stack_size: 38
+byte_code_len: 1756
+opcodes: 950
+opcode_lines_count: 888
+
+=== Opcode Frequencies ===
+get_loc8: 123
+put_loc8: 72
+mul: 55
+add: 49
+swap: 37
+get_var: 29
+dup: 27
+get_loc0: 24
+and: 23
+get_array_el: 22
+push_i8: 21
+push_i16: 18
+get_arg3: 18
+drop: 17
+get_loc3: 17
+push_const8: 14
+get_var_ref_check: 14
+sub: 13
+push_1: 12
+get_loc1: 12
+sar: 12
+to_propkey: 12
+get_arg2: 11
+get_loc2: 10
+put_var: 8
+shl: 8
+get_arg0: 7
+put_loc1: 7
+put_loc2: 7
+push_0: 7
+get_arg: 7
+get_field: 7
+get_loc_check: 7
+put_loc0: 6
+put_loc3: 6
+is_undefined_or_null: 6
+if_true8: 6
+put_array_el: 6
+put_var_ref_check: 6
+call_method: 5
+div: 5
+push_2: 5
+call_constructor: 5
+push_4: 5
+return_undef: 5
+push_i32: 5
+xor: 5
+lt: 4
+if_false8: 4
+get_field2: 4
+set_loc0: 4
+push_6: 4
+push_3: 4
+push_7: 4
+get_arg1: 4
+set_loc_uninitialized: 4
+put_field: 4
+neg: 3
+return: 3
+if_false: 3
+inc_loc: 3
+goto16: 3
+dec_loc: 3
+call: 3
+push_5: 2
+get_length: 2
+shr: 2
+fclosure8: 2
+push_this: 2
+call0: 2
+put_arg0: 1
+set_loc3: 1
+array_from: 1
+add_loc: 1
+gte: 1
+lnot: 1
+call1: 1
+get_loc0_loc1: 1
+check_ctor: 1
+inc: 1
+put_loc_check: 1
+goto8: 1
+
+=== Breakdown per function ===
+Function #1: {'locals': 0, 'closure_vars': 0, 'stack_size': 0, 'byte_code_len': 0, 'opcodes': 0, 'opcode_lines_count': 0}
+Function #2: {'locals': 4, 'closure_vars': 0, 'stack_size': 10, 'byte_code_len': 264, 'opcodes': 124, 'opcode_lines_count': 124}
+Function #3: {'locals': 30, 'closure_vars': 0, 'stack_size': 4, 'byte_code_len': 837, 'opcodes': 551, 'opcode_lines_count': 551}
+Function #4: {'locals': 4, 'closure_vars': 0, 'stack_size': 8, 'byte_code_len': 99, 'opcodes': 50, 'opcode_lines_count': 50}
+Function #5: {'locals': 0, 'closure_vars': 1, 'stack_size': 3, 'byte_code_len': 146, 'opcodes': 78, 'opcode_lines_count': 78}
+Function #6: {'locals': 1, 'closure_vars': 0, 'stack_size': 1, 'byte_code_len': 12, 'opcodes': 5, 'opcode_lines_count': 5}
+Function #7: {'locals': 4, 'closure_vars': 1, 'stack_size': 4, 'byte_code_len': 133, 'opcodes': 67, 'opcode_lines_count': 67}
+Function #8: {'locals': 1, 'closure_vars': 0, 'stack_size': 5, 'byte_code_len': 35, 'opcodes': 13, 'opcode_lines_count': 13}
+Function #9: {'locals': 4, 'closure_vars': 0, 'stack_size': 3, 'byte_code_len': 230, 'opcodes': 62, 'opcode_lines_count': 0}

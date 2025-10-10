@@ -1,0 +1,108 @@
+=== Totals ===
+locals: 352
+closure_vars: 473
+stack_size: 89
+byte_code_len: 25060
+opcodes: 11543
+opcode_lines_count: 11500
+
+=== Opcode Frequencies ===
+get_var_ref: 1634
+add: 1267
+set_loc0: 1177
+push_atom_value: 923
+get_field2: 761
+call_method: 761
+get_length: 752
+push_empty_string: 734
+call2: 588
+push_const8: 506
+get_loc1: 274
+put_loc8: 252
+regexp: 237
+get_array_el: 218
+get_var_ref0: 149
+get_var: 112
+push_i8: 111
+get_var_ref2: 87
+get_var_ref1: 83
+push_0: 74
+put_loc0: 72
+get_loc0: 70
+put_loc1: 58
+lt: 58
+put_loc: 58
+inc_loc: 57
+get_var_ref3: 54
+push_i16: 52
+get_loc8: 40
+if_false8: 39
+goto8: 36
+goto16: 22
+if_false: 21
+return: 15
+fclosure8: 15
+call0: 13
+set_loc1: 13
+get_arg0: 12
+push_5: 12
+dup: 7
+drop: 7
+swap: 6
+get_loc_check: 6
+return_undef: 5
+get_loc2: 5
+push_1: 3
+put_loc2: 3
+get_loc3: 3
+put_loc_check: 3
+put_var: 2
+get_arg1: 2
+mul: 2
+put_loc3: 2
+to_propkey: 2
+put_field: 2
+set_loc_uninitialized: 2
+xor: 2
+get_loc: 2
+call_constructor: 1
+null: 1
+array_from: 1
+mod: 1
+get_loc0_loc1: 1
+is_undefined_or_null: 1
+if_true8: 1
+put_array_el: 1
+set_loc3: 1
+call1: 1
+sub: 1
+push_7: 1
+push_6: 1
+push_4: 1
+push_3: 1
+push_2: 1
+push_this: 1
+
+=== Breakdown per function ===
+Function #1: {'locals': 0, 'closure_vars': 0, 'stack_size': 0, 'byte_code_len': 0, 'opcodes': 0, 'opcode_lines_count': 0}
+Function #2: {'locals': 0, 'closure_vars': 0, 'stack_size': 2, 'byte_code_len': 23, 'opcodes': 9, 'opcode_lines_count': 9}
+Function #3: {'locals': 0, 'closure_vars': 0, 'stack_size': 2, 'byte_code_len': 14, 'opcodes': 4, 'opcode_lines_count': 4}
+Function #4: {'locals': 0, 'closure_vars': 0, 'stack_size': 2, 'byte_code_len': 8, 'opcodes': 4, 'opcode_lines_count': 4}
+Function #5: {'locals': 4, 'closure_vars': 0, 'stack_size': 7, 'byte_code_len': 153, 'opcodes': 71, 'opcode_lines_count': 71}
+Function #6: {'locals': 4, 'closure_vars': 1, 'stack_size': 3, 'byte_code_len': 52, 'opcodes': 37, 'opcode_lines_count': 37}
+Function #7: {'locals': 2, 'closure_vars': 0, 'stack_size': 5, 'byte_code_len': 78, 'opcodes': 41, 'opcode_lines_count': 41}
+Function #8: {'locals': 2, 'closure_vars': 44, 'stack_size': 6, 'byte_code_len': 995, 'opcodes': 657, 'opcode_lines_count': 657}
+Function #9: {'locals': 2, 'closure_vars': 46, 'stack_size': 5, 'byte_code_len': 641, 'opcodes': 405, 'opcode_lines_count': 405}
+Function #10: {'locals': 2, 'closure_vars': 25, 'stack_size': 5, 'byte_code_len': 703, 'opcodes': 366, 'opcode_lines_count': 366}
+Function #11: {'locals': 2, 'closure_vars': 35, 'stack_size': 5, 'byte_code_len': 1594, 'opcodes': 726, 'opcode_lines_count': 726}
+Function #12: {'locals': 2, 'closure_vars': 33, 'stack_size': 5, 'byte_code_len': 831, 'opcodes': 415, 'opcode_lines_count': 415}
+Function #13: {'locals': 2, 'closure_vars': 19, 'stack_size': 5, 'byte_code_len': 913, 'opcodes': 420, 'opcode_lines_count': 420}
+Function #14: {'locals': 2, 'closure_vars': 32, 'stack_size': 5, 'byte_code_len': 1398, 'opcodes': 754, 'opcode_lines_count': 754}
+Function #15: {'locals': 2, 'closure_vars': 21, 'stack_size': 5, 'byte_code_len': 1001, 'opcodes': 440, 'opcode_lines_count': 440}
+Function #16: {'locals': 2, 'closure_vars': 36, 'stack_size': 5, 'byte_code_len': 1311, 'opcodes': 591, 'opcode_lines_count': 591}
+Function #17: {'locals': 2, 'closure_vars': 61, 'stack_size': 5, 'byte_code_len': 2584, 'opcodes': 1148, 'opcode_lines_count': 1148}
+Function #18: {'locals': 2, 'closure_vars': 30, 'stack_size': 5, 'byte_code_len': 2514, 'opcodes': 1145, 'opcode_lines_count': 1145}
+Function #19: {'locals': 2, 'closure_vars': 78, 'stack_size': 5, 'byte_code_len': 7111, 'opcodes': 3074, 'opcode_lines_count': 3074}
+Function #20: {'locals': 2, 'closure_vars': 12, 'stack_size': 2, 'byte_code_len': 78, 'opcodes': 59, 'opcode_lines_count': 59}
+Function #21: {'locals': 314, 'closure_vars': 0, 'stack_size': 3, 'byte_code_len': 2923, 'opcodes': 1134, 'opcode_lines_count': 1134}
+Function #22: {'locals': 2, 'closure_vars': 0, 'stack_size': 2, 'byte_code_len': 135, 'opcodes': 43, 'opcode_lines_count': 0}

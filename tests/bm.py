@@ -11,8 +11,8 @@ import re
 # ======================
 # Configuration
 # ======================
-RUNS = 20         # Number of runs per benchmark
-GRID_COLS = 7                 # Number of columns in the final boxplot grid
+RUNS = 15         # Number of runs per benchmark
+GRID_COLS = 4                 # Number of columns in the final boxplot grid
 IRIDIUM_DIR = Path("..").resolve()
 QJS_DIR = Path("/home/anirudh/wd/quickjs")
 
@@ -24,49 +24,49 @@ JS3_BENCHMARK_DIR = Path("js3_benchmark").resolve()
 
 
 SUNSPIDER = [
-    "benchmarks/sunspider/3d-cube.cjs",
-    "benchmarks/sunspider/3d-morph.cjs",
-    "benchmarks/sunspider/3d-raytrace.cjs",
-    "benchmarks/sunspider/access-binary-trees.cjs",
-    "benchmarks/sunspider/access-fannkuch.cjs",
-    "benchmarks/sunspider/access-nbody.cjs",
-    "benchmarks/sunspider/access-nsieve.cjs",
-    "benchmarks/sunspider/bitops-3bit-bits-in-byte.cjs",
-    "benchmarks/sunspider/bitops-bits-in-byte.cjs",
-    "benchmarks/sunspider/bitops-bitwise-and.cjs",
-    "benchmarks/sunspider/bitops-nsieve-bits.cjs",
-    "benchmarks/sunspider/controlflow-recursive.cjs",
-    "benchmarks/sunspider/crypto-aes.cjs",
-    "benchmarks/sunspider/crypto-md5.cjs",
-    "benchmarks/sunspider/crypto-sha1.cjs",
-    "benchmarks/sunspider/date-format-xparb.cjs",
-    "benchmarks/sunspider/math-cordic.cjs",
-    "benchmarks/sunspider/math-partial-sums.cjs",
-    "benchmarks/sunspider/math-spectral-norm.cjs",
-    "benchmarks/sunspider/regexp-dna.cjs",
-    "benchmarks/sunspider/string-base64.cjs",
-    "benchmarks/sunspider/string-fasta.cjs",
-    "benchmarks/sunspider/string-tagcloud.cjs",
-    "benchmarks/sunspider/string-unpack-code.cjs",
-    "benchmarks/sunspider/string-validate-input.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-ai-astar.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-audio-beat-detection.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-audio-dft.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-audio-fft.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-audio-oscillator.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-imaging-darkroom.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-imaging-desaturate.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-imaging-gaussian-blur.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-json-parse-financial.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-json-stringify-tinderbox.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-aes.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-ccm.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-pbkdf2.cjs",
-    "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-sha256-iterative.cjs",
-    "benchmarks/ML/ML_load.cjs",
-    "benchmarks/Octane2/Regexpbenchmark.cjs",
-    "benchmarks/SeaMonster/gaussian-blur.cjs",
-    "benchmarks/UniPoker/benchmark.cjs",
+    "benchmarks/sunspider/3d-cube.cjs",     # 150 to 400
+    "benchmarks/sunspider/3d-morph.cjs",   # 100 to 350
+    # "benchmarks/sunspider/3d-raytrace.cjs",
+    # "benchmarks/sunspider/access-binary-trees.cjs",
+    "benchmarks/sunspider/access-fannkuch.cjs",    #  300 to 700
+    # "benchmarks/sunspider/access-nbody.cjs",
+    # "benchmarks/sunspider/access-nsieve.cjs",
+    # "benchmarks/sunspider/bitops-3bit-bits-in-byte.cjs",
+    # "benchmarks/sunspider/bitops-bits-in-byte.cjs",
+    "benchmarks/sunspider/bitops-bitwise-and.cjs",   # 100 to 500
+    # "benchmarks/sunspider/bitops-nsieve-bits.cjs",
+    # "benchmarks/sunspider/controlflow-recursive.cjs",
+    # "benchmarks/sunspider/crypto-aes.cjs",
+    # "benchmarks/sunspider/crypto-md5.cjs",
+    # "benchmarks/sunspider/crypto-sha1.cjs",
+    # "benchmarks/sunspider/date-format-xparb.cjs",
+    # "benchmarks/sunspider/math-cordic.cjs",
+    # "benchmarks/sunspider/math-partial-sums.cjs",
+    "benchmarks/sunspider/math-spectral-norm.cjs",   # 100 to 300
+    # "benchmarks/sunspider/regexp-dna.cjs",
+    # "benchmarks/sunspider/string-base64.cjs",
+    "benchmarks/sunspider/string-fasta.cjs",   #   250 to 450
+    # "benchmarks/sunspider/string-tagcloud.cjs",
+    # "benchmarks/sunspider/string-unpack-code.cjs",
+    # "benchmarks/sunspider/string-validate-input.cjs",
+    "benchmarks/kraken-1.0/kraken-1.0-ai-astar.cjs",      #    14000 to 22k
+    "benchmarks/kraken-1.0/kraken-1.0-audio-beat-detection.cjs",  # 6k to 16k
+    # "benchmarks/kraken-1.0/kraken-1.0-audio-dft.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-audio-fft.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-audio-oscillator.cjs",
+    "benchmarks/kraken-1.0/kraken-1.0-imaging-darkroom.cjs",        # 8k to 22k 
+    "benchmarks/kraken-1.0/kraken-1.0-imaging-desaturate.cjs",      # 15k to 40k
+    "benchmarks/kraken-1.0/kraken-1.0-imaging-gaussian-blur.cjs",   # 60k to 130k
+    # "benchmarks/kraken-1.0/kraken-1.0-json-parse-financial.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-json-stringify-tinderbox.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-aes.cjs",
+    # "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-ccm.cjs",
+    "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-pbkdf2.cjs",   # 6k to 16k
+    # "benchmarks/kraken-1.0/kraken-1.0-stanford-crypto-sha256-iterative.cjs",
+    "benchmarks/ML/ML_load.cjs",                                    # 7k to 10k 
+    "benchmarks/Octane2/Regexpbenchmark.cjs",                       # 14.5k to 16k
+    "benchmarks/SeaMonster/gaussian-blur.cjs",                      # 40k to 100k
+    "benchmarks/UniPoker/benchmark.cjs",                            # 5.5k to 7k
 ]
 
 # ======================
