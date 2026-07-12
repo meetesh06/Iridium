@@ -54,25 +54,8 @@ type SerializableIridiumBuildContextObject = {
   bypassParent: number;
   argInitContextWhitelist: Array<string>; // Set
   hasRestArgs: boolean;
-  loopConfig: {
-    kind: "for-of" | "standard";
-    loopHeadIDX: number;
-    loopBodyIDX: number;
-    loopInitIDX: number;
-    label: string | null;
-    breakTarget: number;
-    continueTarget: number;
-  } | null;
-  tryContext: {
-    tryContextIDX: number;
-    tryIDX: number;
-    udCatchIDX: number;
-    imCatchIDX: number;
-    finalizerIDX: number;
-    tryScopeIDX: number;
-    udCatchScopeIDX: number;
-    finalizerRetIDX: number;
-  } | null;
+  loopConfig: LoopConfig | null;
+  tryContext: TryContext | null;
   kind: number;
   propInitClos: string | null;
   argumentsKind: number;
